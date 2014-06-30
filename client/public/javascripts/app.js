@@ -3210,12 +3210,11 @@ module.exports = ApplicationsListView = (function(_super) {
       bgColor = _this.colorpicker.currentColors.background;
       btnColor = _this.colorpicker.currentColors.button;
       btnHoverColor = _this.colorpicker.currentColors.buttonHover;
-      _this.userPreference.set({
+      return _this.userPreference.set({
         backgroundColor: bgColor,
         buttonColor: btnColor,
         buttonHoverColor: btnHoverColor
       });
-      return _this.userPreference.save();
     });
     this.initGridster();
     ApplicationsListView.__super__.afterRender.apply(this, arguments);

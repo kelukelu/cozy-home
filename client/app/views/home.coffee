@@ -56,7 +56,7 @@ module.exports = class ApplicationsListView extends ViewCollection
                 backgroundColor: bgColor
                 buttonColor: btnColor
                 buttonHoverColor: btnHoverColor
-            @userPreference.save()
+            #@userPreference.save()
 
         @initGridster()
         super
