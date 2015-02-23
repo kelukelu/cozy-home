@@ -51,6 +51,7 @@ module.exports = {
   },
   update: function(req, res, next) {
     var manager;
+    return res.send(200);
     manager = new AppManager();
     return manager.updateStack(function(err, res) {
       if (err != null) {
@@ -61,6 +62,7 @@ module.exports = {
   },
   reboot: function(req, res, next) {
     var manager;
+    return res.send(200);
     manager = new AppManager();
     return manager.restartController(function(err, res) {
       if (err != null) {
