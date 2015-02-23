@@ -1,5 +1,4 @@
 BaseView = require 'lib/base_view'
-PopoverPermissionsView = require 'views/popover_permissions'
 PopoverDescriptionView = require 'views/popover_description'
 ApplicationRow = require 'views/market_application'
 ColorButton = require 'widgets/install_button'
@@ -47,7 +46,7 @@ module.exports = class MarketView extends BaseView
         @listenTo @installedApps, 'reset',  @onAppListsChanged
         @listenTo @installedApps, 'remove', @onAppListsChanged
         @listenTo @marketApps, 'reset',  @onAppListsChanged
-        @marketApps.fetchFromMarket()
+        @marketApps.fetchFromMarket ->
 
     onAppListsChanged: =>
         @$(".cozy-app").remove()
@@ -73,32 +72,23 @@ module.exports = class MarketView extends BaseView
             @popover?.confirmCallback()
 
     onInstallClicked: (event) =>
-        if @isInstalling()
-            alert t "application is installing"
-        else
-            data = git: @$("#app-git-field").val()
+        data = git: @$("#app-git-field").val()
 
-            @parsedGit data
-            event.preventDefault()
-            false
-
-    isInstalling: ->
-        return @installedApps.where(state:'installing').length isnt 0
+        @parsedGit data
+        event.preventDefault()
+        return false
 
     # parse git url before install application
     parsedGit: (app) ->
-        if @isInstalling()
-            alert t "application is installing"
+        parsed = @parseGitUrl app.git
+        if parsed.error
+            @displayError parsed.msg
         else
-            parsed = @parseGitUrl app.git
-            if parsed.error
-                @displayError parsed.msg
-            else
-                @hideError()
-                application = new Application(parsed)
-                data =
-                    app: application
-                @showDescription data
+            @hideError()
+            application = new Application(parsed)
+            data =
+                app: application
+            @showDescription data
 
     # pop up with application description
     showDescription: (appWidget) ->
@@ -116,7 +106,7 @@ module.exports = class MarketView extends BaseView
         @$el.append @popover.$el
         @popover.show()
 
-        if $(window).width() <= 500
+        if $(window).width() <= 640
             @appList.hide()
 
 
@@ -131,8 +121,7 @@ module.exports = class MarketView extends BaseView
         else
             callback()
 
-    runInstallation: (application) =>
-        return true if @isInstalling()
+    runInstallation: (application, shouldRedirect = true) =>
         @hideError()
 
         application.install
@@ -143,15 +132,16 @@ module.exports = class MarketView extends BaseView
                 else
                     @resetForm()
                 @installedApps.add application
-                app?.routers.main.navigate 'home', true
+                if shouldRedirect
+                    app?.routers.main.navigate 'home', true
 
             error: (jqXHR) =>
                 alert t JSON.parse(jqXHR.responseText).message
 
     parseGitUrl: (url) ->
+        url = url.trim()
         url = url.replace 'git@github.com:', 'https://github.com/'
         url = url.replace 'git://', 'https://'
-        console.debug REPOREGEX
         parsed = REPOREGEX.exec url
         unless parsed?
             error =

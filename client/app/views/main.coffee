@@ -1,6 +1,8 @@
 BaseView = require 'lib/base_view'
 appIframeTemplate = require 'templates/application_iframe'
 AppCollection = require 'collections/application'
+StackAppCollection = require 'collections/stackApplication'
+NotificationCollection = require 'collections/notifications'
 DeviceCollection = require 'collections/device'
 NavbarView = require 'views/navbar'
 AccountView = require 'views/account'
@@ -8,8 +10,7 @@ HelpView = require 'views/help'
 ConfigApplicationsView = require 'views/config_applications'
 MarketView = require 'views/market'
 ApplicationsListView = require 'views/home'
-socketListener = require('lib/socket_listener')
-UserPreference = require '../models/user_preference'
+SocketListener = require 'lib/socket_listener'
 
 User = require 'models/user'
 
@@ -20,21 +21,23 @@ module.exports = class HomeView extends BaseView
 
     template: require 'templates/layout'
 
+    wizards: ['install', 'quicktour']
+
     constructor: ->
         @apps = new AppCollection()
-        @listenTo @apps, 'reset', @testapps
+        @stackApps = new StackAppCollection()
         @devices = new DeviceCollection()
-        @listenTo @devices, 'reset', @test
-        socketListener.watch @apps
-        socketListener.watch @devices
+        @notifications = new NotificationCollection()
+        SocketListener.watch @apps
+        SocketListener.watch @notifications
+        SocketListener.watch @devices
 
-        @userPreference = new UserPreference()
         super
 
     afterRender: =>
-        @navbar = new NavbarView @apps
-        @applicationListView = new ApplicationsListView @apps, @userPreference
-        @configApplications = new ConfigApplicationsView @apps, @devices
+        @navbar = new NavbarView @apps, @notifications
+        @applicationListView = new ApplicationsListView @apps
+        @configApplications = new ConfigApplicationsView @apps, @devices, @stackApps
         @accountView = new AccountView()
         @helpView = new HelpView()
         @marketView = new MarketView @apps
@@ -43,21 +46,11 @@ module.exports = class HomeView extends BaseView
         @frames = @$ '#app-frames'
         @content = @$ '#content'
 
-        @favicon = @$ 'fav1'
-        @favicon2 = @$ 'fav2'
-
         $(window).resize @resetLayoutSizes
         @apps.fetch reset: true
         @devices.fetch reset: true
-        @userPreference.fetch()
+        @stackApps.fetch reset: true
         @resetLayoutSizes()
-
-    test: =>
-        console.log('got devices', @devices.length)
-
-    testapps: =>
-        console.log('got apps', @apps.length)
-
 
     ### Functions ###
 
@@ -81,7 +74,6 @@ module.exports = class HomeView extends BaseView
             $('#home-content').append view.$el
             view.$el.fadeIn()
             @currentView = view
-            @changeFavicon "favicon.ico"
             @resetLayoutSizes()
 
         if @currentView?
@@ -89,7 +81,6 @@ module.exports = class HomeView extends BaseView
             if view is @currentView
                 @frames.hide()
                 @content.show()
-                @changeFavicon "favicon.ico"
                 @resetLayoutSizes()
                 return
 
@@ -100,10 +91,23 @@ module.exports = class HomeView extends BaseView
             displayView()
 
     # Display application manager page, hides app frames, active home button.
-    displayApplicationsList: =>
+    displayApplicationsList: (wizard=null) =>
         @displayView @applicationListView
         @applicationListView.setMode 'view'
         window.document.title = t "cozy home title"
+
+        for wiz in @wizards
+            wview = "#{wiz}WizardView"
+            @[wview].dispose() if @[wview]? and wizard isnt wiz
+
+        if wizard? and wizard in @wizards
+            wview = "#{wizard}WizardView"
+            WView = require "views/#{wizard}_wizard"
+
+            options = market: @marketView if wizard is 'install'
+            @[wview] = new WView options
+            @$el.append @[wview].render().$el
+            @[wview].show()
 
     displayApplicationsListEdit: =>
         @displayView @applicationListView
@@ -124,9 +128,54 @@ module.exports = class HomeView extends BaseView
         @displayView @helpView
         window.document.title = t "cozy help title"
 
+    displayInstallWizard: ->
+        @displayApplicationsList 'install'
+
+    displayQuickTourWizard: ->
+        @displayApplicationsList 'quicktour'
+
     displayConfigApplications: =>
         @displayView @configApplications
         window.document.title = t "cozy applications title"
+
+
+    displayUpdateApplication: (slug) =>
+        @displayView @configApplications
+        window.document.title = t "cozy applications title"
+        window.app.routers.main.navigate 'config-applications', false
+
+        # When the route is called on browser loading, it must wait for
+        # apps list to be retrieved
+        method = @configApplications.openUpdatePopover
+        action = method.bind @configApplications, slug
+        timeout = null
+
+        if @apps.length is 0
+            @listenToOnce @apps, 'reset', ->
+                # stop the timeout so the action is not executed twice
+                clearTimeout timeout
+                action()
+
+            # if there is no app installed, this timeout will trigger
+            # the action
+            timeout = setTimeout action, 1500
+        else
+            # wait for 500ms before triggering the popover opening, because
+            # the configApplications view is not completely rendered yet (??)
+            setTimeout action, 500
+
+
+    displayUpdateStack: ->
+        @displayView @configApplications
+        window.document.title = t "cozy applications title"
+        window.app.routers.main.navigate 'config-applications', false
+
+        # wait for 500ms before triggering the popover opening, because
+        # the configApplications view is not completely rendered yet (??)
+        setTimeout =>
+            @configApplications.onUpdateStackClicked()
+        , 500
+
 
     # Get frame corresponding to slug if it exists, create before either.
     # Then this frame is displayed while we hide content div and other app
@@ -142,7 +191,14 @@ module.exports = class HomeView extends BaseView
         @content.hide()
 
         frame = @$("##{slug}-frame")
-        frame = @createApplicationIframe(slug, hash) if frame.length is 0
+        if frame.length is 0
+            frame = @createApplicationIframe(slug, hash)
+
+        # if the app was already open, we want to change its hash
+        # only if there is a hash in the home given url.
+        else if hash
+            frame.prop('contentWindow').location.hash = hash
+
         @$('#app-frames').find('iframe').hide()
         frame.show()
 
@@ -152,10 +208,13 @@ module.exports = class HomeView extends BaseView
         name = '' if not name?
         window.document.title = "Cozy - #{name}"
         $("#current-application").html name
-        @changeFavicon "/apps/#{slug}/favicon.ico"
         @resetLayoutSizes()
 
     createApplicationIframe: (slug, hash="") ->
+
+        # prepends '#' only if there is an actual hash
+        hash = "##{hash}" if hash?.length > 0
+
         @frames.append appIframeTemplate(id: slug, hash:hash)
         frame = @$("##{slug}-frame")
         $(frame.prop('contentWindow')).on 'hashchange', =>
@@ -170,21 +229,13 @@ module.exports = class HomeView extends BaseView
             app?.routers.main.navigate "/apps/#{slug}/#{newhash}", false
         @resetLayoutSizes()
 
-    changeFavicon: (url) ->
-        @favicon?.remove()
-        @favicon2?.remove()
-        newfav = '<link rel="icon" type="image/x-icon" href="' + url + '" />"'
-        @favicon = $ newfav
-        @favicon2 = @favicon.clone().attr 'rel', 'shortcut icon'
-        $('head').append @favicon, @favicon2
-
     ### Configuration ###
 
     # Small trick to size properly iframe.
     resetLayoutSizes: =>
         @frames.height $(window).height() - 50
 
-        if $(window).width() > 500
+        if $(window).width() > 640
             @content.height $(window).height() - 48
         else
             @content.height $(window).height()

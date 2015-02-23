@@ -12,10 +12,10 @@ else
 # Bring models in context
 Application = require "#{helpers.prefix}server/models/application"
 Alarm = require "#{helpers.prefix}server/models/alarm"
+Event = require "#{helpers.prefix}server/models/event"
 CozyInstance = require "#{helpers.prefix}server/models/cozyinstance"
 Notification = require "#{helpers.prefix}server/models/notification"
 User = require "#{helpers.prefix}server/models/user"
-time = require 'time'
 
 process.env.NAME = "home"
 process.env.TOKEN = "token"
@@ -24,22 +24,26 @@ initializeApplication = require "#{helpers.prefix}server"
 
 # github mock
 nock = require 'nock'
+nockOptions = allowUnmocked: true
 #nock.recorder.rec()
-nock 'https://raw.github.com'
-.get '/mycozycloud/my-app/master/package.json'
-.reply 200,
-    name: 'my-app'
-    'cozy-displayName': 'My App'
-    'cozy-permissions':
-        'contact': description: 'description'
+nock 'https://raw.github.com', nockOptions
+    .persist()
+    .get '/mycozycloud/my-app/master/package.json'
+    .reply 200,
+        name: 'my-app'
+        'cozy-displayName': 'My App'
+        'cozy-permissions':
+            'contact': description: 'description'
 
-nock 'https://raw.github.com'
-.get '/mycozycloud/my-app2/mybranch/package.json'
-.reply 200,
-    name: 'my-app'
-    'cozy-displayName': 'My App'
-    'cozy-permissions':
-        'contact': description: 'description'
+nock 'https://raw.github.com', nockOptions
+    .persist()
+    .get '/mycozycloud/my-app2/mybranch/package.json'
+    .reply 200,
+        name: 'my-app'
+        'cozy-displayName': 'My App'
+        'cozy-permissions':
+            'contact': description: 'description'
+
 
 # init the compound application
 # will create @app in context
@@ -62,7 +66,8 @@ _clearDb = (callback) ->
                 Notification.destroyAll (err) ->
                     return callback err if err
                     Alarm.destroyAll (err) ->
-                        callback err
+                        Event.destroyAll (err) ->
+                            callback err
 
 helpers.setup = (port) ->
     (done) ->
@@ -100,6 +105,9 @@ helpers.createApp = (name, slug, index, state) -> (callback) ->
         state: state
         index: index
         slug: slug
+        password: slug
+        permissions:
+            Event: description: 'access the events'
 
     app.save callback
 

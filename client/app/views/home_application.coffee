@@ -1,6 +1,5 @@
 BaseView = require 'lib/base_view'
 ColorButton = require 'widgets/install_button'
-PopoverPermissionsView = require 'views/popover_permissions'
 WidgetTemplate = require 'templates/home_application_widget'
 
 # Row displaying application name and attributes
@@ -45,6 +44,19 @@ module.exports = class ApplicationRow extends BaseView
         @listenTo @model, 'change', @onAppChanged
         @onAppChanged @model
 
+        slug = @model.get 'slug'
+        color = @model.get 'color'
+
+        # Only set a background color for SVG icons
+        if @model.isIconSvg()
+
+            # if there is no set color, we use an auto-generated one
+            unless color?
+                color = ColorHash.getColor slug, 'cozy'
+
+            @icon.addClass 'svg'
+            @icon.css 'background', color
+
     ### Listener ###
 
     onAppChanged: (app) =>
@@ -60,7 +72,19 @@ module.exports = class ApplicationRow extends BaseView
 
             when 'installed'
                 @hideSpinner()
-                @icon.attr 'src', "api/applications/#{app.id}.png"
+                if @model.isIconSvg()
+                    slug = @model.get 'slug'
+                    color = @model.get 'color'
+                    unless color?
+                        color = ColorHash.getColor slug, 'cozy'
+                    extension = 'svg'
+                    @icon.addClass 'svg'
+                    @icon.css 'background', color
+                else
+                    extension = 'png'
+                    @icon.removeClass 'svg'
+
+                @icon.attr 'src', "api/applications/#{app.id}.#{extension}"
                 @icon.hide()
                 @icon.show()
                 @icon.removeClass 'stopped'
@@ -74,7 +98,15 @@ module.exports = class ApplicationRow extends BaseView
                 @stateLabel.show().text 'installing'
 
             when 'stopped'
-                @icon.attr 'src', "api/applications/#{app.id}.png"
+
+                if @model.isIconSvg()
+                    extension = 'svg'
+                    @icon.addClass 'svg'
+                else
+                    extension = 'png'
+                    @icon.removeClass 'svg'
+
+                @icon.attr 'src', "api/applications/#{app.id}.#{extension}"
                 @icon.addClass 'stopped'
                 @hideSpinner()
                 @icon.show()
@@ -126,7 +158,9 @@ module.exports = class ApplicationRow extends BaseView
             @$('.application-inner').append @stateLabel
             @$('.application-inner').removeClass 'widget'
 
-    canUseWidget: () => @model.has 'widget'
+    canUseWidget: () =>
+        #@model.has 'widget'
+        false
 
     getNbCols: ->
         return window.app.mainView.applicationListView.colsNb
@@ -146,7 +180,7 @@ module.exports = class ApplicationRow extends BaseView
 
     launchApp: (e) =>
         # if ctrl or middle click or small device
-        if e.which is 2 or e.ctrlKey or e.metaKey or $(window).width() <= 500
+        if e.which is 2 or e.ctrlKey or e.metaKey or $(window).width() <= 640
             window.open "apps/#{@model.id}/", "_blank"
         else if e.which is 1 # left click
             window.app.routers.main.navigate "apps/#{@model.id}/", true

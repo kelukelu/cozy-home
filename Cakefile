@@ -45,17 +45,20 @@ task 'tests', "Run tests #{taskDetails}", (opts) ->
 
     env = if options['env'] then "NODE_ENV=#{options.env}" else "NODE_ENV=test"
     env += " USE_JS=true" if options['use-js']? and options['use-js']
+    env += " NAME=home TOKEN=token"
     logger.info "Running tests with #{env}..."
     command = "#{env} mocha " + files.join(" ") + " --reporter spec --colors "
     command += "--compilers coffee:coffee-script/register"
     exec command, (err, stdout, stderr) ->
         console.log stdout
-        if err
-            console.log stderr
-            logger.error "Running mocha caught exception:\n" + err
-            process.exit 1
+        if err?
+            console.log "Running mocha caught exception:\n#{err}"
+            setTimeout (-> process.exit 1), 100
+        else if stderr?.length > 0
+            console.log "Errors output to stderr during tests:\n#{stderr}"
+            setTimeout (-> process.exit 1), 100
         else
-            logger.info "Tests succeeded!"
+            console.log "Tests succeeded!"
             process.exit 0
 
 
@@ -75,7 +78,9 @@ task 'build', 'Build CoffeeScript to Javascript', ->
     logger.options.prefix = 'cake:build'
     logger.info "Start compilation..."
     command = "coffee -cb --output build/server server && " + \
-              "coffee -cb --output build/ server.coffee"
+              "coffee -cb --output build/ server.coffee  && " + \
+              "coffee -cb --output build/client/app/locales client/app/locales"
+
     exec command, (err, stdout, stderr) ->
         if err
             logger.error "An error has occurred while compiling:\n" + err

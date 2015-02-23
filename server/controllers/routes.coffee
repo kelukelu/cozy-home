@@ -1,6 +1,7 @@
 monitor = require './monitor'
 account = require './account'
 applications = require './applications'
+stackApplications = require './stack_application'
 devices = require './devices'
 notifications = require './notifications'
 
@@ -17,15 +18,22 @@ module.exports =
         put: applications.updatestoppable
     'api/applications/install': post: applications.install
     'api/applications/:slug.png': get: applications.icon
+    'api/applications/:slug.svg': get: applications.icon
     'api/applications/:slug/start': post: applications.start
     'api/applications/:slug/stop': post: applications.stop
-    'api/applications/:slug/uninstall': del: applications.uninstall
+    'api/applications/:slug/uninstall': delete: applications.uninstall
     'api/applications/:slug/update': put: applications.update
     'api/applications/update/all': put: applications.updateAll
 
+    'api/applications/market': get: applications.fetchMarket
+
+    'api/applications/stack': get: stackApplications.get
+    'api/applications/update/stack': put: stackApplications.update
+    'api/applications/reboot/stack': put: stackApplications.reboot
+
 
     'api/devices': get: devices.devices
-    'api/devices/:id': del: devices.remove
+    'api/devices/:id': delete: devices.remove
 
     'api/sys-data': get: monitor.sysData
 
@@ -41,12 +49,12 @@ module.exports =
 
     'api/notifications':
         get: notifications.all
-        del: notifications.deleteAll
+        delete: notifications.deleteAll
     'api/notifications/:id':
         get: notifications.show
-        del: notifications.delete
+        delete: notifications.delete
 
     'notifications': post: notifications.create
     'notifications/:app/:ref':
         put: notifications.updateOrCreate
-        del: notifications.destroy
+        delete: notifications.destroy

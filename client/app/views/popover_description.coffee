@@ -1,6 +1,7 @@
 BaseView = require 'lib/base_view'
 request = require 'lib/request'
-
+ApplicationCollection = require '../collections/application'
+collection = new ApplicationCollection()
 
 module.exports = class PopoverDescriptionView extends BaseView
     id: 'market-popover-description-view'
@@ -16,6 +17,19 @@ module.exports = class PopoverDescriptionView extends BaseView
         super
         @confirmCallback = options.confirm
         @cancelCallback = options.cancel
+        @label = if options.label? then options.label else t 'install'
+        @$("#confirmbtn").html @label
+
+    getRenderData: ->
+        # retrieves from market if app is official or not
+        collection.fetchFromMarket (appsCollection) =>
+            app = appsCollection.get @model.get('slug')
+
+            # By default, apps are 'community contribution'.
+            # Used for "install from Git"
+            comment = if app? then app.get('comment') else 'community contribution'
+            @model.set 'comment', comment
+        return super()
 
     afterRender: ->
         @model.set "description", ""
@@ -30,10 +44,13 @@ module.exports = class PopoverDescriptionView extends BaseView
             success: =>
                 @body.removeClass 'loading'
                 @renderDescription()
-            error: =>
+            error: (error) =>
                 @body.removeClass 'loading'
                 @body.addClass 'error'
-                @body.html t 'error connectivity issue'
+                if error.responseText.indexOf('Not Found') isnt -1
+                    @body.html t 'package.json not found'
+                else
+                    @body.html t 'error connectivity issue'
 
         @overlay = $ '.md-overlay'
         @overlay.click =>
@@ -49,7 +66,11 @@ module.exports = class PopoverDescriptionView extends BaseView
         @header.parent().append "<p class=\"line left\"> #{description} </p>"
 
         if Object.keys(@model.get("permissions")).length is 0
-            permissionsDiv = $ "<div class='permissionsLine'> <h4>#{t('no specific permissions needed')} </h4> </div>"
+            permissionsDiv = $ """
+                <div class='permissionsLine'>
+                    <h4>#{t('no specific permissions needed')} </h4>
+                </div>
+            """
             @body.append permissionsDiv
         else
             @body.append "<h4>#{t('required permissions')}</h4>"

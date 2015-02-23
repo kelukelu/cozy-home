@@ -9371,7 +9371,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
 })( window );
 
-;// Underscore.js 1.4.4
+// Underscore.js 1.4.4
 // ===================
 
 // > http://underscorejs.org
@@ -10599,7 +10599,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
 }).call(this);
 
-;//     Backbone.js 1.0.0
+//     Backbone.js 1.0.0
 
 //     (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.
 //     Backbone may be freely distributed under the MIT license.
@@ -12171,7 +12171,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
 }).call(this);
 
-;/*! jQuery UI - v1.10.3 - 2013-09-23
+/*! jQuery UI - v1.10.3 - 2013-09-23
 * http://jqueryui.com
 * Includes: jquery.ui.core.js, jquery.ui.widget.js, jquery.ui.mouse.js, jquery.ui.resizable.js, jquery.ui.effect.js, jquery.ui.effect-slide.js
 * Copyright 2013 jQuery Foundation and other contributors; Licensed MIT */
@@ -15437,7 +15437,7 @@ $.effects.effect.slide = function( o, done ) {
 
 })(jQuery);
 
-;
+
 jade = (function(exports){
 /*!
  * Jade - runtime
@@ -15617,7 +15617,7 @@ exports.rethrow = function rethrow(err, filename, lineno){
 
 })({});
 
-;/**
+/**
  * |-------------------|
  * | Backbone-Mediator |
  * |-------------------|
@@ -15818,12 +15818,12 @@ exports.rethrow = function rethrow(err, filename, lineno){
   return Backbone;
 
 });
-;/*! X-editable - v1.0.1 
+/*! X-editable - v1.0.1 
 * In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
 * http://github.com/vitalets/x-editable
 * Copyright (c) 2012 Vitaliy Potapov; Licensed MIT */
 (function(e){var t=function(t,n){this.options=e.extend({},e.fn.editableform.defaults,n),this.$element=e(t),this.initInput()};t.prototype={constructor:t,initInput:function(){var t,n;if(typeof e.fn.editableform.types[this.options.type]!="function"){e.error("Unknown type: "+this.options.type);return}t=e.fn.editableform.types[this.options.type],n=e.fn.editableform.utils.sliceObj(this.options,Object.keys(t.defaults)),this.input=new t(n),this.value=this.input.str2value(this.options.value)},initTemplate:function(){this.$form=e(e.fn.editableform.template)},render:function(){this.$loading=e(e.fn.editableform.loading),this.$element.empty().append(this.$loading),this.showLoading(),this.initTemplate(),this.$element.triggerHandler("rendering"),e.when(this.input.render()).then(e.proxy(function(){this.$form.find("div.control-group").prepend(this.input.$input),this.$form.find("button[type=button]").click(e.proxy(this.cancel,this)),this.$element.append(this.$form),this.input.error?(this.error(this.input.error),this.$form.find("button[type=submit]").attr("disabled",!0),this.input.$input.attr("disabled",!0)):(this.error(!1),this.input.$input.removeAttr("disabled"),this.$form.find("button[type=submit]").removeAttr("disabled"),this.input.value2input(this.value),this.$form.submit(e.proxy(this.submit,this))),this.$element.triggerHandler("rendered"),this.showForm()},this))},cancel:function(){this.$element.triggerHandler("cancel")},showLoading:function(){var e,t,n,r;this.$form&&(t=this.$form.outerHeight()||0,e=this.$form.outerWidth()||0,r=this.input&&this.input.$input.outerHeight()||0,n=this.input&&this.input.$input.outerWidth()||0,(t||r)&&this.$loading.height(t>r?t:r),(e||n)&&this.$loading.width(e>n?e:n),this.$form.hide()),this.$loading.show()},showForm:function(){this.$loading.hide(),this.$form.show(),this.input.activate(),this.$element.triggerHandler("show")},error:function(t){var n=this.$form.find(".control-group"),r=this.$form.find(".editable-error-block");t===!1?(n.removeClass(e.fn.editableform.errorGroupClass),r.removeClass(e.fn.editableform.errorBlockClass).empty().hide()):(n.addClass(e.fn.editableform.errorGroupClass),r.addClass(e.fn.editableform.errorBlockClass).text(t).show())},submit:function(t){t.stopPropagation(),t.preventDefault();var n,r=this.input.input2value(),i;if(n=this.validate(r)){this.error(n),this.showForm();return}i=this.input.value2str(r);if(i==this.input.value2str(this.value)){this.cancel();return}e.when(this.save(i)).done(e.proxy(function(e){var t;if(t=this.options.success.call(this,e,r)){this.error(t),this.showForm();return}this.error(!1),this.value=r,this.$element.triggerHandler("save",{newValue:r,response:e})},this)).fail(e.proxy(function(e){this.error(typeof e=="string"?e:e.responseText||e.statusText||"Unknown error!"),this.showForm()},this))},save:function(t){var n=typeof this.options.pk=="function"?this.options.pk.call(this):this.options.pk,r=!!(typeof this.options.url=="function"||this.options.url&&(this.options.send==="always"||this.options.send==="auto"&&n)),i;if(r)return this.showLoading(),i={name:this.options.name||"",value:t,pk:n},typeof this.options.params=="function"?e.extend(i,this.options.params.call(this,i)):(this.options.params=e.fn.editableform.utils.tryParseJson(this.options.params,!0),e.extend(i,this.options.params)),typeof this.options.url=="function"?this.options.url.call(this,i):e.ajax({url:this.options.url,data:i,type:"post",dataType:"json"})},validate:function(e){e===undefined&&(e=this.value);if(typeof this.options.validate=="function")return this.options.validate.call(this,e)},option:function(e,t){this.options[e]=t}},e.fn.editableform=function(n){var r=arguments;return this.each(function(){var i=e(this),s=i.data("editableform"),o=typeof n=="object"&&n;s||i.data("editableform",s=new t(this,o)),typeof n=="string"&&s[n].apply(s,Array.prototype.slice.call(r,1))})},e.fn.editableform.Constructor=t,e.fn.editableform.defaults={type:"text",url:null,params:null,name:null,pk:null,value:null,send:"auto",validate:null,success:function(e,t){}},e.fn.editableform.template='<form class="form-inline editableform"><div class="control-group">&nbsp;<button type="submit">Ok</button>&nbsp;<button type="button">Cancel</button></div><div class="editable-error-block"></div></form>',e.fn.editableform.loading='<div class="editableform-loading"></div>',e.fn.editableform.errorGroupClass=null,e.fn.editableform.errorBlockClass="editable-error",e.fn.editableform.types={},e.fn.editableform.utils={}})(window.jQuery),function(e){e.extend(e.fn.editableform,{utils:{inherit:function(e,t){var n=function(){};n.prototype=t.prototype,e.prototype=new n,e.prototype.constructor=e,e.superclass=t.prototype},setCursorPosition:function(e,t){if(e.setSelectionRange)e.setSelectionRange(t,t);else if(e.createTextRange){var n=e.createTextRange();n.collapse(!0),n.moveEnd("character",t),n.moveStart("character",t),n.select()}},tryParseJson:function(e,t){if(typeof e=="string"&&e.length&&e.match(/^\{.*\}$/))if(t)try{e=(new Function("return "+e))()}catch(n){}finally{return e}else e=(new Function("return "+e))();return e},sliceObj:function(t,n,r){var i,s,o={};if(!e.isArray(n)||!n.length)return o;for(var u=0;u<n.length;u++){i=n[u],t.hasOwnProperty(i)&&(o[i]=t[i]);if(r===!0)continue;s=i.toLowerCase(),t.hasOwnProperty(s)&&(o[i]=t[s])}return o},getConfigData:function(t){var n={};return e.each(t.data(),function(e,t){if(typeof t!="object"||t&&typeof t=="object"&&t.constructor===Object)n[e]=t}),n}}})}(window.jQuery),function(e){var t=function(e,t){this.init(e,t)};t.prototype={containerName:null,innerCss:null,init:function(t,n){this.$element=e(t),this.options=e.extend({},e.fn.editableContainer.defaults,e.fn.editableform.utils.getConfigData(this.$element),n),this.splitOptions(),this.initContainer(),this.$element.on("destroyed",e.proxy(function(){this.destroy()},this))},splitOptions:function(){this.containerOptions={},this.formOptions={};var t=e.fn[this.containerName].defaults;for(var n in this.options)n in t?this.containerOptions[n]=this.options[n]:this.formOptions[n]=this.options[n]},initContainer:function(){this.call(this.containerOptions)},initForm:function(){return this.$form=e("<div>").editableform(this.formOptions).on({save:e.proxy(this.save,this),cancel:e.proxy(this.cancel,this),show:e.proxy(this.setPosition,this),rendering:e.proxy(this.setPosition,this),rendered:e.proxy(function(){this.$element.triggerHandler("shown")},this)}),this.$form},tip:function(){return this.container().$tip},container:function(){return this.$element.data(this.containerName)},call:function(){this.$element[this.containerName].apply(this.$element,arguments)},show:function(){this.call("show"),this.tip().addClass("editable-container"),this.initForm(),this.tip().find(this.innerCss).empty().append(this.$form),this.$form.editableform("render")},hide:function(){if(!this.tip()||!this.tip().is(":visible"))return;this.call("hide"),this.$element.triggerHandler("hidden")},toggle:function(){this.tip&&this.tip().is(":visible")?this.hide():this.show()},setPosition:function(){},cancel:function(){this.options.autohide&&this.hide(),this.$element.triggerHandler("cancel")},save:function(e,t){this.options.autohide&&this.hide(),this.$element.triggerHandler("save",t)},option:function(e,t){this.options[e]=t,e in this.containerOptions?(this.containerOptions[e]=t,this.setContainerOption(e,t)):(this.formOptions[e]=t,this.$form&&this.$form.editableform("option",e,t))},setContainerOption:function(e,t){this.call("option",e,t)},destroy:function(){this.call("destroy")}},e.fn.editableContainer=function(n){var r=arguments;return this.each(function(){var i=e(this),s="editableContainer",o=i.data(s),u=typeof n=="object"&&n;o||i.data(s,o=new t(this,u)),typeof n=="string"&&o[n].apply(o,Array.prototype.slice.call(r,1))})},e.fn.editableContainer.Constructor=t,e.fn.editableContainer.defaults={value:null,placement:"top",autohide:!0},jQuery.event.special.destroyed={remove:function(e){e.handler&&e.handler()}}}(window.jQuery),function(e){var t=function(t,n){this.$element=e(t),this.options=e.extend({},e.fn.editable.defaults,e.fn.editableform.utils.getConfigData(this.$element),n),this.init()};t.prototype={constructor:t,init:function(){var t,n=!1,r,i;this.isInit=!0;if(!e.fn.editableContainer){e.error("You must define $.fn.editableContainer via including corresponding file (e.g. editable-popover.js)");return}this.options.name=this.options.name||this.$element.attr("id");if(!this.options.name){e.error("You must define name (or id) for Editable element");return}if(typeof e.fn.editableform.types[this.options.type]!="function"){e.error("Unknown type: "+this.options.type);return}t=e.fn.editableform.types[this.options.type],this.typeOptions=e.fn.editableform.utils.sliceObj(this.options,Object.keys(t.defaults)),this.input=new t(this.typeOptions),this.options.value===undefined||this.options.value===null?(this.value=this.input.html2value(e.trim(this.$element.html())),n=!0):this.value=this.input.str2value(e.trim(this.options.value)),e(document).off("keyup.editable").on("keyup.editable",function(t){t.which===27&&e(".editable-container").find("button[type=button]").click()}),e(document).off("click.editable").on("click.editable",function(t){var n=e(t.target);if(n.is(".editable-container")||n.parents(".editable-container").length||n.parents(".ui-datepicker-header").length)return;e(".editable-container").find("button[type=button]").click()}),this.$element.addClass("editable"),this.options.toggle==="click"?(this.$element.addClass("editable-click"),this.$element.on("click.editable",e.proxy(this.click,this))):this.$element.attr("tabindex",-1),r=!n&&this.value!==null&&this.value!==undefined,r&=this.options.autotext==="always"||this.options.autotext==="auto"&&!this.$element.text().length,e.when(r?this.input.value2html(this.value,this.$element):!0).then(e.proxy(function(){this.options.disabled?this.disable():this.enable(),this.$element.triggerHandler("render",this),this.isInit=!1},this))},enable:function(){this.options.disabled=!1,this.$element.removeClass("editable-disabled"),this.handleEmpty(),this.options.toggle==="click"&&this.$element.attr("tabindex")==="-1"&&this.$element.removeAttr("tabindex")},disable:function(){this.options.disabled=!0,this.hide(),this.$element.addClass("editable-disabled"),this.handleEmpty(),this.$element.attr("tabindex",-1)},toggleDisabled:function(){this.options.disabled?this.enable():this.disable()},option:function(e,t){if(e==="disabled"){t?this.disable():this.enable();return}this.options[e]=t,this.container&&this.container.option(e,t)},handleEmpty:function(){var t="editable-empty";this.options.disabled?this.$element.hasClass(t)&&(this.$element.empty(),this.$element.removeClass(t)):e.trim(this.$element.text())===""?this.$element.addClass(t).text(this.options.emptytext):this.$element.removeClass(t)},click:function(e){e.preventDefault();if(this.options.disabled)return;e.stopPropagation(),this.toggle()},show:function(){if(this.options.disabled)return;if(!this.container){var t=e.extend({},this.options,{value:this.value,autohide:!1});this.$element.editableContainer(t),this.$element.on({save:e.proxy(this.save,this),cancel:e.proxy(this.hide,this)}),this.container=this.$element.data("editableContainer")}else if(this.container.tip().is(":visible"))return;e(".editable-container").find("button[type=button]").click(),this.container.show()},hide:function(){this.container&&this.container.hide(),this.options.enablefocus&&this.options.toggle==="click"&&this.$element.focus()},toggle:function(){this.container&&this.container.tip().is(":visible")?this.hide():this.show()},save:function(e,t){typeof this.options.url!="function"&&t.response===undefined&&this.input.value2str(this.value)!==this.input.value2str(t.newValue)?this.$element.addClass("editable-unsaved"):this.$element.removeClass("editable-unsaved"),this.hide(),this.setValue(t.newValue)},validate:function(){if(typeof this.options.validate=="function")return this.options.validate.call(this,this.value)},setValue:function(t,n){n?this.value=this.input.str2value(t):this.value=t,this.container&&this.container.option("value",this.value),e.when(this.input.value2html(this.value,this.$element)).then(e.proxy(function(){this.handleEmpty(),this.$element.triggerHandler("render",this)},this))}},e.fn.editable=function(n){var r={},i=arguments,s="editable";switch(n){case"validate":return this.each(function(){var t=e(this),n=t.data(s),i;n&&(i=n.validate())&&(r[n.options.name]=i)}),r;case"getValue":return this.each(function(){var t=e(this),n=t.data(s);n&&n.value!==undefined&&n.value!==null&&(r[n.options.name]=n.input.value2str(n.value))}),r;case"submit":var o=arguments[1]||{},u=this,a=this.editable("validate"),f;return typeof o.error!="function"&&(o.error=function(){}),e.isEmptyObject(a)?(f=this.editable("getValue"),o.data&&e.extend(f,o.data),e.ajax({type:"POST",url:o.url,data:f,dataType:"json"}).success(function(e){typeof e=="object"&&e.id?(u.editable("option","pk",e.id),u.removeClass("editable-unsaved"),typeof o.success=="function"&&o.success.apply(u,arguments)):o.error.apply(u,arguments)}).error(function(){o.error.apply(u,arguments)})):o.error.call(u,{errors:a}),this}return this.each(function(){var r=e(this),o=r.data(s),u=typeof n=="object"&&n;o||r.data(s,o=new t(this,u)),typeof n=="string"&&o[n].apply(o,Array.prototype.slice.call(i,1))})},e.fn.editable.defaults={type:"text",disabled:!1,toggle:"click",emptytext:"Empty",autotext:"auto",enablefocus:!1,value:null}}(window.jQuery),function(e){var t=function(){};t.prototype={init:function(t,n,r){this.type=t,this.options=e.extend({},r,n),this.$input=null,this.error=null},render:function(){this.$input=e(this.options.tpl),this.options.inputclass&&this.$input.addClass(this.options.inputclass),this.options.placeholder&&this.$input.attr("placeholder",this.options.placeholder)},value2html:function(t,n){var r=e("<div>").text(t).html();e(n).html(r)},html2value:function(t){return e("<div>").html(t).text()},value2str:function(e){return e},str2value:function(e){return e},value2input:function(e){this.$input.val(e)},input2value:function(){return this.$input.val()},activate:function(){this.$input.is(":visible")&&this.$input.focus()}},t.defaults={tpl:"",inputclass:"span2",name:null},e.extend(e.fn.editableform.types,{"abstract":t})}(window.jQuery),function(e){var t=function(e){this.init("text",e,t.defaults)};e.fn.editableform.utils.inherit(t,e.fn.editableform.types.abstract),e.extend(t.prototype,{activate:function(){this.$input.is(":visible")&&(e.fn.editableform.utils.setCursorPosition(this.$input.get(0),this.$input.val().length),this.$input.focus())}}),t.defaults=e.extend({},e.fn.editableform.types.abstract.defaults,{tpl:'<input type="text">',placeholder:null}),e.fn.editableform.types.text=t}(window.jQuery),function(e){var t=function(e){this.init("textarea",e,t.defaults)};e.fn.editableform.utils.inherit(t,e.fn.editableform.types.abstract),e.extend(t.prototype,{render:function(){t.superclass.render.call(this),this.$input.keydown(function(t){t.ctrlKey&&t.which===13&&e(this).closest("form").submit()})},value2html:function(t,n){var r="",i;if(t){i=t.split("\n");for(var s=0;s<i.length;s++)i[s]=e("<div>").text(i[s]).html();r=i.join("<br>")}e(n).html(r)},html2value:function(t){if(!t)return"";var n=t.split(/<br\s*\/?>/i);for(var r=0;r<n.length;r++)n[r]=e("<div>").html(n[r]).text();return n.join("\n")},activate:function(){this.$input.is(":visible")&&(e.fn.editableform.utils.setCursorPosition(this.$input.get(0),this.$input.val().length),this.$input.focus())}}),t.defaults=e.extend({},e.fn.editableform.types.abstract.defaults,{tpl:"<textarea></textarea>",inputclass:"span3",placeholder:null}),e.fn.editableform.types.textarea=t}(window.jQuery),function(e){var t=function(e){this.init("select",e,t.defaults)};e.fn.editableform.utils.inherit(t,e.fn.editableform.types.abstract),e.extend(t.prototype,{render:function(){t.superclass.render.call(this);var n=e.Deferred();return this.error=null,this.sourceData=null,this.prependData=null,this.onSourceReady(function(){this.renderOptions(),n.resolve()},function(){this.error=this.options.sourceError,n.resolve()}),n.promise()},html2value:function(e){return null},value2html:function(n,r){var i=e.Deferred();return this.onSourceReady(function(){var s,o="";if(e.isArray(this.sourceData))for(s=0;s<this.sourceData.length;s++)if(this.sourceData[s].value==n){o=this.sourceData[s].text;break}t.superclass.value2html(o,r),i.resolve()},function(){t.superclass.value2html(this.options.sourceError,r),i.resolve()}),i.promise()},onSourceReady:function(t,n){if(e.isArray(this.sourceData)){t.call(this);return}try{this.options.source=e.fn.editableform.utils.tryParseJson(this.options.source,!1)}catch(r){n.call(this);return}if(typeof this.options.source=="string"){var i=this.options.source+(this.options.name?"-"+this.options.name:""),s;e(document).data(i)||e(document).data(i,{}),s=e(document).data(i);if(s.loading===!1&&s.sourceData){this.sourceData=s.sourceData,t.call(this);return}if(s.loading===!0){s.callbacks.push(e.proxy(function(){this.sourceData=s.sourceData,t.call(this)},this)),s.err_callbacks.push(e.proxy(n,this));return}s.loading=!0,s.callbacks=[],s.err_callbacks=[],e.ajax({url:this.options.source,type:"get",cache:!1,data:{name:this.options.name},dataType:"json",success:e.proxy(function(r){s.loading=!1,this.sourceData=this.makeArray(r),e.isArray(this.sourceData)?(this.doPrepend(),s.sourceData=this.sourceData,t.call(this),e.each(s.callbacks,function(){this.call()})):(n.call(this),e.each(s.err_callbacks,function(){this.call()}))},this),error:e.proxy(function(){s.loading=!1,n.call(this),e.each(s.err_callbacks,function(){this.call()})},this)})}else this.sourceData=this.makeArray(this.options.source),e.isArray(this.sourceData)?(this.doPrepend(),t.call(this)):n.call(this)},doPrepend:function(){if(this.options.prepend===null||this.options.prepend===undefined)return;e.isArray(this.prependData)||(this.options.prepend=e.fn.editableform.utils.tryParseJson(this.options.prepend,!0),typeof this.options.prepend=="string"&&(this.options.prepend={"":this.options.prepend}),this.prependData=this.makeArray(this.options.prepend)),e.isArray(this.prependData)&&e.isArray(this.sourceData)&&(this.sourceData=this.prependData.concat(this.sourceData))},renderOptions:function(){if(!e.isArray(this.sourceData))return;for(var t=0;t<this.sourceData.length;t++)this.$input.append(e("<option>",{value:this.sourceData[t].value}).text(this.sourceData[t].text))},makeArray:function(t){var n,r,i=[],s;if(!t||typeof t=="string")return null;if(e.isArray(t)){s=function(e,t){r={value:e,text:t};if(n++>=2)return!1};for(var o=0;o<t.length;o++)typeof t[o]=="object"?(n=0,e.each(t[o],s),n===1?i.push(r):n>1&&t[o].hasOwnProperty("value")&&t[o].hasOwnProperty("text")&&i.push(t[o])):i.push({value:o,text:t[o]})}else e.each(t,function(e,t){i.push({value:e,text:t})});return i}}),t.defaults=e.extend({},e.fn.editableform.types.abstract.defaults,{tpl:"<select></select>",source:null,prepend:!1,sourceError:"Error when loading options"}),e.fn.editableform.types.select=t}(window.jQuery),function(e){e.fn.editableform.template='<form class="form-inline editableform"><div class="control-group">&nbsp;<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i></button>&nbsp;<button type="button" class="btn clearfix"><i class="icon-ban-circle"></i></button><div style="clear:both"><span class="help-block editable-error-block"></span></div></div></form>',e.fn.editableform.errorGroupClass="error",e.fn.editableform.errorBlockClass=null}(window.jQuery),function(e){e.extend(e.fn.editableContainer.Constructor.prototype,{containerName:"editableform",innerCss:null,initContainer:function(){this.options.anim||(this.options.anim=0)},splitOptions:function(){this.containerOptions={},this.formOptions=this.options},tip:function(){return this.$form},show:function(){this.$element.hide(),this.$form&&this.$form.remove(),this.initForm(),this.tip().addClass("editable-container").addClass("editable-inline"),this.$form.insertAfter(this.$element),this.$form.show(this.options.anim),this.$form.editableform("render")},hide:function(){if(!this.tip()||!this.tip().is(":visible"))return;this.$form.hide(this.options.anim,e.proxy(function(){this.$element.show(),this.options.enablefocus&&this.$element.focus(),this.$element.triggerHandler("hidden")},this))},destroy:function(){this.tip().remove()}}),e.fn.editableContainer.defaults=e.extend({},e.fn.editableContainer.defaults,{anim:"fast",enablefocus:!1})}(window.jQuery),function(e){var t=function(n){this.init("date",n,t.defaults);var r=e.fn.editableform.utils.sliceObj(this.options,["format"]);this.options.datepicker=e.extend({},t.defaults.datepicker,r,n.datepicker),this.options.viewformat||(this.options.viewformat=this.options.datepicker.format),this.options.datepicker.language=this.options.datepicker.language||"en",this.dpg=e.fn.datepicker.DPGlobal,this.parsedFormat=this.dpg.parseFormat(this.options.datepicker.format),this.parsedViewFormat=this.dpg.parseFormat(this.options.viewformat)};e.fn.editableform.utils.inherit(t,e.fn.editableform.types.abstract),e.extend(t.prototype,{render:function(){t.superclass.render.call(this),this.$input.datepicker(this.options.datepicker)},value2html:function(e,n){var r=e?this.dpg.formatDate(e,this.parsedViewFormat,this.options.datepicker.language):"";t.superclass.value2html(r,n)},html2value:function(e){return e?this.dpg.parseDate(e,this.parsedViewFormat,this.options.datepicker.language):null},value2str:function(e){return e?this.dpg.formatDate(e,this.parsedFormat,this.options.datepicker.language):""},str2value:function(e){return e?this.dpg.parseDate(e,this.parsedFormat,this.options.datepicker.language):null},value2input:function(e){this.$input.datepicker("update",e)},input2value:function(){return this.$input.data("datepicker").date},activate:function(){}}),t.defaults=e.extend({},e.fn.editableform.types.abstract.defaults,{tpl:"<div></div>",inputclass:"editable-date well",format:"yyyy-mm-dd",viewformat:null,datepicker:{weekStart:0,startView:0,autoclose:!1}}),e.fn.editableform.types.date=t}(window.jQuery),!function(e){function t(){return new Date(Date.UTC.apply(Date,arguments))}function n(){var e=new Date;return t(e.getUTCFullYear(),e.getUTCMonth(),e.getUTCDate())}var r=function(t,n){var r=this;this.element=e(t),this.language=n.language||this.element.data("date-language")||"en",this.language=this.language in i?this.language:"en",this.format=s.parseFormat(n.format||this.element.data("date-format")||"mm/dd/yyyy"),this.isInline=!1,this.isInput=this.element.is("input"),this.component=this.element.is(".date")?this.element.find(".add-on"):!1,this.hasInput=this.component&&this.element.find("input").length,this.component&&this.component.length===0&&(this.component=!1),this.isInput?this.element.on({focus:e.proxy(this.show,this),keyup:e.proxy(this.update,this),keydown:e.proxy(this.keydown,this)}):this.component&&this.hasInput?(this.element.find("input").on({focus:e.proxy(this.show,this),keyup:e.proxy(this.update,this),keydown:e.proxy(this.keydown,this)}),this.component.on("click",e.proxy(this.show,this))):this.element.is("div")?this.isInline=!0:this.element.on("click",e.proxy(this.show,this)),this.picker=e(s.template).appendTo(this.isInline?this.element:"body").on({click:e.proxy(this.click,this),mousedown:e.proxy(this.mousedown,this)}),this.isInline?this.picker.addClass("datepicker-inline"):this.picker.addClass("dropdown-menu"),e(document).on("mousedown",function(t){e(t.target).closest(".datepicker").length==0&&r.hide()}),this.autoclose=!1,"autoclose"in n?this.autoclose=n.autoclose:"dateAutoclose"in this.element.data()&&(this.autoclose=this.element.data("date-autoclose")),this.keyboardNavigation=!0,"keyboardNavigation"in n?this.keyboardNavigation=n.keyboardNavigation:"dateKeyboardNavigation"in this.element.data()&&(this.keyboardNavigation=this.element.data("date-keyboard-navigation"));switch(n.startView||this.element.data("date-start-view")){case 2:case"decade":this.viewMode=this.startViewMode=2;break;case 1:case"year":this.viewMode=this.startViewMode=1;break;case 0:case"month":default:this.viewMode=this.startViewMode=0}this.todayBtn=n.todayBtn||this.element.data("date-today-btn")||!1,this.todayHighlight=n.todayHighlight||this.element.data("date-today-highlight")||!1,this.weekStart=(n.weekStart||this.element.data("date-weekstart")||i[this.language].weekStart||0)%7,this.weekEnd=(this.weekStart+6)%7,this.startDate=-Infinity,this.endDate=Infinity,this.setStartDate(n.startDate||this.element.data("date-startdate")),this.setEndDate(n.endDate||this.element.data("date-enddate")),this.fillDow(),this.fillMonths(),this.update(),this.showMode(),this.isInline&&this.show()};r.prototype={constructor:r,show:function(t){this.picker.show(),this.height=this.component?this.component.outerHeight():this.element.outerHeight(),this.update(),this.place(),e(window).on("resize",e.proxy(this.place,this)),t&&(t.stopPropagation(),t.preventDefault()),this.element.trigger({type:"show",date:this.date})},hide:function(t){if(this.isInline)return;this.picker.hide(),e(window).off("resize",this.place),this.viewMode=this.startViewMode,this.showMode(),this.isInput||e(document).off("mousedown",this.hide),t&&t.currentTarget.value&&this.setValue(),this.element.trigger({type:"hide",date:this.date})},getDate:function(){var e=this.getUTCDate();return new Date(e.getTime()+e.getTimezoneOffset()*6e4)},getUTCDate:function(){return this.date},setDate:function(e){this.setUTCDate(new Date(e.getTime()-e.getTimezoneOffset()*6e4))},setUTCDate:function(e){this.date=e,this.setValue()},setValue:function(){var e=this.getFormattedDate();this.isInput?this.element.prop("value",e):(this.component&&this.element.find("input").prop("value",e),this.element.data("date",e))},getFormattedDate:function(e){return e==undefined&&(e=this.format),s.formatDate(this.date,e,this.language)},setStartDate:function(e){this.startDate=e||-Infinity,this.startDate!==-Infinity&&(this.startDate=s.parseDate(this.startDate,this.format,this.language)),this.update(),this.updateNavArrows()},setEndDate:function(e){this.endDate=e||Infinity,this.endDate!==Infinity&&(this.endDate=s.parseDate(this.endDate,this.format,this.language)),this.update(),this.updateNavArrows()},place:function(){if(this.isInline)return;var t=parseInt(this.element.parents().filter(function(){return e(this).css("z-index")!="auto"}).first().css("z-index"))+10,n=this.component?this.component.offset():this.element.offset();this.picker.css({top:n.top+this.height,left:n.left,zIndex:t})},update:function(){var e,t=!1;arguments&&arguments.length&&(typeof arguments[0]=="string"||arguments[0]instanceof Date)?(e=arguments[0],t=!0):e=this.isInput?this.element.prop("value"):this.element.data("date")||this.element.find("input").prop("value"),this.date=s.parseDate(e,this.format,this.language),t&&this.setValue(),this.date<this.startDate?this.viewDate=new Date(this.startDate):this.date>this.endDate?this.viewDate=new Date(this.endDate):this.viewDate=new Date(this.date),this.fill()},fillDow:function(){var e=this.weekStart,t="<tr>";while(e<this.weekStart+7)t+='<th class="dow">'+i[this.language].daysMin[e++%7]+"</th>";t+="</tr>",this.picker.find(".datepicker-days thead").append(t)},fillMonths:function(){var e="",t=0;while(t<12)e+='<span class="month">'+i[this.language].monthsShort[t++]+"</span>";this.picker.find(".datepicker-months td").html(e)},fill:function(){var e=new Date(this.viewDate),n=e.getUTCFullYear(),r=e.getUTCMonth(),o=this.startDate!==-Infinity?this.startDate.getUTCFullYear():-Infinity,u=this.startDate!==-Infinity?this.startDate.getUTCMonth():-Infinity,a=this.endDate!==Infinity?this.endDate.getUTCFullYear():Infinity,f=this.endDate!==Infinity?this.endDate.getUTCMonth():Infinity,l=this.date.valueOf(),c=new Date;this.picker.find(".datepicker-days thead th:eq(1)").text(i[this.language].months[r]+" "+n),this.picker.find("tfoot th.today").text(i[this.language].today).toggle(this.todayBtn),this.updateNavArrows(),this.fillMonths();var h=t(n,r-1,28,0,0,0,0),p=s.getDaysInMonth(h.getUTCFullYear(),h.getUTCMonth());h.setUTCDate(p),h.setUTCDate(p-(h.getUTCDay()-this.weekStart+7)%7);var d=new Date(h);d.setUTCDate(d.getUTCDate()+42),d=d.valueOf();var v=[],m;while(h.valueOf()<d){h.getUTCDay()==this.weekStart&&v.push("<tr>"),m="";if(h.getUTCFullYear()<n||h.getUTCFullYear()==n&&h.getUTCMonth()<r)m+=" old";else if(h.getUTCFullYear()>n||h.getUTCFullYear()==n&&h.getUTCMonth()>r)m+=" new";this.todayHighlight&&h.getUTCFullYear()==c.getFullYear()&&h.getUTCMonth()==c.getMonth()&&h.getUTCDate()==c.getDate()&&(m+=" today"),h.valueOf()==l&&(m+=" active");if(h.valueOf()<this.startDate||h.valueOf()>this.endDate)m+=" disabled";v.push('<td class="day'+m+'">'+h.getUTCDate()+"</td>"),h.getUTCDay()==this.weekEnd&&v.push("</tr>"),h.setUTCDate(h.getUTCDate()+1)}this.picker.find(".datepicker-days tbody").empty().append(v.join(""));var g=this.date.getUTCFullYear(),y=this.picker.find(".datepicker-months").find("th:eq(1)").text(n).end().find("span").removeClass("active");g==n&&y.eq(this.date.getUTCMonth()).addClass("active"),(n<o||n>a)&&y.addClass("disabled"),n==o&&y.slice(0,u).addClass("disabled"),n==a&&y.slice(f+1).addClass("disabled"),v="",n=parseInt(n/10,10)*10;var b=this.picker.find(".datepicker-years").find("th:eq(1)").text(n+"-"+(n+9)).end().find("td");n-=1;for(var w=-1;w<11;w++)v+='<span class="year'+(w==-1||w==10?" old":"")+(g==n?" active":"")+(n<o||n>a?" disabled":"")+'">'+n+"</span>",n+=1;b.html(v)},updateNavArrows:function(){var e=new Date(this.viewDate),t=e.getUTCFullYear(),n=e.getUTCMonth();switch(this.viewMode){case 0:this.startDate!==-Infinity&&t<=this.startDate.getUTCFullYear()&&n<=this.startDate.getUTCMonth()?this.picker.find(".prev").css({visibility:"hidden"}):this.picker.find(".prev").css({visibility:"visible"}),this.endDate!==Infinity&&t>=this.endDate.getUTCFullYear()&&n>=this.endDate.getUTCMonth()?this.picker.find(".next").css({visibility:"hidden"}):this.picker.find(".next").css({visibility:"visible"});break;case 1:case 2:this.startDate!==-Infinity&&t<=this.startDate.getUTCFullYear()?this.picker.find(".prev").css({visibility:"hidden"}):this.picker.find(".prev").css({visibility:"visible"}),this.endDate!==Infinity&&t>=this.endDate.getUTCFullYear()?this.picker.find(".next").css({visibility:"hidden"}):this.picker.find(".next").css({visibility:"visible"})}},click:function(n){n.stopPropagation(),n.preventDefault();var r=e(n.target).closest("span, td, th");if(r.length==1)switch(r[0].nodeName.toLowerCase()){case"th":switch(r[0].className){case"switch":this.showMode(1);break;case"prev":case"next":var i=s.modes[this.viewMode].navStep*(r[0].className=="prev"?-1:1);switch(this.viewMode){case 0:this.viewDate=this.moveMonth(this.viewDate,i);break;case 1:case 2:this.viewDate=this.moveYear(this.viewDate,i)}this.fill();break;case"today":var o=new Date;o.setUTCHours(0),o.setUTCMinutes(0),o.setUTCSeconds(0),o.setUTCMilliseconds(0),this.showMode(-2);var u=this.todayBtn=="linked"?null:"view";this._setDate(o,u)}break;case"span":if(!r.is(".disabled")){this.viewDate.setUTCDate(1);if(r.is(".month")){var a=r.parent().find("span").index(r);this.viewDate.setUTCMonth(a),this.element.trigger({type:"changeMonth",date:this.viewDate})}else{var f=parseInt(r.text(),10)||0;this.viewDate.setUTCFullYear(f),this.element.trigger({type:"changeYear",date:this.viewDate})}this.showMode(-1),this.fill()}break;case"td":if(r.is(".day")&&!r.is(".disabled")){var l=parseInt(r.text(),10)||1,f=this.viewDate.getUTCFullYear(),a=this.viewDate.getUTCMonth();r.is(".old")?a==0?(a=11,f-=1):a-=1:r.is(".new")&&(a==11?(a=0,f+=1):a+=1),this._setDate(t(f,a,l,0,0,0,0))}}},_setDate:function(e,t){if(!t||t=="date")this.date=e;if(!t||t=="view")this.viewDate=e;this.fill(),this.setValue(),this.element.trigger({type:"changeDate",date:this.date});var n;this.isInput?n=this.element:this.component&&(n=this.element.find("input")),n&&(n.change(),this.autoclose&&this.hide())},moveMonth:function(e,t){if(!t)return e;var n=new Date(e.valueOf()),r=n.getUTCDate(),i=n.getUTCMonth(),s=Math.abs(t),o,u;t=t>0?1:-1;if(s==1){u=t==-1?function(){return n.getUTCMonth()==i}:function(){return n.getUTCMonth()!=o},o=i+t,n.setUTCMonth(o);if(o<0||o>11)o=(o+12)%12}else{for(var a=0;a<s;a++)n=this.moveMonth(n,t);o=n.getUTCMonth(),n.setUTCDate(r),u=function(){return o!=n.getUTCMonth()}}while(u())n.setUTCDate(--r),n.setUTCMonth(o);return n},moveYear:function(e,t){return this.moveMonth(e,t*12)},dateWithinRange:function(e){return e>=this.startDate&&e<=this.endDate},keydown:function(e){if(this.picker.is(":not(:visible)")){e.keyCode==27&&this.show();return}var t=!1,n,r,i,s,o;switch(e.keyCode){case 27:this.hide(),e.preventDefault();break;case 37:case 39:if(!this.keyboardNavigation)break;n=e.keyCode==37?-1:1,e.ctrlKey?(s=this.moveYear(this.date,n),o=this.moveYear(this.viewDate,n)):e.shiftKey?(s=this.moveMonth(this.date,n),o=this.moveMonth(this.viewDate,n)):(s=new Date(this.date),s.setUTCDate(this.date.getUTCDate()+n),o=new Date(this.viewDate),o.setUTCDate(this.viewDate.getUTCDate()+n)),this.dateWithinRange(s)&&(this.date=s,this.viewDate=o,this.setValue(),this.update(),e.preventDefault(),t=!0);break;case 38:case 40:if(!this.keyboardNavigation)break;n=e.keyCode==38?-1:1,e.ctrlKey?(s=this.moveYear(this.date,n),o=this.moveYear(this.viewDate,n)):e.shiftKey?(s=this.moveMonth(this.date,n),o=this.moveMonth(this.viewDate,n)):(s=new Date(this.date),s.setUTCDate(this.date.getUTCDate()+n*7),o=new Date(this.viewDate),o.setUTCDate(this.viewDate.getUTCDate()+n*7)),this.dateWithinRange(s)&&(this.date=s,this.viewDate=o,this.setValue(),this.update(),e.preventDefault(),t=!0);break;case 13:this.hide(),e.preventDefault();break;case 9:this.hide()}if(t){this.element.trigger({type:"changeDate",date:this.date});var u;this.isInput?u=this.element:this.component&&(u=this.element.find("input")),u&&u.change()}},showMode:function(e){e&&(this.viewMode=Math.max(0,Math.min(2,this.viewMode+e))),this.picker.find(">div").hide().filter(".datepicker-"+s.modes[this.viewMode].clsName).show(),this.updateNavArrows()}},e.fn.datepicker=function(t){var n=Array.apply(null,arguments);return n.shift(),this.each(function(){var i=e(this),s=i.data("datepicker"),o=typeof t=="object"&&t;s||i.data("datepicker",s=new r(this,e.extend({},e.fn.datepicker.defaults,o))),typeof t=="string"&&typeof s[t]=="function"&&s[t].apply(s,n)})},e.fn.datepicker.defaults={},e.fn.datepicker.Constructor=r;var i=e.fn.datepicker.dates={en:{days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],daysShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"],daysMin:["Su","Mo","Tu","We","Th","Fr","Sa","Su"],months:["January","February","March","April","May","June","July","August","September","October","November","December"],monthsShort:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],today:"Today"}},s={modes:[{clsName:"days",navFnc:"Month",navStep:1},{clsName:"months",navFnc:"FullYear",navStep:1},{clsName:"years",navFnc:"FullYear",navStep:10}],isLeapYear:function(e){return e%4===0&&e%100!==0||e%400===0},getDaysInMonth:function(e,t){return[31,s.isLeapYear(e)?29:28,31,30,31,30,31,31,30,31,30,31][t]},validParts:/dd?|mm?|MM?|yy(?:yy)?/g,nonpunctuation:/[^ -\/:-@\[-`{-~\t\n\r]+/g,parseFormat:function(e){var t=e.replace(this.validParts,"\0").split("\0"),n=e.match(this.validParts);if(!t||!t.length||!n||n.length==0)throw new Error("Invalid date format.");return{separators:t,parts:n}},parseDate:function(n,s,o){if(n instanceof Date)return n;if(/^[-+]\d+[dmwy]([\s,]+[-+]\d+[dmwy])*$/.test(n)){var u=/([-+]\d+)([dmwy])/,a=n.match(/([-+]\d+)([dmwy])/g),f,l;n=new Date;for(var c=0;c<a.length;c++){f=u.exec(a[c]),l=parseInt(f[1]);switch(f[2]){case"d":n.setUTCDate(n.getUTCDate()+l);break;case"m":n=r.prototype.moveMonth.call(r.prototype,n,l);break;case"w":n.setUTCDate(n.getUTCDate()+l*7);break;case"y":n=r.prototype.moveYear.call(r.prototype,n,l)}}return t(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),0,0,0)}var a=n&&n.match(this.nonpunctuation)||[],n=new Date,h={},p=["yyyy","yy","M","MM","m","mm","d","dd"],d={yyyy:function(e,t){return e.setUTCFullYear(t)},yy:function(e,t){return e.setUTCFullYear(2e3+t)},m:function(e,t){t-=1;while(t<0)t+=12;t%=12,e.setUTCMonth(t);while(e.getUTCMonth()!=t)e.setUTCDate(e.getUTCDate()-1);return e},d:function(e,t){return e.setUTCDate(t)}},v,m,f;d.M=d.MM=d.mm=d.m,d.dd=d.d,n=t(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate(),0,0,0);if(a.length==s.parts.length){for(var c=0,g=s.parts.length;c<g;c++){v=parseInt(a[c],10),f=s.parts[c];if(isNaN(v))switch(f){case"MM":m=e(i[o].months).filter(function(){var e=this.slice(0,a[c].length),t=a[c].slice(0,e.length);return e==t}),v=e.inArray(m[0],i[o].months)+1;break;case"M":m=e(i[o].monthsShort).filter(function(){var e=this.slice(0,a[c].length),t=a[c].slice(0,e.length);return e==t}),v=e.inArray(m[0],i[o].monthsShort)+1}h[f]=v}for(var c=0,y;c<p.length;c++)y=p[c],y in h&&d[y](n,h[y])}return n},formatDate:function(t,n,r){var s={d:t.getUTCDate(),m:t.getUTCMonth()+1,M:i[r].monthsShort[t.getUTCMonth()],MM:i[r].months[t.getUTCMonth()],yy:t.getUTCFullYear().toString().substring(2),yyyy:t.getUTCFullYear()};s.dd=(s.d<10?"0":"")+s.d,s.mm=(s.m<10?"0":"")+s.m;var t=[],o=e.extend([],n.separators);for(var u=0,a=n.parts.length;u<a;u++)o.length&&t.push(o.shift()),t.push(s[n.parts[u]]);return t.join("")},headTemplate:'<thead><tr><th class="prev"><i class="icon-arrow-left"/></th><th colspan="5" class="switch"></th><th class="next"><i class="icon-arrow-right"/></th></tr></thead>',contTemplate:'<tbody><tr><td colspan="7"></td></tr></tbody>',footTemplate:'<tfoot><tr><th colspan="7" class="today"></th></tr></tfoot>'};s.template='<div class="datepicker"><div class="datepicker-days"><table class=" table-condensed">'+s.headTemplate+"<tbody></tbody>"+s.footTemplate+"</table>"+"</div>"+'<div class="datepicker-months">'+'<table class="table-condensed">'+s.headTemplate+s.contTemplate+s.footTemplate+"</table>"+"</div>"+'<div class="datepicker-years">'+'<table class="table-condensed">'+s.headTemplate+s.contTemplate+s.footTemplate+"</table>"+"</div>"+"</div>",e.fn.datepicker.DPGlobal=s}(window.jQuery);
-;/* ===================================================
+/* ===================================================
  * bootstrap-transition.js v2.1.0
  * http://twitter.github.com/bootstrap/javascript.html#transitions
  * ===================================================
@@ -17850,7 +17850,313 @@ exports.rethrow = function rethrow(err, filename, lineno){
 
 
 }(window.jQuery);
-;
+var ColorHash = (function () {
+
+    var schemes = {
+        "base" : [
+            "00bb3f", "238c47", "007929", "37dd6f", "63dd8d",
+            "0f4fa8", "284c7e", "05316d", "4380d3", "6996d3",
+            "ff9f00", "bf8930", "a66800", "ffb740", "ffca73",
+            "ff2800", "bf4630", "a61a00", "ff5d40", "ff8973"
+        ]
+    };
+
+    function hashCode(str) {
+        var h, i, len, max;
+        
+        h = 0;
+        max = Math.pow(2, 32);
+        
+        for (i = 0, len = str.length; i < len; i++) {
+            h = (h * 31 + str.charCodeAt(i)) % max;
+        }
+        
+        return h;
+    }
+
+    function getColor(str, name) {
+        var scheme, hash;
+
+        scheme = schemes[name] || schemes.base;
+        hash = hashCode(str);
+        
+        return "#" + scheme[hash % scheme.length];
+    }
+
+    function addScheme(name, scheme) {
+        schemes[name] = scheme;
+    }
+
+    function getScheme(name) {
+        return scheme[name];
+    }
+
+    function deleteScheme(name) {
+        if (name !== "base") {
+            delete schemes[name];
+        }
+    }
+
+    return {
+        "addScheme" : addScheme,
+        "getScheme" : getScheme,
+        "deleteScheme" : deleteScheme,
+        
+        "getHash" : hashCode,
+        "getColor" : getColor
+    }    
+    
+}());
+
+// Generated by CoffeeScript 1.6.2
+(function() {
+  var CozySocketListener, global,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  CozySocketListener = (function() {
+    CozySocketListener.prototype.models = {};
+
+    CozySocketListener.prototype.events = [];
+
+    CozySocketListener.prototype.shouldFetchCreated = function(id) {
+      return true;
+    };
+
+    CozySocketListener.prototype.onRemoteCreate = function(model) {};
+
+    CozySocketListener.prototype.onRemoteUpdate = function(model, collection) {};
+
+    CozySocketListener.prototype.onRemoteDelete = function(model, collection) {};
+
+    function CozySocketListener() {
+      this.processStack = __bind(this.processStack, this);
+      this.callbackFactory = __bind(this.callbackFactory, this);
+      this.resume = __bind(this.resume, this);
+      this.pause = __bind(this.pause, this);
+      var err;
+
+      try {
+        this.connect();
+      } catch (_error) {
+        err = _error;
+        console.log("Error while connecting to socket.io");
+        console.log(err.stack);
+      }
+      this.collections = [];
+      this.singlemodels = new Backbone.Collection();
+      this.stack = [];
+      this.ignore = [];
+      this.paused = 0;
+    }
+
+    CozySocketListener.prototype.connect = function() {
+      var event, pathToSocketIO, socket, url, _i, _len, _ref, _results;
+
+      url = window.location.origin;
+      pathToSocketIO = "" + (window.location.pathname.substring(1)) + "socket.io";
+      socket = io.connect(url, {
+        resource: pathToSocketIO
+      });
+      _ref = this.events;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        event = _ref[_i];
+        _results.push(socket.on(event, this.callbackFactory(event)));
+      }
+      return _results;
+    };
+
+    CozySocketListener.prototype.watch = function(collection) {
+      if (this.collections.length === 0) {
+        this.collection = collection;
+      }
+      this.collections.push(collection);
+      collection.socketListener = this;
+      return this.watchOne(collection);
+    };
+
+    CozySocketListener.prototype.stopWatching = function(toRemove) {
+      var collection, i, _i, _len, _ref;
+
+      _ref = this.collections;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        collection = _ref[i];
+        if (collection === toRemove) {
+          return this.collections.splice(i, 1);
+        }
+      }
+    };
+
+    CozySocketListener.prototype.watchOne = function(model) {
+      this.singlemodels.add(model);
+      model.on('request', this.pause);
+      model.on('sync', this.resume);
+      model.on('destroy', this.resume);
+      return model.on('error', this.resume);
+    };
+
+    CozySocketListener.prototype.pause = function(model, xhr, options) {
+      var doctype, operation;
+
+      if (options.ignoreMySocketNotification) {
+        operation = model.isNew() ? 'create' : 'update';
+        doctype = this.getDoctypeOf(model);
+        if (doctype == null) {
+          return;
+        }
+        this.ignore.push({
+          doctype: doctype,
+          operation: operation,
+          model: model
+        });
+        return this.paused = this.paused + 1;
+      }
+    };
+
+    CozySocketListener.prototype.resume = function(model, resp, options) {
+      if (options.ignoreMySocketNotification) {
+        this.paused = this.paused - 1;
+        if (this.paused <= 0) {
+          this.processStack();
+          return this.paused = 0;
+        }
+      }
+    };
+
+    CozySocketListener.prototype.getDoctypeOf = function(model) {
+      var Model, key, _ref;
+
+      _ref = this.models;
+      for (key in _ref) {
+        Model = _ref[key];
+        if (model instanceof Model) {
+          return key;
+        }
+      }
+    };
+
+    CozySocketListener.prototype.cleanStack = function() {
+      var ignoreEvent, ignoreIndex, removed, stackEvent, stackIndex, _results;
+
+      ignoreIndex = 0;
+      _results = [];
+      while (ignoreIndex < this.ignore.length) {
+        removed = false;
+        stackIndex = 0;
+        ignoreEvent = this.ignore[ignoreIndex];
+        while (stackIndex < this.stack.length) {
+          stackEvent = this.stack[stackIndex];
+          if (stackEvent.operation === ignoreEvent.operation && stackEvent.id === ignoreEvent.model.id) {
+            this.stack.splice(stackIndex, 1);
+            removed = true;
+            break;
+          } else {
+            stackIndex++;
+          }
+        }
+        if (removed) {
+          _results.push(this.ignore.splice(ignoreIndex, 1));
+        } else {
+          _results.push(ignoreIndex++);
+        }
+      }
+      return _results;
+    };
+
+    CozySocketListener.prototype.callbackFactory = function(event) {
+      var _this = this;
+
+      return function(id) {
+        var doctype, fullevent, operation, _ref;
+
+        _ref = event.split('.'), doctype = _ref[0], operation = _ref[1];
+        fullevent = {
+          id: id,
+          doctype: doctype,
+          operation: operation
+        };
+        _this.stack.push(fullevent);
+        if (_this.paused === 0) {
+          return _this.processStack();
+        }
+      };
+    };
+
+    CozySocketListener.prototype.processStack = function() {
+      var _results;
+
+      this.cleanStack();
+      _results = [];
+      while (this.stack.length > 0) {
+        _results.push(this.process(this.stack.shift()));
+      }
+      return _results;
+    };
+
+    CozySocketListener.prototype.process = function(event) {
+      var doctype, id, model, operation,
+        _this = this;
+
+      doctype = event.doctype, operation = event.operation, id = event.id;
+      switch (operation) {
+        case 'create':
+          if (!this.shouldFetchCreated(id)) {
+            return;
+          }
+          model = new this.models[doctype]({
+            id: id
+          });
+          return model.fetch({
+            success: function(fetched) {
+              return _this.onRemoteCreate(fetched);
+            }
+          });
+        case 'update':
+          if (model = this.singlemodels.get(id)) {
+            model.fetch({
+              success: function(fetched) {
+                if (fetched.changedAttributes()) {
+                  return _this.onRemoteUpdate(fetched, null);
+                }
+              }
+            });
+          }
+          return this.collections.forEach(function(collection) {
+            if (!(model = collection.get(id))) {
+              return;
+            }
+            return model.fetch({
+              success: function(fetched) {
+                if (fetched.changedAttributes()) {
+                  return _this.onRemoteUpdate(fetched, collection);
+                }
+              }
+            });
+          });
+        case 'delete':
+          if (model = this.singlemodels.get(id)) {
+            this.onRemoteDelete(model, this.singlemodels);
+          }
+          return this.collections.forEach(function(collection) {
+            if (!(model = collection.get(id))) {
+              return;
+            }
+            return _this.onRemoteDelete(model, collection);
+          });
+      }
+    };
+
+    return CozySocketListener;
+
+  })();
+
+  global = (typeof module !== "undefined" && module !== null ? module.exports : void 0) || window;
+
+  global.CozySocketListener = CozySocketListener;
+
+}).call(this);
+
+
 (function (global, module) {
 
   if ('undefined' == typeof module) {
@@ -18999,7 +19305,7 @@ exports.rethrow = function rethrow(err, filename, lineno){
   , 'undefined' != typeof exports ? exports : {}
 );
 
-;/**
+/**
  * Farbtastic Color Picker 1.2
  * © 2008 Steven Wittens
  *
@@ -19735,7 +20041,7 @@ jQuery._farbtastic = function (container, callback) {
   
 })(jQuery,this);
 
-;/*! gridster.js - v0.1.0 - 2013-06-14
+/*! gridster.js - v0.1.0 - 2013-06-14
 * http://gridster.net/
 * Copyright (c) 2013 ducksboard; Licensed MIT */
 
@@ -23041,963 +23347,167 @@ jQuery._farbtastic = function (container, callback) {
 
 }(jQuery, window, document));
 
-;/*! nanoScrollerJS - v0.7.3 - 2013
-* http://jamesflorentino.github.com/nanoScrollerJS/
-* Copyright (c) 2013 James Florentino; Licensed MIT */
-(function($, window, document) {
-  var BROWSER_IS_IE7, BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEWHEEL, NanoScroll, PANEDOWN, RESIZE, SCROLL, SCROLLBAR, TOUCHMOVE, UP, WHEEL, defaults, getBrowserScrollbarWidth;
-  defaults = {
-    /**
-      a classname for the pane element.
-      @property paneClass
-      @type String
-      @default 'pane'
-    */
-
-    paneClass: 'pane',
-    /**
-      a classname for the slider element.
-      @property sliderClass
-      @type String
-      @default 'slider'
-    */
-
-    sliderClass: 'slider',
-    /**
-      a classname for the content element.
-      @property contentClass
-      @type String
-      @default 'content'
-    */
-
-    contentClass: 'content',
-    /**
-      a setting to enable native scrolling in iOS devices.
-      @property iOSNativeScrolling
-      @type Boolean
-      @default false
-    */
-
-    iOSNativeScrolling: false,
-    /**
-      a setting to prevent the rest of the page being
-      scrolled when user scrolls the `.content` element.
-      @property preventPageScrolling
-      @type Boolean
-      @default false
-    */
-
-    preventPageScrolling: false,
-    /**
-      a setting to disable binding to the resize event.
-      @property disableResize
-      @type Boolean
-      @default false
-    */
-
-    disableResize: false,
-    /**
-      a setting to make the scrollbar always visible.
-      @property alwaysVisible
-      @type Boolean
-      @default false
-    */
-
-    alwaysVisible: false,
-    /**
-      a default timeout for the `flash()` method.
-      @property flashDelay
-      @type Number
-      @default 1500
-    */
-
-    flashDelay: 1500,
-    /**
-      a minimum height for the `.slider` element.
-      @property sliderMinHeight
-      @type Number
-      @default 20
-    */
-
-    sliderMinHeight: 20,
-    /**
-      a maximum height for the `.slider` element.
-      @property sliderMaxHeight
-      @type Number
-      @default null
-    */
-
-    sliderMaxHeight: null,
-    /**
-      an alternate document context.
-      @property documentContext
-      @type Document
-      @default null
-    */
-
-    documentContext: null,
-    /**
-      an alternate window context.
-      @property windowContext
-      @type Window
-      @default null
-    */
-
-    windowContext: null
-  };
-  /**
-    @property SCROLLBAR
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  SCROLLBAR = 'scrollbar';
-  /**
-    @property SCROLL
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  SCROLL = 'scroll';
-  /**
-    @property MOUSEDOWN
-    @type String
-    @final
-    @private
-  */
-
-  MOUSEDOWN = 'mousedown';
-  /**
-    @property MOUSEMOVE
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  MOUSEMOVE = 'mousemove';
-  /**
-    @property MOUSEWHEEL
-    @type String
-    @final
-    @private
-  */
-
-  MOUSEWHEEL = 'mousewheel';
-  /**
-    @property MOUSEUP
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  MOUSEUP = 'mouseup';
-  /**
-    @property RESIZE
-    @type String
-    @final
-    @private
-  */
-
-  RESIZE = 'resize';
-  /**
-    @property DRAG
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  DRAG = 'drag';
-  /**
-    @property UP
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  UP = 'up';
-  /**
-    @property PANEDOWN
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  PANEDOWN = 'panedown';
-  /**
-    @property DOMSCROLL
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  DOMSCROLL = 'DOMMouseScroll';
-  /**
-    @property DOWN
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  DOWN = 'down';
-  /**
-    @property WHEEL
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  WHEEL = 'wheel';
-  /**
-    @property KEYDOWN
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  KEYDOWN = 'keydown';
-  /**
-    @property KEYUP
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  KEYUP = 'keyup';
-  /**
-    @property TOUCHMOVE
-    @type String
-    @static
-    @final
-    @private
-  */
-
-  TOUCHMOVE = 'touchmove';
-  /**
-    @property BROWSER_IS_IE7
-    @type Boolean
-    @static
-    @final
-    @private
-  */
-
-  BROWSER_IS_IE7 = window.navigator.appName === 'Microsoft Internet Explorer' && /msie 7./i.test(window.navigator.appVersion) && window.ActiveXObject;
-  /**
-    @property BROWSER_SCROLLBAR_WIDTH
-    @type Number
-    @static
-    @default null
-    @private
-  */
-
-  BROWSER_SCROLLBAR_WIDTH = null;
-  /**
-    Returns browser's native scrollbar width
-    @method getBrowserScrollbarWidth
-    @return {Number} the scrollbar width in pixels
-    @static
-    @private
-  */
-
-  getBrowserScrollbarWidth = function() {
-    var outer, outerStyle, scrollbarWidth;
-    outer = document.createElement('div');
-    outerStyle = outer.style;
-    outerStyle.position = 'absolute';
-    outerStyle.width = '100px';
-    outerStyle.height = '100px';
-    outerStyle.overflow = SCROLL;
-    outerStyle.top = '-9999px';
-    document.body.appendChild(outer);
-    scrollbarWidth = outer.offsetWidth - outer.clientWidth;
-    document.body.removeChild(outer);
-    return scrollbarWidth;
-  };
-  /**
-    @class NanoScroll
-    @param element {HTMLElement|Node} the main element
-    @param options {Object} nanoScroller's options
-    @constructor
-  */
-
-  NanoScroll = (function() {
-    function NanoScroll(el, options) {
-      this.el = el;
-      this.options = options;
-      BROWSER_SCROLLBAR_WIDTH || (BROWSER_SCROLLBAR_WIDTH = getBrowserScrollbarWidth());
-      this.$el = $(this.el);
-      this.doc = $(this.options.documentContext || document);
-      this.win = $(this.options.windowContext || window);
-      this.$content = this.$el.children("." + options.contentClass);
-      this.$content.attr('tabindex', this.options.tabIndex || 0);
-      this.content = this.$content[0];
-      if (this.options.iOSNativeScrolling && (this.el.style.WebkitOverflowScrolling != null)) {
-        this.nativeScrolling();
-      } else {
-        this.generate();
-      }
-      this.createEvents();
-      this.addEvents();
-      this.reset();
-    }
-
-    /**
-      Prevents the rest of the page being scrolled
-      when user scrolls the `.content` element.
-      @method preventScrolling
-      @param event {Event}
-      @param direction {String} Scroll direction (up or down)
-      @private
-    */
-
-
-    NanoScroll.prototype.preventScrolling = function(e, direction) {
-      if (!this.isActive) {
-        return;
-      }
-      if (e.type === DOMSCROLL) {
-        if (direction === DOWN && e.originalEvent.detail > 0 || direction === UP && e.originalEvent.detail < 0) {
-          e.preventDefault();
-        }
-      } else if (e.type === MOUSEWHEEL) {
-        if (!e.originalEvent || !e.originalEvent.wheelDelta) {
-          return;
-        }
-        if (direction === DOWN && e.originalEvent.wheelDelta < 0 || direction === UP && e.originalEvent.wheelDelta > 0) {
-          e.preventDefault();
-        }
-      }
-    };
-
-    /**
-      Enable iOS native scrolling
-    */
-
-
-    NanoScroll.prototype.nativeScrolling = function() {
-      this.$content.css({
-        WebkitOverflowScrolling: 'touch'
-      });
-      this.iOSNativeScrolling = true;
-      this.isActive = true;
-    };
-
-    /**
-      Updates those nanoScroller properties that
-      are related to current scrollbar position.
-      @method updateScrollValues
-      @private
-    */
-
-
-    NanoScroll.prototype.updateScrollValues = function() {
-      var content;
-      content = this.content;
-      this.maxScrollTop = content.scrollHeight - content.clientHeight;
-      this.prevScrollTop = this.contentScrollTop || 0;
-      this.contentScrollTop = content.scrollTop;
-      if (!this.iOSNativeScrolling) {
-        this.maxSliderTop = this.paneHeight - this.sliderHeight;
-        this.sliderTop = this.maxScrollTop === 0 ? 0 : this.contentScrollTop * this.maxSliderTop / this.maxScrollTop;
-      }
-    };
-
-    /**
-      Creates event related methods
-      @method createEvents
-      @private
-    */
-
-
-    NanoScroll.prototype.createEvents = function() {
-      var _this = this;
-      this.events = {
-        down: function(e) {
-          _this.isBeingDragged = true;
-          _this.offsetY = e.pageY - _this.slider.offset().top;
-          _this.pane.addClass('active');
-          _this.doc.bind(MOUSEMOVE, _this.events[DRAG]).bind(MOUSEUP, _this.events[UP]);
-          return false;
-        },
-        drag: function(e) {
-          _this.sliderY = e.pageY - _this.$el.offset().top - _this.offsetY;
-          _this.scroll();
-          _this.updateScrollValues();
-          if (_this.contentScrollTop >= _this.maxScrollTop && _this.prevScrollTop !== _this.maxScrollTop) {
-            _this.$el.trigger('scrollend');
-          } else if (_this.contentScrollTop === 0 && _this.prevScrollTop !== 0) {
-            _this.$el.trigger('scrolltop');
-          }
-          return false;
-        },
-        up: function(e) {
-          _this.isBeingDragged = false;
-          _this.pane.removeClass('active');
-          _this.doc.unbind(MOUSEMOVE, _this.events[DRAG]).unbind(MOUSEUP, _this.events[UP]);
-          return false;
-        },
-        resize: function(e) {
-          _this.reset();
-        },
-        panedown: function(e) {
-          _this.sliderY = (e.offsetY || e.originalEvent.layerY) - (_this.sliderHeight * 0.5);
-          _this.scroll();
-          _this.events.down(e);
-          return false;
-        },
-        scroll: function(e) {
-          if (_this.isBeingDragged) {
-            return;
-          }
-          _this.updateScrollValues();
-          if (!_this.iOSNativeScrolling) {
-            _this.sliderY = _this.sliderTop;
-            _this.slider.css({
-              top: _this.sliderTop
-            });
-          }
-          if (e == null) {
-            return;
-          }
-          if (_this.contentScrollTop >= _this.maxScrollTop) {
-            if (_this.options.preventPageScrolling) {
-              _this.preventScrolling(e, DOWN);
-            }
-            if (_this.prevScrollTop !== _this.maxScrollTop) {
-              _this.$el.trigger('scrollend');
-            }
-          } else if (_this.contentScrollTop === 0) {
-            if (_this.options.preventPageScrolling) {
-              _this.preventScrolling(e, UP);
-            }
-            if (_this.prevScrollTop !== 0) {
-              _this.$el.trigger('scrolltop');
-            }
-          }
-        },
-        wheel: function(e) {
-          var delta;
-          if (e == null) {
-            return;
-          }
-          delta = e.delta || e.wheelDelta || (e.originalEvent && e.originalEvent.wheelDelta) || -e.detail || (e.originalEvent && -e.originalEvent.detail);
-          if (delta) {
-            _this.sliderY += -delta / 3;
-          }
-          _this.scroll();
-          return false;
-        }
-      };
-    };
-
-    /**
-      Adds event listeners with jQuery.
-      @method addEvents
-      @private
-    */
-
-
-    NanoScroll.prototype.addEvents = function() {
-      var events;
-      this.removeEvents();
-      events = this.events;
-      if (!this.options.disableResize) {
-        this.win.bind(RESIZE, events[RESIZE]);
-      }
-      if (!this.iOSNativeScrolling) {
-        this.slider.bind(MOUSEDOWN, events[DOWN]);
-        this.pane.bind(MOUSEDOWN, events[PANEDOWN]).bind("" + MOUSEWHEEL + " " + DOMSCROLL, events[WHEEL]);
-      }
-      this.$content.bind("" + SCROLL + " " + MOUSEWHEEL + " " + DOMSCROLL + " " + TOUCHMOVE, events[SCROLL]);
-    };
-
-    /**
-      Removes event listeners with jQuery.
-      @method removeEvents
-      @private
-    */
-
-
-    NanoScroll.prototype.removeEvents = function() {
-      var events;
-      events = this.events;
-      this.win.unbind(RESIZE, events[RESIZE]);
-      if (!this.iOSNativeScrolling) {
-        this.slider.unbind();
-        this.pane.unbind();
-      }
-      this.$content.unbind("" + SCROLL + " " + MOUSEWHEEL + " " + DOMSCROLL + " " + TOUCHMOVE, events[SCROLL]);
-    };
-
-    /**
-      Generates nanoScroller's scrollbar and elements for it.
-      @method generate
-      @chainable
-      @private
-    */
-
-
-    NanoScroll.prototype.generate = function() {
-      var contentClass, cssRule, options, paneClass, sliderClass;
-      options = this.options;
-      paneClass = options.paneClass, sliderClass = options.sliderClass, contentClass = options.contentClass;
-      if (!this.$el.find("" + paneClass).length && !this.$el.find("" + sliderClass).length) {
-        this.$el.append("<div class=\"" + paneClass + "\"><div class=\"" + sliderClass + "\" /></div>");
-      }
-      this.pane = this.$el.children("." + paneClass);
-      this.slider = this.pane.find("." + sliderClass);
-      if (BROWSER_SCROLLBAR_WIDTH) {
-        cssRule = {
-          right: -BROWSER_SCROLLBAR_WIDTH
-        };
-        this.$el.addClass('has-scrollbar');
-      }
-      if (cssRule != null) {
-        this.$content.css(cssRule);
-      }
-      return this;
-    };
-
-    /**
-      @method restore
-      @private
-    */
-
-
-    NanoScroll.prototype.restore = function() {
-      this.stopped = false;
-      this.pane.show();
-      this.addEvents();
-    };
-
-    /**
-      Resets nanoScroller's scrollbar.
-      @method reset
-      @chainable
-      @example
-          $(".nano").nanoScroller();
-    */
-
-
-    NanoScroll.prototype.reset = function() {
-      var content, contentHeight, contentStyle, contentStyleOverflowY, paneBottom, paneHeight, paneOuterHeight, paneTop, parentMaxHeight, sliderHeight;
-      if (this.iOSNativeScrolling) {
-        this.contentHeight = this.content.scrollHeight;
-        return;
-      }
-      if (!this.$el.find("." + this.options.paneClass).length) {
-        this.generate().stop();
-      }
-      if (this.stopped) {
-        this.restore();
-      }
-      content = this.content;
-      contentStyle = content.style;
-      contentStyleOverflowY = contentStyle.overflowY;
-      if (BROWSER_IS_IE7) {
-        this.$content.css({
-          height: this.$content.height()
-        });
-      }
-      contentHeight = content.scrollHeight + BROWSER_SCROLLBAR_WIDTH;
-      parentMaxHeight = parseInt(this.$el.css("max-height"), 10);
-      if (parentMaxHeight > 0) {
-        this.$el.height("");
-        this.$el.height(content.scrollHeight > parentMaxHeight ? parentMaxHeight : content.scrollHeight);
-      }
-      paneHeight = this.pane.outerHeight(false);
-      paneTop = parseInt(this.pane.css('top'), 10);
-      paneBottom = parseInt(this.pane.css('bottom'), 10);
-      paneOuterHeight = paneHeight + paneTop + paneBottom;
-      sliderHeight = Math.round(paneOuterHeight / contentHeight * paneOuterHeight);
-      if (sliderHeight < this.options.sliderMinHeight) {
-        sliderHeight = this.options.sliderMinHeight;
-      } else if ((this.options.sliderMaxHeight != null) && sliderHeight > this.options.sliderMaxHeight) {
-        sliderHeight = this.options.sliderMaxHeight;
-      }
-      if (contentStyleOverflowY === SCROLL && contentStyle.overflowX !== SCROLL) {
-        sliderHeight += BROWSER_SCROLLBAR_WIDTH;
-      }
-      this.maxSliderTop = paneOuterHeight - sliderHeight;
-      this.contentHeight = contentHeight;
-      this.paneHeight = paneHeight;
-      this.paneOuterHeight = paneOuterHeight;
-      this.sliderHeight = sliderHeight;
-      this.slider.height(sliderHeight);
-      this.events.scroll();
-      this.pane.show();
-      this.isActive = true;
-      if ((content.scrollHeight === content.clientHeight) || (this.pane.outerHeight(true) >= content.scrollHeight && contentStyleOverflowY !== SCROLL)) {
-        this.pane.hide();
-        this.isActive = false;
-      } else if (this.el.clientHeight === content.scrollHeight && contentStyleOverflowY === SCROLL) {
-        this.slider.hide();
-      } else {
-        this.slider.show();
-      }
-      this.pane.css({
-        opacity: (this.options.alwaysVisible ? 1 : ''),
-        visibility: (this.options.alwaysVisible ? 'visible' : '')
-      });
-      return this;
-    };
-
-    /**
-      @method scroll
-      @private
-      @example
-          $(".nano").nanoScroller({ scroll: 'top' });
-    */
-
-
-    NanoScroll.prototype.scroll = function() {
-      if (!this.isActive) {
-        return;
-      }
-      this.sliderY = Math.max(0, this.sliderY);
-      this.sliderY = Math.min(this.maxSliderTop, this.sliderY);
-      this.$content.scrollTop((this.paneHeight - this.contentHeight + BROWSER_SCROLLBAR_WIDTH) * this.sliderY / this.maxSliderTop * -1);
-      if (!this.iOSNativeScrolling) {
-        this.slider.css({
-          top: this.sliderY
-        });
-      }
-      return this;
-    };
-
-    /**
-      Scroll at the bottom with an offset value
-      @method scrollBottom
-      @param offsetY {Number}
-      @chainable
-      @example
-          $(".nano").nanoScroller({ scrollBottom: value });
-    */
-
-
-    NanoScroll.prototype.scrollBottom = function(offsetY) {
-      if (!this.isActive) {
-        return;
-      }
-      this.reset();
-      this.$content.scrollTop(this.contentHeight - this.$content.height() - offsetY).trigger(MOUSEWHEEL);
-      return this;
-    };
-
-    /**
-      Scroll at the top with an offset value
-      @method scrollTop
-      @param offsetY {Number}
-      @chainable
-      @example
-          $(".nano").nanoScroller({ scrollTop: value });
-    */
-
-
-    NanoScroll.prototype.scrollTop = function(offsetY) {
-      if (!this.isActive) {
-        return;
-      }
-      this.reset();
-      this.$content.scrollTop(+offsetY).trigger(MOUSEWHEEL);
-      return this;
-    };
-
-    /**
-      Scroll to an element
-      @method scrollTo
-      @param node {Node} A node to scroll to.
-      @chainable
-      @example
-          $(".nano").nanoScroller({ scrollTo: $('#a_node') });
-    */
-
-
-    NanoScroll.prototype.scrollTo = function(node) {
-      if (!this.isActive) {
-        return;
-      }
-      this.reset();
-      this.scrollTop($(node).get(0).offsetTop);
-      return this;
-    };
-
-    /**
-      To stop the operation.
-      This option will tell the plugin to disable all event bindings and hide the gadget scrollbar from the UI.
-      @method stop
-      @chainable
-      @example
-          $(".nano").nanoScroller({ stop: true });
-    */
-
-
-    NanoScroll.prototype.stop = function() {
-      this.stopped = true;
-      this.removeEvents();
-      this.pane.hide();
-      return this;
-    };
-
-    /**
-      Destroys nanoScroller and restores browser's native scrollbar.
-      @method destroy
-      @chainable
-      @example
-          $(".nano").nanoScroller({ destroy: true });
-    */
-
-
-    NanoScroll.prototype.destroy = function() {
-      if (!this.stopped) {
-        this.stop();
-      }
-      if (this.pane.length) {
-        this.pane.remove();
-      }
-      if (BROWSER_IS_IE7) {
-        this.$content.height('');
-      }
-      this.$content.removeAttr('tabindex');
-      if (this.$el.hasClass('has-scrollbar')) {
-        this.$el.removeClass('has-scrollbar');
-        this.$content.css({
-          right: ''
-        });
-      }
-      return this;
-    };
-
-    /**
-      To flash the scrollbar gadget for an amount of time defined in plugin settings (defaults to 1,5s).
-      Useful if you want to show the user (e.g. on pageload) that there is more content waiting for him.
-      @method flash
-      @chainable
-      @example
-          $(".nano").nanoScroller({ flash: true });
-    */
-
-
-    NanoScroll.prototype.flash = function() {
-      var _this = this;
-      if (!this.isActive) {
-        return;
-      }
-      this.reset();
-      this.pane.addClass('flashed');
-      setTimeout(function() {
-        _this.pane.removeClass('flashed');
-      }, this.options.flashDelay);
-      return this;
-    };
-
-    return NanoScroll;
-
-  })();
-  $.fn.nanoScroller = function(settings) {
-    return this.each(function() {
-      var options, scrollbar;
-      if (!(scrollbar = this.nanoscroller)) {
-        options = $.extend({}, defaults, settings);
-        this.nanoscroller = scrollbar = new NanoScroll(this, options);
-      }
-      if (settings && typeof settings === "object") {
-        $.extend(scrollbar.options, settings);
-        if (settings.scrollBottom) {
-          return scrollbar.scrollBottom(settings.scrollBottom);
-        }
-        if (settings.scrollTop) {
-          return scrollbar.scrollTop(settings.scrollTop);
-        }
-        if (settings.scrollTo) {
-          return scrollbar.scrollTo(settings.scrollTo);
-        }
-        if (settings.scroll === 'bottom') {
-          return scrollbar.scrollBottom(0);
-        }
-        if (settings.scroll === 'top') {
-          return scrollbar.scrollTop(0);
-        }
-        if (settings.scroll && settings.scroll instanceof $) {
-          return scrollbar.scrollTo(settings.scroll);
-        }
-        if (settings.stop) {
-          return scrollbar.stop();
-        }
-        if (settings.destroy) {
-          return scrollbar.destroy();
-        }
-        if (settings.flash) {
-          return scrollbar.flash();
-        }
-      }
-      return scrollbar.reset();
-    });
-  };
-  $.fn.nanoScroller.Constructor = NanoScroll;
-})(jQuery, window, document);
-
-/*
-//@ sourceMappingURL=jquery.nanoscroller.js.map
-*/
-
-;/* jquery.nicescroll
--- version 3.4.0
--- copyright 2011-12-13 InuYaksa*2013
+/* jquery.nicescroll
+-- version 3.6.0
+-- copyright 2014-11-21 InuYaksa*2014
 -- licensed under the MIT
 --
--- http://areaaperta.com/nicescroll
+-- http://nicescroll.areaaperta.com/
 -- https://github.com/inuyaksa/jquery.nicescroll
 --
 */
 
-(function(jQuery){
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as anonymous module.
+    define(['jquery'], factory);
+  } else {
+    // Browser globals.
+    factory(jQuery);
+  }
+}(function(jQuery) {
+  "use strict";
 
   // globals
   var domfocus = false;
   var mousefocus = false;
-  var zoomactive = false;
-  var tabindexcounter = 5000;
+  var tabindexcounter = 0;
   var ascrailcounter = 2000;
   var globalmaxzindex = 0;
-  
-  var $ = jQuery;  // sandbox
- 
+
+  var $ = jQuery; // sandbox
+
   // http://stackoverflow.com/questions/2161159/get-script-path
   function getScriptPath() {
-    var scripts=document.getElementsByTagName('script');
-    var path=scripts[scripts.length-1].src.split('?')[0];
-    return (path.split('/').length>0) ? path.split('/').slice(0,-1).join('/')+'/' : '';
+    var scripts = document.getElementsByTagName('script');
+    var path = scripts[scripts.length - 1].src.split('?')[0];
+    return (path.split('/').length > 0) ? path.split('/').slice(0, -1).join('/') + '/' : '';
   }
-  var scriptpath = getScriptPath();
 
-// derived by Paul Irish https://gist.github.com/paulirish/1579671 - thanks for your code!
+  var vendors = ['webkit','ms','moz','o'];
 
-  if (!Array.prototype.forEach) {  // JS 1.6 polyfill
-    Array.prototype.forEach = function(fn, scope) {
-      for(var i = 0, len = this.length; i < len; ++i) {
-        fn.call(scope, this[i], i, this);
-      }
+  var setAnimationFrame = window.requestAnimationFrame || false;
+  var clearAnimationFrame = window.cancelAnimationFrame || false;
+
+  if (!setAnimationFrame) {  // legacy detection
+    for (var vx in vendors) {
+      var v = vendors[vx];
+      if (!setAnimationFrame) setAnimationFrame = window[v + 'RequestAnimationFrame'];
+      if (!clearAnimationFrame) clearAnimationFrame = window[v + 'CancelAnimationFrame'] || window[v + 'CancelRequestAnimationFrame'];
     }
   }
-  
-  var vendors = ['ms','moz','webkit','o'];
-  
-  var setAnimationFrame = window.requestAnimationFrame||false;
-  var clearAnimationFrame = window.cancelAnimationFrame||false;
 
-  vendors.forEach(function(v){
-    if (!setAnimationFrame) setAnimationFrame = window[v+'RequestAnimationFrame'];
-    if (!clearAnimationFrame) clearAnimationFrame = window[v+'CancelAnimationFrame']||window[v+'CancelRequestAnimationFrame'];    
-  });
-  
-  var clsMutationObserver = window.MutationObserver || window.WebKitMutationObserver || false;
-  
+  var ClsMutationObserver = window.MutationObserver || window.WebKitMutationObserver || false;
+
   var _globaloptions = {
-      zindex:"auto",
-      cursoropacitymin:0,
-      cursoropacitymax:1,
-      cursorcolor:"#424242",
-      cursorwidth:"5px",
-      cursorborder:"1px solid #fff",
-      cursorborderradius:"5px",
-      scrollspeed:60,
-      mousescrollstep:8*3,
-      touchbehavior:false,
-      hwacceleration:true,
-      usetransition:true,
-      boxzoom:false,
-      dblclickzoom:true,
-      gesturezoom:true,
-      grabcursorenabled:true,
-      autohidemode:true,
-      background:"",
-      iframeautoresize:true,
-      cursorminheight:32,
-      preservenativescrolling:true,
-      railoffset:false,
-      bouncescroll:true,
-      spacebarenabled:true,
-      railpadding:{top:0,right:0,left:0,bottom:0},
-      disableoutline:true,
-      horizrailenabled:true,
-      railalign:"right",
-      railvalign:"bottom",
-      enabletranslate3d:true,
-      enablemousewheel:true,
-      enablekeyboard:true,
-      smoothscroll:true,
-      sensitiverail:true,
-      enablemouselockapi:true,
-//      cursormaxheight:false,
-      cursorfixedheight:false,      
-      directionlockdeadzone:6,
-      hidecursordelay:400,
-      nativeparentscrolling:true,
-      enablescrollonselection:true,
-      overflowx:true,
-      overflowy:true,
-      cursordragspeed:0.3,
-      rtlmode:false,
-      cursordragontouch:false
-  }
-  
-  var browserdetected = false;
-  
-  var getBrowserDetection = function() {
-  
-    if (browserdetected) return browserdetected;
-  
-    var domtest = document.createElement('DIV');
+    zindex: "auto",
+    cursoropacitymin: 0,
+    cursoropacitymax: 1,
+    cursorcolor: "#424242",
+    cursorwidth: "5px",
+    cursorborder: "1px solid #fff",
+    cursorborderradius: "5px",
+    scrollspeed: 60,
+    mousescrollstep: 8 * 3,
+    touchbehavior: false,
+    hwacceleration: true,
+    usetransition: true,
+    boxzoom: false,
+    dblclickzoom: true,
+    gesturezoom: true,
+    grabcursorenabled: true,
+    autohidemode: true,
+    background: "",
+    iframeautoresize: true,
+    cursorminheight: 32,
+    preservenativescrolling: true,
+    railoffset: false,
+    railhoffset: false,
+    bouncescroll: true,
+    spacebarenabled: true,
+    railpadding: {
+      top: 0,
+      right: 0,
+      left: 0,
+      bottom: 0
+    },
+    disableoutline: true,
+    horizrailenabled: true,
+    railalign: "right",
+    railvalign: "bottom",
+    enabletranslate3d: true,
+    enablemousewheel: true,
+    enablekeyboard: true,
+    smoothscroll: true,
+    sensitiverail: true,
+    enablemouselockapi: true,
+    //      cursormaxheight:false,
+    cursorfixedheight: false,
+    directionlockdeadzone: 6,
+    hidecursordelay: 400,
+    nativeparentscrolling: true,
+    enablescrollonselection: true,
+    overflowx: true,
+    overflowy: true,
+    cursordragspeed: 0.3,
+    rtlmode: "auto",
+    cursordragontouch: false,
+    oneaxismousemode: "auto",
+    scriptpath: getScriptPath(),
+    preventmultitouchscrolling: true
+  };
 
-    var d = {};
-    
-		d.haspointerlock = "pointerLockElement" in document || "mozPointerLockElement" in document || "webkitPointerLockElement" in document;
-		
-    d.isopera = ("opera" in window);
-    d.isopera12 = (d.isopera&&("getUserMedia" in navigator));
-    
-    d.isie = (("all" in document) && ("attachEvent" in domtest) && !d.isopera);
-    d.isieold = (d.isie && !("msInterpolationMode" in domtest.style));  // IE6 and older
-    d.isie7 = d.isie&&!d.isieold&&(!("documentMode" in document)||(document.documentMode==7));
-    d.isie8 = d.isie&&("documentMode" in document)&&(document.documentMode==8);
-    d.isie9 = d.isie&&("performance" in window)&&(document.documentMode>=9);
-    d.isie10 = d.isie&&("performance" in window)&&(document.documentMode>=10);
-    
-    d.isie9mobile = /iemobile.9/i.test(navigator.userAgent);  //wp 7.1 mango
+  var browserdetected = false;
+
+  var getBrowserDetection = function() {
+
+    if (browserdetected) return browserdetected;
+
+    var _el = document.createElement('DIV'),
+        _style = _el.style,
+        _agent = navigator.userAgent,
+        _platform = navigator.platform,
+        d = {};
+
+    d.haspointerlock = "pointerLockElement" in document || "webkitPointerLockElement" in document || "mozPointerLockElement" in document;
+
+    d.isopera = ("opera" in window); // 12-
+    d.isopera12 = (d.isopera && ("getUserMedia" in navigator));
+    d.isoperamini = (Object.prototype.toString.call(window.operamini) === "[object OperaMini]");
+
+    d.isie = (("all" in document) && ("attachEvent" in _el) && !d.isopera); //IE10-
+    d.isieold = (d.isie && !("msInterpolationMode" in _style)); // IE6 and older
+    d.isie7 = d.isie && !d.isieold && (!("documentMode" in document) || (document.documentMode == 7));
+    d.isie8 = d.isie && ("documentMode" in document) && (document.documentMode == 8);
+    d.isie9 = d.isie && ("performance" in window) && (document.documentMode >= 9);
+    d.isie10 = d.isie && ("performance" in window) && (document.documentMode == 10);
+    d.isie11 = ("msRequestFullscreen" in _el) && (document.documentMode >= 11); // IE11+
+
+    d.isie9mobile = /iemobile.9/i.test(_agent); //wp 7.1 mango
     if (d.isie9mobile) d.isie9 = false;
-    d.isie7mobile = (!d.isie9mobile&&d.isie7) && /iemobile/i.test(navigator.userAgent);  //wp 7.0
-    
-    d.ismozilla = ("MozAppearance" in domtest.style);
-		
-    d.iswebkit = ("WebkitAppearance" in domtest.style);
-    
+    d.isie7mobile = (!d.isie9mobile && d.isie7) && /iemobile/i.test(_agent); //wp 7.0
+
+    d.ismozilla = ("MozAppearance" in _style);
+
+    d.iswebkit = ("WebkitAppearance" in _style);
+
     d.ischrome = ("chrome" in window);
-		d.ischrome22 = (d.ischrome&&d.haspointerlock);
-    d.ischrome26 = (d.ischrome&&("transition" in domtest.style));  // issue with transform detection (maintain prefix)
-    
-    d.cantouch = ("ontouchstart" in document.documentElement)||("ontouchstart" in window);  // detection for Chrome Touch Emulation
-    d.hasmstouch = (window.navigator.msPointerEnabled||false);  // IE10+ pointer events
-		
-    d.ismac = /^mac$/i.test(navigator.platform);
-    
-    d.isios = (d.cantouch && /iphone|ipad|ipod/i.test(navigator.platform));
-    d.isios4 = ((d.isios)&&!("seal" in Object));
-    
-    d.isandroid = (/android/i.test(navigator.userAgent));
+    d.ischrome22 = (d.ischrome && d.haspointerlock);
+    d.ischrome26 = (d.ischrome && ("transition" in _style)); // issue with transform detection (maintain prefix)
+
+    d.cantouch = ("ontouchstart" in document.documentElement) || ("ontouchstart" in window); // detection for Chrome Touch Emulation
+    d.hasmstouch = (window.MSPointerEvent || false); // IE10 pointer events
+    d.hasw3ctouch = (window.PointerEvent || false); //IE11 pointer events, following W3C Pointer Events spec
+
+    d.ismac = /^mac$/i.test(_platform);
+
+    d.isios = (d.cantouch && /iphone|ipad|ipod/i.test(_platform));
+    d.isios4 = ((d.isios) && !("seal" in Object));
+    d.isios7 = ((d.isios)&&("webkitHidden" in document));  //iOS 7+
+
+    d.isandroid = (/android/i.test(_agent));
+
+    d.haseventlistener = ("addEventListener" in _el);
     
     d.trstyle = false;
     d.hastransform = false;
@@ -24005,109 +23515,110 @@ jQuery._farbtastic = function (container, callback) {
     d.transitionstyle = false;
     d.hastransition = false;
     d.transitionend = false;
-    
-    var check = ['transform','msTransform','webkitTransform','MozTransform','OTransform'];
-    for(var a=0;a<check.length;a++){
-      if (typeof domtest.style[check[a]] != "undefined") {
+
+    var a;
+    var check = ['transform', 'msTransform', 'webkitTransform', 'MozTransform', 'OTransform'];    
+    for (a = 0; a < check.length; a++) {
+      if (typeof _style[check[a]] != "undefined") {
         d.trstyle = check[a];
         break;
       }
     }
-    d.hastransform = (d.trstyle != false);
+    d.hastransform = (!!d.trstyle);
     if (d.hastransform) {
-      domtest.style[d.trstyle] = "translate3d(1px,2px,3px)";
-      d.hastranslate3d = /translate3d/.test(domtest.style[d.trstyle]);
+      _style[d.trstyle] = "translate3d(1px,2px,3px)";
+      d.hastranslate3d = /translate3d/.test(_style[d.trstyle]);
     }
-    
+
     d.transitionstyle = false;
     d.prefixstyle = '';
     d.transitionend = false;
-    var check = ['transition','webkitTransition','MozTransition','OTransition','OTransition','msTransition','KhtmlTransition'];
-    var prefix = ['','-webkit-','-moz-','-o-','-o','-ms-','-khtml-'];
-    var evs = ['transitionend','webkitTransitionEnd','transitionend','otransitionend','oTransitionEnd','msTransitionEnd','KhtmlTransitionEnd'];
-    for(var a=0;a<check.length;a++) {
-      if (check[a] in domtest.style) {
+    check = ['transition', 'webkitTransition', 'msTransition', 'MozTransition', 'OTransition', 'OTransition', 'KhtmlTransition'];
+    var prefix = ['', '-webkit-', '-ms-', '-moz-', '-o-', '-o', '-khtml-'];
+    var evs = ['transitionend', 'webkitTransitionEnd', 'msTransitionEnd',  'transitionend', 'otransitionend', 'oTransitionEnd', 'KhtmlTransitionEnd'];
+    for (a = 0; a < check.length; a++) {
+      if (check[a] in _style) {
         d.transitionstyle = check[a];
         d.prefixstyle = prefix[a];
         d.transitionend = evs[a];
         break;
       }
     }
-    if (d.ischrome26) {  // use always prefix
+    if (d.ischrome26) {  // always use prefix
       d.prefixstyle = prefix[1];
     }
-    
+
     d.hastransition = (d.transitionstyle);
-    
-    function detectCursorGrab() {      
-      var lst = ['-moz-grab','-webkit-grab','grab'];
-      if ((d.ischrome&&!d.ischrome22)||d.isie) lst=[];  // force setting for IE returns false positive and chrome cursor bug
-      for(var a=0;a<lst.length;a++) {
+
+    function detectCursorGrab() {
+      var lst = ['-webkit-grab', '-moz-grab', 'grab'];
+      if ((d.ischrome && !d.ischrome22) || d.isie) lst = []; // force setting for IE returns false positive and chrome cursor bug
+      for (var a = 0; a < lst.length; a++) {
         var p = lst[a];
-        domtest.style['cursor']=p;
-        if (domtest.style['cursor']==p) return p;
+        _style.cursor = p;
+        if (_style.cursor == p) return p;
       }
-      return 'url(http://www.google.com/intl/en_ALL/mapfiles/openhand.cur),n-resize';  // thank you google for custom cursor!
+      return 'url(//mail.google.com/mail/images/2/openhand.cur),n-resize'; // thank you google for custom cursor!
     }
     d.cursorgrabvalue = detectCursorGrab();
 
-    d.hasmousecapture = ("setCapture" in domtest);
-    
-    d.hasMutationObserver = (clsMutationObserver !== false);
-    
-    domtest = null;  //memory released
+    d.hasmousecapture = ("setCapture" in _el);
+
+    d.hasMutationObserver = (ClsMutationObserver !== false);
+
+    _el = null; //memory released
 
     browserdetected = d;
-    
-    return d;  
-  }
-  
-  var NiceScrollClass = function(myopt,me) {
+
+    return d;
+  };
+
+  var NiceScrollClass = function(myopt, me) {
 
     var self = this;
 
-    this.version = '3.4.0';
+    this.version = '3.6.0';
     this.name = 'nicescroll';
-    
+
     this.me = me;
-    
+
     this.opt = {
-      doc:$("body"),
-      win:false
+      doc: $("body"),
+      win: false
     };
-    
-    $.extend(this.opt,_globaloptions);
-    
-// Options for internal use
+
+    $.extend(this.opt, _globaloptions);  // clone opts
+
+    // Options for internal use
     this.opt.snapbackspeed = 80;
-    
-    if (myopt||false) {
-      for(var a in self.opt) {
+
+    if (myopt || false) {
+      for (var a in self.opt) {
         if (typeof myopt[a] != "undefined") self.opt[a] = myopt[a];
       }
     }
-    
+
     this.doc = self.opt.doc;
-    this.iddoc = (this.doc&&this.doc[0])?this.doc[0].id||'':'';    
-    this.ispage = /BODY|HTML/.test((self.opt.win)?self.opt.win[0].nodeName:this.doc[0].nodeName);
-    this.haswrapper = (self.opt.win!==false);
-    this.win = self.opt.win||(this.ispage?$(window):this.doc);
-    this.docscroll = (this.ispage&&!this.haswrapper)?$(window):this.win;
+    this.iddoc = (this.doc && this.doc[0]) ? this.doc[0].id || '' : '';
+    this.ispage = /^BODY|HTML/.test((self.opt.win) ? self.opt.win[0].nodeName : this.doc[0].nodeName);
+    this.haswrapper = (self.opt.win !== false);
+    this.win = self.opt.win || (this.ispage ? $(window) : this.doc);
+    this.docscroll = (this.ispage && !this.haswrapper) ? $(window) : this.win;
     this.body = $("body");
     this.viewport = false;
-    
+
     this.isfixed = false;
-    
+
     this.iframe = false;
     this.isiframe = ((this.doc[0].nodeName == 'IFRAME') && (this.win[0].nodeName == 'IFRAME'));
-    
+
     this.istextarea = (this.win[0].nodeName == 'TEXTAREA');
-    
+
     this.forcescreen = false; //force to use screen position on events
 
-    this.canshowonmouseevent = (self.opt.autohidemode!="scroll");
-    
-// Events jump table    
+    this.canshowonmouseevent = (self.opt.autohidemode != "scroll");
+
+    // Events jump table    
     this.onmousedown = false;
     this.onmouseup = false;
     this.onmousemove = false;
@@ -24115,157 +23626,154 @@ jQuery._farbtastic = function (container, callback) {
     this.onkeypress = false;
     this.ongesturezoom = false;
     this.onclick = false;
-    
-// Nicescroll custom events
+
+    // Nicescroll custom events
     this.onscrollstart = false;
     this.onscrollend = false;
-    this.onscrollcancel = false;    
-    
+    this.onscrollcancel = false;
+
     this.onzoomin = false;
     this.onzoomout = false;
-    
-// Let's start!  
+
+    // Let's start!  
     this.view = false;
     this.page = false;
-    
-    this.scroll = {x:0,y:0};
-    this.scrollratio = {x:0,y:0};    
+
+    this.scroll = {
+      x: 0,
+      y: 0
+    };
+    this.scrollratio = {
+      x: 0,
+      y: 0
+    };
     this.cursorheight = 20;
     this.scrollvaluemax = 0;
-    
-    this.checkrtlmode = false;
+
+    this.isrtlmode = (this.opt.rtlmode == "auto") ? ((this.win[0] == window ? this.body : this.win).css("direction") == "rtl") : (this.opt.rtlmode === true);
+    //    this.checkrtlmode = false;
     
     this.scrollrunning = false;
-    
+
     this.scrollmom = false;
-    
-    this.observer = false;
+
+    this.observer        = false;  // observer div changes
     this.observerremover = false;  // observer on parent for remove detection
-    
+    this.observerbody    = false;  // observer on body for position change
+
     do {
-      this.id = "ascrail"+(ascrailcounter++);
+      this.id = "ascrail" + (ascrailcounter++);
     } while (document.getElementById(this.id));
-    
+
     this.rail = false;
     this.cursor = false;
-    this.cursorfreezed = false;  
+    this.cursorfreezed = false;
     this.selectiondrag = false;
-    
+
     this.zoom = false;
     this.zoomactive = false;
-    
+
     this.hasfocus = false;
     this.hasmousefocus = false;
-    
+
     this.visibility = true;
-    this.locked = false;
+    this.railslocked = false;  // locked by resize
+    this.locked = false;  // prevent lost of locked status sets by user
     this.hidden = false; // rails always hidden
     this.cursoractive = true; // user can interact with cursors
-    
+
+    this.wheelprevented = false; //prevent mousewheel event
+
     this.overflowx = self.opt.overflowx;
     this.overflowy = self.opt.overflowy;
-    
+
     this.nativescrollingarea = false;
     this.checkarea = 0;
-    
-    this.events = [];  // event list for unbind
-    
-    this.saved = {};
-    
+
+    this.events = []; // event list for unbind
+
+    this.saved = {};  // style saved
+
     this.delaylist = {};
     this.synclist = {};
-    
+
     this.lastdeltax = 0;
     this.lastdeltay = 0;
-    
-    this.detected = getBrowserDetection(); 
-    
-    var cap = $.extend({},this.detected);
- 
-    this.canhwscroll = (cap.hastransform&&self.opt.hwacceleration);
-    this.ishwscroll = (this.canhwscroll&&self.haswrapper);
-    
-    this.istouchcapable = false;  // desktop devices with touch screen support
-    
-//## Check Chrome desktop with touch support
-    if (cap.cantouch&&cap.ischrome&&!cap.isios&&!cap.isandroid) {
-      this.istouchcapable = true;
-      cap.cantouch = false;  // parse normal desktop events
-    }    
 
-//## Firefox 18 nightly build (desktop) false positive (or desktop with touch support)
-    if (cap.cantouch&&cap.ismozilla&&!cap.isios) {
-      this.istouchcapable = true;
-      cap.cantouch = false;  // parse normal desktop events
-    }    
-    
-//## disable MouseLock API on user request
+    this.detected = getBrowserDetection();
 
+    var cap = $.extend({}, this.detected);
+
+    this.canhwscroll = (cap.hastransform && self.opt.hwacceleration);
+    this.ishwscroll = (this.canhwscroll && self.haswrapper);
+
+    this.hasreversehr = (this.isrtlmode&&!cap.iswebkit);  //RTL mode with reverse horizontal axis
+    
+    this.istouchcapable = false; // desktop devices with touch screen support
+
+    //## Check WebKit-based desktop with touch support
+    //## + Firefox 18 nightly build (desktop) false positive (or desktop with touch support)
+    if (cap.cantouch && !cap.isios && !cap.isandroid && (cap.iswebkit || cap.ismozilla)) {
+      this.istouchcapable = true;
+      cap.cantouch = false; // parse normal desktop events
+    }
+
+    //## disable MouseLock API on user request
     if (!self.opt.enablemouselockapi) {
       cap.hasmousecapture = false;
       cap.haspointerlock = false;
     }
-    
-    this.delayed = function(name,fn,tm,lazy) {
+
+/* deprecated
+    this.delayed = function(name, fn, tm, lazy) {
+    };
+*/    
+
+    this.debounced = function(name, fn, tm) {
       var dd = self.delaylist[name];
-      var nw = (new Date()).getTime();
-      if (!lazy&&dd&&dd.tt) return false;
-      if (dd&&dd.tt) clearTimeout(dd.tt);
-      if (dd&&dd.last+tm>nw&&!dd.tt) {      
-        self.delaylist[name] = {
-          last:nw+tm,
-          tt:setTimeout(function(){self.delaylist[name].tt=0;fn.call();},tm)
-        }
-      }
-      else if (!dd||!dd.tt) {
-        self.delaylist[name] = {
-          last:nw,
-          tt:0
-        }
-        setTimeout(function(){fn.call();},0);
+      self.delaylist[name] = fn;
+      if (!dd) {
+        setTimeout(function() {
+          var fn = self.delaylist[name];
+          self.delaylist[name] = false;
+          fn.call(self);
+        }, tm);
       }
     };
-    
-    this.debounced = function(name,fn,tm) {
-      var dd = self.delaylist[name];
-      var nw = (new Date()).getTime();      
-      self.delaylist[name] = fn;
-      if (!dd) {        
-        setTimeout(function(){var fn=self.delaylist[name];self.delaylist[name]=false;fn.call();},tm);
-      }
-    }
-    
-    this.synched = function(name,fn) {
-    
+
+    var _onsync = false;
+
+    this.synched = function(name, fn) {
+
       function requestSync() {
-        if (self.onsync) return;
-        setAnimationFrame(function(){
-          self.onsync = false;
-          for(name in self.synclist){
-            var fn = self.synclist[name];
+        if (_onsync) return;
+        setAnimationFrame(function() {
+          _onsync = false;
+          for (var nn in self.synclist) {
+            var fn = self.synclist[nn];
             if (fn) fn.call(self);
-            self.synclist[name] = false;
+            self.synclist[nn] = false;
           }
         });
-        self.onsync = true;
-      };    
-    
+        _onsync = true;
+      }
+
       self.synclist[name] = fn;
       requestSync();
       return name;
     };
-    
+
     this.unsynched = function(name) {
       if (self.synclist[name]) self.synclist[name] = false;
-    }
-    
-    this.css = function(el,pars) {  // save & set
-      for(var n in pars) {
-        self.saved.css.push([el,n,el.css(n)]);
-        el.css(n,pars[n]);
+    };
+
+    this.css = function(el, pars) { // save & set
+      for (var n in pars) {
+        self.saved.css.push([el, n, el.css(n)]);
+        el.css(n, pars[n]);
       }
     };
-    
+
     this.scrollTop = function(val) {
       return (typeof val == "undefined") ? self.getScrollTop() : self.setScrollTop(val);
     };
@@ -24273,525 +23781,644 @@ jQuery._farbtastic = function (container, callback) {
     this.scrollLeft = function(val) {
       return (typeof val == "undefined") ? self.getScrollLeft() : self.setScrollLeft(val);
     };
+
+    // derived by by Dan Pupius www.pupius.net
+    var BezierClass = function(st, ed, spd, p1, p2, p3, p4) {
     
-// derived by by Dan Pupius www.pupius.net
-    BezierClass = function(st,ed,spd,p1,p2,p3,p4) {
       this.st = st;
       this.ed = ed;
       this.spd = spd;
-      
-      this.p1 = p1||0;
-      this.p2 = p2||1;
-      this.p3 = p3||0;
-      this.p4 = p4||1;
-      
+
+      this.p1 = p1 || 0;
+      this.p2 = p2 || 1;
+      this.p3 = p3 || 0;
+      this.p4 = p4 || 1;
+
       this.ts = (new Date()).getTime();
-      this.df = this.ed-this.st;
+      this.df = this.ed - this.st;
     };
     BezierClass.prototype = {
-      B2:function(t){ return 3*t*t*(1-t) },
-      B3:function(t){ return 3*t*(1-t)*(1-t) },
-      B4:function(t){ return (1-t)*(1-t)*(1-t) },
-      getNow:function(){
-        var nw = (new Date()).getTime();
-        var pc = 1-((nw-this.ts)/this.spd);
-        var bz = this.B2(pc) + this.B3(pc) + this.B4(pc);
-        return (pc<0) ? this.ed : this.st+Math.round(this.df*bz);
+      B2: function(t) {
+        return 3 * t * t * (1 - t);
       },
-      update:function(ed,spd){
+      B3: function(t) {
+        return 3 * t * (1 - t) * (1 - t);
+      },
+      B4: function(t) {
+        return (1 - t) * (1 - t) * (1 - t);
+      },
+      getNow: function() {
+        var nw = (new Date()).getTime();
+        var pc = 1 - ((nw - this.ts) / this.spd);
+        var bz = this.B2(pc) + this.B3(pc) + this.B4(pc);
+        return (pc < 0) ? this.ed : this.st + Math.round(this.df * bz);
+      },
+      update: function(ed, spd) {
         this.st = this.getNow();
         this.ed = ed;
         this.spd = spd;
         this.ts = (new Date()).getTime();
-        this.df = this.ed-this.st;
+        this.df = this.ed - this.st;
         return this;
       }
     };
-    
-    if (this.ishwscroll) {  
-    // hw accelerated scroll
-      this.doc.translate = {x:0,y:0,tx:"0px",ty:"0px"};
-      
-      //this one can help to enable hw accel on ios6 http://indiegamr.com/ios6-html-hardware-acceleration-changes-and-how-to-fix-them/
-      if (cap.hastranslate3d&&cap.isios) this.doc.css("-webkit-backface-visibility","hidden");  // prevent flickering http://stackoverflow.com/questions/3461441/      
-      
-      //derived from http://stackoverflow.com/questions/11236090/
-      function getMatrixValues() {
-        var tr = self.doc.css(cap.trstyle);
-        if (tr&&(tr.substr(0,6)=="matrix")) {
-          return tr.replace(/^.*\((.*)\)$/g, "$1").replace(/px/g,'').split(/, +/);
-        }
-        return false;
+
+    //derived from http://stackoverflow.com/questions/11236090/
+    function getMatrixValues() {
+      var tr = self.doc.css(cap.trstyle);
+      if (tr && (tr.substr(0, 6) == "matrix")) {
+        return tr.replace(/^.*\((.*)\)$/g, "$1").replace(/px/g, '').split(/, +/);
       }
-      
+      return false;
+    }
+
+    if (this.ishwscroll) {
+      // hw accelerated scroll
+      this.doc.translate = {
+        x: 0,
+        y: 0,
+        tx: "0px",
+        ty: "0px"
+      };
+
+      //this one can help to enable hw accel on ios6 http://indiegamr.com/ios6-html-hardware-acceleration-changes-and-how-to-fix-them/
+      if (cap.hastranslate3d && cap.isios) this.doc.css("-webkit-backface-visibility", "hidden"); // prevent flickering http://stackoverflow.com/questions/3461441/      
+
       this.getScrollTop = function(last) {
         if (!last) {
           var mtx = getMatrixValues();
-          if (mtx) return (mtx.length==16) ? -mtx[13] : -mtx[5];  //matrix3d 16 on IE10
-          if (self.timerscroll&&self.timerscroll.bz) return self.timerscroll.bz.getNow();
+          if (mtx) return (mtx.length == 16) ? -mtx[13] : -mtx[5]; //matrix3d 16 on IE10
+          if (self.timerscroll && self.timerscroll.bz) return self.timerscroll.bz.getNow();
         }
         return self.doc.translate.y;
       };
 
       this.getScrollLeft = function(last) {
         if (!last) {
-          var mtx = getMatrixValues();          
-          if (mtx) return (mtx.length==16) ? -mtx[12] : -mtx[4];  //matrix3d 16 on IE10
-          if (self.timerscroll&&self.timerscroll.bh) return self.timerscroll.bh.getNow();
+          var mtx = getMatrixValues();
+          if (mtx) return (mtx.length == 16) ? -mtx[12] : -mtx[4]; //matrix3d 16 on IE10
+          if (self.timerscroll && self.timerscroll.bh) return self.timerscroll.bh.getNow();
         }
         return self.doc.translate.x;
       };
-      
-      if (document.createEvent) {
-        this.notifyScrollEvent = function(el) {
-          var e = document.createEvent("UIEvents");
-          e.initUIEvent("scroll", false, true, window, 1);
-          el.dispatchEvent(e);
-        };
-      }
-      else if (document.fireEvent) {
-        this.notifyScrollEvent = function(el) {
-          var e = document.createEventObject();
-          el.fireEvent("onscroll");
-          e.cancelBubble = true; 
-        };
-      }
-      else {
-        this.notifyScrollEvent = function(el,add) {}; //NOPE
-      }
-      
-      if (cap.hastranslate3d&&self.opt.enabletranslate3d) {
-        this.setScrollTop = function(val,silent) {
+
+      this.notifyScrollEvent = function(el) {
+        var e = document.createEvent("UIEvents");
+        e.initUIEvent("scroll", false, true, window, 1);
+        e.niceevent = true;
+        el.dispatchEvent(e);
+      };
+
+      var cxscrollleft = (this.isrtlmode) ? 1 : -1;
+
+      if (cap.hastranslate3d && self.opt.enabletranslate3d) {
+        this.setScrollTop = function(val, silent) {
           self.doc.translate.y = val;
-          self.doc.translate.ty = (val*-1)+"px";
-          self.doc.css(cap.trstyle,"translate3d("+self.doc.translate.tx+","+self.doc.translate.ty+",0px)");          
+          self.doc.translate.ty = (val * -1) + "px";
+          self.doc.css(cap.trstyle, "translate3d(" + self.doc.translate.tx + "," + self.doc.translate.ty + ",0px)");
           if (!silent) self.notifyScrollEvent(self.win[0]);
         };
-        this.setScrollLeft = function(val,silent) {          
+        this.setScrollLeft = function(val, silent) {
           self.doc.translate.x = val;
-          self.doc.translate.tx = (val*-1)+"px";
-          self.doc.css(cap.trstyle,"translate3d("+self.doc.translate.tx+","+self.doc.translate.ty+",0px)");          
+          self.doc.translate.tx = (val * cxscrollleft) + "px";
+          self.doc.css(cap.trstyle, "translate3d(" + self.doc.translate.tx + "," + self.doc.translate.ty + ",0px)");
           if (!silent) self.notifyScrollEvent(self.win[0]);
         };
       } else {
-        this.setScrollTop = function(val,silent) {
+        this.setScrollTop = function(val, silent) {
           self.doc.translate.y = val;
-          self.doc.translate.ty = (val*-1)+"px";
-          self.doc.css(cap.trstyle,"translate("+self.doc.translate.tx+","+self.doc.translate.ty+")");
-          if (!silent) self.notifyScrollEvent(self.win[0]);          
+          self.doc.translate.ty = (val * -1) + "px";
+          self.doc.css(cap.trstyle, "translate(" + self.doc.translate.tx + "," + self.doc.translate.ty + ")");
+          if (!silent) self.notifyScrollEvent(self.win[0]);
         };
-        this.setScrollLeft = function(val,silent) {        
+        this.setScrollLeft = function(val, silent) {
           self.doc.translate.x = val;
-          self.doc.translate.tx = (val*-1)+"px";
-          self.doc.css(cap.trstyle,"translate("+self.doc.translate.tx+","+self.doc.translate.ty+")");
+          self.doc.translate.tx = (val * cxscrollleft) + "px";
+          self.doc.css(cap.trstyle, "translate(" + self.doc.translate.tx + "," + self.doc.translate.ty + ")");
           if (!silent) self.notifyScrollEvent(self.win[0]);
         };
       }
     } else {
-    // native scroll
+      // native scroll
       this.getScrollTop = function() {
         return self.docscroll.scrollTop();
       };
-      this.setScrollTop = function(val) {        
+      this.setScrollTop = function(val) {
         return self.docscroll.scrollTop(val);
       };
       this.getScrollLeft = function() {
+        if (self.detected.ismozilla && self.isrtlmode)
+          return Math.abs(self.docscroll.scrollLeft());
         return self.docscroll.scrollLeft();
       };
       this.setScrollLeft = function(val) {
-        return self.docscroll.scrollLeft(val);
+        return self.docscroll.scrollLeft((self.detected.ismozilla && self.isrtlmode) ? -val : val);
       };
     }
-    
+
     this.getTarget = function(e) {
       if (!e) return false;
       if (e.target) return e.target;
       if (e.srcElement) return e.srcElement;
       return false;
     };
-    
-    this.hasParent = function(e,id) {
+
+    this.hasParent = function(e, id) {
       if (!e) return false;
-      var el = e.target||e.srcElement||e||false;
+      var el = e.target || e.srcElement || e || false;
       while (el && el.id != id) {
-        el = el.parentNode||false;
+        el = el.parentNode || false;
       }
-      return (el!==false);
+      return (el !== false);
     };
-    
+
     function getZIndex() {
       var dom = self.win;
-      if ("zIndex" in dom) return dom.zIndex();  // use jQuery UI method when available
-      while (dom.length>0) {        
-        if (dom[0].nodeType==9) return false;
-        var zi = dom.css('zIndex');        
-        if (!isNaN(zi)&&zi!=0) return parseInt(zi);
+      if ("zIndex" in dom) return dom.zIndex(); // use jQuery UI method when available
+      while (dom.length > 0) {
+        if (dom[0].nodeType == 9) return false;
+        var zi = dom.css('zIndex');
+        if (!isNaN(zi) && zi != 0) return parseInt(zi);
         dom = dom.parent();
       }
       return false;
+    }
+
+    //inspired by http://forum.jquery.com/topic/width-includes-border-width-when-set-to-thin-medium-thick-in-ie
+    var _convertBorderWidth = {
+      "thin": 1,
+      "medium": 3,
+      "thick": 5
     };
-    
-//inspired by http://forum.jquery.com/topic/width-includes-border-width-when-set-to-thin-medium-thick-in-ie
-    var _convertBorderWidth = {"thin":1,"medium":3,"thick":5};
-    function getWidthToPixel(dom,prop,chkheight) {
+
+    function getWidthToPixel(dom, prop, chkheight) {
       var wd = dom.css(prop);
       var px = parseFloat(wd);
       if (isNaN(px)) {
-        px = _convertBorderWidth[wd]||0;
-        var brd = (px==3) ? ((chkheight)?(self.win.outerHeight() - self.win.innerHeight()):(self.win.outerWidth() - self.win.innerWidth())) : 1; //DON'T TRUST CSS
-        if (self.isie8&&px) px+=1;
-        return (brd) ? px : 0; 
+        px = _convertBorderWidth[wd] || 0;
+        var brd = (px == 3) ? ((chkheight) ? (self.win.outerHeight() - self.win.innerHeight()) : (self.win.outerWidth() - self.win.innerWidth())) : 1; //DON'T TRUST CSS
+        if (self.isie8 && px) px += 1;
+        return (brd) ? px : 0;
       }
       return px;
-    };
+    }
+
+    this.getDocumentScrollOffset = function() {
+      return {top:window.pageYOffset||document.documentElement.scrollTop,
+              left:window.pageXOffset||document.documentElement.scrollLeft};
+    }
     
     this.getOffset = function() {
-      if (self.isfixed) return {top:parseFloat(self.win.css('top')),left:parseFloat(self.win.css('left'))};
-      if (!self.viewport) return self.win.offset();
+      if (self.isfixed) {
+        var ofs = self.win.offset();  // fix Chrome auto issue (when right/bottom props only)
+        var scrl = self.getDocumentScrollOffset();
+        ofs.top-=scrl.top;
+        ofs.left-=scrl.left;
+        return ofs;  
+      }
       var ww = self.win.offset();
+      if (!self.viewport) return ww;      
       var vp = self.viewport.offset();
-      return {top:ww.top-vp.top+self.viewport.scrollTop(),left:ww.left-vp.left+self.viewport.scrollLeft()};
+      return {
+        top: ww.top - vp.top,// + self.viewport.scrollTop(),
+        left: ww.left - vp.left // + self.viewport.scrollLeft()
+      };
     };
-    
+
     this.updateScrollBar = function(len) {
       if (self.ishwscroll) {
-        self.rail.css({height:self.win.innerHeight()});
-        if (self.railh) self.railh.css({width:self.win.innerWidth()});
+        self.rail.css({  //**
+          height: self.win.innerHeight() - (self.opt.railpadding.top + self.opt.railpadding.bottom)
+        });
+        if (self.railh) self.railh.css({  //**
+          width: self.win.innerWidth() - (self.opt.railpadding.left + self.opt.railpadding.right)
+        });
+        
       } else {
         var wpos = self.getOffset();
-        var pos = {top:wpos.top,left:wpos.left};
-        pos.top+= getWidthToPixel(self.win,'border-top-width',true);
-        var brd = (self.win.outerWidth() - self.win.innerWidth())/2;
-        pos.left+= (self.rail.align) ? self.win.outerWidth() - getWidthToPixel(self.win,'border-right-width') - self.rail.width : getWidthToPixel(self.win,'border-left-width');
-        
+        var pos = {
+          top: wpos.top,
+          left: wpos.left  - (self.opt.railpadding.left + self.opt.railpadding.right)
+        };
+        pos.top += getWidthToPixel(self.win, 'border-top-width', true);
+        pos.left += (self.rail.align) ? self.win.outerWidth() - getWidthToPixel(self.win, 'border-right-width') - self.rail.width : getWidthToPixel(self.win, 'border-left-width');
+
         var off = self.opt.railoffset;
         if (off) {
-          if (off.top) pos.top+=off.top;
-          if (self.rail.align&&off.left) pos.left+=off.left;
+          if (off.top) pos.top += off.top;
+          if (self.rail.align && off.left) pos.left += off.left;
         }
         
-				if (!self.locked) self.rail.css({top:pos.top,left:pos.left,height:(len)?len.h:self.win.innerHeight()});
-				
-				if (self.zoom) {				  
-				  self.zoom.css({top:pos.top+1,left:(self.rail.align==1) ? pos.left-20 : pos.left+self.rail.width+4});
-			  }
-				
-				if (self.railh&&!self.locked) {
-					var pos = {top:wpos.top,left:wpos.left};
-					var y = (self.railh.align) ? pos.top + getWidthToPixel(self.win,'border-top-width',true) + self.win.innerHeight() - self.railh.height : pos.top + getWidthToPixel(self.win,'border-top-width',true);
-					var x = pos.left + getWidthToPixel(self.win,'border-left-width');
-					self.railh.css({top:y,left:x,width:self.railh.width});
-				}
-		
-				
+        if (!self.railslocked) self.rail.css({
+          top: pos.top,
+          left: pos.left,
+          height: ((len) ? len.h : self.win.innerHeight()) - (self.opt.railpadding.top + self.opt.railpadding.bottom)
+        });
+
+        if (self.zoom) {
+          self.zoom.css({
+            top: pos.top + 1,
+            left: (self.rail.align == 1) ? pos.left - 20 : pos.left + self.rail.width + 4
+          });
+        }
+
+        if (self.railh && !self.railslocked) {
+          var pos = {
+            top: wpos.top,
+            left: wpos.left
+          };
+          var off = self.opt.railhoffset;
+          if (!!off) {
+            if (!!off.top) pos.top += off.top;
+            if (!!off.left) pos.left += off.left;
+          }
+          var y = (self.railh.align) ? pos.top + getWidthToPixel(self.win, 'border-top-width', true) + self.win.innerHeight() - self.railh.height : pos.top + getWidthToPixel(self.win, 'border-top-width', true);
+          var x = pos.left + getWidthToPixel(self.win, 'border-left-width');
+          self.railh.css({
+            top: y  - (self.opt.railpadding.top + self.opt.railpadding.bottom),
+            left: x,
+            width: self.railh.width
+          });
+        }
+
+
       }
     };
-    
-    this.doRailClick = function(e,dbl,hr) {
 
-      var fn,pg,cur,pos;
-      
-//      if (self.rail.drag&&self.rail.drag.pt!=1) return;
-      if (self.locked) return;
-//      if (self.rail.drag) return;
+    this.doRailClick = function(e, dbl, hr) {
+      var fn, pg, cur, pos;
 
-//      self.cancelScroll();       
-      
+      if (self.railslocked) return;
       self.cancelEvent(e);
-      
+
       if (dbl) {
         fn = (hr) ? self.doScrollLeft : self.doScrollTop;
-        cur = (hr) ? ((e.pageX - self.railh.offset().left - (self.cursorwidth/2)) * self.scrollratio.x) : ((e.pageY - self.rail.offset().top - (self.cursorheight/2)) * self.scrollratio.y);
+        cur = (hr) ? ((e.pageX - self.railh.offset().left - (self.cursorwidth / 2)) * self.scrollratio.x) : ((e.pageY - self.rail.offset().top - (self.cursorheight / 2)) * self.scrollratio.y);
         fn(cur);
       } else {
-//        console.log(e.pageY);
         fn = (hr) ? self.doScrollLeftBy : self.doScrollBy;
         cur = (hr) ? self.scroll.x : self.scroll.y;
         pos = (hr) ? e.pageX - self.railh.offset().left : e.pageY - self.rail.offset().top;
-        pg = (hr) ? self.view.w : self.view.h;        
-        (cur>=pos) ? fn(pg) : fn(-pg);
+        pg = (hr) ? self.view.w : self.view.h;
+        fn((cur >= pos) ? pg: -pg);//   (cur >= pos) ? fn(pg): fn(-pg);
       }
-    
-    }
-    
+
+    };
+
     self.hasanimationframe = (setAnimationFrame);
     self.hascancelanimationframe = (clearAnimationFrame);
-    
+
     if (!self.hasanimationframe) {
-      setAnimationFrame=function(fn){return setTimeout(fn,15-Math.floor((+new Date)/1000)%16)}; // 1000/60)};
-      clearAnimationFrame=clearInterval;
-    } 
-    else if (!self.hascancelanimationframe) clearAnimationFrame=function(){self.cancelAnimationFrame=true};
-    
+      setAnimationFrame = function(fn) {
+        return setTimeout(fn, 15 - Math.floor((+new Date()) / 1000) % 16);
+      }; // 1000/60)};
+      clearAnimationFrame = clearInterval;
+    } else if (!self.hascancelanimationframe) clearAnimationFrame = function() {
+      self.cancelAnimationFrame = true;
+    };
+
     this.init = function() {
 
       self.saved.css = [];
-      
+
       if (cap.isie7mobile) return true; // SORRY, DO NOT WORK!
-      
-      if (cap.hasmstouch) self.css((self.ispage)?$("html"):self.win,{'-ms-touch-action':'none'});
-      
+      if (cap.isoperamini) return true; // SORRY, DO NOT WORK!
+
+      if (cap.hasmstouch) self.css((self.ispage) ? $("html") : self.win, {
+        '-ms-touch-action': 'none'
+      });
+
       self.zindex = "auto";
-      if (!self.ispage&&self.opt.zindex=="auto") {
-        self.zindex = getZIndex()||"auto";
+      if (!self.ispage && self.opt.zindex == "auto") {
+        self.zindex = getZIndex() || "auto";
       } else {
         self.zindex = self.opt.zindex;
       }
-      
-      if (!self.ispage&&self.zindex!="auto") {
-        if (self.zindex>globalmaxzindex) globalmaxzindex=self.zindex;
+
+      if (!self.ispage && self.zindex != "auto") {
+        if (self.zindex > globalmaxzindex) globalmaxzindex = self.zindex;
       }
-      
-      if (self.isie&&self.zindex==0&&self.opt.zindex=="auto") {  // fix IE auto == 0
-        self.zindex="auto";
+
+      if (self.isie && self.zindex == 0 && self.opt.zindex == "auto") { // fix IE auto == 0
+        self.zindex = "auto";
       }
-      
-/*      
-      self.ispage = true;
-      self.haswrapper = true;
-//      self.win = $(window);
-      self.docscroll = $("body");
-//      self.doc = $("body");
-*/
-      
+
       if (!self.ispage || (!cap.cantouch && !cap.isieold && !cap.isie9mobile)) {
-      
+
         var cont = self.docscroll;
-        if (self.ispage) cont = (self.haswrapper)?self.win:self.doc;
-        
-        if (!cap.isie9mobile) self.css(cont,{'overflow-y':'hidden'});      
-        
-        if (self.ispage&&cap.isie7) {
-          if (self.doc[0].nodeName=='BODY') self.css($("html"),{'overflow-y':'hidden'});  //IE7 double scrollbar issue
-          else if (self.doc[0].nodeName=='HTML') self.css($("body"),{'overflow-y':'hidden'});  //IE7 double scrollbar issue
+        if (self.ispage) cont = (self.haswrapper) ? self.win : self.doc;
+
+        if (!cap.isie9mobile) self.css(cont, {
+          'overflow-y': 'hidden'
+        });
+
+        if (self.ispage && cap.isie7) {
+          if (self.doc[0].nodeName == 'BODY') self.css($("html"), {
+            'overflow-y': 'hidden'
+          }); //IE7 double scrollbar issue
+          else if (self.doc[0].nodeName == 'HTML') self.css($("body"), {
+            'overflow-y': 'hidden'
+          }); //IE7 double scrollbar issue
         }
-        
-        if (cap.isios&&!self.ispage&&!self.haswrapper) self.css($("body"),{"-webkit-overflow-scrolling":"touch"});  //force hw acceleration
-        
+
+        if (cap.isios && !self.ispage && !self.haswrapper) self.css($("body"), {
+          "-webkit-overflow-scrolling": "touch"
+        }); //force hw acceleration
+
         var cursor = $(document.createElement('div'));
         cursor.css({
-          position:"relative",top:0,"float":"right",width:self.opt.cursorwidth,height:"0px",
-          'background-color':self.opt.cursorcolor,
-          border:self.opt.cursorborder,
-          'background-clip':'padding-box',
-          '-webkit-border-radius':self.opt.cursorborderradius,
-          '-moz-border-radius':self.opt.cursorborderradius,
-          'border-radius':self.opt.cursorborderradius
-        });   
+          position: "relative",
+          top: 0,
+          "float": "right",
+          width: self.opt.cursorwidth,
+          height: "0px",
+          'background-color': self.opt.cursorcolor,
+          border: self.opt.cursorborder,
+          'background-clip': 'padding-box',
+          '-webkit-border-radius': self.opt.cursorborderradius,
+          '-moz-border-radius': self.opt.cursorborderradius,
+          'border-radius': self.opt.cursorborderradius
+        });
+
+        cursor.hborder = parseFloat(cursor.outerHeight() - cursor.innerHeight());
         
-        cursor.hborder = parseFloat(cursor.outerHeight() - cursor.innerHeight());        
-        self.cursor = cursor;        
+        cursor.addClass('nicescroll-cursors');
         
+        self.cursor = cursor;
+
         var rail = $(document.createElement('div'));
-        rail.attr('id',self.id);
-        rail.addClass('nicescroll-rails');
-        
-        var v,a,kp = ["left","right"];  //"top","bottom"
-        for(var n in kp) {
-          a=kp[n];
+        rail.attr('id', self.id);
+        rail.addClass('nicescroll-rails nicescroll-rails-vr');
+
+        var v, a, kp = ["left","right","top","bottom"];  //**
+        for (var n in kp) {
+          a = kp[n];
           v = self.opt.railpadding[a];
           (v) ? rail.css("padding-"+a,v+"px") : self.opt.railpadding[a] = 0;
         }
-        
+
         rail.append(cursor);
-        
-        rail.width = Math.max(parseFloat(self.opt.cursorwidth),cursor.outerWidth()) + self.opt.railpadding['left'] + self.opt.railpadding['right'];
-        rail.css({width:rail.width+"px",'zIndex':self.zindex,"background":self.opt.background,cursor:"default"});        
-        
+
+        rail.width = Math.max(parseFloat(self.opt.cursorwidth), cursor.outerWidth());
+        rail.css({
+          width: rail.width + "px",
+          'zIndex': self.zindex,
+          "background": self.opt.background,
+          cursor: "default"
+        });
+
         rail.visibility = true;
         rail.scrollable = true;
-        
-        rail.align = (self.opt.railalign=="left") ? 0 : 1;
-        
+
+        rail.align = (self.opt.railalign == "left") ? 0 : 1;
+
         self.rail = rail;
-        
+
         self.rail.drag = false;
-        
+
         var zoom = false;
-        if (self.opt.boxzoom&&!self.ispage&&!cap.isieold) {
-          zoom = document.createElement('div');          
-          self.bind(zoom,"click",self.doZoom);
+        if (self.opt.boxzoom && !self.ispage && !cap.isieold) {
+          zoom = document.createElement('div');
+
+          self.bind(zoom, "click", self.doZoom);
+          self.bind(zoom, "mouseenter", function() {
+            self.zoom.css('opacity', self.opt.cursoropacitymax);
+          });
+          self.bind(zoom, "mouseleave", function() {
+            self.zoom.css('opacity', self.opt.cursoropacitymin);
+          });
+
           self.zoom = $(zoom);
-          self.zoom.css({"cursor":"pointer",'z-index':self.zindex,'backgroundImage':'url('+scriptpath+'zoomico.png)','height':18,'width':18,'backgroundPosition':'0px 0px'});
-          if (self.opt.dblclickzoom) self.bind(self.win,"dblclick",self.doZoom);
-          if (cap.cantouch&&self.opt.gesturezoom) {
+          self.zoom.css({
+            "cursor": "pointer",
+            'z-index': self.zindex,
+            'backgroundImage': 'url(' + self.opt.scriptpath + 'zoomico.png)',
+            'height': 18,
+            'width': 18,
+            'backgroundPosition': '0px 0px'
+          });
+          if (self.opt.dblclickzoom) self.bind(self.win, "dblclick", self.doZoom);
+          if (cap.cantouch && self.opt.gesturezoom) {
             self.ongesturezoom = function(e) {
-              if (e.scale>1.5) self.doZoomIn(e);
-              if (e.scale<0.8) self.doZoomOut(e);
+              if (e.scale > 1.5) self.doZoomIn(e);
+              if (e.scale < 0.8) self.doZoomOut(e);
               return self.cancelEvent(e);
             };
-            self.bind(self.win,"gestureend",self.ongesturezoom);             
+            self.bind(self.win, "gestureend", self.ongesturezoom);
           }
         }
-        
-// init HORIZ
+
+        // init HORIZ
 
         self.railh = false;
+        var railh;
 
         if (self.opt.horizrailenabled) {
 
-          self.css(cont,{'overflow-x':'hidden'});
+          self.css(cont, {
+            'overflow-x': 'hidden'
+          });
 
           var cursor = $(document.createElement('div'));
           cursor.css({
-            position:"relative",top:0,height:self.opt.cursorwidth,width:"0px",
-            'background-color':self.opt.cursorcolor,
-            border:self.opt.cursorborder,
-            'background-clip':'padding-box',
-            '-webkit-border-radius':self.opt.cursorborderradius,
-            '-moz-border-radius':self.opt.cursorborderradius,
-            'border-radius':self.opt.cursorborderradius
-          });   
+            position: "absolute",
+            top: 0,
+            height: self.opt.cursorwidth,
+            width: "0px",
+            'background-color': self.opt.cursorcolor,
+            border: self.opt.cursorborder,
+            'background-clip': 'padding-box',
+            '-webkit-border-radius': self.opt.cursorborderradius,
+            '-moz-border-radius': self.opt.cursorborderradius,
+            'border-radius': self.opt.cursorborderradius
+          });
+
+          if (cap.isieold) cursor.css({'overflow':'hidden'});  //IE6 horiz scrollbar issue
           
           cursor.wborder = parseFloat(cursor.outerWidth() - cursor.innerWidth());
+          
+          cursor.addClass('nicescroll-cursors');
+          
           self.cursorh = cursor;
-          
-          var railh = $(document.createElement('div'));
-          railh.attr('id',self.id+'-hr');
-          railh.addClass('nicescroll-rails');
-          railh.height = Math.max(parseFloat(self.opt.cursorwidth),cursor.outerHeight());
-          railh.css({height:railh.height+"px",'zIndex':self.zindex,"background":self.opt.background});
-          
+
+          railh = $(document.createElement('div'));
+          railh.attr('id', self.id + '-hr');
+          railh.addClass('nicescroll-rails nicescroll-rails-hr');
+          railh.height = Math.max(parseFloat(self.opt.cursorwidth), cursor.outerHeight());
+          railh.css({
+            height: railh.height + "px",
+            'zIndex': self.zindex,
+            "background": self.opt.background
+          });
+
           railh.append(cursor);
-          
+
           railh.visibility = true;
           railh.scrollable = true;
-          
-          railh.align = (self.opt.railvalign=="top") ? 0 : 1;
-          
+
+          railh.align = (self.opt.railvalign == "top") ? 0 : 1;
+
           self.railh = railh;
-          
+
           self.railh.drag = false;
-          
+
         }
-        
-//        
-        
+
+        //        
+
         if (self.ispage) {
-          rail.css({position:"fixed",top:"0px",height:"100%"});
-          (rail.align) ? rail.css({right:"0px"}) : rail.css({left:"0px"});
+          rail.css({
+            position: "fixed",
+            top: "0px",
+            height: "100%"
+          });
+          (rail.align) ? rail.css({
+            right: "0px"
+          }): rail.css({
+            left: "0px"
+          });
           self.body.append(rail);
           if (self.railh) {
-            railh.css({position:"fixed",left:"0px",width:"100%"});
-            (railh.align) ? railh.css({bottom:"0px"}) : railh.css({top:"0px"});
+            railh.css({
+              position: "fixed",
+              left: "0px",
+              width: "100%"
+            });
+            (railh.align) ? railh.css({
+              bottom: "0px"
+            }): railh.css({
+              top: "0px"
+            });
             self.body.append(railh);
           }
-        } else {          
+        } else {
           if (self.ishwscroll) {
-            if (self.win.css('position')=='static') self.css(self.win,{'position':'relative'});
+            if (self.win.css('position') == 'static') self.css(self.win, {
+              'position': 'relative'
+            });
             var bd = (self.win[0].nodeName == 'HTML') ? self.body : self.win;
+            $(bd).scrollTop(0).scrollLeft(0);  // fix rail position if content already scrolled
             if (self.zoom) {
-              self.zoom.css({position:"absolute",top:1,right:0,"margin-right":rail.width+4});
+              self.zoom.css({
+                position: "absolute",
+                top: 1,
+                right: 0,
+                "margin-right": rail.width + 4
+              });
               bd.append(self.zoom);
             }
-            rail.css({position:"absolute",top:0});
-            (rail.align) ? rail.css({right:0}) : rail.css({left:0});
+            rail.css({
+              position: "absolute",
+              top: 0
+            });
+            (rail.align) ? rail.css({
+              right: 0
+            }): rail.css({
+              left: 0
+            });
             bd.append(rail);
             if (railh) {
-              railh.css({position:"absolute",left:0,bottom:0});
-              (railh.align) ? railh.css({bottom:0}) : railh.css({top:0});
+              railh.css({
+                position: "absolute",
+                left: 0,
+                bottom: 0
+              });
+              (railh.align) ? railh.css({
+                bottom: 0
+              }): railh.css({
+                top: 0
+              });
               bd.append(railh);
             }
           } else {
-            self.isfixed = (self.win.css("position")=="fixed");
+            self.isfixed = (self.win.css("position") == "fixed");
             var rlpos = (self.isfixed) ? "fixed" : "absolute";
-            
+
             if (!self.isfixed) self.viewport = self.getViewport(self.win[0]);
             if (self.viewport) {
-              self.body = self.viewport;              
-              if ((/relative|absolute/.test(self.viewport.css("position")))==false) self.css(self.viewport,{"position":"relative"});
-            }            
-            
-            rail.css({position:rlpos});
-            if (self.zoom) self.zoom.css({position:rlpos});
+              self.body = self.viewport;
+              if ((/fixed|absolute/.test(self.viewport.css("position"))) == false) self.css(self.viewport, {
+                "position": "relative"
+              });
+            }
+
+            rail.css({
+              position: rlpos
+            });
+            if (self.zoom) self.zoom.css({
+              position: rlpos
+            });
             self.updateScrollBar();
             self.body.append(rail);
             if (self.zoom) self.body.append(self.zoom);
             if (self.railh) {
-              railh.css({position:rlpos});
-              self.body.append(railh);           
+              railh.css({
+                position: rlpos
+              });
+              self.body.append(railh);
             }
           }
-          
-          if (cap.isios) self.css(self.win,{'-webkit-tap-highlight-color':'rgba(0,0,0,0)','-webkit-touch-callout':'none'});  // prevent grey layer on click
-          
-					if (cap.isie&&self.opt.disableoutline) self.win.attr("hideFocus","true");  // IE, prevent dotted rectangle on focused div
-					if (cap.iswebkit&&self.opt.disableoutline) self.win.css({"outline":"none"});
-          
+
+          if (cap.isios) self.css(self.win, {
+            '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
+            '-webkit-touch-callout': 'none'
+          }); // prevent grey layer on click
+
+          if (cap.isie && self.opt.disableoutline) self.win.attr("hideFocus", "true"); // IE, prevent dotted rectangle on focused div
+          if (cap.iswebkit && self.opt.disableoutline) self.win.css({"outline": "none"});  // Webkit outline
+          //if (cap.isopera&&self.opt.disableoutline) self.win.css({"outline":"0"});  // Opera 12- to test [TODO]
+
         }
-        
-        if (self.opt.autohidemode===false) {
+
+        if (self.opt.autohidemode === false) {
           self.autohidedom = false;
-          self.rail.css({opacity:self.opt.cursoropacitymax});          
-          if (self.railh) self.railh.css({opacity:self.opt.cursoropacitymax});
-        }
-        else if (self.opt.autohidemode===true) {
-          self.autohidedom = $().add(self.rail);          
-          if (cap.isie8) self.autohidedom=self.autohidedom.add(self.cursor);
-          if (self.railh) self.autohidedom=self.autohidedom.add(self.railh);
-          if (self.railh&&cap.isie8) self.autohidedom=self.autohidedom.add(self.cursorh);
-        }
-        else if (self.opt.autohidemode=="scroll") {
+          self.rail.css({
+            opacity: self.opt.cursoropacitymax
+          });
+          if (self.railh) self.railh.css({
+            opacity: self.opt.cursoropacitymax
+          });
+        } else if ((self.opt.autohidemode === true) || (self.opt.autohidemode === "leave")) {
           self.autohidedom = $().add(self.rail);
-          if (self.railh) self.autohidedom=self.autohidedom.add(self.railh);
-        }
-        else if (self.opt.autohidemode=="cursor") {
+          if (cap.isie8) self.autohidedom = self.autohidedom.add(self.cursor);
+          if (self.railh) self.autohidedom = self.autohidedom.add(self.railh);
+          if (self.railh && cap.isie8) self.autohidedom = self.autohidedom.add(self.cursorh);
+        } else if (self.opt.autohidemode == "scroll") {
+          self.autohidedom = $().add(self.rail);
+          if (self.railh) self.autohidedom = self.autohidedom.add(self.railh);
+        } else if (self.opt.autohidemode == "cursor") {
           self.autohidedom = $().add(self.cursor);
-          if (self.railh) self.autohidedom=self.autohidedom.add(self.cursorh);
-        }
-        else if (self.opt.autohidemode=="hidden") {
+          if (self.railh) self.autohidedom = self.autohidedom.add(self.cursorh);
+        } else if (self.opt.autohidemode == "hidden") {
           self.autohidedom = false;
           self.hide();
-          self.locked = false;
+          self.railslocked = false;
         }
-        
+
         if (cap.isie9mobile) {
 
-          self.scrollmom = new ScrollMomentumClass2D(self);        
+          self.scrollmom = new ScrollMomentumClass2D(self);
 
-          /*
-          var trace = function(msg) {
-            var db = $("#debug");
-            if (isNaN(msg)&&(typeof msg != "string")) {
-              var x = [];
-              for(var a in msg) {
-                x.push(a+":"+msg[a]);
-              }
-              msg ="{"+x.join(",")+"}";
-            }
-            if (db.children().length>0) {
-              db.children().eq(0).before("<div>"+msg+"</div>");
-            } else {
-              db.append("<div>"+msg+"</div>");
-            }
-          }
-          window.onerror = function(msg,url,ln) {
-            trace("ERR: "+msg+" at "+ln);
-          }
-*/          
-  
-          self.onmangotouch = function(e) {
+          self.onmangotouch = function() {
             var py = self.getScrollTop();
             var px = self.getScrollLeft();
-            
-            if ((py == self.scrollmom.lastscrolly)&&(px == self.scrollmom.lastscrollx)) return true;
-//            $("#debug").html('DRAG:'+py);
 
-            var dfy = py-self.mangotouch.sy;
-            var dfx = px-self.mangotouch.sx;            
-            var df = Math.round(Math.sqrt(Math.pow(dfx,2)+Math.pow(dfy,2)));            
-            if (df==0) return;
-            
-            var dry = (dfy<0)?-1:1;
-            var drx = (dfx<0)?-1:1;
-            
+            if ((py == self.scrollmom.lastscrolly) && (px == self.scrollmom.lastscrollx)) return true;
+
+            var dfy = py - self.mangotouch.sy;
+            var dfx = px - self.mangotouch.sx;
+            var df = Math.round(Math.sqrt(Math.pow(dfx, 2) + Math.pow(dfy, 2)));
+            if (df == 0) return;
+
+            var dry = (dfy < 0) ? -1 : 1;
+            var drx = (dfx < 0) ? -1 : 1;
+
             var tm = +new Date();
             if (self.mangotouch.lazy) clearTimeout(self.mangotouch.lazy);
-            
-            if (((tm-self.mangotouch.tm)>80)||(self.mangotouch.dry!=dry)||(self.mangotouch.drx!=drx)) {
-//              trace('RESET+'+(tm-self.mangotouch.tm));
+
+            if (((tm - self.mangotouch.tm) > 80) || (self.mangotouch.dry != dry) || (self.mangotouch.drx != drx)) {
               self.scrollmom.stop();
-              self.scrollmom.reset(px,py);
+              self.scrollmom.reset(px, py);
               self.mangotouch.sy = py;
               self.mangotouch.ly = py;
               self.mangotouch.sx = px;
@@ -24800,614 +24427,744 @@ jQuery._farbtastic = function (container, callback) {
               self.mangotouch.drx = drx;
               self.mangotouch.tm = tm;
             } else {
-              
+
               self.scrollmom.stop();
-              self.scrollmom.update(self.mangotouch.sx-dfx,self.mangotouch.sy-dfy);
-              var gap = tm - self.mangotouch.tm;              
+              self.scrollmom.update(self.mangotouch.sx - dfx, self.mangotouch.sy - dfy);
               self.mangotouch.tm = tm;
-              
-//              trace('MOVE:'+df+" - "+gap);
-              
-              var ds = Math.max(Math.abs(self.mangotouch.ly-py),Math.abs(self.mangotouch.lx-px));
+
+              var ds = Math.max(Math.abs(self.mangotouch.ly - py), Math.abs(self.mangotouch.lx - px));
               self.mangotouch.ly = py;
               self.mangotouch.lx = px;
-              
-              if (ds>2) {
-                self.mangotouch.lazy = setTimeout(function(){
-//                  trace('END:'+ds+'+'+gap);                  
+
+              if (ds > 2) {
+                self.mangotouch.lazy = setTimeout(function() {
                   self.mangotouch.lazy = false;
                   self.mangotouch.dry = 0;
                   self.mangotouch.drx = 0;
-                  self.mangotouch.tm = 0;                  
+                  self.mangotouch.tm = 0;
                   self.scrollmom.doMomentum(30);
-                },100);
+                }, 100);
               }
             }
-          }
-          
+          };
+
           var top = self.getScrollTop();
           var lef = self.getScrollLeft();
-          self.mangotouch = {sy:top,ly:top,dry:0,sx:lef,lx:lef,drx:0,lazy:false,tm:0};
-          
-          self.bind(self.docscroll,"scroll",self.onmangotouch);
-        
+          self.mangotouch = {
+            sy: top,
+            ly: top,
+            dry: 0,
+            sx: lef,
+            lx: lef,
+            drx: 0,
+            lazy: false,
+            tm: 0
+          };
+
+          self.bind(self.docscroll, "scroll", self.onmangotouch);
+
         } else {
-        
-          if (cap.cantouch||self.istouchcapable||self.opt.touchbehavior||cap.hasmstouch) {
-          
+
+          if (cap.cantouch || self.istouchcapable || self.opt.touchbehavior || cap.hasmstouch) {
+
             self.scrollmom = new ScrollMomentumClass2D(self);
-          
+
             self.ontouchstart = function(e) {
-              if (e.pointerType&&e.pointerType!=2) return false;
+              if (e.pointerType && e.pointerType != 2 && e.pointerType != "touch") return false;
               
-              if (!self.locked) {
-              
+              self.hasmoving = false;
+
+              if (!self.railslocked) {
+
+                var tg;
                 if (cap.hasmstouch) {
-                  var tg = (e.target) ? e.target : false;
+                  tg = (e.target) ? e.target : false;
                   while (tg) {
                     var nc = $(tg).getNiceScroll();
-                    if ((nc.length>0)&&(nc[0].me == self.me)) break;
-                    if (nc.length>0) return false;
-                    if ((tg.nodeName=='DIV')&&(tg.id==self.id)) break;
+                    if ((nc.length > 0) && (nc[0].me == self.me)) break;
+                    if (nc.length > 0) return false;
+                    if ((tg.nodeName == 'DIV') && (tg.id == self.id)) break;
                     tg = (tg.parentNode) ? tg.parentNode : false;
                   }
                 }
-              
+
                 self.cancelScroll();
-                
-                var tg = self.getTarget(e);
-                
+
+                tg = self.getTarget(e);
+
                 if (tg) {
-                  var skp = (/INPUT/i.test(tg.nodeName))&&(/range/i.test(tg.type));
+                  var skp = (/INPUT/i.test(tg.nodeName)) && (/range/i.test(tg.type));
                   if (skp) return self.stopPropagation(e);
                 }
-                
+
                 if (!("clientX" in e) && ("changedTouches" in e)) {
                   e.clientX = e.changedTouches[0].clientX;
                   e.clientY = e.changedTouches[0].clientY;
                 }
-                
+
                 if (self.forcescreen) {
                   var le = e;
-                  var e = {"original":(e.original)?e.original:e};
+                  e = {
+                    "original": (e.original) ? e.original : e
+                  };
                   e.clientX = le.screenX;
-                  e.clientY = le.screenY;    
+                  e.clientY = le.screenY;
                 }
-                
-                self.rail.drag = {x:e.clientX,y:e.clientY,sx:self.scroll.x,sy:self.scroll.y,st:self.getScrollTop(),sl:self.getScrollLeft(),pt:2,dl:false};
-                
-                if (self.ispage||!self.opt.directionlockdeadzone) {
+
+                self.rail.drag = {
+                  x: e.clientX,
+                  y: e.clientY,
+                  sx: self.scroll.x,
+                  sy: self.scroll.y,
+                  st: self.getScrollTop(),
+                  sl: self.getScrollLeft(),
+                  pt: 2,
+                  dl: false
+                };
+
+                if (self.ispage || !self.opt.directionlockdeadzone) {
                   self.rail.drag.dl = "f";
                 } else {
-                
+
                   var view = {
-                    w:$(window).width(),
-                    h:$(window).height()
+                    w: $(window).width(),
+                    h: $(window).height()
                   };
-                  
+
                   var page = {
-                    w:Math.max(document.body.scrollWidth,document.documentElement.scrollWidth),
-                    h:Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)
-                  }
-                  
-                  var maxh = Math.max(0,page.h - view.h);
-                  var maxw = Math.max(0,page.w - view.w);                
-                
-                  if (!self.rail.scrollable&&self.railh.scrollable) self.rail.drag.ck = (maxh>0) ? "v" : false;
-                  else if (self.rail.scrollable&&!self.railh.scrollable) self.rail.drag.ck = (maxw>0) ? "h" : false;
+                    w: Math.max(document.body.scrollWidth, document.documentElement.scrollWidth),
+                    h: Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+                  };
+
+                  var maxh = Math.max(0, page.h - view.h);
+                  var maxw = Math.max(0, page.w - view.w);
+
+                  if (!self.rail.scrollable && self.railh.scrollable) self.rail.drag.ck = (maxh > 0) ? "v" : false;
+                  else if (self.rail.scrollable && !self.railh.scrollable) self.rail.drag.ck = (maxw > 0) ? "h" : false;
                   else self.rail.drag.ck = false;
                   if (!self.rail.drag.ck) self.rail.drag.dl = "f";
                 }
-                
-                if (self.opt.touchbehavior&&self.isiframe&&cap.isie) {
+
+                if (self.opt.touchbehavior && self.isiframe && cap.isie) {
                   var wp = self.win.position();
-                  self.rail.drag.x+=wp.left;
-                  self.rail.drag.y+=wp.top;
+                  self.rail.drag.x += wp.left;
+                  self.rail.drag.y += wp.top;
                 }
-                
+
                 self.hasmoving = false;
                 self.lastmouseup = false;
-                self.scrollmom.reset(e.clientX,e.clientY);
-                if (!cap.cantouch&&!this.istouchcapable&&!cap.hasmstouch) {
-                  
-                  var ip = (tg)?/INPUT|SELECT|TEXTAREA/i.test(tg.nodeName):false;
+                self.scrollmom.reset(e.clientX, e.clientY);
+                
+                if (!cap.cantouch && !this.istouchcapable && !e.pointerType) {       
+                
+                  var ip = (tg) ? /INPUT|SELECT|TEXTAREA/i.test(tg.nodeName) : false;
                   if (!ip) {
-                    if (!self.ispage&&cap.hasmousecapture) tg.setCapture();
-                    return self.cancelEvent(e);
+                    if (!self.ispage && cap.hasmousecapture) tg.setCapture();
+                    if (self.opt.touchbehavior) {
+                      if (tg.onclick && !(tg._onclick || false)) { // intercept DOM0 onclick event
+                        tg._onclick = tg.onclick;
+                        tg.onclick = function(e) {
+                          if (self.hasmoving) return false;
+                          tg._onclick.call(this, e);
+                        };
+                      }
+                      return self.cancelEvent(e);
+                    }
+                    return self.stopPropagation(e);
                   }
+
                   if (/SUBMIT|CANCEL|BUTTON/i.test($(tg).attr('type'))) {
-                    pc = {"tg":tg,"click":false};
+                    pc = {
+                      "tg": tg,
+                      "click": false
+                    };
                     self.preventclick = pc;
                   }
-                  
+
                 }
               }
-              
+
             };
-            
-            self.ontouchend = function(e) {
-              if (e.pointerType&&e.pointerType!=2) return false;
-              if (self.rail.drag&&(self.rail.drag.pt==2)) {
+
+            self.ontouchend = function(e) {              
+              if (!self.rail.drag) return true;              
+              if (self.rail.drag.pt == 2) {
+                if (e.pointerType && e.pointerType != 2 && e.pointerType != "touch") return false;
                 self.scrollmom.doMomentum();
                 self.rail.drag = false;
                 if (self.hasmoving) {
-                  self.hasmoving = false;
                   self.lastmouseup = true;
                   self.hideCursor();
                   if (cap.hasmousecapture) document.releaseCapture();
                   if (!cap.cantouch) return self.cancelEvent(e);
-                }                            
-              }                        
-              
+                }
+              }
+              else if (self.rail.drag.pt == 1) {
+                return self.onmouseup(e);
+              }
+
             };
+
+            var moveneedoffset = (self.opt.touchbehavior && self.isiframe && !cap.hasmousecapture);
+
+            self.ontouchmove = function(e, byiframe) {
+
+              if (!self.rail.drag) return false;
             
-            var moveneedoffset = (self.opt.touchbehavior&&self.isiframe&&!cap.hasmousecapture);
+              if (e.targetTouches && self.opt.preventmultitouchscrolling) {
+                if (e.targetTouches.length > 1) return false; // multitouch
+              }
             
-            self.ontouchmove = function(e,byiframe) {
-              
-              if (e.pointerType&&e.pointerType!=2) return false;
-    
-              if (self.rail.drag&&(self.rail.drag.pt==2)) {
-                if (cap.cantouch&&(typeof e.original == "undefined")) return true;  // prevent ios "ghost" events by clickable elements
-              
+              if (e.pointerType && e.pointerType != 2 && e.pointerType != "touch") return false;
+          
+              if (self.rail.drag.pt == 2) {
+                if (cap.cantouch && (cap.isios) && (typeof e.original == "undefined")) return true; // prevent ios "ghost" events by clickable elements
+
                 self.hasmoving = true;
 
-                if (self.preventclick&&!self.preventclick.click) {
-                  self.preventclick.click = self.preventclick.tg.onclick||false;                
+                if (self.preventclick && !self.preventclick.click) {
+                  self.preventclick.click = self.preventclick.tg.onclick || false;
                   self.preventclick.tg.onclick = self.onpreventclick;
                 }
 
-                var ev = $.extend({"original":e},e);
+                var ev = $.extend({
+                  "original": e
+                }, e);
                 e = ev;
-                
+
                 if (("changedTouches" in e)) {
                   e.clientX = e.changedTouches[0].clientX;
                   e.clientY = e.changedTouches[0].clientY;
-                }                
-                
+                }
+
                 if (self.forcescreen) {
                   var le = e;
-                  var e = {"original":(e.original)?e.original:e};
+                  e = {
+                    "original": (e.original) ? e.original : e
+                  };
                   e.clientX = le.screenX;
-                  e.clientY = le.screenY;      
+                  e.clientY = le.screenY;
                 }
-                
-                var ofx = ofy = 0;
-                
-                if (moveneedoffset&&!byiframe) {
+
+                var ofy,ofx;
+                ofx = ofy = 0;
+
+                if (moveneedoffset && !byiframe) {
                   var wp = self.win.position();
-                  ofx=-wp.left;
-                  ofy=-wp.top;
-                }                
-                
+                  ofx = -wp.left;
+                  ofy = -wp.top;
+                }
+
                 var fy = e.clientY + ofy;
-                var my = (fy-self.rail.drag.y);
+                var my = (fy - self.rail.drag.y);
                 var fx = e.clientX + ofx;
-                var mx = (fx-self.rail.drag.x);
-                
-                var ny = self.rail.drag.st-my;
-                
-                if (self.ishwscroll&&self.opt.bouncescroll) {
-                  if (ny<0) {
-                    ny = Math.round(ny/2);
-//                    fy = 0;
-                  }
-                  else if (ny>self.page.maxh) {
-                    ny = self.page.maxh+Math.round((ny-self.page.maxh)/2);
-//                    fy = 0;
+                var mx = (fx - self.rail.drag.x);
+
+                var ny = self.rail.drag.st - my;
+
+                if (self.ishwscroll && self.opt.bouncescroll) {
+                  if (ny < 0) {
+                    ny = Math.round(ny / 2);
+                    //                    fy = 0;
+                  } else if (ny > self.page.maxh) {
+                    ny = self.page.maxh + Math.round((ny - self.page.maxh) / 2);
+                    //                    fy = 0;
                   }
                 } else {
-                  if (ny<0) {ny=0;fy=0}
-                  if (ny>self.page.maxh) {ny=self.page.maxh;fy=0}
+                  if (ny < 0) {
+                    ny = 0;
+                    fy = 0;
+                  }
+                  if (ny > self.page.maxh) {
+                    ny = self.page.maxh;
+                    fy = 0;
+                  }
                 }
-                  
-                if (self.railh&&self.railh.scrollable) {
-                  var nx = self.rail.drag.sl-mx;
-                  
-                  if (self.ishwscroll&&self.opt.bouncescroll) {                  
-                    if (nx<0) {
-                      nx = Math.round(nx/2);
-//                      fx = 0;
-                    }
-                    else if (nx>self.page.maxw) {
-                      nx = self.page.maxw+Math.round((nx-self.page.maxw)/2);
-//                      fx = 0;
+
+                var nx;
+                if (self.railh && self.railh.scrollable) {
+                  nx = (self.isrtlmode) ? mx - self.rail.drag.sl : self.rail.drag.sl - mx;
+
+                  if (self.ishwscroll && self.opt.bouncescroll) {
+                    if (nx < 0) {
+                      nx = Math.round(nx / 2);
+                      //                      fx = 0;
+                    } else if (nx > self.page.maxw) {
+                      nx = self.page.maxw + Math.round((nx - self.page.maxw) / 2);
+                      //                      fx = 0;
                     }
                   } else {
-                    if (nx<0) {nx=0;fx=0}
-                    if (nx>self.page.maxw) {nx=self.page.maxw;fx=0}
+                    if (nx < 0) {
+                      nx = 0;
+                      fx = 0;
+                    }
+                    if (nx > self.page.maxw) {
+                      nx = self.page.maxw;
+                      fx = 0;
+                    }
                   }
-                
+
                 }
-                
+
                 var grabbed = false;
                 if (self.rail.drag.dl) {
                   grabbed = true;
-                  if (self.rail.drag.dl=="v") nx = self.rail.drag.sl;
-                  else if (self.rail.drag.dl=="h") ny = self.rail.drag.st;                  
+                  if (self.rail.drag.dl == "v") nx = self.rail.drag.sl;
+                  else if (self.rail.drag.dl == "h") ny = self.rail.drag.st;
                 } else {
                   var ay = Math.abs(my);
                   var ax = Math.abs(mx);
                   var dz = self.opt.directionlockdeadzone;
-                  if (self.rail.drag.ck=="v") {    
-                    if (ay>dz&&(ax<=(ay*0.3))) {
-                      self.rail.drag = false;                      
+                  if (self.rail.drag.ck == "v") {
+                    if (ay > dz && (ax <= (ay * 0.3))) {
+                      self.rail.drag = false;
                       return true;
+                    } else if (ax > dz) {
+                      self.rail.drag.dl = "f";
+                      $("body").scrollTop($("body").scrollTop()); // stop iOS native scrolling (when active javascript has blocked)
                     }
-                    else if (ax>dz) {
-                      self.rail.drag.dl="f";                      
-                      $("body").scrollTop($("body").scrollTop());  // stop iOS native scrolling (when active javascript has blocked)
+                  } else if (self.rail.drag.ck == "h") {
+                    if (ax > dz && (ay <= (ax * 0.3))) {
+                      self.rail.drag = false;
+                      return true;
+                    } else if (ay > dz) {
+                      self.rail.drag.dl = "f";
+                      $("body").scrollLeft($("body").scrollLeft()); // stop iOS native scrolling (when active javascript has blocked)
                     }
                   }
-                  else if (self.rail.drag.ck=="h") {
-                    if (ax>dz&&(ay<=(az*0.3))) {
-                      self.rail.drag = false;                      
-                      return true;
-                    }
-                    else if (ay>dz) {                      
-                      self.rail.drag.dl="f";
-                      $("body").scrollLeft($("body").scrollLeft());  // stop iOS native scrolling (when active javascript has blocked)
-                    }
-                  }  
                 }
-                
-                self.synched("touchmove",function(){
-                  if (self.rail.drag&&(self.rail.drag.pt==2)) {
+
+                self.synched("touchmove", function() {
+                  if (self.rail.drag && (self.rail.drag.pt == 2)) {
                     if (self.prepareTransition) self.prepareTransition(0);
                     if (self.rail.scrollable) self.setScrollTop(ny);
-                    self.scrollmom.update(fx,fy);
-                    if (self.railh&&self.railh.scrollable) {
+                    self.scrollmom.update(fx, fy);
+                    if (self.railh && self.railh.scrollable) {
                       self.setScrollLeft(nx);
-                      self.showCursor(ny,nx);
+                      self.showCursor(ny, nx);
                     } else {
                       self.showCursor(ny);
                     }
                     if (cap.isie10) document.selection.clear();
                   }
                 });
-                
-                if (cap.ischrome&&self.istouchcapable) grabbed=false;  //chrome touch emulation doesn't like!
+
+                if (cap.ischrome && self.istouchcapable) grabbed = false; //chrome touch emulation doesn't like!
                 if (grabbed) return self.cancelEvent(e);
               }
-              
+              else if (self.rail.drag.pt == 1) { // drag on cursor
+                return self.onmousemove(e);
+              }
+
             };
-          
+
           }
-          
-          self.onmousedown = function(e,hronly) {    
-            if (self.rail.drag&&self.rail.drag.pt!=1) return;
-            if (self.locked) return self.cancelEvent(e);            
-            self.cancelScroll();              
-            self.rail.drag = {x:e.clientX,y:e.clientY,sx:self.scroll.x,sy:self.scroll.y,pt:1,hr:(!!hronly)};
+
+          self.onmousedown = function(e, hronly) {
+            if (self.rail.drag && self.rail.drag.pt != 1) return;
+            if (self.railslocked) return self.cancelEvent(e);
+            self.cancelScroll();
+            self.rail.drag = {
+              x: e.clientX,
+              y: e.clientY,
+              sx: self.scroll.x,
+              sy: self.scroll.y,
+              pt: 1,
+              hr: (!!hronly)
+            };
             var tg = self.getTarget(e);
-            if (!self.ispage&&cap.hasmousecapture) tg.setCapture();
-            if (self.isiframe&&!cap.hasmousecapture) {
-              self.saved["csspointerevents"] = self.doc.css("pointer-events");
-              self.css(self.doc,{"pointer-events":"none"});
+            if (!self.ispage && cap.hasmousecapture) tg.setCapture();
+            if (self.isiframe && !cap.hasmousecapture) {
+              self.saved.csspointerevents = self.doc.css("pointer-events");
+              self.css(self.doc, {
+                "pointer-events": "none"
+              });
             }
+            self.hasmoving = false;
             return self.cancelEvent(e);
           };
-          
+
           self.onmouseup = function(e) {
             if (self.rail.drag) {
+              if (self.rail.drag.pt != 1) return true;
               if (cap.hasmousecapture) document.releaseCapture();
-              if (self.isiframe&&!cap.hasmousecapture) self.doc.css("pointer-events",self.saved["csspointerevents"]);
-              if(self.rail.drag.pt!=1)return;
+              if (self.isiframe && !cap.hasmousecapture) self.doc.css("pointer-events", self.saved.csspointerevents);              
               self.rail.drag = false;
               //if (!self.rail.active) self.hideCursor();
+              if (self.hasmoving) self.triggerScrollEnd(); // TODO - check &&!self.scrollrunning
               return self.cancelEvent(e);
             }
-          };        
-          
+          };
+
           self.onmousemove = function(e) {
             if (self.rail.drag) {
-              if(self.rail.drag.pt!=1)return;
-              
-              if (cap.ischrome&&e.which==0) return self.onmouseup(e);
-              
+              if (self.rail.drag.pt != 1) return;
+
+              if (cap.ischrome && e.which == 0) return self.onmouseup(e);
+
               self.cursorfreezed = true;
-                  
+              self.hasmoving = true;
+
               if (self.rail.drag.hr) {
-                self.scroll.x = self.rail.drag.sx + (e.clientX-self.rail.drag.x);
-                if (self.scroll.x<0) self.scroll.x=0;
+                self.scroll.x = self.rail.drag.sx + (e.clientX - self.rail.drag.x);
+                if (self.scroll.x < 0) self.scroll.x = 0;
                 var mw = self.scrollvaluemaxw;
-                if (self.scroll.x>mw) self.scroll.x=mw;
-              } else {                
-                self.scroll.y = self.rail.drag.sy + (e.clientY-self.rail.drag.y);
-                if (self.scroll.y<0) self.scroll.y=0;
+                if (self.scroll.x > mw) self.scroll.x = mw;
+              } else {
+                self.scroll.y = self.rail.drag.sy + (e.clientY - self.rail.drag.y);
+                if (self.scroll.y < 0) self.scroll.y = 0;
                 var my = self.scrollvaluemax;
-                if (self.scroll.y>my) self.scroll.y=my;
+                if (self.scroll.y > my) self.scroll.y = my;
               }
-              
-              self.synched('mousemove',function(){
-                if (self.rail.drag&&(self.rail.drag.pt==1)) {
+
+              self.synched('mousemove', function() {
+                if (self.rail.drag && (self.rail.drag.pt == 1)) {
                   self.showCursor();
-                  if (self.rail.drag.hr) self.doScrollLeft(Math.round(self.scroll.x*self.scrollratio.x),self.opt.cursordragspeed);
-                  else self.doScrollTop(Math.round(self.scroll.y*self.scrollratio.y),self.opt.cursordragspeed);
+                  if (self.rail.drag.hr) {
+                    if (self.hasreversehr) {
+                      self.doScrollLeft(self.scrollvaluemaxw-Math.round(self.scroll.x * self.scrollratio.x), self.opt.cursordragspeed);
+                    } else {
+                      self.doScrollLeft(Math.round(self.scroll.x * self.scrollratio.x), self.opt.cursordragspeed);
+                    }
+                  }
+                  else self.doScrollTop(Math.round(self.scroll.y * self.scrollratio.y), self.opt.cursordragspeed);
                 }
               });
-              
+
               return self.cancelEvent(e);
-            } 
-/*              
+            }
+            /*              
             else {
               self.checkarea = true;
             }
-*/              
-          };          
-         
-          if (cap.cantouch||self.opt.touchbehavior) {
-          
+*/
+          };
+
+          if (cap.cantouch || self.opt.touchbehavior) {
+
             self.onpreventclick = function(e) {
               if (self.preventclick) {
                 self.preventclick.tg.onclick = self.preventclick.click;
-                self.preventclick = false;            
+                self.preventclick = false;
                 return self.cancelEvent(e);
               }
             }
-          
-//            self.onmousedown = self.ontouchstart;            
-//            self.onmouseup = self.ontouchend;
-//            self.onmousemove = self.ontouchmove;
 
-            self.bind(self.win,"mousedown",self.ontouchstart);  // control content dragging
+            self.bind(self.win, "mousedown", self.ontouchstart); // control content dragging
 
-            self.onclick = (cap.isios) ? false : function(e) { 
+            self.onclick = (cap.isios) ? false : function(e) {
               if (self.lastmouseup) {
                 self.lastmouseup = false;
                 return self.cancelEvent(e);
               } else {
                 return true;
               }
-            }; 
-            
-            if (self.opt.grabcursorenabled&&cap.cursorgrabvalue) {
-              self.css((self.ispage)?self.doc:self.win,{'cursor':cap.cursorgrabvalue});            
-              self.css(self.rail,{'cursor':cap.cursorgrabvalue});
+            };
+
+            if (self.opt.grabcursorenabled && cap.cursorgrabvalue) {
+              self.css((self.ispage) ? self.doc : self.win, {
+                'cursor': cap.cursorgrabvalue
+              });
+              self.css(self.rail, {
+                'cursor': cap.cursorgrabvalue
+              });
             }
-            
+
           } else {
 
-            function checkSelectionScroll(e) {
+            var checkSelectionScroll = function(e) {
               if (!self.selectiondrag) return;
-              
+
               if (e) {
                 var ww = self.win.outerHeight();
                 var df = (e.pageY - self.selectiondrag.top);
-                if (df>0&&df<ww) df=0;
-                if (df>=ww) df-=ww;
-                self.selectiondrag.df = df;                
+                if (df > 0 && df < ww) df = 0;
+                if (df >= ww) df -= ww;
+                self.selectiondrag.df = df;
               }
-              if (self.selectiondrag.df==0) return;
-              
-              var rt = -Math.floor(self.selectiondrag.df/6)*2;              
-//              self.doScrollTop(self.getScrollTop(true)+rt);
+              if (self.selectiondrag.df == 0) return;
+
+              var rt = -Math.floor(self.selectiondrag.df / 6) * 2;
               self.doScrollBy(rt);
-              
-              self.debounced("doselectionscroll",function(){checkSelectionScroll()},50);
-            }
-            
-            if ("getSelection" in document) {  // A grade - Major browsers
-              self.hasTextSelected = function() {  
-                return (document.getSelection().rangeCount>0);
-              }
-            } 
-            else if ("selection" in document) {  //IE9-
+
+              self.debounced("doselectionscroll", function() {
+                checkSelectionScroll()
+              }, 50);
+            };
+
+            if ("getSelection" in document) { // A grade - Major browsers
+              self.hasTextSelected = function() {
+                return (document.getSelection().rangeCount > 0);
+              };
+            } else if ("selection" in document) { //IE9-
               self.hasTextSelected = function() {
                 return (document.selection.type != "None");
-              }
-            } 
-            else {
-              self.hasTextSelected = function() {  // no support
+              };
+            } else {
+              self.hasTextSelected = function() { // no support
                 return false;
-              }
-            }            
-            
+              };
+            }
+
             self.onselectionstart = function(e) {
+/*  More testing - severe chrome issues            
+              if (!self.haswrapper&&(e.which&&e.which==2)) {  // fool browser to manage middle button scrolling
+                self.win.css({'overflow':'auto'});
+                setTimeout(function(){
+                  self.win.css({'overflow':''});
+                },10);                
+                return true;
+              }            
+*/              
               if (self.ispage) return;
               self.selectiondrag = self.win.offset();
-            }
+            };
+            
             self.onselectionend = function(e) {
               self.selectiondrag = false;
-            }
-            self.onselectiondrag = function(e) {              
+            };
+            self.onselectiondrag = function(e) {
               if (!self.selectiondrag) return;
-              if (self.hasTextSelected()) self.debounced("selectionscroll",function(){checkSelectionScroll(e)},250);
-            }
-            
-            
-          }
-          
-          if (cap.hasmstouch) {
-            self.css(self.rail,{'-ms-touch-action':'none'});
-            self.css(self.cursor,{'-ms-touch-action':'none'});
-            
-            self.bind(self.win,"MSPointerDown",self.ontouchstart);
-            self.bind(document,"MSPointerUp",self.ontouchend);
-            self.bind(document,"MSPointerMove",self.ontouchmove);
-            self.bind(self.cursor,"MSGestureHold",function(e){e.preventDefault()});
-            self.bind(self.cursor,"contextmenu",function(e){e.preventDefault()});
+              if (self.hasTextSelected()) self.debounced("selectionscroll", function() {
+                checkSelectionScroll(e)
+              }, 250);
+            };
+
+
           }
 
-          if (this.istouchcapable) {  //desktop with screen touch enabled
-            self.bind(self.win,"touchstart",self.ontouchstart);
-            self.bind(document,"touchend",self.ontouchend);
-            self.bind(document,"touchcancel",self.ontouchend);
-            self.bind(document,"touchmove",self.ontouchmove);            
-          }
-          
-          self.bind(self.cursor,"mousedown",self.onmousedown);
-          self.bind(self.cursor,"mouseup",self.onmouseup);
-
-          if (self.railh) {
-            self.bind(self.cursorh,"mousedown",function(e){self.onmousedown(e,true)});
-            self.bind(self.cursorh,"mouseup",function(e){
-              if (self.rail.drag&&self.rail.drag.pt==2) return;
-              self.rail.drag = false;
-              self.hasmoving = false;
-              self.hideCursor();
-              if (cap.hasmousecapture) document.releaseCapture();
-              return self.cancelEvent(e);
+          if (cap.hasw3ctouch) { //IE11+
+            self.css(self.rail, {
+              'touch-action': 'none'
             });
+            self.css(self.cursor, {
+              'touch-action': 'none'
+            });
+            self.bind(self.win, "pointerdown", self.ontouchstart);
+            self.bind(document, "pointerup", self.ontouchend);
+            self.bind(document, "pointermove", self.ontouchmove);
+          } else if (cap.hasmstouch) { //IE10
+            self.css(self.rail, {
+              '-ms-touch-action': 'none'
+            });
+            self.css(self.cursor, {
+              '-ms-touch-action': 'none'
+            });
+            self.bind(self.win, "MSPointerDown", self.ontouchstart);
+            self.bind(document, "MSPointerUp", self.ontouchend);
+            self.bind(document, "MSPointerMove", self.ontouchmove);
+            self.bind(self.cursor, "MSGestureHold", function(e) {
+              e.preventDefault()
+            });
+            self.bind(self.cursor, "contextmenu", function(e) {
+              e.preventDefault()
+            });
+          } else if (this.istouchcapable) { //desktop with screen touch enabled
+            self.bind(self.win, "touchstart", self.ontouchstart);
+            self.bind(document, "touchend", self.ontouchend);
+            self.bind(document, "touchcancel", self.ontouchend);
+            self.bind(document, "touchmove", self.ontouchmove);
           }
-		
-          if (self.opt.cursordragontouch||!cap.cantouch&&!self.opt.touchbehavior) {
 
-            self.rail.css({"cursor":"default"});
-            self.railh&&self.railh.css({"cursor":"default"});          
           
-            self.jqbind(self.rail,"mouseenter",function() {
+          if (self.opt.cursordragontouch || (!cap.cantouch && !self.opt.touchbehavior)) {
+
+            self.rail.css({
+              "cursor": "default"
+            });
+            self.railh && self.railh.css({
+              "cursor": "default"
+            });
+
+            self.jqbind(self.rail, "mouseenter", function() {
+              if (!self.ispage && !self.win.is(":visible")) return false;
               if (self.canshowonmouseevent) self.showCursor();
               self.rail.active = true;
             });
-            self.jqbind(self.rail,"mouseleave",function() { 
+            self.jqbind(self.rail, "mouseleave", function() {
               self.rail.active = false;
               if (!self.rail.drag) self.hideCursor();
             });
-            
+
             if (self.opt.sensitiverail) {
-              self.bind(self.rail,"click",function(e){self.doRailClick(e,false,false)});
-              self.bind(self.rail,"dblclick",function(e){self.doRailClick(e,true,false)});
-              self.bind(self.cursor,"click",function(e){self.cancelEvent(e)});
-              self.bind(self.cursor,"dblclick",function(e){self.cancelEvent(e)});
+              self.bind(self.rail, "click", function(e) {
+                self.doRailClick(e, false, false)
+              });
+              self.bind(self.rail, "dblclick", function(e) {
+                self.doRailClick(e, true, false)
+              });
+              self.bind(self.cursor, "click", function(e) {
+                self.cancelEvent(e)
+              });
+              self.bind(self.cursor, "dblclick", function(e) {
+                self.cancelEvent(e)
+              });
             }
 
             if (self.railh) {
-              self.jqbind(self.railh,"mouseenter",function() {
+              self.jqbind(self.railh, "mouseenter", function() {
+                if (!self.ispage && !self.win.is(":visible")) return false;
                 if (self.canshowonmouseevent) self.showCursor();
                 self.rail.active = true;
-              });          
-              self.jqbind(self.railh,"mouseleave",function() { 
+              });
+              self.jqbind(self.railh, "mouseleave", function() {
                 self.rail.active = false;
                 if (!self.rail.drag) self.hideCursor();
               });
-              
+
               if (self.opt.sensitiverail) {
-                self.bind(self.railh, "click", function(e){self.doRailClick(e,false,true)});
-                self.bind(self.railh, "dblclick", function(e){self.doRailClick(e, true, true) });
-                self.bind(self.cursorh, "click", function (e) { self.cancelEvent(e) });
-                self.bind(self.cursorh, "dblclick", function (e) { self.cancelEvent(e) });
+                self.bind(self.railh, "click", function(e) {
+                  self.doRailClick(e, false, true)
+                });
+                self.bind(self.railh, "dblclick", function(e) {
+                  self.doRailClick(e, true, true)
+                });
+                self.bind(self.cursorh, "click", function(e) {
+                  self.cancelEvent(e)
+                });
+                self.bind(self.cursorh, "dblclick", function(e) {
+                  self.cancelEvent(e)
+                });
               }
-              
+
             }
-          
+
           }
-    
-          if (!cap.cantouch&&!self.opt.touchbehavior) {
 
-            self.bind((cap.hasmousecapture)?self.win:document,"mouseup",self.onmouseup);            
-            self.bind(document,"mousemove",self.onmousemove);
-            if (self.onclick) self.bind(document,"click",self.onclick);
+          if (!cap.cantouch && !self.opt.touchbehavior) {
+
+            self.bind((cap.hasmousecapture) ? self.win : document, "mouseup", self.onmouseup);
+            self.bind(document, "mousemove", self.onmousemove);
+            if (self.onclick) self.bind(document, "click", self.onclick);
+
+            self.bind(self.cursor, "mousedown", self.onmousedown);
+            self.bind(self.cursor, "mouseup", self.onmouseup);
+
+            if (self.railh) {
+              self.bind(self.cursorh, "mousedown", function(e) {
+                self.onmousedown(e, true)
+              });
+              self.bind(self.cursorh, "mouseup", self.onmouseup);
+            }
             
-            if (!self.ispage&&self.opt.enablescrollonselection) {
-              self.bind(self.win[0],"mousedown",self.onselectionstart);
-              self.bind(document,"mouseup",self.onselectionend);
-              self.bind(self.cursor,"mouseup",self.onselectionend);
-              if (self.cursorh) self.bind(self.cursorh,"mouseup",self.onselectionend);
-              self.bind(document,"mousemove",self.onselectiondrag);
+            if (!self.ispage && self.opt.enablescrollonselection) {
+              self.bind(self.win[0], "mousedown", self.onselectionstart);
+              self.bind(document, "mouseup", self.onselectionend);
+              self.bind(self.cursor, "mouseup", self.onselectionend);
+              if (self.cursorh) self.bind(self.cursorh, "mouseup", self.onselectionend);
+              self.bind(document, "mousemove", self.onselectiondrag);
             }
 
-						if (self.zoom) {
-							self.jqbind(self.zoom,"mouseenter",function() {
-								if (self.canshowonmouseevent) self.showCursor();
-								self.rail.active = true;
-							});          
-							self.jqbind(self.zoom,"mouseleave",function() { 
-								self.rail.active = false;
-								if (!self.rail.drag) self.hideCursor();
-							});
-						}
+            if (self.zoom) {
+              self.jqbind(self.zoom, "mouseenter", function() {
+                if (self.canshowonmouseevent) self.showCursor();
+                self.rail.active = true;
+              });
+              self.jqbind(self.zoom, "mouseleave", function() {
+                self.rail.active = false;
+                if (!self.rail.drag) self.hideCursor();
+              });
+            }
 
           } else {
-            
-            self.bind((cap.hasmousecapture)?self.win:document,"mouseup",self.ontouchend);
-            self.bind(document,"mousemove",self.ontouchmove);
-            if (self.onclick) self.bind(document,"click",self.onclick);
-            
+
+            self.bind((cap.hasmousecapture) ? self.win : document, "mouseup", self.ontouchend);
+            self.bind(document, "mousemove", self.ontouchmove);
+            if (self.onclick) self.bind(document, "click", self.onclick);
+
             if (self.opt.cursordragontouch) {
-              self.bind(self.cursor,"mousedown",self.onmousedown);
-              self.bind(self.cursor,"mousemove",self.onmousemove);
-              self.cursorh&&self.bind(self.cursorh,"mousedown",self.onmousedown);
-              self.cursorh&&self.bind(self.cursorh,"mousemove",self.onmousemove);
+              self.bind(self.cursor, "mousedown", self.onmousedown);
+              self.bind(self.cursor, "mouseup", self.onmouseup);
+              //self.bind(self.cursor, "mousemove", self.onmousemove);
+              self.cursorh && self.bind(self.cursorh, "mousedown", function(e) {
+                self.onmousedown(e, true)
+              });
+              //self.cursorh && self.bind(self.cursorh, "mousemove", self.onmousemove);
+              self.cursorh && self.bind(self.cursorh, "mouseup", self.onmouseup);
             }
-          
+
           }
-						
-					if (self.opt.enablemousewheel) {
-						if (!self.isiframe) self.bind((cap.isie&&self.ispage) ? document : self.docscroll,"mousewheel",self.onmousewheel);
-						self.bind(self.rail,"mousewheel",self.onmousewheel);
-						if (self.railh) self.bind(self.railh,"mousewheel",self.onmousewheelhr);
-					}						
-						
-          if (!self.ispage&&!cap.cantouch&&!(/HTML|BODY/.test(self.win[0].nodeName))) {
-            if (!self.win.attr("tabindex")) self.win.attr({"tabindex":tabindexcounter++});
-            
-            self.jqbind(self.win,"focus",function(e) {
-              domfocus = (self.getTarget(e)).id||true;
+
+          if (self.opt.enablemousewheel) {
+            if (!self.isiframe) self.bind((cap.isie && self.ispage) ? document : self.win /*self.docscroll*/ , "mousewheel", self.onmousewheel);
+            self.bind(self.rail, "mousewheel", self.onmousewheel);
+            if (self.railh) self.bind(self.railh, "mousewheel", self.onmousewheelhr);
+          }
+
+          if (!self.ispage && !cap.cantouch && !(/HTML|^BODY/.test(self.win[0].nodeName))) {
+            if (!self.win.attr("tabindex")) self.win.attr({
+              "tabindex": tabindexcounter++
+            });
+
+            self.jqbind(self.win, "focus", function(e) {
+              domfocus = (self.getTarget(e)).id || true;
               self.hasfocus = true;
               if (self.canshowonmouseevent) self.noticeCursor();
             });
-            self.jqbind(self.win,"blur",function(e) {
+            self.jqbind(self.win, "blur", function(e) {
               domfocus = false;
               self.hasfocus = false;
             });
-            
-            self.jqbind(self.win,"mouseenter",function(e) {
-              mousefocus = (self.getTarget(e)).id||true;
+
+            self.jqbind(self.win, "mouseenter", function(e) {
+              mousefocus = (self.getTarget(e)).id || true;
               self.hasmousefocus = true;
               if (self.canshowonmouseevent) self.noticeCursor();
             });
-            self.jqbind(self.win,"mouseleave",function() {
+            self.jqbind(self.win, "mouseleave", function() {
               mousefocus = false;
               self.hasmousefocus = false;
+              if (!self.rail.drag) self.hideCursor();
             });
-            
-          };
-          
-        }  // !ie9mobile
-        
+
+          }
+
+        } // !ie9mobile
+
         //Thanks to http://www.quirksmode.org !!
         self.onkeypress = function(e) {
-          if (self.locked&&self.page.maxh==0) return true;
-          
+          if (self.railslocked && self.page.maxh == 0) return true;
+
           e = (e) ? e : window.e;
           var tg = self.getTarget(e);
-          if (tg&&/INPUT|TEXTAREA|SELECT|OPTION/.test(tg.nodeName)) {
-            var tp = tg.getAttribute('type')||tg.type||false;            
-            if ((!tp)||!(/submit|button|cancel/i.tp)) return true;
+          if (tg && /INPUT|TEXTAREA|SELECT|OPTION/.test(tg.nodeName)) {
+            var tp = tg.getAttribute('type') || tg.type || false;
+            if ((!tp) || !(/submit|button|cancel/i.tp)) return true;
           }
-          
-          if (self.hasfocus||(self.hasmousefocus&&!domfocus)||(self.ispage&&!domfocus&&!mousefocus)) {
-            var key = e.keyCode;
-            
-            if (self.locked&&key!=27) return self.cancelEvent(e);
 
-            var ctrl = e.ctrlKey||false;
+          if ($(tg).attr('contenteditable')) return true;
+
+          if (self.hasfocus || (self.hasmousefocus && !domfocus) || (self.ispage && !domfocus && !mousefocus)) {
+            var key = e.keyCode;
+
+            if (self.railslocked && key != 27) return self.cancelEvent(e);
+
+            var ctrl = e.ctrlKey || false;
             var shift = e.shiftKey || false;
-            
+
             var ret = false;
             switch (key) {
               case 38:
               case 63233: //safari
-                self.doScrollBy(24*3);
+                self.doScrollBy(24 * 3);
                 ret = true;
                 break;
               case 40:
               case 63235: //safari
-                self.doScrollBy(-24*3);
+                self.doScrollBy(-24 * 3);
                 ret = true;
                 break;
               case 37:
               case 63232: //safari
                 if (self.railh) {
-                  (ctrl) ? self.doScrollLeft(0) : self.doScrollLeftBy(24*3);
+                  (ctrl) ? self.doScrollLeft(0): self.doScrollLeftBy(24 * 3);
                   ret = true;
                 }
                 break;
               case 39:
               case 63234: //safari
                 if (self.railh) {
-                  (ctrl) ? self.doScrollLeft(self.page.maxw) : self.doScrollLeftBy(-24*3);
+                  (ctrl) ? self.doScrollLeft(self.page.maxw): self.doScrollLeftBy(-24 * 3);
                   ret = true;
                 }
                 break;
@@ -25423,17 +25180,17 @@ jQuery._farbtastic = function (container, callback) {
                 break;
               case 36:
               case 63273: // safari                
-                (self.railh&&ctrl) ? self.doScrollPos(0,0) : self.doScrollTo(0);
+                (self.railh && ctrl) ? self.doScrollPos(0, 0): self.doScrollTo(0);
                 ret = true;
                 break;
               case 35:
               case 63275: // safari
-                (self.railh&&ctrl) ? self.doScrollPos(self.page.maxw,self.page.maxh) : self.doScrollTo(self.page.maxh);
+                (self.railh && ctrl) ? self.doScrollPos(self.page.maxw, self.page.maxh): self.doScrollTo(self.page.maxh);
                 ret = true;
                 break;
               case 32:
                 if (self.opt.spacebarenabled) {
-                  (shift) ? self.doScrollBy(self.view.h) : self.doScrollBy(-self.view.h);
+                  (shift) ? self.doScrollBy(self.view.h): self.doScrollBy(-self.view.h);
                   ret = true;
                 }
                 break;
@@ -25447,268 +25204,348 @@ jQuery._farbtastic = function (container, callback) {
             if (ret) return self.cancelEvent(e);
           }
         };
-        
-        if (self.opt.enablekeyboard) self.bind(document,(cap.isopera&&!cap.isopera12)?"keypress":"keydown",self.onkeypress);
-        
-        self.bind(window,'resize',self.lazyResize);
-        self.bind(window,'orientationchange',self.lazyResize);
-        
-        self.bind(window,"load",self.lazyResize);
-		
-        if (cap.ischrome&&!self.ispage&&!self.haswrapper) { //chrome void scrollbar bug - it persists in version 26
-          var tmp=self.win.attr("style");
-					var ww = parseFloat(self.win.css("width"))+1;
-          self.win.css('width',ww);
-          self.synched("chromefix",function(){self.win.attr("style",tmp)});
+
+        if (self.opt.enablekeyboard) self.bind(document, (cap.isopera && !cap.isopera12) ? "keypress" : "keydown", self.onkeypress);
+
+        self.bind(document, "keydown", function(e) {
+          var ctrl = e.ctrlKey || false;
+          if (ctrl) self.wheelprevented = true;
+        });
+        self.bind(document, "keyup", function(e) {
+          var ctrl = e.ctrlKey || false;
+          if (!ctrl) self.wheelprevented = false;
+        });
+        self.bind(window,"blur",function(e){
+          self.wheelprevented = false;
+        });        
+
+        self.bind(window, 'resize', self.lazyResize);
+        self.bind(window, 'orientationchange', self.lazyResize);
+
+        self.bind(window, "load", self.lazyResize);
+
+        if (cap.ischrome && !self.ispage && !self.haswrapper) { //chrome void scrollbar bug - it persists in version 26
+          var tmp = self.win.attr("style");
+          var ww = parseFloat(self.win.css("width")) + 1;
+          self.win.css('width', ww);
+          self.synched("chromefix", function() {
+            self.win.attr("style", tmp)
+          });
         }
-        
-        
-// Trying a cross-browser implementation - good luck!
+
+
+        // Trying a cross-browser implementation - good luck!
 
         self.onAttributeChange = function(e) {
-          self.lazyResize(250);
+          self.lazyResize(self.isieold ? 250 : 30);
+        };
+
+        if (ClsMutationObserver !== false) {
+          self.observerbody = new ClsMutationObserver(function(mutations) {
+            mutations.forEach(function(mut){
+              if (mut.type=="attributes") {
+                return ($("body").hasClass("modal-open")) ? self.hide() : self.show();  // Support for Bootstrap modal
+              }
+            });  
+            if (document.body.scrollHeight!=self.page.maxh) return self.lazyResize(30);
+          });
+          self.observerbody.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: false,
+            attributes: true,
+            attributeFilter: ['class']
+          });
         }
         
-        if (!self.ispage&&!self.haswrapper) {
+        if (!self.ispage && !self.haswrapper) {
           // redesigned MutationObserver for Chrome18+/Firefox14+/iOS6+ with support for: remove div, add/remove content
-          if (clsMutationObserver !== false) {
-            self.observer = new clsMutationObserver(function(mutations) {            
+          if (ClsMutationObserver !== false) {
+            self.observer = new ClsMutationObserver(function(mutations) {
               mutations.forEach(self.onAttributeChange);
             });
-            self.observer.observe(self.win[0],{childList: true, characterData: false, attributes: true, subtree: false});
-            
-            self.observerremover = new clsMutationObserver(function(mutations) {
-               mutations.forEach(function(mo){
-                 if (mo.removedNodes.length>0) {
-                   for (var dd in mo.removedNodes) {
-                     if (mo.removedNodes[dd]==self.win[0]) return self.remove();
-                   }
-                 }
-               });
+            self.observer.observe(self.win[0], {
+              childList: true,
+              characterData: false,
+              attributes: true,
+              subtree: false
             });
-            self.observerremover.observe(self.win[0].parentNode,{childList: true, characterData: false, attributes: false, subtree: false});
-            
-          } else {        
-            self.bind(self.win,(cap.isie&&!cap.isie9)?"propertychange":"DOMAttrModified",self.onAttributeChange);            
-            if (cap.isie9) self.win[0].attachEvent("onpropertychange",self.onAttributeChange); //IE9 DOMAttrModified bug
-            self.bind(self.win,"DOMNodeRemoved",function(e){
-              if (e.target==self.win[0]) self.remove();
+            self.observerremover = new ClsMutationObserver(function(mutations) {
+              mutations.forEach(function(mo) {
+                if (mo.removedNodes.length > 0) {
+                  for (var dd in mo.removedNodes) {
+                    if (!!self && (mo.removedNodes[dd] == self.win[0])) return self.remove();
+                  }
+                }
+              });
+            });
+            self.observerremover.observe(self.win[0].parentNode, {
+              childList: true,
+              characterData: false,
+              attributes: false,
+              subtree: false
+            });
+          } else {
+            self.bind(self.win, (cap.isie && !cap.isie9) ? "propertychange" : "DOMAttrModified", self.onAttributeChange);
+            if (cap.isie9) self.win[0].attachEvent("onpropertychange", self.onAttributeChange); //IE9 DOMAttrModified bug
+            self.bind(self.win, "DOMNodeRemoved", function(e) {
+              if (e.target == self.win[0]) self.remove();
             });
           }
         }
-        
-//
 
-        if (!self.ispage&&self.opt.boxzoom) self.bind(window,"resize",self.resizeZoom);
-        if (self.istextarea) self.bind(self.win,"mouseup",self.lazyResize);
-        
-        self.checkrtlmode = true;
+        //
+
+        if (!self.ispage && self.opt.boxzoom) self.bind(window, "resize", self.resizeZoom);
+        if (self.istextarea) self.bind(self.win, "mouseup", self.lazyResize);
+
+        //        self.checkrtlmode = true;
         self.lazyResize(30);
-        
+
       }
       
       if (this.doc[0].nodeName == 'IFRAME') {
-        function oniframeload(e) {
+        var oniframeload = function() {
           self.iframexd = false;
+          var doc;
           try {
-            var doc = 'contentDocument' in this ? this.contentDocument : this.contentWindow.document;
-            var a = doc.domain;            
-          } catch(e){self.iframexd = true;doc=false};
+            doc = 'contentDocument' in this ? this.contentDocument : this.contentWindow.document;
+            var a = doc.domain;
+          } catch (e) {
+            self.iframexd = true;
+            doc = false
+          }
           
           if (self.iframexd) {
             if ("console" in window) console.log('NiceScroll error: policy restriced iframe');
-            return true;  //cross-domain - I can't manage this        
+            return true; //cross-domain - I can't manage this        
           }
-          
+
           self.forcescreen = true;
-          
-          if (self.isiframe) {            
+
+          if (self.isiframe) {
             self.iframe = {
-              "doc":$(doc),
-              "html":self.doc.contents().find('html')[0],
-              "body":self.doc.contents().find('body')[0]
+              "doc": $(doc),
+              "html": self.doc.contents().find('html')[0],
+              "body": self.doc.contents().find('body')[0]
             };
-            self.getContentSize = function(){
+            self.getContentSize = function() {
               return {
-                w:Math.max(self.iframe.html.scrollWidth,self.iframe.body.scrollWidth),
-                h:Math.max(self.iframe.html.scrollHeight,self.iframe.body.scrollHeight)
-              }
-            }            
-            self.docscroll = $(self.iframe.body);//$(this.contentWindow);
+                w: Math.max(self.iframe.html.scrollWidth, self.iframe.body.scrollWidth),
+                h: Math.max(self.iframe.html.scrollHeight, self.iframe.body.scrollHeight)
+              };
+            };
+            self.docscroll = $(self.iframe.body); //$(this.contentWindow);
           }
-          
-          if (!cap.isios&&self.opt.iframeautoresize&&!self.isiframe) {
+
+          if (!cap.isios && self.opt.iframeautoresize && !self.isiframe) {
             self.win.scrollTop(0); // reset position
-            self.doc.height("");  //reset height to fix browser bug
-            var hh=Math.max(doc.getElementsByTagName('html')[0].scrollHeight,doc.body.scrollHeight);
-            self.doc.height(hh);          
+            self.doc.height(""); //reset height to fix browser bug
+            var hh = Math.max(doc.getElementsByTagName('html')[0].scrollHeight, doc.body.scrollHeight);
+            self.doc.height(hh);
           }
           self.lazyResize(30);
-          
-          if (cap.isie7) self.css($(self.iframe.html),{'overflow-y':'hidden'});
-          //self.css($(doc.body),{'overflow-y':'hidden'});
-          self.css($(self.iframe.body),{'overflow-y':'hidden'});
-          
+
+          if (cap.isie7) self.css($(self.iframe.html), {
+            'overflow-y': 'hidden'
+          });
+          self.css($(self.iframe.body), {
+            'overflow-y': 'hidden'
+          });
+
+          if (cap.isios && self.haswrapper) {
+            self.css($(doc.body), {
+              '-webkit-transform': 'translate3d(0,0,0)'
+            }); // avoid iFrame content clipping - thanks to http://blog.derraab.com/2012/04/02/avoid-iframe-content-clipping-with-css-transform-on-ios/
+          }
+
           if ('contentWindow' in this) {
-            self.bind(this.contentWindow,"scroll",self.onscroll);  //IE8 & minor
-          } else {          
-            self.bind(doc,"scroll",self.onscroll);
-          }                    
-          
+            self.bind(this.contentWindow, "scroll", self.onscroll); //IE8 & minor
+          } else {
+            self.bind(doc, "scroll", self.onscroll);
+          }
+
           if (self.opt.enablemousewheel) {
-            self.bind(doc,"mousewheel",self.onmousewheel);
+            self.bind(doc, "mousewheel", self.onmousewheel);
           }
-          
-          if (self.opt.enablekeyboard) self.bind(doc,(cap.isopera)?"keypress":"keydown",self.onkeypress);
-          
-          if (cap.cantouch||self.opt.touchbehavior) {
-            self.bind(doc,"mousedown",self.onmousedown);
-            self.bind(doc,"mousemove",function(e){self.onmousemove(e,true)});
-            if (self.opt.grabcursorenabled&&cap.cursorgrabvalue) self.css($(doc.body),{'cursor':cap.cursorgrabvalue});
+
+          if (self.opt.enablekeyboard) self.bind(doc, (cap.isopera) ? "keypress" : "keydown", self.onkeypress);
+
+          if (cap.cantouch || self.opt.touchbehavior) {
+            self.bind(doc, "mousedown", self.ontouchstart);
+            self.bind(doc, "mousemove", function(e) {
+              return self.ontouchmove(e, true)
+            });
+            if (self.opt.grabcursorenabled && cap.cursorgrabvalue) self.css($(doc.body), {
+              'cursor': cap.cursorgrabvalue
+            });
           }
-          
-          self.bind(doc,"mouseup",self.onmouseup);
-          
+
+          self.bind(doc, "mouseup", self.ontouchend);
+
           if (self.zoom) {
-            if (self.opt.dblclickzoom) self.bind(doc,'dblclick',self.doZoom);
-            if (self.ongesturezoom) self.bind(doc,"gestureend",self.ongesturezoom);             
+            if (self.opt.dblclickzoom) self.bind(doc, 'dblclick', self.doZoom);
+            if (self.ongesturezoom) self.bind(doc, "gestureend", self.ongesturezoom);
           }
         };
-        
-        if (this.doc[0].readyState&&this.doc[0].readyState=="complete"){
-          setTimeout(function(){oniframeload.call(self.doc[0],false)},500);
+
+        if (this.doc[0].readyState && this.doc[0].readyState == "complete") {
+          setTimeout(function() {
+            oniframeload.call(self.doc[0], false)
+          }, 500);
         }
-        self.bind(this.doc,"load",oniframeload);
-        
+        self.bind(this.doc, "load", oniframeload);
+
       }
-      
+
     };
-    
-    this.showCursor = function(py,px) {
+
+    this.showCursor = function(py, px) {
       if (self.cursortimeout) {
         clearTimeout(self.cursortimeout);
         self.cursortimeout = 0;
       }
       if (!self.rail) return;
       if (self.autohidedom) {
-        self.autohidedom.stop().css({opacity:self.opt.cursoropacitymax});
+        self.autohidedom.stop().css({
+          opacity: self.opt.cursoropacitymax
+        });
         self.cursoractive = true;
       }
-      
-      if (!self.rail.drag||self.rail.drag.pt!=1) {      
-        if ((typeof py != "undefined")&&(py!==false)) {
-          self.scroll.y = Math.round(py * 1/self.scrollratio.y);
+
+      if (!self.rail.drag || self.rail.drag.pt != 1) {
+        if ((typeof py != "undefined") && (py !== false)) {
+          self.scroll.y = Math.round(py * 1 / self.scrollratio.y);
         }
         if (typeof px != "undefined") {
-          self.scroll.x = Math.round(px * 1/self.scrollratio.x);
+          self.scroll.x = Math.round(px * 1 / self.scrollratio.x);
         }
       }
-      
-      self.cursor.css({height:self.cursorheight,top:self.scroll.y}); 
-      if (self.cursorh) {
-        (!self.rail.align&&self.rail.visibility) ? self.cursorh.css({width:self.cursorwidth,left:self.scroll.x+self.rail.width}) : self.cursorh.css({width:self.cursorwidth,left:self.scroll.x});
+
+      self.cursor.css({
+        height: self.cursorheight,
+        top: self.scroll.y
+      });
+      if (self.cursorh) {        
+        var lx = (self.hasreversehr) ? self.scrollvaluemaxw-self.scroll.x : self.scroll.x;
+        (!self.rail.align && self.rail.visibility) ? self.cursorh.css({
+          width: self.cursorwidth,
+          left: lx + self.rail.width
+        }): self.cursorh.css({
+          width: self.cursorwidth,
+          left: lx
+        });
         self.cursoractive = true;
       }
-      
-      if (self.zoom) self.zoom.stop().css({opacity:self.opt.cursoropacitymax});      
+
+      if (self.zoom) self.zoom.stop().css({
+        opacity: self.opt.cursoropacitymax
+      });
     };
-    
+
     this.hideCursor = function(tm) {
       if (self.cursortimeout) return;
       if (!self.rail) return;
       if (!self.autohidedom) return;
+      if (self.hasmousefocus && self.opt.autohidemode == "leave") return;
       self.cursortimeout = setTimeout(function() {
-         if (!self.rail.active||!self.showonmouseevent) {
-           self.autohidedom.stop().animate({opacity:self.opt.cursoropacitymin});
-           if (self.zoom) self.zoom.stop().animate({opacity:self.opt.cursoropacitymin});
-           self.cursoractive = false;
-         }
-         self.cursortimeout = 0;
-      },tm||self.opt.hidecursordelay);
+        if (!self.rail.active || !self.showonmouseevent) {
+          self.autohidedom.stop().animate({
+            opacity: self.opt.cursoropacitymin
+          });
+          if (self.zoom) self.zoom.stop().animate({
+            opacity: self.opt.cursoropacitymin
+          });
+          self.cursoractive = false;
+        }
+        self.cursortimeout = 0;
+      }, tm || self.opt.hidecursordelay);
     };
-    
-    this.noticeCursor = function(tm,py,px) {
-      self.showCursor(py,px);
+
+    this.noticeCursor = function(tm, py, px) {
+      self.showCursor(py, px);
       if (!self.rail.active) self.hideCursor(tm);
     };
-        
-    this.getContentSize = 
+
+    this.getContentSize =
       (self.ispage) ?
-        function(){
-          return {
-            w:Math.max(document.body.scrollWidth,document.documentElement.scrollWidth),
-            h:Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)
-          }
-        }
-      : (self.haswrapper) ?
-        function(){
-          return {
-            w:self.doc.outerWidth()+parseInt(self.win.css('paddingLeft'))+parseInt(self.win.css('paddingRight')),
-            h:self.doc.outerHeight()+parseInt(self.win.css('paddingTop'))+parseInt(self.win.css('paddingBottom'))
-          }
-        }
-      : function() {        
+      function() {
         return {
-          w:self.docscroll[0].scrollWidth,
-          h:self.docscroll[0].scrollHeight
+          w: Math.max(document.body.scrollWidth, document.documentElement.scrollWidth),
+          h: Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+        }
+      } : (self.haswrapper) ?
+      function() {
+        return {
+          w: self.doc.outerWidth() + parseInt(self.win.css('paddingLeft')) + parseInt(self.win.css('paddingRight')),
+          h: self.doc.outerHeight() + parseInt(self.win.css('paddingTop')) + parseInt(self.win.css('paddingBottom'))
+        }
+      } : function() {
+        return {
+          w: self.docscroll[0].scrollWidth,
+          h: self.docscroll[0].scrollHeight
         }
       };
-  
-    this.onResize = function(e,page) {
+
+    this.onResize = function(e, page) {
     
-	  if (!self.win) return false;
-	
-      if (!self.haswrapper&&!self.ispage) {
-        if (self.win.css('display')=='none') {
+      if (!self || !self.win) return false;
+
+      if (!self.haswrapper && !self.ispage) {
+        if (self.win.css('display') == 'none') {
           if (self.visibility) self.hideRail().hideRailHr();
           return false;
-        } else {          
-          if (!self.hidden&&!self.visibility) self.showRail().showRailHr();
-        }        
+        } else {
+          if (!self.hidden && !self.visibility) self.showRail().showRailHr();
+        }
       }
-    
+
       var premaxh = self.page.maxh;
       var premaxw = self.page.maxw;
 
-      var preview = {h:self.view.h,w:self.view.w};   
-      
-      self.view = {
-        w:(self.ispage) ? self.win.width() : parseInt(self.win[0].clientWidth),
-        h:(self.ispage) ? self.win.height() : parseInt(self.win[0].clientHeight)
+      var preview = {
+        h: self.view.h,
+        w: self.view.w
       };
-      
+
+      self.view = {
+        w: (self.ispage) ? self.win.width() : parseInt(self.win[0].clientWidth),
+        h: (self.ispage) ? self.win.height() : parseInt(self.win[0].clientHeight)
+      };
+
       self.page = (page) ? page : self.getContentSize();
+
+      self.page.maxh = Math.max(0, self.page.h - self.view.h);
+      self.page.maxw = Math.max(0, self.page.w - self.view.w);
       
-      self.page.maxh = Math.max(0,self.page.h - self.view.h);
-      self.page.maxw = Math.max(0,self.page.w - self.view.w);
-      
-      if ((self.page.maxh==premaxh)&&(self.page.maxw==premaxw)&&(self.view.w==preview.w)) {
+      if ((self.page.maxh == premaxh) && (self.page.maxw == premaxw) && (self.view.w == preview.w) && (self.view.h == preview.h)) {
         // test position        
         if (!self.ispage) {
           var pos = self.win.offset();
           if (self.lastposition) {
             var lst = self.lastposition;
-            if ((lst.top==pos.top)&&(lst.left==pos.left)) return self; //nothing to do            
+            if ((lst.top == pos.top) && (lst.left == pos.left)) return self; //nothing to do            
           }
           self.lastposition = pos;
         } else {
           return self; //nothing to do
         }
       }
-      
-      if (self.page.maxh==0) {
-        self.hideRail();        
+
+      if (self.page.maxh == 0) {
+        self.hideRail();
         self.scrollvaluemax = 0;
         self.scroll.y = 0;
         self.scrollratio.y = 0;
         self.cursorheight = 0;
         self.setScrollTop(0);
         self.rail.scrollable = false;
-      } else {       
+      } else {
+        self.page.maxh -= (self.opt.railpadding.top + self.opt.railpadding.bottom);  //**
         self.rail.scrollable = true;
       }
-      
-      if (self.page.maxw==0) {
+
+      if (self.page.maxw == 0) {
         self.hideRailHr();
         self.scrollvaluemaxw = 0;
         self.scroll.x = 0;
@@ -25716,74 +25553,77 @@ jQuery._farbtastic = function (container, callback) {
         self.cursorwidth = 0;
         self.setScrollLeft(0);
         self.railh.scrollable = false;
-      } else {        
+      } else {
+        self.page.maxw -= (self.opt.railpadding.left + self.opt.railpadding.right);  //**
         self.railh.scrollable = true;
       }
-  
-      self.locked = (self.page.maxh==0)&&(self.page.maxw==0);
-      if (self.locked) {
-				if (!self.ispage) self.updateScrollBar(self.view);
-			  return false;
-		  }
 
-      if (!self.hidden&&!self.visibility) {
-        self.showRail().showRailHr();
-      }      
-      else if (!self.hidden&&!self.railh.visibility) self.showRailHr();
-      
-      if (self.istextarea&&self.win.css('resize')&&self.win.css('resize')!='none') self.view.h-=20;      
-
-      self.cursorheight = Math.min(self.view.h,Math.round(self.view.h * (self.view.h / self.page.h)));
-      self.cursorheight = (self.opt.cursorfixedheight) ? self.opt.cursorfixedheight : Math.max(self.opt.cursorminheight,self.cursorheight);
-
-      self.cursorwidth = Math.min(self.view.w,Math.round(self.view.w * (self.view.w / self.page.w)));
-      self.cursorwidth = (self.opt.cursorfixedheight) ? self.opt.cursorfixedheight : Math.max(self.opt.cursorminheight,self.cursorwidth);
-      
-      self.scrollvaluemax = self.view.h-self.cursorheight-self.cursor.hborder;
-      
-      if (self.railh) {
-        self.railh.width = (self.page.maxh>0) ? (self.view.w-self.rail.width) : self.view.w;
-        self.scrollvaluemaxw = self.railh.width-self.cursorwidth-self.cursorh.wborder;
+      self.railslocked = (self.locked) || ((self.page.maxh == 0) && (self.page.maxw == 0));
+      if (self.railslocked) {
+        if (!self.ispage) self.updateScrollBar(self.view);
+        return false;
       }
-      
+
+      if (!self.hidden && !self.visibility) {
+        self.showRail().showRailHr();
+      }
+      else if (!self.hidden && !self.railh.visibility) self.showRailHr();
+
+      if (self.istextarea && self.win.css('resize') && self.win.css('resize') != 'none') self.view.h -= 20;
+
+      self.cursorheight = Math.min(self.view.h, Math.round(self.view.h * (self.view.h / self.page.h)));
+      self.cursorheight = (self.opt.cursorfixedheight) ? self.opt.cursorfixedheight : Math.max(self.opt.cursorminheight, self.cursorheight);
+
+      self.cursorwidth = Math.min(self.view.w, Math.round(self.view.w * (self.view.w / self.page.w)));
+      self.cursorwidth = (self.opt.cursorfixedheight) ? self.opt.cursorfixedheight : Math.max(self.opt.cursorminheight, self.cursorwidth);
+
+      self.scrollvaluemax = self.view.h - self.cursorheight - self.cursor.hborder - (self.opt.railpadding.top + self.opt.railpadding.bottom);  //**
+
+      if (self.railh) {
+        self.railh.width = (self.page.maxh > 0) ? (self.view.w - self.rail.width) : self.view.w;
+        self.scrollvaluemaxw = self.railh.width - self.cursorwidth - self.cursorh.wborder - (self.opt.railpadding.left + self.opt.railpadding.right);  //**
+      }
+
+      /*
       if (self.checkrtlmode&&self.railh) {
         self.checkrtlmode = false;
         if (self.opt.rtlmode&&self.scroll.x==0) self.setScrollLeft(self.page.maxw);
       }
-      
+*/
+
       if (!self.ispage) self.updateScrollBar(self.view);
-      
+
       self.scrollratio = {
-        x:(self.page.maxw/self.scrollvaluemaxw),
-        y:(self.page.maxh/self.scrollvaluemax)
+        x: (self.page.maxw / self.scrollvaluemaxw),
+        y: (self.page.maxh / self.scrollvaluemax)
       };
-     
+
       var sy = self.getScrollTop();
-      if (sy>self.page.maxh) {
+      if (sy > self.page.maxh) {
         self.doScrollTop(self.page.maxh);
-      } else {     
-        self.scroll.y = Math.round(self.getScrollTop() * (1/self.scrollratio.y));
-        self.scroll.x = Math.round(self.getScrollLeft() * (1/self.scrollratio.x));
-        if (self.cursoractive) self.noticeCursor();     
-      }      
-      
-      if (self.scroll.y&&(self.getScrollTop()==0)) self.doScrollTo(Math.floor(self.scroll.y*self.scrollratio.y));
-      
+      } else {
+        self.scroll.y = Math.round(self.getScrollTop() * (1 / self.scrollratio.y));
+        self.scroll.x = Math.round(self.getScrollLeft() * (1 / self.scrollratio.x));
+        if (self.cursoractive) self.noticeCursor();
+      }
+
+      if (self.scroll.y && (self.getScrollTop() == 0)) self.doScrollTo(Math.floor(self.scroll.y * self.scrollratio.y));
+
       return self;
     };
-    
+
     this.resize = self.onResize;
-    
-    this.lazyResize = function(tm) {   // event debounce
+
+    this.lazyResize = function(tm) { // event debounce
       tm = (isNaN(tm)) ? 30 : tm;
-      self.delayed('resize',self.resize,tm);
+      self.debounced('resize', self.resize, tm);
       return self;
-    }
-   
-// modified by MDN https://developer.mozilla.org/en-US/docs/DOM/Mozilla_event_reference/wheel
-    function _modernWheelEvent(dom,name,fn,bubble) {      
-      self._bind(dom,name,function(e){
-        var  e = (e) ? e : window.event;
+    };
+
+    // modified by MDN https://developer.mozilla.org/en-US/docs/DOM/Mozilla_event_reference/wheel
+    function _modernWheelEvent(dom, name, fn, bubble) {
+      self._bind(dom, name, function(e) {
+        var e = (e) ? e : window.event;
         var event = {
           original: e,
           target: e.target || e.srcElement,
@@ -25796,595 +25636,704 @@ jQuery._farbtastic = function (container, callback) {
             return false;
           },
           stopImmediatePropagation: function() {
-            (e.stopImmediatePropagation) ? e.stopImmediatePropagation() : e.cancelBubble = true;
+            (e.stopImmediatePropagation) ? e.stopImmediatePropagation(): e.cancelBubble = true;
           }
         };
-            
-        if (name=="mousewheel") {
-          event.deltaY = - 1/40 * e.wheelDelta;
-          e.wheelDeltaX && (event.deltaX = - 1/40 * e.wheelDeltaX);
+
+        if (name == "mousewheel") {
+          event.deltaY = -1 / 40 * e.wheelDelta;
+          e.wheelDeltaX && (event.deltaX = -1 / 40 * e.wheelDeltaX);
         } else {
           event.deltaY = e.detail;
         }
 
-        return fn.call(dom,event);      
-      },bubble);
-    };     
-   
-    this._bind = function(el,name,fn,bubble) {  // primitive bind
-      self.events.push({e:el,n:name,f:fn,b:bubble,q:false});
-      if (el.addEventListener) {
-        el.addEventListener(name,fn,bubble||false);
-      }
-      else if (el.attachEvent) {
-        el.attachEvent("on"+name,fn);
-      }
-      else {
-        el["on"+name] = fn;        
-      }        
+        return fn.call(dom, event);
+      }, bubble);
     };
-   
-    this.jqbind = function(dom,name,fn) {  // use jquery bind for non-native events (mouseenter/mouseleave)
-      self.events.push({e:dom,n:name,f:fn,q:true});
-      $(dom).bind(name,fn);
-    }
-   
-    this.bind = function(dom,name,fn,bubble) {  // touch-oriented & fixing jquery bind
+
+
+
+    this.jqbind = function(dom, name, fn) { // use jquery bind for non-native events (mouseenter/mouseleave)
+      self.events.push({
+        e: dom,
+        n: name,
+        f: fn,
+        q: true
+      });
+      $(dom).bind(name, fn);
+    };
+
+    this.bind = function(dom, name, fn, bubble) { // touch-oriented & fixing jquery bind
       var el = ("jquery" in dom) ? dom[0] : dom;
-      
-      if (name=='mousewheel') {
-        if ("onwheel" in self.win) {            
-          self._bind(el,"wheel",fn,bubble||false);
-        } else {            
-          var wname = (typeof document.onmousewheel != "undefined") ? "mousewheel" : "DOMMouseScroll";  // older IE/Firefox
-          _modernWheelEvent(el,wname,fn,bubble||false);
-          if (wname=="DOMMouseScroll") _modernWheelEvent(el,"MozMousePixelScroll",fn,bubble||false);  // Firefox legacy
+
+      if (name == 'mousewheel') {
+        if (window.addEventListener||'onwheel' in document) { // modern brosers & IE9 detection fix
+          self._bind(el, "wheel", fn, bubble || false);
+        } else {
+          var wname = (typeof document.onmousewheel != "undefined") ? "mousewheel" : "DOMMouseScroll"; // older IE/Firefox
+          _modernWheelEvent(el, wname, fn, bubble || false);
+          if (wname == "DOMMouseScroll") _modernWheelEvent(el, "MozMousePixelScroll", fn, bubble || false); // Firefox legacy
         }
-      } 
-      else if (el.addEventListener) {
-        if (cap.cantouch && /mouseup|mousedown|mousemove/.test(name)) {  // touch device support
-          var tt=(name=='mousedown')?'touchstart':(name=='mouseup')?'touchend':'touchmove';
-          self._bind(el,tt,function(e){
+      } else if (el.addEventListener) {
+        if (cap.cantouch && /mouseup|mousedown|mousemove/.test(name)) { // touch device support
+          var tt = (name == 'mousedown') ? 'touchstart' : (name == 'mouseup') ? 'touchend' : 'touchmove';
+          self._bind(el, tt, function(e) {
             if (e.touches) {
-              if (e.touches.length<2) {var ev=(e.touches.length)?e.touches[0]:e;ev.original=e;fn.call(this,ev);}
-            } 
-            else if (e.changedTouches) {var ev=e.changedTouches[0];ev.original=e;fn.call(this,ev);}  //blackberry
-          },bubble||false);
+              if (e.touches.length < 2) {
+                var ev = (e.touches.length) ? e.touches[0] : e;
+                ev.original = e;
+                fn.call(this, ev);
+              }
+            } else if (e.changedTouches) {
+              var ev = e.changedTouches[0];
+              ev.original = e;
+              fn.call(this, ev);
+            } //blackberry
+          }, bubble || false);
         }
-        self._bind(el,name,fn,bubble||false);
-        if (cap.cantouch && name=="mouseup") self._bind(el,"touchcancel",fn,bubble||false);
-      }
-      else {
-        self._bind(el,name,function(e) {
-          e = e||window.event||false;
+        self._bind(el, name, fn, bubble || false);
+        if (cap.cantouch && name == "mouseup") self._bind(el, "touchcancel", fn, bubble || false);
+      } else {
+        self._bind(el, name, function(e) {
+          e = e || window.event || false;
           if (e) {
-            if (e.srcElement) e.target=e.srcElement;
+            if (e.srcElement) e.target = e.srcElement;
           }
           if (!("pageY" in e)) {
             e.pageX = e.clientX + document.documentElement.scrollLeft;
-            e.pageY = e.clientY + document.documentElement.scrollTop; 
+            e.pageY = e.clientY + document.documentElement.scrollTop;
           }
-          return ((fn.call(el,e)===false)||bubble===false) ? self.cancelEvent(e) : true;
+          return ((fn.call(el, e) === false) || bubble === false) ? self.cancelEvent(e) : true;
         });
-      } 
-    };
-    
-    this._unbind = function(el,name,fn,bub) {  // primitive unbind
-      if (el.removeEventListener) {
-        el.removeEventListener(name,fn,bub);
       }
-      else if (el.detachEvent) {
-        el.detachEvent('on'+name,fn);
-      } else {
-        el['on'+name] = false;
-      }
-    };
-    
-    this.unbindAll = function() {
-      for(var a=0;a<self.events.length;a++) {
-        var r = self.events[a];        
-        (r.q) ? r.e.unbind(r.n,r.f) : self._unbind(r.e,r.n,r.f,r.b);
-      }
-    };
-    
-    // Thanks to http://www.switchonthecode.com !!
-    this.cancelEvent = function(e) {
-      var e = (e.original) ? e.original : (e) ? e : window.event||false;
-      if (!e) return false;      
-      if(e.preventDefault) e.preventDefault();
-      if(e.stopPropagation) e.stopPropagation();
-      if(e.preventManipulation) e.preventManipulation();  //IE10
-      e.cancelBubble = true;
-      e.cancel = true;
-      e.returnValue = false;
-      return false;
     };
 
-    this.stopPropagation = function(e) {
-      var e = (e.original) ? e.original : (e) ? e : window.event||false;
-      if (!e) return false;
-      if (e.stopPropagation) return e.stopPropagation();
-      if (e.cancelBubble) e.cancelBubble=true;
-      return false;
+    if (cap.haseventlistener) {  // W3C standard model
+      this._bind = function(el, name, fn, bubble) { // primitive bind
+        self.events.push({
+          e: el,
+          n: name,
+          f: fn,
+          b: bubble,
+          q: false
+        });
+        el.addEventListener(name, fn, bubble || false);
+      };    
+      this.cancelEvent = function(e) {
+        if (!e) return false;
+        var e = (e.original) ? e.original : e;
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.preventManipulation) e.preventManipulation(); //IE10
+        return false;
+      };
+      this.stopPropagation = function(e) {
+        if (!e) return false;
+        var e = (e.original) ? e.original : e;
+        e.stopPropagation();
+        return false;
+      };
+      this._unbind = function(el, name, fn, bub) { // primitive unbind
+        el.removeEventListener(name, fn, bub);
+      };
+    } else {  // old IE model
+      this._bind = function(el, name, fn, bubble) { // primitive bind
+        self.events.push({
+          e: el,
+          n: name,
+          f: fn,
+          b: bubble,
+          q: false
+        });
+        if (el.attachEvent) {
+          el.attachEvent("on" + name, fn);
+        } else {
+          el["on" + name] = fn;
+        }
+      };    
+      // Thanks to http://www.switchonthecode.com !!
+      this.cancelEvent = function(e) {
+        var e = window.event || false;
+        if (!e) return false;
+        e.cancelBubble = true;
+        e.cancel = true;
+        e.returnValue = false;
+        return false;
+      };
+      this.stopPropagation = function(e) {
+        var e = window.event || false;
+        if (!e) return false;
+        e.cancelBubble = true;
+        return false;
+      };
+      this._unbind = function(el, name, fn, bub) { // primitive unbind IE old
+        if (el.detachEvent) {
+          el.detachEvent('on' + name, fn);
+        } else {
+          el['on' + name] = false;
+        }
+      };
     }
     
+    this.unbindAll = function() {
+      for (var a = 0; a < self.events.length; a++) {
+        var r = self.events[a];
+        (r.q) ? r.e.unbind(r.n, r.f): self._unbind(r.e, r.n, r.f, r.b);
+      }
+    };
+
     this.showRail = function() {
-      if ((self.page.maxh!=0)&&(self.ispage||self.win.css('display')!='none')) {
+      if ((self.page.maxh != 0) && (self.ispage || self.win.css('display') != 'none')) {
         self.visibility = true;
         self.rail.visibility = true;
-        self.rail.css('display','block');
+        self.rail.css('display', 'block');
       }
       return self;
     };
 
     this.showRailHr = function() {
       if (!self.railh) return self;
-      if ((self.page.maxw!=0)&&(self.ispage||self.win.css('display')!='none')) {
+      if ((self.page.maxw != 0) && (self.ispage || self.win.css('display') != 'none')) {
         self.railh.visibility = true;
-        self.railh.css('display','block');
+        self.railh.css('display', 'block');
       }
       return self;
     };
-    
+
     this.hideRail = function() {
       self.visibility = false;
       self.rail.visibility = false;
-      self.rail.css('display','none');
+      self.rail.css('display', 'none');
       return self;
     };
 
     this.hideRailHr = function() {
       if (!self.railh) return self;
       self.railh.visibility = false;
-      self.railh.css('display','none');
+      self.railh.css('display', 'none');
       return self;
     };
-    
+
     this.show = function() {
       self.hidden = false;
-      self.locked = false;
+      self.railslocked = false;
       return self.showRail().showRailHr();
     };
 
     this.hide = function() {
       self.hidden = true;
-      self.locked = true;
+      self.railslocked = true;
       return self.hideRail().hideRailHr();
     };
-    
+
     this.toggle = function() {
       return (self.hidden) ? self.show() : self.hide();
     };
-    
+
     this.remove = function() {
       self.stop();
       if (self.cursortimeout) clearTimeout(self.cursortimeout);
       self.doZoomOut();
-      self.unbindAll();      
+      self.unbindAll();
+
+      if (cap.isie9) self.win[0].detachEvent("onpropertychange", self.onAttributeChange); //IE9 DOMAttrModified bug
+
       if (self.observer !== false) self.observer.disconnect();
-      if (self.observerremover !== false) self.observerremover.disconnect();      
-      self.events = [];
+      if (self.observerremover !== false) self.observerremover.disconnect();
+      if (self.observerbody !== false) self.observerbody.disconnect();
+
+      self.events = null;
+
       if (self.cursor) {
         self.cursor.remove();
-        self.cursor = null;
       }
       if (self.cursorh) {
         self.cursorh.remove();
-        self.cursorh = null;
       }
       if (self.rail) {
         self.rail.remove();
-        self.rail = null;
       }
       if (self.railh) {
         self.railh.remove();
-        self.railh = null;
       }
       if (self.zoom) {
         self.zoom.remove();
-        self.zoom = null;
       }
-      for(var a=0;a<self.saved.css.length;a++) {
-        var d=self.saved.css[a];
-        d[0].css(d[1],(typeof d[2]=="undefined") ? '' : d[2]);
+      for (var a = 0; a < self.saved.css.length; a++) {
+        var d = self.saved.css[a];
+        d[0].css(d[1], (typeof d[2] == "undefined") ? '' : d[2]);
       }
-      self.saved = false;      
-      self.me.data('__nicescroll',''); //erase all traces
-	  self.me = null;
-	  self.doc = null;
-	  self.docscroll = null;
-	  self.win = null;
-      return self;
+      self.saved = false;
+      self.me.data('__nicescroll', ''); //erase all traces
+
+      // memory leak fixed by GianlucaGuarini - thanks a lot!
+      // remove the current nicescroll from the $.nicescroll array & normalize array
+      var lst = $.nicescroll;
+      lst.each(function(i) {
+        if (!this) return;
+        if (this.id === self.id) {
+          delete lst[i];
+          for (var b = ++i; b < lst.length; b++, i++) lst[i] = lst[b];
+          lst.length--;
+          if (lst.length) delete lst[lst.length];
+        }
+      });
+
+      for (var i in self) {
+        self[i] = null;
+        delete self[i];
+      }
+
+      self = null;
+
     };
-    
+
     this.scrollstart = function(fn) {
       this.onscrollstart = fn;
       return self;
-    }
+    };
     this.scrollend = function(fn) {
       this.onscrollend = fn;
       return self;
-    }
+    };
     this.scrollcancel = function(fn) {
       this.onscrollcancel = fn;
       return self;
-    }
-    
+    };
+
     this.zoomin = function(fn) {
       this.onzoomin = fn;
       return self;
-    }
+    };
     this.zoomout = function(fn) {
       this.onzoomout = fn;
       return self;
-    }
-    
-    this.isScrollable = function(e) {      
-      var dom = (e.target) ? e.target : e;
-      if (dom.nodeName == 'OPTION') return true;
-      while (dom&&(dom.nodeType==1)&&!(/BODY|HTML/.test(dom.nodeName))) {
-        var dd = $(dom);
-        var ov = dd.css('overflowY')||dd.css('overflowX')||dd.css('overflow')||'';
-        if (/scroll|auto/.test(ov)) return (dom.clientHeight!=dom.scrollHeight);
-        dom = (dom.parentNode) ? dom.parentNode : false;        
-      }
-      return false;
     };
 
-    this.getViewport = function(me) {      
-      var dom = (me&&me.parentNode) ? me.parentNode : false;
-      while (dom&&(dom.nodeType==1)&&!(/BODY|HTML/.test(dom.nodeName))) {
+    this.isScrollable = function(e) {
+      var dom = (e.target) ? e.target : e;
+      if (dom.nodeName == 'OPTION') return true;
+      while (dom && (dom.nodeType == 1) && !(/^BODY|HTML/.test(dom.nodeName))) {
         var dd = $(dom);
-        var ov = dd.css('overflowY')||dd.css('overflowX')||dd.css('overflow')||'';
-        if ((/scroll|auto/.test(ov))&&(dom.clientHeight!=dom.scrollHeight)) return dd;
-        if (dd.getNiceScroll().length>0) return dd;
+        var ov = dd.css('overflowY') || dd.css('overflowX') || dd.css('overflow') || '';
+        if (/scroll|auto/.test(ov)) return (dom.clientHeight != dom.scrollHeight);
         dom = (dom.parentNode) ? dom.parentNode : false;
       }
       return false;
     };
-    
-    function execScrollWheel(e,hr,chkscroll) {
-      var px,py;
-      var rt = 1;
 
-      if (e.deltaMode==0) {  // PIXEL
-        px = -Math.floor(e.deltaX*(self.opt.mousescrollstep/(18*3)));
-        py = -Math.floor(e.deltaY*(self.opt.mousescrollstep/(18*3)));
+    this.getViewport = function(me) {
+      var dom = (me && me.parentNode) ? me.parentNode : false;
+      while (dom && (dom.nodeType == 1) && !(/^BODY|HTML/.test(dom.nodeName))) {
+        var dd = $(dom);
+        if (/fixed|absolute/.test(dd.css("position"))) return dd;
+        var ov = dd.css('overflowY') || dd.css('overflowX') || dd.css('overflow') || '';
+        if ((/scroll|auto/.test(ov)) && (dom.clientHeight != dom.scrollHeight)) return dd;
+        if (dd.getNiceScroll().length > 0) return dd;
+        dom = (dom.parentNode) ? dom.parentNode : false;
       }
-      else if (e.deltaMode==1) {  // LINE
-        px = -Math.floor(e.deltaX*self.opt.mousescrollstep);
-        py = -Math.floor(e.deltaY*self.opt.mousescrollstep);
-      }
+      return false; //(dom) ? $(dom) : false;
+    };
+
+    this.triggerScrollEnd = function() {
+      if (!self.onscrollend) return;
+
+      var px = self.getScrollLeft();
+      var py = self.getScrollTop();
+
+      var info = {
+        "type": "scrollend",
+        "current": {
+          "x": px,
+          "y": py
+        },
+        "end": {
+          "x": px,
+          "y": py
+        }
+      };
+      self.onscrollend.call(self, info);
+    }
+
+    function execScrollWheel(e, hr, chkscroll) {
+      var px, py;
       
-      if (hr&&(px==0)&&py) {  // classic vertical-only mousewheel + browser with x/y support 
+      if (e.deltaMode == 0) { // PIXEL
+        px = -Math.floor(e.deltaX * (self.opt.mousescrollstep / (18 * 3)));
+        py = -Math.floor(e.deltaY * (self.opt.mousescrollstep / (18 * 3)));
+      } else if (e.deltaMode == 1) { // LINE
+        px = -Math.floor(e.deltaX * self.opt.mousescrollstep);
+        py = -Math.floor(e.deltaY * self.opt.mousescrollstep);
+      }
+
+      if (hr && self.opt.oneaxismousemode && (px == 0) && py) { // classic vertical-only mousewheel + browser with x/y support 
         px = py;
         py = 0;
+      
+        if (chkscroll) {
+          var hrend = (px < 0) ? (self.getScrollLeft() >= self.page.maxw) : (self.getScrollLeft() <= 0);
+          if (hrend) {  // preserve vertical scrolling
+            py = px;
+            px = 0;            
+          }
+        }
+        
       }
 
       if (px) {
-        if (self.scrollmom) {self.scrollmom.stop()}
-        self.lastdeltax+=px;
-        self.debounced("mousewheelx",function(){var dt=self.lastdeltax;self.lastdeltax=0;if(!self.rail.drag){self.doScrollLeftBy(dt)}},120);
+        if (self.scrollmom) {
+          self.scrollmom.stop()
+        }
+        self.lastdeltax += px;
+        self.debounced("mousewheelx", function() {
+          var dt = self.lastdeltax;
+          self.lastdeltax = 0;
+          if (!self.rail.drag) {
+            self.doScrollLeftBy(dt)
+          }
+        }, 15);
       }
       if (py) {
-        if (self.opt.nativeparentscrolling&&chkscroll&&!self.ispage&&!self.zoomactive) {
-          if (py<0) {
-            if (self.getScrollTop()>=self.page.maxh) return true;
+        if (self.opt.nativeparentscrolling && chkscroll && !self.ispage && !self.zoomactive) {
+          if (py < 0) {
+            if (self.getScrollTop() >= self.page.maxh) return true;
           } else {
-            if (self.getScrollTop()<=0) return true;
+            if (self.getScrollTop() <= 0) return true;
           }
         }
-        if (self.scrollmom) {self.scrollmom.stop()}
-        self.lastdeltay+=py;
-        self.debounced("mousewheely",function(){var dt=self.lastdeltay;self.lastdeltay=0;if(!self.rail.drag){self.doScrollBy(dt)}},120);
+        if (self.scrollmom) {
+          self.scrollmom.stop()
+        }
+        self.lastdeltay += py;
+        self.debounced("mousewheely", function() {
+          var dt = self.lastdeltay;
+          self.lastdeltay = 0;
+          if (!self.rail.drag) {
+            self.doScrollBy(dt)
+          }
+        }, 15);
       }
-      
+
       e.stopImmediatePropagation();
       return e.preventDefault();
-//      return self.cancelEvent(e);
     };
-    
+
     this.onmousewheel = function(e) {
-      if (self.locked) return true;
+      if (self.wheelprevented) return;
+      if (self.railslocked) {
+        self.debounced("checkunlock", self.resize, 250);
+        return true;
+      }
       if (self.rail.drag) return self.cancelEvent(e);
-      
-      if (!self.rail.scrollable) {
-        if (self.railh&&self.railh.scrollable) {
-          return self.onmousewheelhr(e);
-        } else {
-          return true;
+
+      if (self.opt.oneaxismousemode == "auto" && e.deltaX != 0) self.opt.oneaxismousemode = false; // check two-axis mouse support (not very elegant)
+
+      if (self.opt.oneaxismousemode && e.deltaX == 0) {
+        if (!self.rail.scrollable) {
+          if (self.railh && self.railh.scrollable) {
+            return self.onmousewheelhr(e);
+          } else {
+            return true;
+          }
         }
       }
-      
+
       var nw = +(new Date());
       var chk = false;
-      if (self.opt.preservenativescrolling&&((self.checkarea+600)<nw)) {
-//        self.checkarea = false;
+      if (self.opt.preservenativescrolling && ((self.checkarea + 600) < nw)) {
         self.nativescrollingarea = self.isScrollable(e);
         chk = true;
       }
       self.checkarea = nw;
       if (self.nativescrollingarea) return true; // this isn't my business
-//      if (self.locked) return self.cancelEvent(e);
-      var ret = execScrollWheel(e,false,chk);
+      var ret = execScrollWheel(e, false, chk);
       if (ret) self.checkarea = 0;
       return ret;
     };
 
     this.onmousewheelhr = function(e) {
-      if (self.locked||!self.railh.scrollable) return true;
+      if (self.wheelprevented) return;
+      if (self.railslocked || !self.railh.scrollable) return true;
       if (self.rail.drag) return self.cancelEvent(e);
-      
+
       var nw = +(new Date());
       var chk = false;
-      if (self.opt.preservenativescrolling&&((self.checkarea+600)<nw)) {
-//        self.checkarea = false;
-        self.nativescrollingarea = self.isScrollable(e); 
+      if (self.opt.preservenativescrolling && ((self.checkarea + 600) < nw)) {
+        self.nativescrollingarea = self.isScrollable(e);
         chk = true;
       }
       self.checkarea = nw;
       if (self.nativescrollingarea) return true; // this isn't my business
-      if (self.locked) return self.cancelEvent(e);
+      if (self.railslocked) return self.cancelEvent(e);
 
-      return execScrollWheel(e,true,chk);
+      return execScrollWheel(e, true, chk);
     };
-    
+
     this.stop = function() {
       self.cancelScroll();
       if (self.scrollmon) self.scrollmon.stop();
       self.cursorfreezed = false;
-      self.scroll.y = Math.round(self.getScrollTop() * (1/self.scrollratio.y));      
+      self.scroll.y = Math.round(self.getScrollTop() * (1 / self.scrollratio.y));
       self.noticeCursor();
       return self;
     };
-    
+
     this.getTransitionSpeed = function(dif) {
-      var sp = Math.round(self.opt.scrollspeed*10);
-      var ex = Math.min(sp,Math.round((dif / 20) * self.opt.scrollspeed));
-      return (ex>20) ? ex : 0;
-    }
-    
+      var sp = Math.round(self.opt.scrollspeed * 10);
+      var ex = Math.min(sp, Math.round((dif / 20) * self.opt.scrollspeed));
+      return (ex > 20) ? ex : 0;
+    };
+
     if (!self.opt.smoothscroll) {
-      this.doScrollLeft = function(x,spd) {  //direct
+      this.doScrollLeft = function(x, spd) { //direct
         var y = self.getScrollTop();
-        self.doScrollPos(x,y,spd);
-      }      
-      this.doScrollTop = function(y,spd) {   //direct
+        self.doScrollPos(x, y, spd);
+      };
+      this.doScrollTop = function(y, spd) { //direct
         var x = self.getScrollLeft();
-        self.doScrollPos(x,y,spd);
-      }
-      this.doScrollPos = function(x,y,spd) {  //direct
-        var nx = (x>self.page.maxw) ? self.page.maxw : x;
-        if (nx<0) nx=0;
-        var ny = (y>self.page.maxh) ? self.page.maxh : y;
-        if (ny<0) ny=0;
-        self.synched('scroll',function(){
+        self.doScrollPos(x, y, spd);
+      };
+      this.doScrollPos = function(x, y, spd) { //direct
+        var nx = (x > self.page.maxw) ? self.page.maxw : x;
+        if (nx < 0) nx = 0;
+        var ny = (y > self.page.maxh) ? self.page.maxh : y;
+        if (ny < 0) ny = 0;
+        self.synched('scroll', function() {
           self.setScrollTop(ny);
           self.setScrollLeft(nx);
         });
-      }
+      };
       this.cancelScroll = function() {}; // direct
-    } 
-    else if (self.ishwscroll&&cap.hastransition&&self.opt.usetransition) {
-      this.prepareTransition = function(dif,istime) {
-        var ex = (istime) ? ((dif>20)?dif:0) : self.getTransitionSpeed(dif);        
-        var trans = (ex) ? cap.prefixstyle+'transform '+ex+'ms ease-out' : '';
-        if (!self.lasttransitionstyle||self.lasttransitionstyle!=trans) {
+    } else if (self.ishwscroll && cap.hastransition && self.opt.usetransition && !!self.opt.smoothscroll) {
+      this.prepareTransition = function(dif, istime) {
+        var ex = (istime) ? ((dif > 20) ? dif : 0) : self.getTransitionSpeed(dif);
+        var trans = (ex) ? cap.prefixstyle + 'transform ' + ex + 'ms ease-out' : '';
+        if (!self.lasttransitionstyle || self.lasttransitionstyle != trans) {
           self.lasttransitionstyle = trans;
-          self.doc.css(cap.transitionstyle,trans);
+          self.doc.css(cap.transitionstyle, trans);
         }
         return ex;
       };
-      
-      this.doScrollLeft = function(x,spd) {  //trans
+
+      this.doScrollLeft = function(x, spd) { //trans
         var y = (self.scrollrunning) ? self.newscrolly : self.getScrollTop();
-        self.doScrollPos(x,y,spd);
-      }      
-      
-      this.doScrollTop = function(y,spd) {   //trans
+        self.doScrollPos(x, y, spd);
+      };
+
+      this.doScrollTop = function(y, spd) { //trans
         var x = (self.scrollrunning) ? self.newscrollx : self.getScrollLeft();
-        self.doScrollPos(x,y,spd);
-      }
-      
-      this.doScrollPos = function(x,y,spd) {  //trans
-   
+        self.doScrollPos(x, y, spd);
+      };
+
+      this.doScrollPos = function(x, y, spd) { //trans
+
         var py = self.getScrollTop();
-        var px = self.getScrollLeft();        
-      
-        if (((self.newscrolly-py)*(y-py)<0)||((self.newscrollx-px)*(x-px)<0)) self.cancelScroll();  //inverted movement detection      
-        
-        if (self.opt.bouncescroll==false) {
-          if (y<0) y=0;
-          else if (y>self.page.maxh) y=self.page.maxh;
-          if (x<0) x=0;
-          else if (x>self.page.maxw) x=self.page.maxw;
+        var px = self.getScrollLeft();
+
+        if (((self.newscrolly - py) * (y - py) < 0) || ((self.newscrollx - px) * (x - px) < 0)) self.cancelScroll(); //inverted movement detection      
+
+        if (self.opt.bouncescroll == false) {
+          if (y < 0) y = 0;
+          else if (y > self.page.maxh) y = self.page.maxh;
+          if (x < 0) x = 0;
+          else if (x > self.page.maxw) x = self.page.maxw;
         }
-        
-        if (self.scrollrunning&&x==self.newscrollx&&y==self.newscrolly) return false;
-        
+
+        if (self.scrollrunning && x == self.newscrollx && y == self.newscrolly) return false;
+
         self.newscrolly = y;
         self.newscrollx = x;
-        
-        self.newscrollspeed = spd||false;
-        
+
+        self.newscrollspeed = spd || false;
+
         if (self.timer) return false;
-        
-        self.timer = setTimeout(function(){
-        
+
+        self.timer = setTimeout(function() {
+
           var top = self.getScrollTop();
           var lft = self.getScrollLeft();
-          
+
           var dst = {};
-          dst.x = x-lft;
-          dst.y = y-top;
+          dst.x = x - lft;
+          dst.y = y - top;
           dst.px = lft;
           dst.py = top;
-          
-          var dd = Math.round(Math.sqrt(Math.pow(dst.x,2)+Math.pow(dst.y,2)));          
-          
-//          var df = (self.newscrollspeed) ? self.newscrollspeed : dd;
-          
-          var ms = (self.newscrollspeed && self.newscrollspeed>1) ? self.newscrollspeed : self.getTransitionSpeed(dd);
-          if (self.newscrollspeed&&self.newscrollspeed<=1) ms*=self.newscrollspeed;
-          
-          self.prepareTransition(ms,true);
-          
-          if (self.timerscroll&&self.timerscroll.tm) clearInterval(self.timerscroll.tm);    
-          
-          if (ms>0) {
-          
-            if (!self.scrollrunning&&self.onscrollstart) {
-              var info = {"type":"scrollstart","current":{"x":lft,"y":top},"request":{"x":x,"y":y},"end":{"x":self.newscrollx,"y":self.newscrolly},"speed":ms};
-              self.onscrollstart.call(self,info);
+
+          var dd = Math.round(Math.sqrt(Math.pow(dst.x, 2) + Math.pow(dst.y, 2)));
+          var ms = (self.newscrollspeed && self.newscrollspeed > 1) ? self.newscrollspeed : self.getTransitionSpeed(dd);
+          if (self.newscrollspeed && self.newscrollspeed <= 1) ms *= self.newscrollspeed;
+
+          self.prepareTransition(ms, true);
+
+          if (self.timerscroll && self.timerscroll.tm) clearInterval(self.timerscroll.tm);
+
+          if (ms > 0) {
+
+            if (!self.scrollrunning && self.onscrollstart) {
+              var info = {
+                "type": "scrollstart",
+                "current": {
+                  "x": lft,
+                  "y": top
+                },
+                "request": {
+                  "x": x,
+                  "y": y
+                },
+                "end": {
+                  "x": self.newscrollx,
+                  "y": self.newscrolly
+                },
+                "speed": ms
+              };
+              self.onscrollstart.call(self, info);
             }
-            
+
             if (cap.transitionend) {
               if (!self.scrollendtrapped) {
                 self.scrollendtrapped = true;
-                self.bind(self.doc,cap.transitionend,self.onScrollEnd,false); //I have got to do something usefull!!
+                self.bind(self.doc, cap.transitionend, self.onScrollTransitionEnd, false); //I have got to do something usefull!!
               }
-            } else {              
+            } else {
               if (self.scrollendtrapped) clearTimeout(self.scrollendtrapped);
-              self.scrollendtrapped = setTimeout(self.onScrollEnd,ms);  // simulate transitionend event
+              self.scrollendtrapped = setTimeout(self.onScrollTransitionEnd, ms); // simulate transitionend event
             }
-            
+
             var py = top;
             var px = lft;
             self.timerscroll = {
-              bz: new BezierClass(py,self.newscrolly,ms,0,0,0.58,1),
-              bh: new BezierClass(px,self.newscrollx,ms,0,0,0.58,1)
-            };            
-            if (!self.cursorfreezed) self.timerscroll.tm=setInterval(function(){self.showCursor(self.getScrollTop(),self.getScrollLeft())},60);
-            
+              bz: new BezierClass(py, self.newscrolly, ms, 0, 0, 0.58, 1),
+              bh: new BezierClass(px, self.newscrollx, ms, 0, 0, 0.58, 1)
+            };
+            if (!self.cursorfreezed) self.timerscroll.tm = setInterval(function() {
+              self.showCursor(self.getScrollTop(), self.getScrollLeft())
+            }, 60);
+
           }
-          
-          self.synched("doScroll-set",function(){
+
+          self.synched("doScroll-set", function() {
             self.timer = 0;
             if (self.scrollendtrapped) self.scrollrunning = true;
             self.setScrollTop(self.newscrolly);
             self.setScrollLeft(self.newscrollx);
-            if (!self.scrollendtrapped) self.onScrollEnd();
+            if (!self.scrollendtrapped) self.onScrollTransitionEnd();
           });
-          
-          
-        },50);
-        
+
+
+        }, 50);
+
       };
-      
+
       this.cancelScroll = function() {
-        if (!self.scrollendtrapped) return true;        
+        if (!self.scrollendtrapped) return true;
         var py = self.getScrollTop();
         var px = self.getScrollLeft();
         self.scrollrunning = false;
         if (!cap.transitionend) clearTimeout(cap.transitionend);
         self.scrollendtrapped = false;
-        self._unbind(self.doc,cap.transitionend,self.onScrollEnd);        
+        self._unbind(self.doc[0], cap.transitionend, self.onScrollTransitionEnd);
         self.prepareTransition(0);
         self.setScrollTop(py); // fire event onscroll
         if (self.railh) self.setScrollLeft(px);
-        if (self.timerscroll&&self.timerscroll.tm) clearInterval(self.timerscroll.tm);
+        if (self.timerscroll && self.timerscroll.tm) clearInterval(self.timerscroll.tm);
         self.timerscroll = false;
-        
+
         self.cursorfreezed = false;
 
-        //self.noticeCursor(false,py,px);
-        self.showCursor(py,px);
+        self.showCursor(py, px);
         return self;
       };
-      this.onScrollEnd = function() {                
-        if (self.scrollendtrapped) self._unbind(self.doc,cap.transitionend,self.onScrollEnd);
-        self.scrollendtrapped = false;        
+      this.onScrollTransitionEnd = function() {
+        if (self.scrollendtrapped) self._unbind(self.doc[0], cap.transitionend, self.onScrollTransitionEnd);
+        self.scrollendtrapped = false;
         self.prepareTransition(0);
-        if (self.timerscroll&&self.timerscroll.tm) clearInterval(self.timerscroll.tm);
-        self.timerscroll = false;        
+        if (self.timerscroll && self.timerscroll.tm) clearInterval(self.timerscroll.tm);
+        self.timerscroll = false;
         var py = self.getScrollTop();
         var px = self.getScrollLeft();
-        self.setScrollTop(py);  // fire event onscroll        
-        if (self.railh) self.setScrollLeft(px);  // fire event onscroll left
-        
-        self.noticeCursor(false,py,px);     
-        
+        self.setScrollTop(py); // fire event onscroll        
+        if (self.railh) self.setScrollLeft(px); // fire event onscroll left
+
+        self.noticeCursor(false, py, px);
+
         self.cursorfreezed = false;
-        
-        if (py<0) py=0
-        else if (py>self.page.maxh) py=self.page.maxh;
-        if (px<0) px=0
-        else if (px>self.page.maxw) px=self.page.maxw;
-        if((py!=self.newscrolly)||(px!=self.newscrollx)) return self.doScrollPos(px,py,self.opt.snapbackspeed);
-        
-        if (self.onscrollend&&self.scrollrunning) {
-          var info = {"type":"scrollend","current":{"x":px,"y":py},"end":{"x":self.newscrollx,"y":self.newscrolly}};
-          self.onscrollend.call(self,info);
-        } 
+
+        if (py < 0) py = 0
+        else if (py > self.page.maxh) py = self.page.maxh;
+        if (px < 0) px = 0
+        else if (px > self.page.maxw) px = self.page.maxw;
+        if ((py != self.newscrolly) || (px != self.newscrollx)) return self.doScrollPos(px, py, self.opt.snapbackspeed);
+
+        if (self.onscrollend && self.scrollrunning) {
+          self.triggerScrollEnd();
+        }
         self.scrollrunning = false;
-        
+
       };
 
     } else {
 
-      this.doScrollLeft = function(x,spd) {  //no-trans
+      this.doScrollLeft = function(x, spd) { //no-trans
         var y = (self.scrollrunning) ? self.newscrolly : self.getScrollTop();
-        self.doScrollPos(x,y,spd);
-      }
+        self.doScrollPos(x, y, spd);
+      };
 
-      this.doScrollTop = function(y,spd) {  //no-trans
+      this.doScrollTop = function(y, spd) { //no-trans
         var x = (self.scrollrunning) ? self.newscrollx : self.getScrollLeft();
-        self.doScrollPos(x,y,spd);
-      }
+        self.doScrollPos(x, y, spd);
+      };
 
-      this.doScrollPos = function(x,y,spd) {  //no-trans
-        var y = ((typeof y == "undefined")||(y===false)) ? self.getScrollTop(true) : y;
-      
-        if  ((self.timer)&&(self.newscrolly==y)&&(self.newscrollx==x)) return true;
-      
+      this.doScrollPos = function(x, y, spd) { //no-trans
+        var y = ((typeof y == "undefined") || (y === false)) ? self.getScrollTop(true) : y;
+
+        if ((self.timer) && (self.newscrolly == y) && (self.newscrollx == x)) return true;
+
         if (self.timer) clearAnimationFrame(self.timer);
-        self.timer = 0;      
+        self.timer = 0;
 
         var py = self.getScrollTop();
         var px = self.getScrollLeft();
-        
-        if (((self.newscrolly-py)*(y-py)<0)||((self.newscrollx-px)*(x-px)<0)) self.cancelScroll();  //inverted movement detection
-        
+
+        if (((self.newscrolly - py) * (y - py) < 0) || ((self.newscrollx - px) * (x - px) < 0)) self.cancelScroll(); //inverted movement detection
+
         self.newscrolly = y;
         self.newscrollx = x;
-        
-        if (!self.bouncescroll||!self.rail.visibility) {
-          if (self.newscrolly<0) {
+
+        if (!self.bouncescroll || !self.rail.visibility) {
+          if (self.newscrolly < 0) {
             self.newscrolly = 0;
-          }
-          else if (self.newscrolly>self.page.maxh) {
+          } else if (self.newscrolly > self.page.maxh) {
             self.newscrolly = self.page.maxh;
           }
         }
-        if (!self.bouncescroll||!self.railh.visibility) {
-          if (self.newscrollx<0) {
+        if (!self.bouncescroll || !self.railh.visibility) {
+          if (self.newscrollx < 0) {
             self.newscrollx = 0;
-          }
-          else if (self.newscrollx>self.page.maxw) {
+          } else if (self.newscrollx > self.page.maxw) {
             self.newscrollx = self.page.maxw;
           }
         }
 
         self.dst = {};
-        self.dst.x = x-px;
-        self.dst.y = y-py;
+        self.dst.x = x - px;
+        self.dst.y = y - py;
         self.dst.px = px;
         self.dst.py = py;
-        
-        var dst = Math.round(Math.sqrt(Math.pow(self.dst.x,2)+Math.pow(self.dst.y,2)));
-        
+
+        var dst = Math.round(Math.sqrt(Math.pow(self.dst.x, 2) + Math.pow(self.dst.y, 2)));
+
         self.dst.ax = self.dst.x / dst;
         self.dst.ay = self.dst.y / dst;
-        
+
         var pa = 0;
         var pe = dst;
-        
-        if (self.dst.x==0) {
+
+        if (self.dst.x == 0) {
           pa = py;
           pe = y;
           self.dst.ay = 1;
           self.dst.py = 0;
-        } else if (self.dst.y==0) {
+        } else if (self.dst.y == 0) {
           pa = px;
           pe = x;
           self.dst.ax = 1;
@@ -26392,267 +26341,290 @@ jQuery._farbtastic = function (container, callback) {
         }
 
         var ms = self.getTransitionSpeed(dst);
-        if (spd&&spd<=1) ms*=spd;
-        if (ms>0) {
-          self.bzscroll = (self.bzscroll) ? self.bzscroll.update(pe,ms) : new BezierClass(pa,pe,ms,0,1,0,1);
+        if (spd && spd <= 1) ms *= spd;
+        if (ms > 0) {
+          self.bzscroll = (self.bzscroll) ? self.bzscroll.update(pe, ms) : new BezierClass(pa, pe, ms, 0, 1, 0, 1);
         } else {
           self.bzscroll = false;
         }
-        
+
         if (self.timer) return;
-        
-        if ((py==self.page.maxh&&y>=self.page.maxh)||(px==self.page.maxw&&x>=self.page.maxw)) self.checkContentSize();
-        
+
+        if ((py == self.page.maxh && y >= self.page.maxh) || (px == self.page.maxw && x >= self.page.maxw)) self.checkContentSize();
+
         var sync = 1;
-        
-        function scrolling() {          
+
+        function scrolling() {
           if (self.cancelAnimationFrame) return true;
-          
+
           self.scrollrunning = true;
-          
-          sync = 1-sync;
-          if (sync) return (self.timer = setAnimationFrame(scrolling)||1);
+
+          sync = 1 - sync;
+          if (sync) return (self.timer = setAnimationFrame(scrolling) || 1);
 
           var done = 0;
-          
+          var sx, sy;
+
           var sc = sy = self.getScrollTop();
-          if (self.dst.ay) {            
-            sc = (self.bzscroll) ? self.dst.py + (self.bzscroll.getNow()*self.dst.ay) : self.newscrolly;
-            var dr=sc-sy;          
-            if ((dr<0&&sc<self.newscrolly)||(dr>0&&sc>self.newscrolly)) sc = self.newscrolly;
+          if (self.dst.ay) {
+            sc = (self.bzscroll) ? self.dst.py + (self.bzscroll.getNow() * self.dst.ay) : self.newscrolly;
+            var dr = sc - sy;
+            if ((dr < 0 && sc < self.newscrolly) || (dr > 0 && sc > self.newscrolly)) sc = self.newscrolly;
             self.setScrollTop(sc);
-            if (sc == self.newscrolly) done=1;
+            if (sc == self.newscrolly) done = 1;
           } else {
-            done=1;
+            done = 1;
           }
-          
+
           var scx = sx = self.getScrollLeft();
-          if (self.dst.ax) {            
-            scx = (self.bzscroll) ? self.dst.px + (self.bzscroll.getNow()*self.dst.ax) : self.newscrollx;            
-            var dr=scx-sx;
-            if ((dr<0&&scx<self.newscrollx)||(dr>0&&scx>self.newscrollx)) scx = self.newscrollx;
+          if (self.dst.ax) {
+            scx = (self.bzscroll) ? self.dst.px + (self.bzscroll.getNow() * self.dst.ax) : self.newscrollx;
+            var dr = scx - sx;
+            if ((dr < 0 && scx < self.newscrollx) || (dr > 0 && scx > self.newscrollx)) scx = self.newscrollx;
             self.setScrollLeft(scx);
-            if (scx == self.newscrollx) done+=1;
+            if (scx == self.newscrollx) done += 1;
           } else {
-            done+=1;
+            done += 1;
           }
-          
-          if (done==2) {
+
+          if (done == 2) {
             self.timer = 0;
             self.cursorfreezed = false;
             self.bzscroll = false;
             self.scrollrunning = false;
-            if (sc<0) sc=0;
-            else if (sc>self.page.maxh) sc=self.page.maxh;
-            if (scx<0) scx=0;
-            else if (scx>self.page.maxw) scx=self.page.maxw;
-            if ((scx!=self.newscrollx)||(sc!=self.newscrolly)) self.doScrollPos(scx,sc);
+            if (sc < 0) sc = 0;
+            else if (sc > self.page.maxh) sc = self.page.maxh;
+            if (scx < 0) scx = 0;
+            else if (scx > self.page.maxw) scx = self.page.maxw;
+            if ((scx != self.newscrollx) || (sc != self.newscrolly)) self.doScrollPos(scx, sc);
             else {
               if (self.onscrollend) {
-                var info = {"type":"scrollend","current":{"x":sx,"y":sy},"end":{"x":self.newscrollx,"y":self.newscrolly}};
-                self.onscrollend.call(self,info);
-              }             
-            } 
+                self.triggerScrollEnd();
+              }
+            }
           } else {
-            self.timer = setAnimationFrame(scrolling)||1;
+            self.timer = setAnimationFrame(scrolling) || 1;
           }
         };
-        self.cancelAnimationFrame=false;
+        self.cancelAnimationFrame = false;
         self.timer = 1;
 
-        if (self.onscrollstart&&!self.scrollrunning) {
-          var info = {"type":"scrollstart","current":{"x":px,"y":py},"request":{"x":x,"y":y},"end":{"x":self.newscrollx,"y":self.newscrolly},"speed":ms};
-          self.onscrollstart.call(self,info);
-        }        
+        if (self.onscrollstart && !self.scrollrunning) {
+          var info = {
+            "type": "scrollstart",
+            "current": {
+              "x": px,
+              "y": py
+            },
+            "request": {
+              "x": x,
+              "y": y
+            },
+            "end": {
+              "x": self.newscrollx,
+              "y": self.newscrolly
+            },
+            "speed": ms
+          };
+          self.onscrollstart.call(self, info);
+        }
 
         scrolling();
-        
-        if ((py==self.page.maxh&&y>=py)||(px==self.page.maxw&&x>=px)) self.checkContentSize();
-        
+
+        if ((py == self.page.maxh && y >= py) || (px == self.page.maxw && x >= px)) self.checkContentSize();
+
         self.noticeCursor();
       };
-  
-      this.cancelScroll = function() {        
+
+      this.cancelScroll = function() {
         if (self.timer) clearAnimationFrame(self.timer);
         self.timer = 0;
         self.bzscroll = false;
         self.scrollrunning = false;
         return self;
       };
-      
+
     }
-    
-    this.doScrollBy = function(stp,relative) {
+
+    this.doScrollBy = function(stp, relative) {
       var ny = 0;
       if (relative) {
-        ny = Math.floor((self.scroll.y-stp)*self.scrollratio.y)
-      } else {        
+        ny = Math.floor((self.scroll.y - stp) * self.scrollratio.y)
+      } else {
         var sy = (self.timer) ? self.newscrolly : self.getScrollTop(true);
-        ny = sy-stp;
+        ny = sy - stp;
       }
       if (self.bouncescroll) {
-        var haf = Math.round(self.view.h/2);
-        if (ny<-haf) ny=-haf
-        else if (ny>(self.page.maxh+haf)) ny = (self.page.maxh+haf);
+        var haf = Math.round(self.view.h / 2);
+        if (ny < -haf) ny = -haf
+        else if (ny > (self.page.maxh + haf)) ny = (self.page.maxh + haf);
       }
-      self.cursorfreezed = false;      
+      self.cursorfreezed = false;
 
-      py = self.getScrollTop(true);
-      if (ny<0&&py<=0) return self.noticeCursor();      
-      else if (ny>self.page.maxh&&py>=self.page.maxh) {
+      var py = self.getScrollTop(true);
+      if (ny < 0 && py <= 0) return self.noticeCursor();
+      else if (ny > self.page.maxh && py >= self.page.maxh) {
         self.checkContentSize();
         return self.noticeCursor();
       }
-      
+
       self.doScrollTop(ny);
     };
 
-    this.doScrollLeftBy = function(stp,relative) {
+    this.doScrollLeftBy = function(stp, relative) {
       var nx = 0;
       if (relative) {
-        nx = Math.floor((self.scroll.x-stp)*self.scrollratio.x)
+        nx = Math.floor((self.scroll.x - stp) * self.scrollratio.x)
       } else {
         var sx = (self.timer) ? self.newscrollx : self.getScrollLeft(true);
-        nx = sx-stp;
+        nx = sx - stp;
       }
       if (self.bouncescroll) {
-        var haf = Math.round(self.view.w/2);
-        if (nx<-haf) nx=-haf
-        else if (nx>(self.page.maxw+haf)) nx = (self.page.maxw+haf);
+        var haf = Math.round(self.view.w / 2);
+        if (nx < -haf) nx = -haf;
+        else if (nx > (self.page.maxw + haf)) nx = (self.page.maxw + haf);
       }
-      self.cursorfreezed = false;    
+      self.cursorfreezed = false;
 
-      px = self.getScrollLeft(true);
-      if (nx<0&&px<=0) return self.noticeCursor();      
-      else if (nx>self.page.maxw&&px>=self.page.maxw) return self.noticeCursor();
-      
+      var px = self.getScrollLeft(true);
+      if (nx < 0 && px <= 0) return self.noticeCursor();
+      else if (nx > self.page.maxw && px >= self.page.maxw) return self.noticeCursor();
+
       self.doScrollLeft(nx);
     };
-    
-    this.doScrollTo = function(pos,relative) {
-      var ny = (relative) ? Math.round(pos*self.scrollratio.y) : pos;
-      if (ny<0) ny=0
-      else if (ny>self.page.maxh) ny = self.page.maxh;
+
+    this.doScrollTo = function(pos, relative) {
+      var ny = (relative) ? Math.round(pos * self.scrollratio.y) : pos;
+      if (ny < 0) ny = 0;
+      else if (ny > self.page.maxh) ny = self.page.maxh;
       self.cursorfreezed = false;
       self.doScrollTop(pos);
     };
-    
-    this.checkContentSize = function() {      
+
+    this.checkContentSize = function() {
       var pg = self.getContentSize();
-      if ((pg.h!=self.page.h)||(pg.w!=self.page.w)) self.resize(false,pg);
+      if ((pg.h != self.page.h) || (pg.w != self.page.w)) self.resize(false, pg);
     };
-    
-    self.onscroll = function(e) {    
+
+    self.onscroll = function(e) {
       if (self.rail.drag) return;
       if (!self.cursorfreezed) {
-        self.synched('scroll',function(){
-          self.scroll.y = Math.round(self.getScrollTop() * (1/self.scrollratio.y));
-          if (self.railh) self.scroll.x = Math.round(self.getScrollLeft() * (1/self.scrollratio.x));
+        self.synched('scroll', function() {
+          self.scroll.y = Math.round(self.getScrollTop() * (1 / self.scrollratio.y));
+          if (self.railh) self.scroll.x = Math.round(self.getScrollLeft() * (1 / self.scrollratio.x));
           self.noticeCursor();
         });
       }
     };
-    self.bind(self.docscroll,"scroll",self.onscroll);
-    
+    self.bind(self.docscroll, "scroll", self.onscroll);
+
     this.doZoomIn = function(e) {
       if (self.zoomactive) return;
       self.zoomactive = true;
-      
+
       self.zoomrestore = {
-        style:{}
+        style: {}
       };
-      var lst = ['position','top','left','zIndex','backgroundColor','marginTop','marginBottom','marginLeft','marginRight'];
+      var lst = ['position', 'top', 'left', 'zIndex', 'backgroundColor', 'marginTop', 'marginBottom', 'marginLeft', 'marginRight'];
       var win = self.win[0].style;
-      for(var a in lst) {
+      for (var a in lst) {
         var pp = lst[a];
-        self.zoomrestore.style[pp] = (typeof win[pp] != "undefined") ? win[pp] : '';        
+        self.zoomrestore.style[pp] = (typeof win[pp] != "undefined") ? win[pp] : '';
       }
-      
+
       self.zoomrestore.style.width = self.win.css('width');
       self.zoomrestore.style.height = self.win.css('height');
-      
+
       self.zoomrestore.padding = {
-        w:self.win.outerWidth()-self.win.width(),
-        h:self.win.outerHeight()-self.win.height()
+        w: self.win.outerWidth() - self.win.width(),
+        h: self.win.outerHeight() - self.win.height()
       };
-      
+
       if (cap.isios4) {
         self.zoomrestore.scrollTop = $(window).scrollTop();
         $(window).scrollTop(0);
       }
-      
+
       self.win.css({
-        "position":(cap.isios4)?"absolute":"fixed",
-        "top":0,
-        "left":0,
-        "z-index":globalmaxzindex+100,
-        "margin":"0px"
+        "position": (cap.isios4) ? "absolute" : "fixed",
+        "top": 0,
+        "left": 0,
+        "z-index": globalmaxzindex + 100,
+        "margin": "0px"
       });
-      var bkg = self.win.css("backgroundColor");      
-      if (bkg==""||/transparent|rgba\(0, 0, 0, 0\)|rgba\(0,0,0,0\)/.test(bkg)) self.win.css("backgroundColor","#fff");
-      self.rail.css({"z-index":globalmaxzindex+101});
-      self.zoom.css({"z-index":globalmaxzindex+102});      
-      self.zoom.css('backgroundPosition','0px -18px');
+      var bkg = self.win.css("backgroundColor");
+      if (bkg == "" || /transparent|rgba\(0, 0, 0, 0\)|rgba\(0,0,0,0\)/.test(bkg)) self.win.css("backgroundColor", "#fff");
+      self.rail.css({
+        "z-index": globalmaxzindex + 101
+      });
+      self.zoom.css({
+        "z-index": globalmaxzindex + 102
+      });
+      self.zoom.css('backgroundPosition', '0px -18px');
       self.resizeZoom();
-      
+
       if (self.onzoomin) self.onzoomin.call(self);
-      
+
       return self.cancelEvent(e);
     };
 
     this.doZoomOut = function(e) {
       if (!self.zoomactive) return;
       self.zoomactive = false;
-      
-      self.win.css("margin","");
+
+      self.win.css("margin", "");
       self.win.css(self.zoomrestore.style);
-      
+
       if (cap.isios4) {
         $(window).scrollTop(self.zoomrestore.scrollTop);
       }
-      
-      self.rail.css({"z-index":self.zindex});
-      self.zoom.css({"z-index":self.zindex});
+
+      self.rail.css({
+        "z-index": self.zindex
+      });
+      self.zoom.css({
+        "z-index": self.zindex
+      });
       self.zoomrestore = false;
-      self.zoom.css('backgroundPosition','0px 0px');
+      self.zoom.css('backgroundPosition', '0px 0px');
       self.onResize();
-      
+
       if (self.onzoomout) self.onzoomout.call(self);
-      
+
       return self.cancelEvent(e);
     };
-    
+
     this.doZoom = function(e) {
       return (self.zoomactive) ? self.doZoomOut(e) : self.doZoomIn(e);
     };
-    
+
     this.resizeZoom = function() {
       if (!self.zoomactive) return;
 
       var py = self.getScrollTop(); //preserve scrolling position
       self.win.css({
-        width:$(window).width()-self.zoomrestore.padding.w+"px",
-        height:$(window).height()-self.zoomrestore.padding.h+"px"
+        width: $(window).width() - self.zoomrestore.padding.w + "px",
+        height: $(window).height() - self.zoomrestore.padding.h + "px"
       });
       self.onResize();
-      
-      self.setScrollTop(Math.min(self.page.maxh,py));
+
+      self.setScrollTop(Math.min(self.page.maxh, py));
     };
-   
+
     this.init();
-    
+
     $.nicescroll.push(this);
 
   };
-  
-// Inspired by the work of Kin Blas
-// http://webpro.host.adobe.com/people/jblas/momentum/includes/jquery.momentum.0.7.js  
-  
-  
+
+  // Inspired by the work of Kin Blas
+  // http://webpro.host.adobe.com/people/jblas/momentum/includes/jquery.momentum.0.7.js  
+
+
   var ScrollMomentumClass2D = function(nc) {
     var self = this;
     this.nc = nc;
-    
+
     this.lastx = 0;
     this.lasty = 0;
     this.speedx = 0;
@@ -26663,20 +26635,20 @@ jQuery._farbtastic = function (container, callback) {
     this.snapy = false;
     this.demulx = 0;
     this.demuly = 0;
-    
+
     this.lastscrollx = -1;
     this.lastscrolly = -1;
-    
+
     this.chkx = 0;
     this.chky = 0;
-    
+
     this.timer = 0;
-    
+
     this.time = function() {
-      return +new Date();//beautifull hack
+      return +new Date(); //beautifull hack
     };
-    
-    this.reset = function(px,py) {
+
+    this.reset = function(px, py) {
       self.stop();
       var now = self.time();
       self.steptime = 0;
@@ -26688,25 +26660,25 @@ jQuery._farbtastic = function (container, callback) {
       self.lastscrollx = -1;
       self.lastscrolly = -1;
     };
-    
-    this.update = function(px,py) {
+
+    this.update = function(px, py) {
       var now = self.time();
       self.steptime = now - self.lasttime;
-      self.lasttime = now;      
+      self.lasttime = now;
       var dy = py - self.lasty;
       var dx = px - self.lastx;
       var sy = self.nc.getScrollTop();
       var sx = self.nc.getScrollLeft();
       var newy = sy + dy;
       var newx = sx + dx;
-      self.snapx = (newx<0)||(newx>self.nc.page.maxw);
-      self.snapy = (newy<0)||(newy>self.nc.page.maxh);
+      self.snapx = (newx < 0) || (newx > self.nc.page.maxw);
+      self.snapy = (newy < 0) || (newy > self.nc.page.maxh);
       self.speedx = dx;
       self.speedy = dy;
       self.lastx = px;
       self.lasty = py;
     };
-    
+
     this.stop = function() {
       self.nc.unsynched("domomentum2d");
       if (self.timer) clearTimeout(self.timer);
@@ -26714,303 +26686,302 @@ jQuery._farbtastic = function (container, callback) {
       self.lastscrollx = -1;
       self.lastscrolly = -1;
     };
-    
-    this.doSnapy = function(nx,ny) {
+
+    this.doSnapy = function(nx, ny) {
       var snap = false;
-      
-      if (ny<0) {
-        ny=0;
-        snap=true;        
-      } 
-      else if (ny>self.nc.page.maxh) {
-        ny=self.nc.page.maxh;
-        snap=true;
+
+      if (ny < 0) {
+        ny = 0;
+        snap = true;
+      } else if (ny > self.nc.page.maxh) {
+        ny = self.nc.page.maxh;
+        snap = true;
       }
 
-      if (nx<0) {
-        nx=0;
-        snap=true;        
-      } 
-      else if (nx>self.nc.page.maxw) {
-        nx=self.nc.page.maxw;
-        snap=true;
+      if (nx < 0) {
+        nx = 0;
+        snap = true;
+      } else if (nx > self.nc.page.maxw) {
+        nx = self.nc.page.maxw;
+        snap = true;
       }
-      
-      if (snap) self.nc.doScrollPos(nx,ny,self.nc.opt.snapbackspeed);
+
+      (snap) ? self.nc.doScrollPos(nx, ny, self.nc.opt.snapbackspeed): self.nc.triggerScrollEnd();
     };
-    
+
     this.doMomentum = function(gp) {
       var t = self.time();
-      var l = (gp) ? t+gp : self.lasttime;
+      var l = (gp) ? t + gp : self.lasttime;
 
       var sl = self.nc.getScrollLeft();
       var st = self.nc.getScrollTop();
-      
+
       var pageh = self.nc.page.maxh;
       var pagew = self.nc.page.maxw;
-      
-      self.speedx = (pagew>0) ? Math.min(60,self.speedx) : 0;
-      self.speedy = (pageh>0) ? Math.min(60,self.speedy) : 0;
-      
-      var chk = l && (t - l) <= 50;
-      
-      if ((st<0)||(st>pageh)||(sl<0)||(sl>pagew)) chk = false;
-      
+
+      self.speedx = (pagew > 0) ? Math.min(60, self.speedx) : 0;
+      self.speedy = (pageh > 0) ? Math.min(60, self.speedy) : 0;
+
+      var chk = l && (t - l) <= 60;
+
+      if ((st < 0) || (st > pageh) || (sl < 0) || (sl > pagew)) chk = false;
+
       var sy = (self.speedy && chk) ? self.speedy : false;
       var sx = (self.speedx && chk) ? self.speedx : false;
-      
-      if (sy||sx) {
-        var tm = Math.max(16,self.steptime); //timeout granularity
-        
-        if (tm>50) {  // do smooth
-          var xm = tm/50;
-          self.speedx*=xm;
-          self.speedy*=xm;
+
+      if (sy || sx) {
+        var tm = Math.max(16, self.steptime); //timeout granularity
+
+        if (tm > 50) { // do smooth
+          var xm = tm / 50;
+          self.speedx *= xm;
+          self.speedy *= xm;
           tm = 50;
         }
-        
+
         self.demulxy = 0;
 
         self.lastscrollx = self.nc.getScrollLeft();
         self.chkx = self.lastscrollx;
         self.lastscrolly = self.nc.getScrollTop();
         self.chky = self.lastscrolly;
-        
+
         var nx = self.lastscrollx;
         var ny = self.lastscrolly;
-        
-        var onscroll = function(){
-          var df = ((self.time()-t)>600) ? 0.04 : 0.02;
-        
+
+        var onscroll = function() {
+          var df = ((self.time() - t) > 600) ? 0.04 : 0.02;
+
           if (self.speedx) {
-            nx = Math.floor(self.lastscrollx - (self.speedx*(1-self.demulxy)));
+            nx = Math.floor(self.lastscrollx - (self.speedx * (1 - self.demulxy)));
             self.lastscrollx = nx;
-            if ((nx<0)||(nx>pagew)) df=0.10;
+            if ((nx < 0) || (nx > pagew)) df = 0.10;
           }
 
           if (self.speedy) {
-            ny = Math.floor(self.lastscrolly - (self.speedy*(1-self.demulxy)));
+            ny = Math.floor(self.lastscrolly - (self.speedy * (1 - self.demulxy)));
             self.lastscrolly = ny;
-            if ((ny<0)||(ny>pageh)) df=0.10;
+            if ((ny < 0) || (ny > pageh)) df = 0.10;
           }
-          
-          self.demulxy = Math.min(1,self.demulxy+df);
-          
-          self.nc.synched("domomentum2d",function(){
+
+          self.demulxy = Math.min(1, self.demulxy + df);
+
+          self.nc.synched("domomentum2d", function() {
 
             if (self.speedx) {
               var scx = self.nc.getScrollLeft();
-              if (scx!=self.chkx) self.stop();
-              self.chkx=nx;
+              if (scx != self.chkx) self.stop();
+              self.chkx = nx;
               self.nc.setScrollLeft(nx);
             }
-          
+
             if (self.speedy) {
               var scy = self.nc.getScrollTop();
-              if (scy!=self.chky) self.stop();          
-              self.chky=ny;
+              if (scy != self.chky) self.stop();
+              self.chky = ny;
               self.nc.setScrollTop(ny);
             }
-            
-            if(!self.timer) {
+
+            if (!self.timer) {
               self.nc.hideCursor();
-              self.doSnapy(nx,ny);
+              self.doSnapy(nx, ny);
             }
-            
+
           });
-          
-          if (self.demulxy<1) {            
-            self.timer = setTimeout(onscroll,tm);
+
+          if (self.demulxy < 1) {
+            self.timer = setTimeout(onscroll, tm);
           } else {
             self.stop();
             self.nc.hideCursor();
-            self.doSnapy(nx,ny);
+            self.doSnapy(nx, ny);
           }
         };
-        
+
         onscroll();
-        
+
       } else {
-        self.doSnapy(self.nc.getScrollLeft(),self.nc.getScrollTop());
-      }      
-      
+        self.doSnapy(self.nc.getScrollLeft(), self.nc.getScrollTop());
+      }
+
     }
-    
+
   };
 
-  
-// override jQuery scrollTop
- 
+
+  // override jQuery scrollTop
+
   var _scrollTop = jQuery.fn.scrollTop; // preserve original function
-   
+
   jQuery.cssHooks["pageYOffset"] = {
-    get: function(elem,computed,extra) {      
-      var nice = $.data(elem,'__nicescroll')||false;
-      return (nice&&nice.ishwscroll) ? nice.getScrollTop() : _scrollTop.call(elem);
+    get: function(elem, computed, extra) {
+      var nice = $.data(elem, '__nicescroll') || false;
+      return (nice && nice.ishwscroll) ? nice.getScrollTop() : _scrollTop.call(elem);
     },
-    set: function(elem,value) {
-      var nice = $.data(elem,'__nicescroll')||false;    
-      (nice&&nice.ishwscroll) ? nice.setScrollTop(parseInt(value)) : _scrollTop.call(elem,value);
+    set: function(elem, value) {
+      var nice = $.data(elem, '__nicescroll') || false;
+      (nice && nice.ishwscroll) ? nice.setScrollTop(parseInt(value)): _scrollTop.call(elem, value);
       return this;
     }
   };
-  
-/*  
+
+  /*  
   $.fx.step["scrollTop"] = function(fx){    
     $.cssHooks["scrollTop"].set( fx.elem, fx.now + fx.unit );
   };
-*/  
-  
-  jQuery.fn.scrollTop = function(value) {    
+*/
+
+  jQuery.fn.scrollTop = function(value) {
     if (typeof value == "undefined") {
-      var nice = (this[0]) ? $.data(this[0],'__nicescroll')||false : false;
-      return (nice&&nice.ishwscroll) ? nice.getScrollTop() : _scrollTop.call(this);
-    } else {      
+      var nice = (this[0]) ? $.data(this[0], '__nicescroll') || false : false;
+      return (nice && nice.ishwscroll) ? nice.getScrollTop() : _scrollTop.call(this);
+    } else {
       return this.each(function() {
-        var nice = $.data(this,'__nicescroll')||false;
-        (nice&&nice.ishwscroll) ? nice.setScrollTop(parseInt(value)) : _scrollTop.call($(this),value);
+        var nice = $.data(this, '__nicescroll') || false;
+        (nice && nice.ishwscroll) ? nice.setScrollTop(parseInt(value)): _scrollTop.call($(this), value);
       });
     }
-  }
+  };
 
-// override jQuery scrollLeft
- 
+  // override jQuery scrollLeft
+
   var _scrollLeft = jQuery.fn.scrollLeft; // preserve original function
-   
+
   $.cssHooks.pageXOffset = {
-    get: function(elem,computed,extra) {
-      var nice = $.data(elem,'__nicescroll')||false;
-      return (nice&&nice.ishwscroll) ? nice.getScrollLeft() : _scrollLeft.call(elem);
+    get: function(elem, computed, extra) {
+      var nice = $.data(elem, '__nicescroll') || false;
+      return (nice && nice.ishwscroll) ? nice.getScrollLeft() : _scrollLeft.call(elem);
     },
-    set: function(elem,value) {
-      var nice = $.data(elem,'__nicescroll')||false;    
-      (nice&&nice.ishwscroll) ? nice.setScrollLeft(parseInt(value)) : _scrollLeft.call(elem,value);
+    set: function(elem, value) {
+      var nice = $.data(elem, '__nicescroll') || false;
+      (nice && nice.ishwscroll) ? nice.setScrollLeft(parseInt(value)): _scrollLeft.call(elem, value);
       return this;
     }
   };
-  
-/*  
+
+  /*  
   $.fx.step["scrollLeft"] = function(fx){
     $.cssHooks["scrollLeft"].set( fx.elem, fx.now + fx.unit );
   };  
-*/  
- 
-  jQuery.fn.scrollLeft = function(value) {    
+*/
+
+  jQuery.fn.scrollLeft = function(value) {
     if (typeof value == "undefined") {
-      var nice = (this[0]) ? $.data(this[0],'__nicescroll')||false : false;
-      return (nice&&nice.ishwscroll) ? nice.getScrollLeft() : _scrollLeft.call(this);
+      var nice = (this[0]) ? $.data(this[0], '__nicescroll') || false : false;
+      return (nice && nice.ishwscroll) ? nice.getScrollLeft() : _scrollLeft.call(this);
     } else {
-      return this.each(function() {     
-        var nice = $.data(this,'__nicescroll')||false;
-        (nice&&nice.ishwscroll) ? nice.setScrollLeft(parseInt(value)) : _scrollLeft.call($(this),value);
+      return this.each(function() {
+        var nice = $.data(this, '__nicescroll') || false;
+        (nice && nice.ishwscroll) ? nice.setScrollLeft(parseInt(value)): _scrollLeft.call($(this), value);
       });
     }
-  }
-  
+  };
+
   var NiceScrollArray = function(doms) {
     var self = this;
     this.length = 0;
     this.name = "nicescrollarray";
-  
+
     this.each = function(fn) {
-      for(var a=0;a<self.length;a++) fn.call(self[a]);
+      for (var a = 0, i = 0; a < self.length; a++) fn.call(self[a], i++);
       return self;
     };
-    
+
     this.push = function(nice) {
-      self[self.length]=nice;
+      self[self.length] = nice;
       self.length++;
     };
-    
+
     this.eq = function(idx) {
       return self[idx];
     };
-    
+
     if (doms) {
-      for(a=0;a<doms.length;a++) {
-        var nice = $.data(doms[a],'__nicescroll')||false;
+      for (var a = 0; a < doms.length; a++) {
+        var nice = $.data(doms[a], '__nicescroll') || false;
         if (nice) {
-          this[this.length]=nice;
+          this[this.length] = nice;
           this.length++;
         }
       };
     }
-    
+
     return this;
   };
-  
-  function mplex(el,lst,fn) {
-    for(var a=0;a<lst.length;a++) fn(el,lst[a]);
-  };  
+
+  function mplex(el, lst, fn) {
+    for (var a = 0; a < lst.length; a++) fn(el, lst[a]);
+  };
   mplex(
-    NiceScrollArray.prototype,
-    ['show','hide','toggle','onResize','resize','remove','stop','doScrollPos'],
-    function(e,n) {
-      e[n] = function(){
+    NiceScrollArray.prototype, ['show', 'hide', 'toggle', 'onResize', 'resize', 'remove', 'stop', 'doScrollPos'],
+    function(e, n) {
+      e[n] = function() {
         var args = arguments;
-        return this.each(function(){          
-          this[n].apply(this,args);
+        return this.each(function() {
+          this[n].apply(this, args);
         });
       };
     }
-  );  
-  
+  );
+
   jQuery.fn.getNiceScroll = function(index) {
     if (typeof index == "undefined") {
       return new NiceScrollArray(this);
     } else {
-      var nice = $.data(this[index],'__nicescroll')||false;
+      var nice = this[index] && $.data(this[index], '__nicescroll') || false;
       return nice;
     }
   };
-  
+
   jQuery.extend(jQuery.expr[':'], {
     nicescroll: function(a) {
-      return ($.data(a,'__nicescroll'))?true:false;
+      return ($.data(a, '__nicescroll')) ? true : false;
     }
-  });  
-  
-  $.fn.niceScroll = function(wrapper,opt) {        
-    if (typeof opt=="undefined") {
-      if ((typeof wrapper=="object")&&!("jquery" in wrapper)) {
+  });
+
+  $.fn.niceScroll = function(wrapper, opt) {
+    if (typeof opt == "undefined") {
+      if ((typeof wrapper == "object") && !("jquery" in wrapper)) {
         opt = wrapper;
-        wrapper = false;        
+        wrapper = false;
       }
     }
+    opt = $.extend({},opt); // cloning
     var ret = new NiceScrollArray();
-    if (typeof opt=="undefined") opt = {};
-    
-    if (wrapper||false) {      
+    if (typeof opt == "undefined") opt = {};
+
+    if (wrapper || false) {
       opt.doc = $(wrapper);
       opt.win = $(this);
-    }    
-    var docundef = !("doc" in opt);   
-    if (!docundef&&!("win" in opt)) opt.win = $(this);    
-    
+    }
+    var docundef = !("doc" in opt);
+    if (!docundef && !("win" in opt)) opt.win = $(this);
+
     this.each(function() {
-      var nice = $(this).data('__nicescroll')||false;
+      var nice = $(this).data('__nicescroll') || false;
       if (!nice) {
         opt.doc = (docundef) ? $(this) : opt.doc;
-        nice = new NiceScrollClass(opt,$(this));        
-        $(this).data('__nicescroll',nice);
+        nice = new NiceScrollClass(opt, $(this));
+        $(this).data('__nicescroll', nice);
       }
       ret.push(nice);
     });
-    return (ret.length==1) ? ret[0] : ret;
+    return (ret.length == 1) ? ret[0] : ret;
   };
-  
+
   window.NiceScroll = {
-    getjQuery:function(){return jQuery}
+    getjQuery: function() {
+      return jQuery
+    }
   };
-  
+
   if (!$.nicescroll) {
-   $.nicescroll = new NiceScrollArray();
-   $.nicescroll.options = _globaloptions;
+    $.nicescroll = new NiceScrollArray();
+    $.nicescroll.options = _globaloptions;
   }
-  
-})( jQuery );
-  
-;;(function(){
+
+}));
+;(function(){
 
 
 // CommonJS require()
@@ -30236,7 +30207,7 @@ window.mocha = require('mocha');
   };
 })();
 })();
-;//     (c) 2012 Airbnb, Inc.
+//     (c) 2012 Airbnb, Inc.
 //
 //     polyglot.js may be freely distributed under the terms of the BSD
 //     license. For all licensing information, details, and documention:
@@ -30259,12 +30230,15 @@ window.mocha = require('mocha');
   // ### Polyglot class constructor
   function Polyglot(options) {
     options = options || {};
-    this.phrases = options.phrases || {};
+    this.phrases = {};
+    this.extend(options.phrases || {});
     this.currentLocale = options.locale || 'en';
+    this.allowMissing = !!options.allowMissing;
+    this.warn = options.warn || warn;
   }
 
   // ### Version
-  Polyglot.VERSION = '0.2.0';
+  Polyglot.VERSION = '0.4.1';
 
   // ### polyglot.locale([locale])
   //
@@ -30286,10 +30260,55 @@ window.mocha = require('mocha');
   // The key can be any string.  Feel free to call `extend` multiple times;
   // it will override any phrases with the same key, but leave existing phrases
   // untouched.
-  Polyglot.prototype.extend = function(morePhrases) {
+  //
+  // It is also possible to pass nested phrase objects, which get flattened
+  // into an object with the nested keys concatenated using dot notation.
+  //
+  //     polyglot.extend({
+  //       "nav": {
+  //         "hello": "Hello",
+  //         "hello_name": "Hello, %{name}",
+  //         "sidebar": {
+  //           "welcome": "Welcome"
+  //         }
+  //       }
+  //     });
+  //
+  //     console.log(polyglot.phrases);
+  //     // {
+  //     //   'nav.hello': 'Hello',
+  //     //   'nav.hello_name': 'Hello, %{name}',
+  //     //   'nav.sidebar.welcome': 'Welcome'
+  //     // }
+  //
+  // `extend` accepts an optional second argument, `prefix`, which can be used
+  // to prefix every key in the phrases object with some string, using dot
+  // notation.
+  //
+  //     polyglot.extend({
+  //       "hello": "Hello",
+  //       "hello_name": "Hello, %{name}"
+  //     }, "nav");
+  //
+  //     console.log(polyglot.phrases);
+  //     // {
+  //     //   'nav.hello': 'Hello',
+  //     //   'nav.hello_name': 'Hello, %{name}'
+  //     // }
+  //
+  // This feature is used internally to support nested phrase objects.
+  Polyglot.prototype.extend = function(morePhrases, prefix) {
+    var phrase;
+
     for (var key in morePhrases) {
       if (morePhrases.hasOwnProperty(key)) {
-        this.phrases[key] = morePhrases[key];
+        phrase = morePhrases[key];
+        if (prefix) key = prefix + '.' + key;
+        if (typeof phrase === 'object') {
+          this.extend(phrase, key);
+        } else {
+          this.phrases[key] = phrase;
+        }
       }
     }
   };
@@ -30341,40 +30360,23 @@ window.mocha = require('mocha');
   //
   Polyglot.prototype.t = function(key, options) {
     var result;
-    options = options || {};
-    var phrase = this.phrases[key] || options._ || '';
+    options = options == null ? {} : options;
+    // allow number as a pluralization shortcut
+    if (typeof options === 'number') {
+      options = {smart_count: options};
+    }
+    var phrase = this.phrases[key] || options._ || (this.allowMissing ? key : '');
     if (phrase === '') {
-      warn('Missing translation for key: "'+key+'"');
+      this.warn('Missing translation for key: "'+key+'"');
       result = key;
     } else {
       options = clone(options);
-      // This allows you to pass an Array, Backbone.Collection, or anything
-      // with a `length` property as the `smart_count` parameter for pluralization.
-      if (options.smart_count != null && options.smart_count.length != null) {
-        options.smart_count = options.smart_count.length;
-      }
       result = choosePluralForm(phrase, this.currentLocale, options.smart_count);
       result = interpolate(result, options);
     }
     return result;
   };
 
-
-  // ### polylglot.pluralize(noun, count)
-  //
-  // A shortcut for calling `polyglot.t()` with a special `||||`-delimeted phrase.
-  // Works well for the simple case, like "1 car".
-  Polyglot.prototype.pluralize = function(noun, count) {
-    if (count != null && count.length != null) {
-      count = count.length;
-    }
-    var key = pluralizeKey(noun);
-    return this.t(key, {smart_count: count});
-  };
-
-  function pluralizeKey(noun) {
-    return 'shared.pluralize.' + noun;
-  }
 
   // #### Pluralization methods
   // The string that separates the different phrase possibilities.
@@ -30393,9 +30395,9 @@ window.mocha = require('mocha');
 
   // Mapping from pluralization group to individual locales.
   var pluralTypeToLanguages = {
-    chinese:   ['id', 'ja', 'ko', 'ms', 'th', 'tr', 'zh'],
+    chinese:   ['fa', 'id', 'ja', 'ko', 'lo', 'ms', 'th', 'tr', 'zh'],
     german:    ['da', 'de', 'en', 'es', 'fi', 'el', 'he', 'hu', 'it', 'nl', 'no', 'pt', 'sv'],
-    french:    ['fr', 'tl'],
+    french:    ['fr', 'tl', 'pt-br'],
     russian:   ['hr', 'ru'],
     czech:     ['cs'],
     polish:    ['pl'],
@@ -30415,7 +30417,7 @@ window.mocha = require('mocha');
     return ret;
   }
 
-    // Trim a string.
+  // Trim a string.
   function trim(str){
     var trimRe = /^\s+|\s+$/g;
     return str.replace(trimRe, '');
@@ -30489,8 +30491,3878 @@ window.mocha = require('mocha');
 
 }(this);
 
+/*! Socket.IO.js build:0.9.11, development. Copyright(c) 2011 LearnBoost <dev@learnboost.com> MIT Licensed */
 
-;/*
+var io = ('undefined' === typeof module ? {} : module.exports);
+(function() {
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, global) {
+
+  /**
+   * IO namespace.
+   *
+   * @namespace
+   */
+
+  var io = exports;
+
+  /**
+   * Socket.IO version
+   *
+   * @api public
+   */
+
+  io.version = '0.9.11';
+
+  /**
+   * Protocol implemented.
+   *
+   * @api public
+   */
+
+  io.protocol = 1;
+
+  /**
+   * Available transports, these will be populated with the available transports
+   *
+   * @api public
+   */
+
+  io.transports = [];
+
+  /**
+   * Keep track of jsonp callbacks.
+   *
+   * @api private
+   */
+
+  io.j = [];
+
+  /**
+   * Keep track of our io.Sockets
+   *
+   * @api private
+   */
+  io.sockets = {};
+
+
+  /**
+   * Manages connections to hosts.
+   *
+   * @param {String} uri
+   * @Param {Boolean} force creation of new socket (defaults to false)
+   * @api public
+   */
+
+  io.connect = function (host, details) {
+    var uri = io.util.parseUri(host)
+      , uuri
+      , socket;
+
+    if (global && global.location) {
+      uri.protocol = uri.protocol || global.location.protocol.slice(0, -1);
+      uri.host = uri.host || (global.document
+        ? global.document.domain : global.location.hostname);
+      uri.port = uri.port || global.location.port;
+    }
+
+    uuri = io.util.uniqueUri(uri);
+
+    var options = {
+        host: uri.host
+      , secure: 'https' == uri.protocol
+      , port: uri.port || ('https' == uri.protocol ? 443 : 80)
+      , query: uri.query || ''
+    };
+
+    io.util.merge(options, details);
+
+    if (options['force new connection'] || !io.sockets[uuri]) {
+      socket = new io.Socket(options);
+    }
+
+    if (!options['force new connection'] && socket) {
+      io.sockets[uuri] = socket;
+    }
+
+    socket = socket || io.sockets[uuri];
+
+    // if path is different from '' or /
+    return socket.of(uri.path.length > 1 ? uri.path : '');
+  };
+
+})('object' === typeof module ? module.exports : (this.io = {}), this);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, global) {
+
+  /**
+   * Utilities namespace.
+   *
+   * @namespace
+   */
+
+  var util = exports.util = {};
+
+  /**
+   * Parses an URI
+   *
+   * @author Steven Levithan <stevenlevithan.com> (MIT license)
+   * @api public
+   */
+
+  var re = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+
+  var parts = ['source', 'protocol', 'authority', 'userInfo', 'user', 'password',
+               'host', 'port', 'relative', 'path', 'directory', 'file', 'query',
+               'anchor'];
+
+  util.parseUri = function (str) {
+    var m = re.exec(str || '')
+      , uri = {}
+      , i = 14;
+
+    while (i--) {
+      uri[parts[i]] = m[i] || '';
+    }
+
+    return uri;
+  };
+
+  /**
+   * Produces a unique url that identifies a Socket.IO connection.
+   *
+   * @param {Object} uri
+   * @api public
+   */
+
+  util.uniqueUri = function (uri) {
+    var protocol = uri.protocol
+      , host = uri.host
+      , port = uri.port;
+
+    if ('document' in global) {
+      host = host || document.domain;
+      port = port || (protocol == 'https'
+        && document.location.protocol !== 'https:' ? 443 : document.location.port);
+    } else {
+      host = host || 'localhost';
+
+      if (!port && protocol == 'https') {
+        port = 443;
+      }
+    }
+
+    return (protocol || 'http') + '://' + host + ':' + (port || 80);
+  };
+
+  /**
+   * Mergest 2 query strings in to once unique query string
+   *
+   * @param {String} base
+   * @param {String} addition
+   * @api public
+   */
+
+  util.query = function (base, addition) {
+    var query = util.chunkQuery(base || '')
+      , components = [];
+
+    util.merge(query, util.chunkQuery(addition || ''));
+    for (var part in query) {
+      if (query.hasOwnProperty(part)) {
+        components.push(part + '=' + query[part]);
+      }
+    }
+
+    return components.length ? '?' + components.join('&') : '';
+  };
+
+  /**
+   * Transforms a querystring in to an object
+   *
+   * @param {String} qs
+   * @api public
+   */
+
+  util.chunkQuery = function (qs) {
+    var query = {}
+      , params = qs.split('&')
+      , i = 0
+      , l = params.length
+      , kv;
+
+    for (; i < l; ++i) {
+      kv = params[i].split('=');
+      if (kv[0]) {
+        query[kv[0]] = kv[1];
+      }
+    }
+
+    return query;
+  };
+
+  /**
+   * Executes the given function when the page is loaded.
+   *
+   *     io.util.load(function () { console.log('page loaded'); });
+   *
+   * @param {Function} fn
+   * @api public
+   */
+
+  var pageLoaded = false;
+
+  util.load = function (fn) {
+    if ('document' in global && document.readyState === 'complete' || pageLoaded) {
+      return fn();
+    }
+
+    util.on(global, 'load', fn, false);
+  };
+
+  /**
+   * Adds an event.
+   *
+   * @api private
+   */
+
+  util.on = function (element, event, fn, capture) {
+    if (element.attachEvent) {
+      element.attachEvent('on' + event, fn);
+    } else if (element.addEventListener) {
+      element.addEventListener(event, fn, capture);
+    }
+  };
+
+  /**
+   * Generates the correct `XMLHttpRequest` for regular and cross domain requests.
+   *
+   * @param {Boolean} [xdomain] Create a request that can be used cross domain.
+   * @returns {XMLHttpRequest|false} If we can create a XMLHttpRequest.
+   * @api private
+   */
+
+  util.request = function (xdomain) {
+
+    if (xdomain && 'undefined' != typeof XDomainRequest && !util.ua.hasCORS) {
+      return new XDomainRequest();
+    }
+
+    if ('undefined' != typeof XMLHttpRequest && (!xdomain || util.ua.hasCORS)) {
+      return new XMLHttpRequest();
+    }
+
+    if (!xdomain) {
+      try {
+        return new window[(['Active'].concat('Object').join('X'))]('Microsoft.XMLHTTP');
+      } catch(e) { }
+    }
+
+    return null;
+  };
+
+  /**
+   * XHR based transport constructor.
+   *
+   * @constructor
+   * @api public
+   */
+
+  /**
+   * Change the internal pageLoaded value.
+   */
+
+  if ('undefined' != typeof window) {
+    util.load(function () {
+      pageLoaded = true;
+    });
+  }
+
+  /**
+   * Defers a function to ensure a spinner is not displayed by the browser
+   *
+   * @param {Function} fn
+   * @api public
+   */
+
+  util.defer = function (fn) {
+    if (!util.ua.webkit || 'undefined' != typeof importScripts) {
+      return fn();
+    }
+
+    util.load(function () {
+      setTimeout(fn, 100);
+    });
+  };
+
+  /**
+   * Merges two objects.
+   *
+   * @api public
+   */
+
+  util.merge = function merge (target, additional, deep, lastseen) {
+    var seen = lastseen || []
+      , depth = typeof deep == 'undefined' ? 2 : deep
+      , prop;
+
+    for (prop in additional) {
+      if (additional.hasOwnProperty(prop) && util.indexOf(seen, prop) < 0) {
+        if (typeof target[prop] !== 'object' || !depth) {
+          target[prop] = additional[prop];
+          seen.push(additional[prop]);
+        } else {
+          util.merge(target[prop], additional[prop], depth - 1, seen);
+        }
+      }
+    }
+
+    return target;
+  };
+
+  /**
+   * Merges prototypes from objects
+   *
+   * @api public
+   */
+
+  util.mixin = function (ctor, ctor2) {
+    util.merge(ctor.prototype, ctor2.prototype);
+  };
+
+  /**
+   * Shortcut for prototypical and static inheritance.
+   *
+   * @api private
+   */
+
+  util.inherit = function (ctor, ctor2) {
+    function f() {};
+    f.prototype = ctor2.prototype;
+    ctor.prototype = new f;
+  };
+
+  /**
+   * Checks if the given object is an Array.
+   *
+   *     io.util.isArray([]); // true
+   *     io.util.isArray({}); // false
+   *
+   * @param Object obj
+   * @api public
+   */
+
+  util.isArray = Array.isArray || function (obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  };
+
+  /**
+   * Intersects values of two arrays into a third
+   *
+   * @api public
+   */
+
+  util.intersect = function (arr, arr2) {
+    var ret = []
+      , longest = arr.length > arr2.length ? arr : arr2
+      , shortest = arr.length > arr2.length ? arr2 : arr;
+
+    for (var i = 0, l = shortest.length; i < l; i++) {
+      if (~util.indexOf(longest, shortest[i]))
+        ret.push(shortest[i]);
+    }
+
+    return ret;
+  };
+
+  /**
+   * Array indexOf compatibility.
+   *
+   * @see bit.ly/a5Dxa2
+   * @api public
+   */
+
+  util.indexOf = function (arr, o, i) {
+
+    for (var j = arr.length, i = i < 0 ? i + j < 0 ? 0 : i + j : i || 0;
+         i < j && arr[i] !== o; i++) {}
+
+    return j <= i ? -1 : i;
+  };
+
+  /**
+   * Converts enumerables to array.
+   *
+   * @api public
+   */
+
+  util.toArray = function (enu) {
+    var arr = [];
+
+    for (var i = 0, l = enu.length; i < l; i++)
+      arr.push(enu[i]);
+
+    return arr;
+  };
+
+  /**
+   * UA / engines detection namespace.
+   *
+   * @namespace
+   */
+
+  util.ua = {};
+
+  /**
+   * Whether the UA supports CORS for XHR.
+   *
+   * @api public
+   */
+
+  util.ua.hasCORS = 'undefined' != typeof XMLHttpRequest && (function () {
+    try {
+      var a = new XMLHttpRequest();
+    } catch (e) {
+      return false;
+    }
+
+    return a.withCredentials != undefined;
+  })();
+
+  /**
+   * Detect webkit.
+   *
+   * @api public
+   */
+
+  util.ua.webkit = 'undefined' != typeof navigator
+    && /webkit/i.test(navigator.userAgent);
+
+   /**
+   * Detect iPad/iPhone/iPod.
+   *
+   * @api public
+   */
+
+  util.ua.iDevice = 'undefined' != typeof navigator
+      && /iPad|iPhone|iPod/i.test(navigator.userAgent);
+
+})('undefined' != typeof io ? io : module.exports, this);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.EventEmitter = EventEmitter;
+
+  /**
+   * Event emitter constructor.
+   *
+   * @api public.
+   */
+
+  function EventEmitter () {};
+
+  /**
+   * Adds a listener
+   *
+   * @api public
+   */
+
+  EventEmitter.prototype.on = function (name, fn) {
+    if (!this.$events) {
+      this.$events = {};
+    }
+
+    if (!this.$events[name]) {
+      this.$events[name] = fn;
+    } else if (io.util.isArray(this.$events[name])) {
+      this.$events[name].push(fn);
+    } else {
+      this.$events[name] = [this.$events[name], fn];
+    }
+
+    return this;
+  };
+
+  EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+
+  /**
+   * Adds a volatile listener.
+   *
+   * @api public
+   */
+
+  EventEmitter.prototype.once = function (name, fn) {
+    var self = this;
+
+    function on () {
+      self.removeListener(name, on);
+      fn.apply(this, arguments);
+    };
+
+    on.listener = fn;
+    this.on(name, on);
+
+    return this;
+  };
+
+  /**
+   * Removes a listener.
+   *
+   * @api public
+   */
+
+  EventEmitter.prototype.removeListener = function (name, fn) {
+    if (this.$events && this.$events[name]) {
+      var list = this.$events[name];
+
+      if (io.util.isArray(list)) {
+        var pos = -1;
+
+        for (var i = 0, l = list.length; i < l; i++) {
+          if (list[i] === fn || (list[i].listener && list[i].listener === fn)) {
+            pos = i;
+            break;
+          }
+        }
+
+        if (pos < 0) {
+          return this;
+        }
+
+        list.splice(pos, 1);
+
+        if (!list.length) {
+          delete this.$events[name];
+        }
+      } else if (list === fn || (list.listener && list.listener === fn)) {
+        delete this.$events[name];
+      }
+    }
+
+    return this;
+  };
+
+  /**
+   * Removes all listeners for an event.
+   *
+   * @api public
+   */
+
+  EventEmitter.prototype.removeAllListeners = function (name) {
+    if (name === undefined) {
+      this.$events = {};
+      return this;
+    }
+
+    if (this.$events && this.$events[name]) {
+      this.$events[name] = null;
+    }
+
+    return this;
+  };
+
+  /**
+   * Gets all listeners for a certain event.
+   *
+   * @api publci
+   */
+
+  EventEmitter.prototype.listeners = function (name) {
+    if (!this.$events) {
+      this.$events = {};
+    }
+
+    if (!this.$events[name]) {
+      this.$events[name] = [];
+    }
+
+    if (!io.util.isArray(this.$events[name])) {
+      this.$events[name] = [this.$events[name]];
+    }
+
+    return this.$events[name];
+  };
+
+  /**
+   * Emits an event.
+   *
+   * @api public
+   */
+
+  EventEmitter.prototype.emit = function (name) {
+    if (!this.$events) {
+      return false;
+    }
+
+    var handler = this.$events[name];
+
+    if (!handler) {
+      return false;
+    }
+
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    if ('function' == typeof handler) {
+      handler.apply(this, args);
+    } else if (io.util.isArray(handler)) {
+      var listeners = handler.slice();
+
+      for (var i = 0, l = listeners.length; i < l; i++) {
+        listeners[i].apply(this, args);
+      }
+    } else {
+      return false;
+    }
+
+    return true;
+  };
+
+})(
+    'undefined' != typeof io ? io : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+/**
+ * Based on JSON2 (http://www.JSON.org/js.html).
+ */
+
+(function (exports, nativeJSON) {
+  "use strict";
+
+  // use native JSON if it's available
+  if (nativeJSON && nativeJSON.parse){
+    return exports.JSON = {
+      parse: nativeJSON.parse
+    , stringify: nativeJSON.stringify
+    };
+  }
+
+  var JSON = exports.JSON = {};
+
+  function f(n) {
+      // Format integers to have at least two digits.
+      return n < 10 ? '0' + n : n;
+  }
+
+  function date(d, key) {
+    return isFinite(d.valueOf()) ?
+        d.getUTCFullYear()     + '-' +
+        f(d.getUTCMonth() + 1) + '-' +
+        f(d.getUTCDate())      + 'T' +
+        f(d.getUTCHours())     + ':' +
+        f(d.getUTCMinutes())   + ':' +
+        f(d.getUTCSeconds())   + 'Z' : null;
+  };
+
+  var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+      escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+      gap,
+      indent,
+      meta = {    // table of character substitutions
+          '\b': '\\b',
+          '\t': '\\t',
+          '\n': '\\n',
+          '\f': '\\f',
+          '\r': '\\r',
+          '"' : '\\"',
+          '\\': '\\\\'
+      },
+      rep;
+
+
+  function quote(string) {
+
+// If the string contains no control characters, no quote characters, and no
+// backslash characters, then we can safely slap some quotes around it.
+// Otherwise we must also replace the offending characters with safe escape
+// sequences.
+
+      escapable.lastIndex = 0;
+      return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
+          var c = meta[a];
+          return typeof c === 'string' ? c :
+              '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+      }) + '"' : '"' + string + '"';
+  }
+
+
+  function str(key, holder) {
+
+// Produce a string from holder[key].
+
+      var i,          // The loop counter.
+          k,          // The member key.
+          v,          // The member value.
+          length,
+          mind = gap,
+          partial,
+          value = holder[key];
+
+// If the value has a toJSON method, call it to obtain a replacement value.
+
+      if (value instanceof Date) {
+          value = date(key);
+      }
+
+// If we were called with a replacer function, then call the replacer to
+// obtain a replacement value.
+
+      if (typeof rep === 'function') {
+          value = rep.call(holder, key, value);
+      }
+
+// What happens next depends on the value's type.
+
+      switch (typeof value) {
+      case 'string':
+          return quote(value);
+
+      case 'number':
+
+// JSON numbers must be finite. Encode non-finite numbers as null.
+
+          return isFinite(value) ? String(value) : 'null';
+
+      case 'boolean':
+      case 'null':
+
+// If the value is a boolean or null, convert it to a string. Note:
+// typeof null does not produce 'null'. The case is included here in
+// the remote chance that this gets fixed someday.
+
+          return String(value);
+
+// If the type is 'object', we might be dealing with an object or an array or
+// null.
+
+      case 'object':
+
+// Due to a specification blunder in ECMAScript, typeof null is 'object',
+// so watch out for that case.
+
+          if (!value) {
+              return 'null';
+          }
+
+// Make an array to hold the partial results of stringifying this object value.
+
+          gap += indent;
+          partial = [];
+
+// Is the value an array?
+
+          if (Object.prototype.toString.apply(value) === '[object Array]') {
+
+// The value is an array. Stringify every element. Use null as a placeholder
+// for non-JSON values.
+
+              length = value.length;
+              for (i = 0; i < length; i += 1) {
+                  partial[i] = str(i, value) || 'null';
+              }
+
+// Join all of the elements together, separated with commas, and wrap them in
+// brackets.
+
+              v = partial.length === 0 ? '[]' : gap ?
+                  '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']' :
+                  '[' + partial.join(',') + ']';
+              gap = mind;
+              return v;
+          }
+
+// If the replacer is an array, use it to select the members to be stringified.
+
+          if (rep && typeof rep === 'object') {
+              length = rep.length;
+              for (i = 0; i < length; i += 1) {
+                  if (typeof rep[i] === 'string') {
+                      k = rep[i];
+                      v = str(k, value);
+                      if (v) {
+                          partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                      }
+                  }
+              }
+          } else {
+
+// Otherwise, iterate through all of the keys in the object.
+
+              for (k in value) {
+                  if (Object.prototype.hasOwnProperty.call(value, k)) {
+                      v = str(k, value);
+                      if (v) {
+                          partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                      }
+                  }
+              }
+          }
+
+// Join all of the member texts together, separated with commas,
+// and wrap them in braces.
+
+          v = partial.length === 0 ? '{}' : gap ?
+              '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}' :
+              '{' + partial.join(',') + '}';
+          gap = mind;
+          return v;
+      }
+  }
+
+// If the JSON object does not yet have a stringify method, give it one.
+
+  JSON.stringify = function (value, replacer, space) {
+
+// The stringify method takes a value and an optional replacer, and an optional
+// space parameter, and returns a JSON text. The replacer can be a function
+// that can replace values, or an array of strings that will select the keys.
+// A default replacer method can be provided. Use of the space parameter can
+// produce text that is more easily readable.
+
+      var i;
+      gap = '';
+      indent = '';
+
+// If the space parameter is a number, make an indent string containing that
+// many spaces.
+
+      if (typeof space === 'number') {
+          for (i = 0; i < space; i += 1) {
+              indent += ' ';
+          }
+
+// If the space parameter is a string, it will be used as the indent string.
+
+      } else if (typeof space === 'string') {
+          indent = space;
+      }
+
+// If there is a replacer, it must be a function or an array.
+// Otherwise, throw an error.
+
+      rep = replacer;
+      if (replacer && typeof replacer !== 'function' &&
+              (typeof replacer !== 'object' ||
+              typeof replacer.length !== 'number')) {
+          throw new Error('JSON.stringify');
+      }
+
+// Make a fake root object containing our value under the key of ''.
+// Return the result of stringifying the value.
+
+      return str('', {'': value});
+  };
+
+// If the JSON object does not yet have a parse method, give it one.
+
+  JSON.parse = function (text, reviver) {
+  // The parse method takes a text and an optional reviver function, and returns
+  // a JavaScript value if the text is a valid JSON text.
+
+      var j;
+
+      function walk(holder, key) {
+
+  // The walk method is used to recursively walk the resulting structure so
+  // that modifications can be made.
+
+          var k, v, value = holder[key];
+          if (value && typeof value === 'object') {
+              for (k in value) {
+                  if (Object.prototype.hasOwnProperty.call(value, k)) {
+                      v = walk(value, k);
+                      if (v !== undefined) {
+                          value[k] = v;
+                      } else {
+                          delete value[k];
+                      }
+                  }
+              }
+          }
+          return reviver.call(holder, key, value);
+      }
+
+
+  // Parsing happens in four stages. In the first stage, we replace certain
+  // Unicode characters with escape sequences. JavaScript handles many characters
+  // incorrectly, either silently deleting them, or treating them as line endings.
+
+      text = String(text);
+      cx.lastIndex = 0;
+      if (cx.test(text)) {
+          text = text.replace(cx, function (a) {
+              return '\\u' +
+                  ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+          });
+      }
+
+  // In the second stage, we run the text against regular expressions that look
+  // for non-JSON patterns. We are especially concerned with '()' and 'new'
+  // because they can cause invocation, and '=' because it can cause mutation.
+  // But just to be safe, we want to reject all unexpected forms.
+
+  // We split the second stage into 4 regexp operations in order to work around
+  // crippling inefficiencies in IE's and Safari's regexp engines. First we
+  // replace the JSON backslash pairs with '@' (a non-JSON character). Second, we
+  // replace all simple value tokens with ']' characters. Third, we delete all
+  // open brackets that follow a colon or comma or that begin the text. Finally,
+  // we look to see that the remaining characters are only whitespace or ']' or
+  // ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.
+
+      if (/^[\],:{}\s]*$/
+              .test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@')
+                  .replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']')
+                  .replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+
+  // In the third stage we use the eval function to compile the text into a
+  // JavaScript structure. The '{' operator is subject to a syntactic ambiguity
+  // in JavaScript: it can begin a block or an object literal. We wrap the text
+  // in parens to eliminate the ambiguity.
+
+          j = eval('(' + text + ')');
+
+  // In the optional fourth stage, we recursively walk the new structure, passing
+  // each name/value pair to a reviver function for possible transformation.
+
+          return typeof reviver === 'function' ?
+              walk({'': j}, '') : j;
+      }
+
+  // If the text is not JSON parseable, then a SyntaxError is thrown.
+
+      throw new SyntaxError('JSON.parse');
+  };
+
+})(
+    'undefined' != typeof io ? io : module.exports
+  , typeof JSON !== 'undefined' ? JSON : undefined
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Parser namespace.
+   *
+   * @namespace
+   */
+
+  var parser = exports.parser = {};
+
+  /**
+   * Packet types.
+   */
+
+  var packets = parser.packets = [
+      'disconnect'
+    , 'connect'
+    , 'heartbeat'
+    , 'message'
+    , 'json'
+    , 'event'
+    , 'ack'
+    , 'error'
+    , 'noop'
+  ];
+
+  /**
+   * Errors reasons.
+   */
+
+  var reasons = parser.reasons = [
+      'transport not supported'
+    , 'client not handshaken'
+    , 'unauthorized'
+  ];
+
+  /**
+   * Errors advice.
+   */
+
+  var advice = parser.advice = [
+      'reconnect'
+  ];
+
+  /**
+   * Shortcuts.
+   */
+
+  var JSON = io.JSON
+    , indexOf = io.util.indexOf;
+
+  /**
+   * Encodes a packet.
+   *
+   * @api private
+   */
+
+  parser.encodePacket = function (packet) {
+    var type = indexOf(packets, packet.type)
+      , id = packet.id || ''
+      , endpoint = packet.endpoint || ''
+      , ack = packet.ack
+      , data = null;
+
+    switch (packet.type) {
+      case 'error':
+        var reason = packet.reason ? indexOf(reasons, packet.reason) : ''
+          , adv = packet.advice ? indexOf(advice, packet.advice) : '';
+
+        if (reason !== '' || adv !== '')
+          data = reason + (adv !== '' ? ('+' + adv) : '');
+
+        break;
+
+      case 'message':
+        if (packet.data !== '')
+          data = packet.data;
+        break;
+
+      case 'event':
+        var ev = { name: packet.name };
+
+        if (packet.args && packet.args.length) {
+          ev.args = packet.args;
+        }
+
+        data = JSON.stringify(ev);
+        break;
+
+      case 'json':
+        data = JSON.stringify(packet.data);
+        break;
+
+      case 'connect':
+        if (packet.qs)
+          data = packet.qs;
+        break;
+
+      case 'ack':
+        data = packet.ackId
+          + (packet.args && packet.args.length
+              ? '+' + JSON.stringify(packet.args) : '');
+        break;
+    }
+
+    // construct packet with required fragments
+    var encoded = [
+        type
+      , id + (ack == 'data' ? '+' : '')
+      , endpoint
+    ];
+
+    // data fragment is optional
+    if (data !== null && data !== undefined)
+      encoded.push(data);
+
+    return encoded.join(':');
+  };
+
+  /**
+   * Encodes multiple messages (payload).
+   *
+   * @param {Array} messages
+   * @api private
+   */
+
+  parser.encodePayload = function (packets) {
+    var decoded = '';
+
+    if (packets.length == 1)
+      return packets[0];
+
+    for (var i = 0, l = packets.length; i < l; i++) {
+      var packet = packets[i];
+      decoded += '\ufffd' + packet.length + '\ufffd' + packets[i];
+    }
+
+    return decoded;
+  };
+
+  /**
+   * Decodes a packet
+   *
+   * @api private
+   */
+
+  var regexp = /([^:]+):([0-9]+)?(\+)?:([^:]+)?:?([\s\S]*)?/;
+
+  parser.decodePacket = function (data) {
+    var pieces = data.match(regexp);
+
+    if (!pieces) return {};
+
+    var id = pieces[2] || ''
+      , data = pieces[5] || ''
+      , packet = {
+            type: packets[pieces[1]]
+          , endpoint: pieces[4] || ''
+        };
+
+    // whether we need to acknowledge the packet
+    if (id) {
+      packet.id = id;
+      if (pieces[3])
+        packet.ack = 'data';
+      else
+        packet.ack = true;
+    }
+
+    // handle different packet types
+    switch (packet.type) {
+      case 'error':
+        var pieces = data.split('+');
+        packet.reason = reasons[pieces[0]] || '';
+        packet.advice = advice[pieces[1]] || '';
+        break;
+
+      case 'message':
+        packet.data = data || '';
+        break;
+
+      case 'event':
+        try {
+          var opts = JSON.parse(data);
+          packet.name = opts.name;
+          packet.args = opts.args;
+        } catch (e) { }
+
+        packet.args = packet.args || [];
+        break;
+
+      case 'json':
+        try {
+          packet.data = JSON.parse(data);
+        } catch (e) { }
+        break;
+
+      case 'connect':
+        packet.qs = data || '';
+        break;
+
+      case 'ack':
+        var pieces = data.match(/^([0-9]+)(\+)?(.*)/);
+        if (pieces) {
+          packet.ackId = pieces[1];
+          packet.args = [];
+
+          if (pieces[3]) {
+            try {
+              packet.args = pieces[3] ? JSON.parse(pieces[3]) : [];
+            } catch (e) { }
+          }
+        }
+        break;
+
+      case 'disconnect':
+      case 'heartbeat':
+        break;
+    };
+
+    return packet;
+  };
+
+  /**
+   * Decodes data payload. Detects multiple messages
+   *
+   * @return {Array} messages
+   * @api public
+   */
+
+  parser.decodePayload = function (data) {
+    // IE doesn't like data[i] for unicode chars, charAt works fine
+    if (data.charAt(0) == '\ufffd') {
+      var ret = [];
+
+      for (var i = 1, length = ''; i < data.length; i++) {
+        if (data.charAt(i) == '\ufffd') {
+          ret.push(parser.decodePacket(data.substr(i + 1).substr(0, length)));
+          i += Number(length) + 1;
+          length = '';
+        } else {
+          length += data.charAt(i);
+        }
+      }
+
+      return ret;
+    } else {
+      return [parser.decodePacket(data)];
+    }
+  };
+
+})(
+    'undefined' != typeof io ? io : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.Transport = Transport;
+
+  /**
+   * This is the transport template for all supported transport methods.
+   *
+   * @constructor
+   * @api public
+   */
+
+  function Transport (socket, sessid) {
+    this.socket = socket;
+    this.sessid = sessid;
+  };
+
+  /**
+   * Apply EventEmitter mixin.
+   */
+
+  io.util.mixin(Transport, io.EventEmitter);
+
+
+  /**
+   * Indicates whether heartbeats is enabled for this transport
+   *
+   * @api private
+   */
+
+  Transport.prototype.heartbeats = function () {
+    return true;
+  };
+
+  /**
+   * Handles the response from the server. When a new response is received
+   * it will automatically update the timeout, decode the message and
+   * forwards the response to the onMessage function for further processing.
+   *
+   * @param {String} data Response from the server.
+   * @api private
+   */
+
+  Transport.prototype.onData = function (data) {
+    this.clearCloseTimeout();
+
+    // If the connection in currently open (or in a reopening state) reset the close
+    // timeout since we have just received data. This check is necessary so
+    // that we don't reset the timeout on an explicitly disconnected connection.
+    if (this.socket.connected || this.socket.connecting || this.socket.reconnecting) {
+      this.setCloseTimeout();
+    }
+
+    if (data !== '') {
+      // todo: we should only do decodePayload for xhr transports
+      var msgs = io.parser.decodePayload(data);
+
+      if (msgs && msgs.length) {
+        for (var i = 0, l = msgs.length; i < l; i++) {
+          this.onPacket(msgs[i]);
+        }
+      }
+    }
+
+    return this;
+  };
+
+  /**
+   * Handles packets.
+   *
+   * @api private
+   */
+
+  Transport.prototype.onPacket = function (packet) {
+    this.socket.setHeartbeatTimeout();
+
+    if (packet.type == 'heartbeat') {
+      return this.onHeartbeat();
+    }
+
+    if (packet.type == 'connect' && packet.endpoint == '') {
+      this.onConnect();
+    }
+
+    if (packet.type == 'error' && packet.advice == 'reconnect') {
+      this.isOpen = false;
+    }
+
+    this.socket.onPacket(packet);
+
+    return this;
+  };
+
+  /**
+   * Sets close timeout
+   *
+   * @api private
+   */
+
+  Transport.prototype.setCloseTimeout = function () {
+    if (!this.closeTimeout) {
+      var self = this;
+
+      this.closeTimeout = setTimeout(function () {
+        self.onDisconnect();
+      }, this.socket.closeTimeout);
+    }
+  };
+
+  /**
+   * Called when transport disconnects.
+   *
+   * @api private
+   */
+
+  Transport.prototype.onDisconnect = function () {
+    if (this.isOpen) this.close();
+    this.clearTimeouts();
+    this.socket.onDisconnect();
+    return this;
+  };
+
+  /**
+   * Called when transport connects
+   *
+   * @api private
+   */
+
+  Transport.prototype.onConnect = function () {
+    this.socket.onConnect();
+    return this;
+  };
+
+  /**
+   * Clears close timeout
+   *
+   * @api private
+   */
+
+  Transport.prototype.clearCloseTimeout = function () {
+    if (this.closeTimeout) {
+      clearTimeout(this.closeTimeout);
+      this.closeTimeout = null;
+    }
+  };
+
+  /**
+   * Clear timeouts
+   *
+   * @api private
+   */
+
+  Transport.prototype.clearTimeouts = function () {
+    this.clearCloseTimeout();
+
+    if (this.reopenTimeout) {
+      clearTimeout(this.reopenTimeout);
+    }
+  };
+
+  /**
+   * Sends a packet
+   *
+   * @param {Object} packet object.
+   * @api private
+   */
+
+  Transport.prototype.packet = function (packet) {
+    this.send(io.parser.encodePacket(packet));
+  };
+
+  /**
+   * Send the received heartbeat message back to server. So the server
+   * knows we are still connected.
+   *
+   * @param {String} heartbeat Heartbeat response from the server.
+   * @api private
+   */
+
+  Transport.prototype.onHeartbeat = function (heartbeat) {
+    this.packet({ type: 'heartbeat' });
+  };
+
+  /**
+   * Called when the transport opens.
+   *
+   * @api private
+   */
+
+  Transport.prototype.onOpen = function () {
+    this.isOpen = true;
+    this.clearCloseTimeout();
+    this.socket.onOpen();
+  };
+
+  /**
+   * Notifies the base when the connection with the Socket.IO server
+   * has been disconnected.
+   *
+   * @api private
+   */
+
+  Transport.prototype.onClose = function () {
+    var self = this;
+
+    /* FIXME: reopen delay causing a infinit loop
+    this.reopenTimeout = setTimeout(function () {
+      self.open();
+    }, this.socket.options['reopen delay']);*/
+
+    this.isOpen = false;
+    this.socket.onClose();
+    this.onDisconnect();
+  };
+
+  /**
+   * Generates a connection url based on the Socket.IO URL Protocol.
+   * See <https://github.com/learnboost/socket.io-node/> for more details.
+   *
+   * @returns {String} Connection url
+   * @api private
+   */
+
+  Transport.prototype.prepareUrl = function () {
+    var options = this.socket.options;
+
+    return this.scheme() + '://'
+      + options.host + ':' + options.port + '/'
+      + options.resource + '/' + io.protocol
+      + '/' + this.name + '/' + this.sessid;
+  };
+
+  /**
+   * Checks if the transport is ready to start a connection.
+   *
+   * @param {Socket} socket The socket instance that needs a transport
+   * @param {Function} fn The callback
+   * @api private
+   */
+
+  Transport.prototype.ready = function (socket, fn) {
+    fn.call(this);
+  };
+})(
+    'undefined' != typeof io ? io : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io, global) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.Socket = Socket;
+
+  /**
+   * Create a new `Socket.IO client` which can establish a persistent
+   * connection with a Socket.IO enabled server.
+   *
+   * @api public
+   */
+
+  function Socket (options) {
+    this.options = {
+        port: 80
+      , secure: false
+      , document: 'document' in global ? document : false
+      , resource: 'socket.io'
+      , transports: io.transports
+      , 'connect timeout': 10000
+      , 'try multiple transports': true
+      , 'reconnect': true
+      , 'reconnection delay': 500
+      , 'reconnection limit': Infinity
+      , 'reopen delay': 3000
+      , 'max reconnection attempts': 10
+      , 'sync disconnect on unload': false
+      , 'auto connect': true
+      , 'flash policy port': 10843
+      , 'manualFlush': false
+    };
+
+    io.util.merge(this.options, options);
+
+    this.connected = false;
+    this.open = false;
+    this.connecting = false;
+    this.reconnecting = false;
+    this.namespaces = {};
+    this.buffer = [];
+    this.doBuffer = false;
+
+    if (this.options['sync disconnect on unload'] &&
+        (!this.isXDomain() || io.util.ua.hasCORS)) {
+      var self = this;
+      io.util.on(global, 'beforeunload', function () {
+        self.disconnectSync();
+      }, false);
+    }
+
+    if (this.options['auto connect']) {
+      this.connect();
+    }
+};
+
+  /**
+   * Apply EventEmitter mixin.
+   */
+
+  io.util.mixin(Socket, io.EventEmitter);
+
+  /**
+   * Returns a namespace listener/emitter for this socket
+   *
+   * @api public
+   */
+
+  Socket.prototype.of = function (name) {
+    if (!this.namespaces[name]) {
+      this.namespaces[name] = new io.SocketNamespace(this, name);
+
+      if (name !== '') {
+        this.namespaces[name].packet({ type: 'connect' });
+      }
+    }
+
+    return this.namespaces[name];
+  };
+
+  /**
+   * Emits the given event to the Socket and all namespaces
+   *
+   * @api private
+   */
+
+  Socket.prototype.publish = function () {
+    this.emit.apply(this, arguments);
+
+    var nsp;
+
+    for (var i in this.namespaces) {
+      if (this.namespaces.hasOwnProperty(i)) {
+        nsp = this.of(i);
+        nsp.$emit.apply(nsp, arguments);
+      }
+    }
+  };
+
+  /**
+   * Performs the handshake
+   *
+   * @api private
+   */
+
+  function empty () { };
+
+  Socket.prototype.handshake = function (fn) {
+    var self = this
+      , options = this.options;
+
+    function complete (data) {
+      if (data instanceof Error) {
+        self.connecting = false;
+        self.onError(data.message);
+      } else {
+        fn.apply(null, data.split(':'));
+      }
+    };
+
+    var url = [
+          'http' + (options.secure ? 's' : '') + ':/'
+        , options.host + ':' + options.port
+        , options.resource
+        , io.protocol
+        , io.util.query(this.options.query, 't=' + +new Date)
+      ].join('/');
+
+    if (this.isXDomain() && !io.util.ua.hasCORS) {
+      var insertAt = document.getElementsByTagName('script')[0]
+        , script = document.createElement('script');
+
+      script.src = url + '&jsonp=' + io.j.length;
+      insertAt.parentNode.insertBefore(script, insertAt);
+
+      io.j.push(function (data) {
+        complete(data);
+        script.parentNode.removeChild(script);
+      });
+    } else {
+      var xhr = io.util.request();
+
+      xhr.open('GET', url, true);
+      if (this.isXDomain()) {
+        xhr.withCredentials = true;
+      }
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          xhr.onreadystatechange = empty;
+
+          if (xhr.status == 200) {
+            complete(xhr.responseText);
+          } else if (xhr.status == 403) {
+            self.onError(xhr.responseText);
+          } else {
+            self.connecting = false;
+            !self.reconnecting && self.onError(xhr.responseText);
+          }
+        }
+      };
+      xhr.send(null);
+    }
+  };
+
+  /**
+   * Find an available transport based on the options supplied in the constructor.
+   *
+   * @api private
+   */
+
+  Socket.prototype.getTransport = function (override) {
+    var transports = override || this.transports, match;
+
+    for (var i = 0, transport; transport = transports[i]; i++) {
+      if (io.Transport[transport]
+        && io.Transport[transport].check(this)
+        && (!this.isXDomain() || io.Transport[transport].xdomainCheck(this))) {
+        return new io.Transport[transport](this, this.sessionid);
+      }
+    }
+
+    return null;
+  };
+
+  /**
+   * Connects to the server.
+   *
+   * @param {Function} [fn] Callback.
+   * @returns {io.Socket}
+   * @api public
+   */
+
+  Socket.prototype.connect = function (fn) {
+    if (this.connecting) {
+      return this;
+    }
+
+    var self = this;
+    self.connecting = true;
+
+    this.handshake(function (sid, heartbeat, close, transports) {
+      self.sessionid = sid;
+      self.closeTimeout = close * 1000;
+      self.heartbeatTimeout = heartbeat * 1000;
+      if(!self.transports)
+          self.transports = self.origTransports = (transports ? io.util.intersect(
+              transports.split(',')
+            , self.options.transports
+          ) : self.options.transports);
+
+      self.setHeartbeatTimeout();
+
+      function connect (transports){
+        if (self.transport) self.transport.clearTimeouts();
+
+        self.transport = self.getTransport(transports);
+        if (!self.transport) return self.publish('connect_failed');
+
+        // once the transport is ready
+        self.transport.ready(self, function () {
+          self.connecting = true;
+          self.publish('connecting', self.transport.name);
+          self.transport.open();
+
+          if (self.options['connect timeout']) {
+            self.connectTimeoutTimer = setTimeout(function () {
+              if (!self.connected) {
+                self.connecting = false;
+
+                if (self.options['try multiple transports']) {
+                  var remaining = self.transports;
+
+                  while (remaining.length > 0 && remaining.splice(0,1)[0] !=
+                         self.transport.name) {}
+
+                    if (remaining.length){
+                      connect(remaining);
+                    } else {
+                      self.publish('connect_failed');
+                    }
+                }
+              }
+            }, self.options['connect timeout']);
+          }
+        });
+      }
+
+      connect(self.transports);
+
+      self.once('connect', function (){
+        clearTimeout(self.connectTimeoutTimer);
+
+        fn && typeof fn == 'function' && fn();
+      });
+    });
+
+    return this;
+  };
+
+  /**
+   * Clears and sets a new heartbeat timeout using the value given by the
+   * server during the handshake.
+   *
+   * @api private
+   */
+
+  Socket.prototype.setHeartbeatTimeout = function () {
+    clearTimeout(this.heartbeatTimeoutTimer);
+    if(this.transport && !this.transport.heartbeats()) return;
+
+    var self = this;
+    this.heartbeatTimeoutTimer = setTimeout(function () {
+      self.transport.onClose();
+    }, this.heartbeatTimeout);
+  };
+
+  /**
+   * Sends a message.
+   *
+   * @param {Object} data packet.
+   * @returns {io.Socket}
+   * @api public
+   */
+
+  Socket.prototype.packet = function (data) {
+    if (this.connected && !this.doBuffer) {
+      this.transport.packet(data);
+    } else {
+      this.buffer.push(data);
+    }
+
+    return this;
+  };
+
+  /**
+   * Sets buffer state
+   *
+   * @api private
+   */
+
+  Socket.prototype.setBuffer = function (v) {
+    this.doBuffer = v;
+
+    if (!v && this.connected && this.buffer.length) {
+      if (!this.options['manualFlush']) {
+        this.flushBuffer();
+      }
+    }
+  };
+
+  /**
+   * Flushes the buffer data over the wire.
+   * To be invoked manually when 'manualFlush' is set to true.
+   *
+   * @api public
+   */
+
+  Socket.prototype.flushBuffer = function() {
+    this.transport.payload(this.buffer);
+    this.buffer = [];
+  };
+
+
+  /**
+   * Disconnect the established connect.
+   *
+   * @returns {io.Socket}
+   * @api public
+   */
+
+  Socket.prototype.disconnect = function () {
+    if (this.connected || this.connecting) {
+      if (this.open) {
+        this.of('').packet({ type: 'disconnect' });
+      }
+
+      // handle disconnection immediately
+      this.onDisconnect('booted');
+    }
+
+    return this;
+  };
+
+  /**
+   * Disconnects the socket with a sync XHR.
+   *
+   * @api private
+   */
+
+  Socket.prototype.disconnectSync = function () {
+    // ensure disconnection
+    var xhr = io.util.request();
+    var uri = [
+        'http' + (this.options.secure ? 's' : '') + ':/'
+      , this.options.host + ':' + this.options.port
+      , this.options.resource
+      , io.protocol
+      , ''
+      , this.sessionid
+    ].join('/') + '/?disconnect=1';
+
+    xhr.open('GET', uri, false);
+    xhr.send(null);
+
+    // handle disconnection immediately
+    this.onDisconnect('booted');
+  };
+
+  /**
+   * Check if we need to use cross domain enabled transports. Cross domain would
+   * be a different port or different domain name.
+   *
+   * @returns {Boolean}
+   * @api private
+   */
+
+  Socket.prototype.isXDomain = function () {
+
+    var port = global.location.port ||
+      ('https:' == global.location.protocol ? 443 : 80);
+
+    return this.options.host !== global.location.hostname
+      || this.options.port != port;
+  };
+
+  /**
+   * Called upon handshake.
+   *
+   * @api private
+   */
+
+  Socket.prototype.onConnect = function () {
+    if (!this.connected) {
+      this.connected = true;
+      this.connecting = false;
+      if (!this.doBuffer) {
+        // make sure to flush the buffer
+        this.setBuffer(false);
+      }
+      this.emit('connect');
+    }
+  };
+
+  /**
+   * Called when the transport opens
+   *
+   * @api private
+   */
+
+  Socket.prototype.onOpen = function () {
+    this.open = true;
+  };
+
+  /**
+   * Called when the transport closes.
+   *
+   * @api private
+   */
+
+  Socket.prototype.onClose = function () {
+    this.open = false;
+    clearTimeout(this.heartbeatTimeoutTimer);
+  };
+
+  /**
+   * Called when the transport first opens a connection
+   *
+   * @param text
+   */
+
+  Socket.prototype.onPacket = function (packet) {
+    this.of(packet.endpoint).onPacket(packet);
+  };
+
+  /**
+   * Handles an error.
+   *
+   * @api private
+   */
+
+  Socket.prototype.onError = function (err) {
+    if (err && err.advice) {
+      if (err.advice === 'reconnect' && (this.connected || this.connecting)) {
+        this.disconnect();
+        if (this.options.reconnect) {
+          this.reconnect();
+        }
+      }
+    }
+
+    this.publish('error', err && err.reason ? err.reason : err);
+  };
+
+  /**
+   * Called when the transport disconnects.
+   *
+   * @api private
+   */
+
+  Socket.prototype.onDisconnect = function (reason) {
+    var wasConnected = this.connected
+      , wasConnecting = this.connecting;
+
+    this.connected = false;
+    this.connecting = false;
+    this.open = false;
+
+    if (wasConnected || wasConnecting) {
+      this.transport.close();
+      this.transport.clearTimeouts();
+      if (wasConnected) {
+        this.publish('disconnect', reason);
+
+        if ('booted' != reason && this.options.reconnect && !this.reconnecting) {
+          this.reconnect();
+        }
+      }
+    }
+  };
+
+  /**
+   * Called upon reconnection.
+   *
+   * @api private
+   */
+
+  Socket.prototype.reconnect = function () {
+    this.reconnecting = true;
+    this.reconnectionAttempts = 0;
+    this.reconnectionDelay = this.options['reconnection delay'];
+
+    var self = this
+      , maxAttempts = this.options['max reconnection attempts']
+      , tryMultiple = this.options['try multiple transports']
+      , limit = this.options['reconnection limit'];
+
+    function reset () {
+      if (self.connected) {
+        for (var i in self.namespaces) {
+          if (self.namespaces.hasOwnProperty(i) && '' !== i) {
+              self.namespaces[i].packet({ type: 'connect' });
+          }
+        }
+        self.publish('reconnect', self.transport.name, self.reconnectionAttempts);
+      }
+
+      clearTimeout(self.reconnectionTimer);
+
+      self.removeListener('connect_failed', maybeReconnect);
+      self.removeListener('connect', maybeReconnect);
+
+      self.reconnecting = false;
+
+      delete self.reconnectionAttempts;
+      delete self.reconnectionDelay;
+      delete self.reconnectionTimer;
+      delete self.redoTransports;
+
+      self.options['try multiple transports'] = tryMultiple;
+    };
+
+    function maybeReconnect () {
+      if (!self.reconnecting) {
+        return;
+      }
+
+      if (self.connected) {
+        return reset();
+      };
+
+      if (self.connecting && self.reconnecting) {
+        return self.reconnectionTimer = setTimeout(maybeReconnect, 1000);
+      }
+
+      if (self.reconnectionAttempts++ >= maxAttempts) {
+        if (!self.redoTransports) {
+          self.on('connect_failed', maybeReconnect);
+          self.options['try multiple transports'] = true;
+          self.transports = self.origTransports;
+          self.transport = self.getTransport();
+          self.redoTransports = true;
+          self.connect();
+        } else {
+          self.publish('reconnect_failed');
+          reset();
+        }
+      } else {
+        if (self.reconnectionDelay < limit) {
+          self.reconnectionDelay *= 2; // exponential back off
+        }
+
+        self.connect();
+        self.publish('reconnecting', self.reconnectionDelay, self.reconnectionAttempts);
+        self.reconnectionTimer = setTimeout(maybeReconnect, self.reconnectionDelay);
+      }
+    };
+
+    this.options['try multiple transports'] = false;
+    this.reconnectionTimer = setTimeout(maybeReconnect, this.reconnectionDelay);
+
+    this.on('connect', maybeReconnect);
+  };
+
+})(
+    'undefined' != typeof io ? io : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+  , this
+);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.SocketNamespace = SocketNamespace;
+
+  /**
+   * Socket namespace constructor.
+   *
+   * @constructor
+   * @api public
+   */
+
+  function SocketNamespace (socket, name) {
+    this.socket = socket;
+    this.name = name || '';
+    this.flags = {};
+    this.json = new Flag(this, 'json');
+    this.ackPackets = 0;
+    this.acks = {};
+  };
+
+  /**
+   * Apply EventEmitter mixin.
+   */
+
+  io.util.mixin(SocketNamespace, io.EventEmitter);
+
+  /**
+   * Copies emit since we override it
+   *
+   * @api private
+   */
+
+  SocketNamespace.prototype.$emit = io.EventEmitter.prototype.emit;
+
+  /**
+   * Creates a new namespace, by proxying the request to the socket. This
+   * allows us to use the synax as we do on the server.
+   *
+   * @api public
+   */
+
+  SocketNamespace.prototype.of = function () {
+    return this.socket.of.apply(this.socket, arguments);
+  };
+
+  /**
+   * Sends a packet.
+   *
+   * @api private
+   */
+
+  SocketNamespace.prototype.packet = function (packet) {
+    packet.endpoint = this.name;
+    this.socket.packet(packet);
+    this.flags = {};
+    return this;
+  };
+
+  /**
+   * Sends a message
+   *
+   * @api public
+   */
+
+  SocketNamespace.prototype.send = function (data, fn) {
+    var packet = {
+        type: this.flags.json ? 'json' : 'message'
+      , data: data
+    };
+
+    if ('function' == typeof fn) {
+      packet.id = ++this.ackPackets;
+      packet.ack = true;
+      this.acks[packet.id] = fn;
+    }
+
+    return this.packet(packet);
+  };
+
+  /**
+   * Emits an event
+   *
+   * @api public
+   */
+
+  SocketNamespace.prototype.emit = function (name) {
+    var args = Array.prototype.slice.call(arguments, 1)
+      , lastArg = args[args.length - 1]
+      , packet = {
+            type: 'event'
+          , name: name
+        };
+
+    if ('function' == typeof lastArg) {
+      packet.id = ++this.ackPackets;
+      packet.ack = 'data';
+      this.acks[packet.id] = lastArg;
+      args = args.slice(0, args.length - 1);
+    }
+
+    packet.args = args;
+
+    return this.packet(packet);
+  };
+
+  /**
+   * Disconnects the namespace
+   *
+   * @api private
+   */
+
+  SocketNamespace.prototype.disconnect = function () {
+    if (this.name === '') {
+      this.socket.disconnect();
+    } else {
+      this.packet({ type: 'disconnect' });
+      this.$emit('disconnect');
+    }
+
+    return this;
+  };
+
+  /**
+   * Handles a packet
+   *
+   * @api private
+   */
+
+  SocketNamespace.prototype.onPacket = function (packet) {
+    var self = this;
+
+    function ack () {
+      self.packet({
+          type: 'ack'
+        , args: io.util.toArray(arguments)
+        , ackId: packet.id
+      });
+    };
+
+    switch (packet.type) {
+      case 'connect':
+        this.$emit('connect');
+        break;
+
+      case 'disconnect':
+        if (this.name === '') {
+          this.socket.onDisconnect(packet.reason || 'booted');
+        } else {
+          this.$emit('disconnect', packet.reason);
+        }
+        break;
+
+      case 'message':
+      case 'json':
+        var params = ['message', packet.data];
+
+        if (packet.ack == 'data') {
+          params.push(ack);
+        } else if (packet.ack) {
+          this.packet({ type: 'ack', ackId: packet.id });
+        }
+
+        this.$emit.apply(this, params);
+        break;
+
+      case 'event':
+        var params = [packet.name].concat(packet.args);
+
+        if (packet.ack == 'data')
+          params.push(ack);
+
+        this.$emit.apply(this, params);
+        break;
+
+      case 'ack':
+        if (this.acks[packet.ackId]) {
+          this.acks[packet.ackId].apply(this, packet.args);
+          delete this.acks[packet.ackId];
+        }
+        break;
+
+      case 'error':
+        if (packet.advice){
+          this.socket.onError(packet);
+        } else {
+          if (packet.reason == 'unauthorized') {
+            this.$emit('connect_failed', packet.reason);
+          } else {
+            this.$emit('error', packet.reason);
+          }
+        }
+        break;
+    }
+  };
+
+  /**
+   * Flag interface.
+   *
+   * @api private
+   */
+
+  function Flag (nsp, name) {
+    this.namespace = nsp;
+    this.name = name;
+  };
+
+  /**
+   * Send a message
+   *
+   * @api public
+   */
+
+  Flag.prototype.send = function () {
+    this.namespace.flags[this.name] = true;
+    this.namespace.send.apply(this.namespace, arguments);
+  };
+
+  /**
+   * Emit an event
+   *
+   * @api public
+   */
+
+  Flag.prototype.emit = function () {
+    this.namespace.flags[this.name] = true;
+    this.namespace.emit.apply(this.namespace, arguments);
+  };
+
+})(
+    'undefined' != typeof io ? io : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io, global) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.websocket = WS;
+
+  /**
+   * The WebSocket transport uses the HTML5 WebSocket API to establish an
+   * persistent connection with the Socket.IO server. This transport will also
+   * be inherited by the FlashSocket fallback as it provides a API compatible
+   * polyfill for the WebSockets.
+   *
+   * @constructor
+   * @extends {io.Transport}
+   * @api public
+   */
+
+  function WS (socket) {
+    io.Transport.apply(this, arguments);
+  };
+
+  /**
+   * Inherits from Transport.
+   */
+
+  io.util.inherit(WS, io.Transport);
+
+  /**
+   * Transport name
+   *
+   * @api public
+   */
+
+  WS.prototype.name = 'websocket';
+
+  /**
+   * Initializes a new `WebSocket` connection with the Socket.IO server. We attach
+   * all the appropriate listeners to handle the responses from the server.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  WS.prototype.open = function () {
+    var query = io.util.query(this.socket.options.query)
+      , self = this
+      , Socket
+
+
+    if (!Socket) {
+      Socket = global.MozWebSocket || global.WebSocket;
+    }
+
+    this.websocket = new Socket(this.prepareUrl() + query);
+
+    this.websocket.onopen = function () {
+      self.onOpen();
+      self.socket.setBuffer(false);
+    };
+    this.websocket.onmessage = function (ev) {
+      self.onData(ev.data);
+    };
+    this.websocket.onclose = function () {
+      self.onClose();
+      self.socket.setBuffer(true);
+    };
+    this.websocket.onerror = function (e) {
+      self.onError(e);
+    };
+
+    return this;
+  };
+
+  /**
+   * Send a message to the Socket.IO server. The message will automatically be
+   * encoded in the correct message format.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  // Do to a bug in the current IDevices browser, we need to wrap the send in a
+  // setTimeout, when they resume from sleeping the browser will crash if
+  // we don't allow the browser time to detect the socket has been closed
+  if (io.util.ua.iDevice) {
+    WS.prototype.send = function (data) {
+      var self = this;
+      setTimeout(function() {
+         self.websocket.send(data);
+      },0);
+      return this;
+    };
+  } else {
+    WS.prototype.send = function (data) {
+      this.websocket.send(data);
+      return this;
+    };
+  }
+
+  /**
+   * Payload
+   *
+   * @api private
+   */
+
+  WS.prototype.payload = function (arr) {
+    for (var i = 0, l = arr.length; i < l; i++) {
+      this.packet(arr[i]);
+    }
+    return this;
+  };
+
+  /**
+   * Disconnect the established `WebSocket` connection.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  WS.prototype.close = function () {
+    this.websocket.close();
+    return this;
+  };
+
+  /**
+   * Handle the errors that `WebSocket` might be giving when we
+   * are attempting to connect or send messages.
+   *
+   * @param {Error} e The error.
+   * @api private
+   */
+
+  WS.prototype.onError = function (e) {
+    this.socket.onError(e);
+  };
+
+  /**
+   * Returns the appropriate scheme for the URI generation.
+   *
+   * @api private
+   */
+  WS.prototype.scheme = function () {
+    return this.socket.options.secure ? 'wss' : 'ws';
+  };
+
+  /**
+   * Checks if the browser has support for native `WebSockets` and that
+   * it's not the polyfill created for the FlashSocket transport.
+   *
+   * @return {Boolean}
+   * @api public
+   */
+
+  WS.check = function () {
+    return ('WebSocket' in global && !('__addTask' in WebSocket))
+          || 'MozWebSocket' in global;
+  };
+
+  /**
+   * Check if the `WebSocket` transport support cross domain communications.
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  WS.xdomainCheck = function () {
+    return true;
+  };
+
+  /**
+   * Add the transport to your public io.transports array.
+   *
+   * @api private
+   */
+
+  io.transports.push('websocket');
+
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+  , this
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.flashsocket = Flashsocket;
+
+  /**
+   * The FlashSocket transport. This is a API wrapper for the HTML5 WebSocket
+   * specification. It uses a .swf file to communicate with the server. If you want
+   * to serve the .swf file from a other server than where the Socket.IO script is
+   * coming from you need to use the insecure version of the .swf. More information
+   * about this can be found on the github page.
+   *
+   * @constructor
+   * @extends {io.Transport.websocket}
+   * @api public
+   */
+
+  function Flashsocket () {
+    io.Transport.websocket.apply(this, arguments);
+  };
+
+  /**
+   * Inherits from Transport.
+   */
+
+  io.util.inherit(Flashsocket, io.Transport.websocket);
+
+  /**
+   * Transport name
+   *
+   * @api public
+   */
+
+  Flashsocket.prototype.name = 'flashsocket';
+
+  /**
+   * Disconnect the established `FlashSocket` connection. This is done by adding a
+   * new task to the FlashSocket. The rest will be handled off by the `WebSocket`
+   * transport.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  Flashsocket.prototype.open = function () {
+    var self = this
+      , args = arguments;
+
+    WebSocket.__addTask(function () {
+      io.Transport.websocket.prototype.open.apply(self, args);
+    });
+    return this;
+  };
+
+  /**
+   * Sends a message to the Socket.IO server. This is done by adding a new
+   * task to the FlashSocket. The rest will be handled off by the `WebSocket`
+   * transport.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  Flashsocket.prototype.send = function () {
+    var self = this, args = arguments;
+    WebSocket.__addTask(function () {
+      io.Transport.websocket.prototype.send.apply(self, args);
+    });
+    return this;
+  };
+
+  /**
+   * Disconnects the established `FlashSocket` connection.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  Flashsocket.prototype.close = function () {
+    WebSocket.__tasks.length = 0;
+    io.Transport.websocket.prototype.close.call(this);
+    return this;
+  };
+
+  /**
+   * The WebSocket fall back needs to append the flash container to the body
+   * element, so we need to make sure we have access to it. Or defer the call
+   * until we are sure there is a body element.
+   *
+   * @param {Socket} socket The socket instance that needs a transport
+   * @param {Function} fn The callback
+   * @api private
+   */
+
+  Flashsocket.prototype.ready = function (socket, fn) {
+    function init () {
+      var options = socket.options
+        , port = options['flash policy port']
+        , path = [
+              'http' + (options.secure ? 's' : '') + ':/'
+            , options.host + ':' + options.port
+            , options.resource
+            , 'static/flashsocket'
+            , 'WebSocketMain' + (socket.isXDomain() ? 'Insecure' : '') + '.swf'
+          ];
+
+      // Only start downloading the swf file when the checked that this browser
+      // actually supports it
+      if (!Flashsocket.loaded) {
+        if (typeof WEB_SOCKET_SWF_LOCATION === 'undefined') {
+          // Set the correct file based on the XDomain settings
+          WEB_SOCKET_SWF_LOCATION = path.join('/');
+        }
+
+        if (port !== 843) {
+          WebSocket.loadFlashPolicyFile('xmlsocket://' + options.host + ':' + port);
+        }
+
+        WebSocket.__initialize();
+        Flashsocket.loaded = true;
+      }
+
+      fn.call(self);
+    }
+
+    var self = this;
+    if (document.body) return init();
+
+    io.util.load(init);
+  };
+
+  /**
+   * Check if the FlashSocket transport is supported as it requires that the Adobe
+   * Flash Player plug-in version `10.0.0` or greater is installed. And also check if
+   * the polyfill is correctly loaded.
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  Flashsocket.check = function () {
+    if (
+        typeof WebSocket == 'undefined'
+      || !('__initialize' in WebSocket) || !swfobject
+    ) return false;
+
+    return swfobject.getFlashPlayerVersion().major >= 10;
+  };
+
+  /**
+   * Check if the FlashSocket transport can be used as cross domain / cross origin
+   * transport. Because we can't see which type (secure or insecure) of .swf is used
+   * we will just return true.
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  Flashsocket.xdomainCheck = function () {
+    return true;
+  };
+
+  /**
+   * Disable AUTO_INITIALIZATION
+   */
+
+  if (typeof window != 'undefined') {
+    WEB_SOCKET_DISABLE_AUTO_INITIALIZATION = true;
+  }
+
+  /**
+   * Add the transport to your public io.transports array.
+   *
+   * @api private
+   */
+
+  io.transports.push('flashsocket');
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+/*  SWFObject v2.2 <http://code.google.com/p/swfobject/>
+    is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
+*/
+if ('undefined' != typeof window) {
+var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="ShockwaveFlash.ShockwaveFlash",q="application/x-shockwave-flash",R="SWFObjectExprInst",x="onreadystatechange",O=window,j=document,t=navigator,T=false,U=[h],o=[],N=[],I=[],l,Q,E,B,J=false,a=false,n,G,m=true,M=function(){var aa=typeof j.getElementById!=D&&typeof j.getElementsByTagName!=D&&typeof j.createElement!=D,ah=t.userAgent.toLowerCase(),Y=t.platform.toLowerCase(),ae=Y?/win/.test(Y):/win/.test(ah),ac=Y?/mac/.test(Y):/mac/.test(ah),af=/webkit/.test(ah)?parseFloat(ah.replace(/^.*webkit\/(\d+(\.\d+)?).*$/,"$1")):false,X=!+"\v1",ag=[0,0,0],ab=null;if(typeof t.plugins!=D&&typeof t.plugins[S]==r){ab=t.plugins[S].description;if(ab&&!(typeof t.mimeTypes!=D&&t.mimeTypes[q]&&!t.mimeTypes[q].enabledPlugin)){T=true;X=false;ab=ab.replace(/^.*\s+(\S+\s+\S+$)/,"$1");ag[0]=parseInt(ab.replace(/^(.*)\..*$/,"$1"),10);ag[1]=parseInt(ab.replace(/^.*\.(.*)\s.*$/,"$1"),10);ag[2]=/[a-zA-Z]/.test(ab)?parseInt(ab.replace(/^.*[a-zA-Z]+(.*)$/,"$1"),10):0}}else{if(typeof O[(['Active'].concat('Object').join('X'))]!=D){try{var ad=new window[(['Active'].concat('Object').join('X'))](W);if(ad){ab=ad.GetVariable("$version");if(ab){X=true;ab=ab.split(" ")[1].split(",");ag=[parseInt(ab[0],10),parseInt(ab[1],10),parseInt(ab[2],10)]}}}catch(Z){}}}return{w3:aa,pv:ag,wk:af,ie:X,win:ae,mac:ac}}(),k=function(){if(!M.w3){return}if((typeof j.readyState!=D&&j.readyState=="complete")||(typeof j.readyState==D&&(j.getElementsByTagName("body")[0]||j.body))){f()}if(!J){if(typeof j.addEventListener!=D){j.addEventListener("DOMContentLoaded",f,false)}if(M.ie&&M.win){j.attachEvent(x,function(){if(j.readyState=="complete"){j.detachEvent(x,arguments.callee);f()}});if(O==top){(function(){if(J){return}try{j.documentElement.doScroll("left")}catch(X){setTimeout(arguments.callee,0);return}f()})()}}if(M.wk){(function(){if(J){return}if(!/loaded|complete/.test(j.readyState)){setTimeout(arguments.callee,0);return}f()})()}s(f)}}();function f(){if(J){return}try{var Z=j.getElementsByTagName("body")[0].appendChild(C("span"));Z.parentNode.removeChild(Z)}catch(aa){return}J=true;var X=U.length;for(var Y=0;Y<X;Y++){U[Y]()}}function K(X){if(J){X()}else{U[U.length]=X}}function s(Y){if(typeof O.addEventListener!=D){O.addEventListener("load",Y,false)}else{if(typeof j.addEventListener!=D){j.addEventListener("load",Y,false)}else{if(typeof O.attachEvent!=D){i(O,"onload",Y)}else{if(typeof O.onload=="function"){var X=O.onload;O.onload=function(){X();Y()}}else{O.onload=Y}}}}}function h(){if(T){V()}else{H()}}function V(){var X=j.getElementsByTagName("body")[0];var aa=C(r);aa.setAttribute("type",q);var Z=X.appendChild(aa);if(Z){var Y=0;(function(){if(typeof Z.GetVariable!=D){var ab=Z.GetVariable("$version");if(ab){ab=ab.split(" ")[1].split(",");M.pv=[parseInt(ab[0],10),parseInt(ab[1],10),parseInt(ab[2],10)]}}else{if(Y<10){Y++;setTimeout(arguments.callee,10);return}}X.removeChild(aa);Z=null;H()})()}else{H()}}function H(){var ag=o.length;if(ag>0){for(var af=0;af<ag;af++){var Y=o[af].id;var ab=o[af].callbackFn;var aa={success:false,id:Y};if(M.pv[0]>0){var ae=c(Y);if(ae){if(F(o[af].swfVersion)&&!(M.wk&&M.wk<312)){w(Y,true);if(ab){aa.success=true;aa.ref=z(Y);ab(aa)}}else{if(o[af].expressInstall&&A()){var ai={};ai.data=o[af].expressInstall;ai.width=ae.getAttribute("width")||"0";ai.height=ae.getAttribute("height")||"0";if(ae.getAttribute("class")){ai.styleclass=ae.getAttribute("class")}if(ae.getAttribute("align")){ai.align=ae.getAttribute("align")}var ah={};var X=ae.getElementsByTagName("param");var ac=X.length;for(var ad=0;ad<ac;ad++){if(X[ad].getAttribute("name").toLowerCase()!="movie"){ah[X[ad].getAttribute("name")]=X[ad].getAttribute("value")}}P(ai,ah,Y,ab)}else{p(ae);if(ab){ab(aa)}}}}}else{w(Y,true);if(ab){var Z=z(Y);if(Z&&typeof Z.SetVariable!=D){aa.success=true;aa.ref=Z}ab(aa)}}}}}function z(aa){var X=null;var Y=c(aa);if(Y&&Y.nodeName=="OBJECT"){if(typeof Y.SetVariable!=D){X=Y}else{var Z=Y.getElementsByTagName(r)[0];if(Z){X=Z}}}return X}function A(){return !a&&F("6.0.65")&&(M.win||M.mac)&&!(M.wk&&M.wk<312)}function P(aa,ab,X,Z){a=true;E=Z||null;B={success:false,id:X};var ae=c(X);if(ae){if(ae.nodeName=="OBJECT"){l=g(ae);Q=null}else{l=ae;Q=X}aa.id=R;if(typeof aa.width==D||(!/%$/.test(aa.width)&&parseInt(aa.width,10)<310)){aa.width="310"}if(typeof aa.height==D||(!/%$/.test(aa.height)&&parseInt(aa.height,10)<137)){aa.height="137"}j.title=j.title.slice(0,47)+" - Flash Player Installation";var ad=M.ie&&M.win?(['Active'].concat('').join('X')):"PlugIn",ac="MMredirectURL="+O.location.toString().replace(/&/g,"%26")+"&MMplayerType="+ad+"&MMdoctitle="+j.title;if(typeof ab.flashvars!=D){ab.flashvars+="&"+ac}else{ab.flashvars=ac}if(M.ie&&M.win&&ae.readyState!=4){var Y=C("div");X+="SWFObjectNew";Y.setAttribute("id",X);ae.parentNode.insertBefore(Y,ae);ae.style.display="none";(function(){if(ae.readyState==4){ae.parentNode.removeChild(ae)}else{setTimeout(arguments.callee,10)}})()}u(aa,ab,X)}}function p(Y){if(M.ie&&M.win&&Y.readyState!=4){var X=C("div");Y.parentNode.insertBefore(X,Y);X.parentNode.replaceChild(g(Y),X);Y.style.display="none";(function(){if(Y.readyState==4){Y.parentNode.removeChild(Y)}else{setTimeout(arguments.callee,10)}})()}else{Y.parentNode.replaceChild(g(Y),Y)}}function g(ab){var aa=C("div");if(M.win&&M.ie){aa.innerHTML=ab.innerHTML}else{var Y=ab.getElementsByTagName(r)[0];if(Y){var ad=Y.childNodes;if(ad){var X=ad.length;for(var Z=0;Z<X;Z++){if(!(ad[Z].nodeType==1&&ad[Z].nodeName=="PARAM")&&!(ad[Z].nodeType==8)){aa.appendChild(ad[Z].cloneNode(true))}}}}}return aa}function u(ai,ag,Y){var X,aa=c(Y);if(M.wk&&M.wk<312){return X}if(aa){if(typeof ai.id==D){ai.id=Y}if(M.ie&&M.win){var ah="";for(var ae in ai){if(ai[ae]!=Object.prototype[ae]){if(ae.toLowerCase()=="data"){ag.movie=ai[ae]}else{if(ae.toLowerCase()=="styleclass"){ah+=' class="'+ai[ae]+'"'}else{if(ae.toLowerCase()!="classid"){ah+=" "+ae+'="'+ai[ae]+'"'}}}}}var af="";for(var ad in ag){if(ag[ad]!=Object.prototype[ad]){af+='<param name="'+ad+'" value="'+ag[ad]+'" />'}}aa.outerHTML='<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"'+ah+">"+af+"</object>";N[N.length]=ai.id;X=c(ai.id)}else{var Z=C(r);Z.setAttribute("type",q);for(var ac in ai){if(ai[ac]!=Object.prototype[ac]){if(ac.toLowerCase()=="styleclass"){Z.setAttribute("class",ai[ac])}else{if(ac.toLowerCase()!="classid"){Z.setAttribute(ac,ai[ac])}}}}for(var ab in ag){if(ag[ab]!=Object.prototype[ab]&&ab.toLowerCase()!="movie"){e(Z,ab,ag[ab])}}aa.parentNode.replaceChild(Z,aa);X=Z}}return X}function e(Z,X,Y){var aa=C("param");aa.setAttribute("name",X);aa.setAttribute("value",Y);Z.appendChild(aa)}function y(Y){var X=c(Y);if(X&&X.nodeName=="OBJECT"){if(M.ie&&M.win){X.style.display="none";(function(){if(X.readyState==4){b(Y)}else{setTimeout(arguments.callee,10)}})()}else{X.parentNode.removeChild(X)}}}function b(Z){var Y=c(Z);if(Y){for(var X in Y){if(typeof Y[X]=="function"){Y[X]=null}}Y.parentNode.removeChild(Y)}}function c(Z){var X=null;try{X=j.getElementById(Z)}catch(Y){}return X}function C(X){return j.createElement(X)}function i(Z,X,Y){Z.attachEvent(X,Y);I[I.length]=[Z,X,Y]}function F(Z){var Y=M.pv,X=Z.split(".");X[0]=parseInt(X[0],10);X[1]=parseInt(X[1],10)||0;X[2]=parseInt(X[2],10)||0;return(Y[0]>X[0]||(Y[0]==X[0]&&Y[1]>X[1])||(Y[0]==X[0]&&Y[1]==X[1]&&Y[2]>=X[2]))?true:false}function v(ac,Y,ad,ab){if(M.ie&&M.mac){return}var aa=j.getElementsByTagName("head")[0];if(!aa){return}var X=(ad&&typeof ad=="string")?ad:"screen";if(ab){n=null;G=null}if(!n||G!=X){var Z=C("style");Z.setAttribute("type","text/css");Z.setAttribute("media",X);n=aa.appendChild(Z);if(M.ie&&M.win&&typeof j.styleSheets!=D&&j.styleSheets.length>0){n=j.styleSheets[j.styleSheets.length-1]}G=X}if(M.ie&&M.win){if(n&&typeof n.addRule==r){n.addRule(ac,Y)}}else{if(n&&typeof j.createTextNode!=D){n.appendChild(j.createTextNode(ac+" {"+Y+"}"))}}}function w(Z,X){if(!m){return}var Y=X?"visible":"hidden";if(J&&c(Z)){c(Z).style.visibility=Y}else{v("#"+Z,"visibility:"+Y)}}function L(Y){var Z=/[\\\"<>\.;]/;var X=Z.exec(Y)!=null;return X&&typeof encodeURIComponent!=D?encodeURIComponent(Y):Y}var d=function(){if(M.ie&&M.win){window.attachEvent("onunload",function(){var ac=I.length;for(var ab=0;ab<ac;ab++){I[ab][0].detachEvent(I[ab][1],I[ab][2])}var Z=N.length;for(var aa=0;aa<Z;aa++){y(N[aa])}for(var Y in M){M[Y]=null}M=null;for(var X in swfobject){swfobject[X]=null}swfobject=null})}}();return{registerObject:function(ab,X,aa,Z){if(M.w3&&ab&&X){var Y={};Y.id=ab;Y.swfVersion=X;Y.expressInstall=aa;Y.callbackFn=Z;o[o.length]=Y;w(ab,false)}else{if(Z){Z({success:false,id:ab})}}},getObjectById:function(X){if(M.w3){return z(X)}},embedSWF:function(ab,ah,ae,ag,Y,aa,Z,ad,af,ac){var X={success:false,id:ah};if(M.w3&&!(M.wk&&M.wk<312)&&ab&&ah&&ae&&ag&&Y){w(ah,false);K(function(){ae+="";ag+="";var aj={};if(af&&typeof af===r){for(var al in af){aj[al]=af[al]}}aj.data=ab;aj.width=ae;aj.height=ag;var am={};if(ad&&typeof ad===r){for(var ak in ad){am[ak]=ad[ak]}}if(Z&&typeof Z===r){for(var ai in Z){if(typeof am.flashvars!=D){am.flashvars+="&"+ai+"="+Z[ai]}else{am.flashvars=ai+"="+Z[ai]}}}if(F(Y)){var an=u(aj,am,ah);if(aj.id==ah){w(ah,true)}X.success=true;X.ref=an}else{if(aa&&A()){aj.data=aa;P(aj,am,ah,ac);return}else{w(ah,true)}}if(ac){ac(X)}})}else{if(ac){ac(X)}}},switchOffAutoHideShow:function(){m=false},ua:M,getFlashPlayerVersion:function(){return{major:M.pv[0],minor:M.pv[1],release:M.pv[2]}},hasFlashPlayerVersion:F,createSWF:function(Z,Y,X){if(M.w3){return u(Z,Y,X)}else{return undefined}},showExpressInstall:function(Z,aa,X,Y){if(M.w3&&A()){P(Z,aa,X,Y)}},removeSWF:function(X){if(M.w3){y(X)}},createCSS:function(aa,Z,Y,X){if(M.w3){v(aa,Z,Y,X)}},addDomLoadEvent:K,addLoadEvent:s,getQueryParamValue:function(aa){var Z=j.location.search||j.location.hash;if(Z){if(/\?/.test(Z)){Z=Z.split("?")[1]}if(aa==null){return L(Z)}var Y=Z.split("&");for(var X=0;X<Y.length;X++){if(Y[X].substring(0,Y[X].indexOf("="))==aa){return L(Y[X].substring((Y[X].indexOf("=")+1)))}}}return""},expressInstallCallback:function(){if(a){var X=c(R);if(X&&l){X.parentNode.replaceChild(l,X);if(Q){w(Q,true);if(M.ie&&M.win){l.style.display="block"}}if(E){E(B)}}a=false}}}}();
+}
+// Copyright: Hiroshi Ichikawa <http://gimite.net/en/>
+// License: New BSD License
+// Reference: http://dev.w3.org/html5/websockets/
+// Reference: http://tools.ietf.org/html/draft-hixie-thewebsocketprotocol
+
+(function() {
+
+  if ('undefined' == typeof window || window.WebSocket) return;
+
+  var console = window.console;
+  if (!console || !console.log || !console.error) {
+    console = {log: function(){ }, error: function(){ }};
+  }
+
+  if (!swfobject.hasFlashPlayerVersion("10.0.0")) {
+    console.error("Flash Player >= 10.0.0 is required.");
+    return;
+  }
+  if (location.protocol == "file:") {
+    console.error(
+      "WARNING: web-socket-js doesn't work in file:///... URL " +
+      "unless you set Flash Security Settings properly. " +
+      "Open the page via Web server i.e. http://...");
+  }
+
+  /**
+   * This class represents a faux web socket.
+   * @param {string} url
+   * @param {array or string} protocols
+   * @param {string} proxyHost
+   * @param {int} proxyPort
+   * @param {string} headers
+   */
+  WebSocket = function(url, protocols, proxyHost, proxyPort, headers) {
+    var self = this;
+    self.__id = WebSocket.__nextId++;
+    WebSocket.__instances[self.__id] = self;
+    self.readyState = WebSocket.CONNECTING;
+    self.bufferedAmount = 0;
+    self.__events = {};
+    if (!protocols) {
+      protocols = [];
+    } else if (typeof protocols == "string") {
+      protocols = [protocols];
+    }
+    // Uses setTimeout() to make sure __createFlash() runs after the caller sets ws.onopen etc.
+    // Otherwise, when onopen fires immediately, onopen is called before it is set.
+    setTimeout(function() {
+      WebSocket.__addTask(function() {
+        WebSocket.__flash.create(
+            self.__id, url, protocols, proxyHost || null, proxyPort || 0, headers || null);
+      });
+    }, 0);
+  };
+
+  /**
+   * Send data to the web socket.
+   * @param {string} data  The data to send to the socket.
+   * @return {boolean}  True for success, false for failure.
+   */
+  WebSocket.prototype.send = function(data) {
+    if (this.readyState == WebSocket.CONNECTING) {
+      throw "INVALID_STATE_ERR: Web Socket connection has not been established";
+    }
+    // We use encodeURIComponent() here, because FABridge doesn't work if
+    // the argument includes some characters. We don't use escape() here
+    // because of this:
+    // https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Functions#escape_and_unescape_Functions
+    // But it looks decodeURIComponent(encodeURIComponent(s)) doesn't
+    // preserve all Unicode characters either e.g. "\uffff" in Firefox.
+    // Note by wtritch: Hopefully this will not be necessary using ExternalInterface.  Will require
+    // additional testing.
+    var result = WebSocket.__flash.send(this.__id, encodeURIComponent(data));
+    if (result < 0) { // success
+      return true;
+    } else {
+      this.bufferedAmount += result;
+      return false;
+    }
+  };
+
+  /**
+   * Close this web socket gracefully.
+   */
+  WebSocket.prototype.close = function() {
+    if (this.readyState == WebSocket.CLOSED || this.readyState == WebSocket.CLOSING) {
+      return;
+    }
+    this.readyState = WebSocket.CLOSING;
+    WebSocket.__flash.close(this.__id);
+  };
+
+  /**
+   * Implementation of {@link <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration">DOM 2 EventTarget Interface</a>}
+   *
+   * @param {string} type
+   * @param {function} listener
+   * @param {boolean} useCapture
+   * @return void
+   */
+  WebSocket.prototype.addEventListener = function(type, listener, useCapture) {
+    if (!(type in this.__events)) {
+      this.__events[type] = [];
+    }
+    this.__events[type].push(listener);
+  };
+
+  /**
+   * Implementation of {@link <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration">DOM 2 EventTarget Interface</a>}
+   *
+   * @param {string} type
+   * @param {function} listener
+   * @param {boolean} useCapture
+   * @return void
+   */
+  WebSocket.prototype.removeEventListener = function(type, listener, useCapture) {
+    if (!(type in this.__events)) return;
+    var events = this.__events[type];
+    for (var i = events.length - 1; i >= 0; --i) {
+      if (events[i] === listener) {
+        events.splice(i, 1);
+        break;
+      }
+    }
+  };
+
+  /**
+   * Implementation of {@link <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration">DOM 2 EventTarget Interface</a>}
+   *
+   * @param {Event} event
+   * @return void
+   */
+  WebSocket.prototype.dispatchEvent = function(event) {
+    var events = this.__events[event.type] || [];
+    for (var i = 0; i < events.length; ++i) {
+      events[i](event);
+    }
+    var handler = this["on" + event.type];
+    if (handler) handler(event);
+  };
+
+  /**
+   * Handles an event from Flash.
+   * @param {Object} flashEvent
+   */
+  WebSocket.prototype.__handleEvent = function(flashEvent) {
+    if ("readyState" in flashEvent) {
+      this.readyState = flashEvent.readyState;
+    }
+    if ("protocol" in flashEvent) {
+      this.protocol = flashEvent.protocol;
+    }
+
+    var jsEvent;
+    if (flashEvent.type == "open" || flashEvent.type == "error") {
+      jsEvent = this.__createSimpleEvent(flashEvent.type);
+    } else if (flashEvent.type == "close") {
+      // TODO implement jsEvent.wasClean
+      jsEvent = this.__createSimpleEvent("close");
+    } else if (flashEvent.type == "message") {
+      var data = decodeURIComponent(flashEvent.message);
+      jsEvent = this.__createMessageEvent("message", data);
+    } else {
+      throw "unknown event type: " + flashEvent.type;
+    }
+
+    this.dispatchEvent(jsEvent);
+  };
+
+  WebSocket.prototype.__createSimpleEvent = function(type) {
+    if (document.createEvent && window.Event) {
+      var event = document.createEvent("Event");
+      event.initEvent(type, false, false);
+      return event;
+    } else {
+      return {type: type, bubbles: false, cancelable: false};
+    }
+  };
+
+  WebSocket.prototype.__createMessageEvent = function(type, data) {
+    if (document.createEvent && window.MessageEvent && !window.opera) {
+      var event = document.createEvent("MessageEvent");
+      event.initMessageEvent("message", false, false, data, null, null, window, null);
+      return event;
+    } else {
+      // IE and Opera, the latter one truncates the data parameter after any 0x00 bytes.
+      return {type: type, data: data, bubbles: false, cancelable: false};
+    }
+  };
+
+  /**
+   * Define the WebSocket readyState enumeration.
+   */
+  WebSocket.CONNECTING = 0;
+  WebSocket.OPEN = 1;
+  WebSocket.CLOSING = 2;
+  WebSocket.CLOSED = 3;
+
+  WebSocket.__flash = null;
+  WebSocket.__instances = {};
+  WebSocket.__tasks = [];
+  WebSocket.__nextId = 0;
+
+  /**
+   * Load a new flash security policy file.
+   * @param {string} url
+   */
+  WebSocket.loadFlashPolicyFile = function(url){
+    WebSocket.__addTask(function() {
+      WebSocket.__flash.loadManualPolicyFile(url);
+    });
+  };
+
+  /**
+   * Loads WebSocketMain.swf and creates WebSocketMain object in Flash.
+   */
+  WebSocket.__initialize = function() {
+    if (WebSocket.__flash) return;
+
+    if (WebSocket.__swfLocation) {
+      // For backword compatibility.
+      window.WEB_SOCKET_SWF_LOCATION = WebSocket.__swfLocation;
+    }
+    if (!window.WEB_SOCKET_SWF_LOCATION) {
+      console.error("[WebSocket] set WEB_SOCKET_SWF_LOCATION to location of WebSocketMain.swf");
+      return;
+    }
+    var container = document.createElement("div");
+    container.id = "webSocketContainer";
+    // Hides Flash box. We cannot use display: none or visibility: hidden because it prevents
+    // Flash from loading at least in IE. So we move it out of the screen at (-100, -100).
+    // But this even doesn't work with Flash Lite (e.g. in Droid Incredible). So with Flash
+    // Lite, we put it at (0, 0). This shows 1x1 box visible at left-top corner but this is
+    // the best we can do as far as we know now.
+    container.style.position = "absolute";
+    if (WebSocket.__isFlashLite()) {
+      container.style.left = "0px";
+      container.style.top = "0px";
+    } else {
+      container.style.left = "-100px";
+      container.style.top = "-100px";
+    }
+    var holder = document.createElement("div");
+    holder.id = "webSocketFlash";
+    container.appendChild(holder);
+    document.body.appendChild(container);
+    // See this article for hasPriority:
+    // http://help.adobe.com/en_US/as3/mobile/WS4bebcd66a74275c36cfb8137124318eebc6-7ffd.html
+    swfobject.embedSWF(
+      WEB_SOCKET_SWF_LOCATION,
+      "webSocketFlash",
+      "1" /* width */,
+      "1" /* height */,
+      "10.0.0" /* SWF version */,
+      null,
+      null,
+      {hasPriority: true, swliveconnect : true, allowScriptAccess: "always"},
+      null,
+      function(e) {
+        if (!e.success) {
+          console.error("[WebSocket] swfobject.embedSWF failed");
+        }
+      });
+  };
+
+  /**
+   * Called by Flash to notify JS that it's fully loaded and ready
+   * for communication.
+   */
+  WebSocket.__onFlashInitialized = function() {
+    // We need to set a timeout here to avoid round-trip calls
+    // to flash during the initialization process.
+    setTimeout(function() {
+      WebSocket.__flash = document.getElementById("webSocketFlash");
+      WebSocket.__flash.setCallerUrl(location.href);
+      WebSocket.__flash.setDebug(!!window.WEB_SOCKET_DEBUG);
+      for (var i = 0; i < WebSocket.__tasks.length; ++i) {
+        WebSocket.__tasks[i]();
+      }
+      WebSocket.__tasks = [];
+    }, 0);
+  };
+
+  /**
+   * Called by Flash to notify WebSockets events are fired.
+   */
+  WebSocket.__onFlashEvent = function() {
+    setTimeout(function() {
+      try {
+        // Gets events using receiveEvents() instead of getting it from event object
+        // of Flash event. This is to make sure to keep message order.
+        // It seems sometimes Flash events don't arrive in the same order as they are sent.
+        var events = WebSocket.__flash.receiveEvents();
+        for (var i = 0; i < events.length; ++i) {
+          WebSocket.__instances[events[i].webSocketId].__handleEvent(events[i]);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 0);
+    return true;
+  };
+
+  // Called by Flash.
+  WebSocket.__log = function(message) {
+    console.log(decodeURIComponent(message));
+  };
+
+  // Called by Flash.
+  WebSocket.__error = function(message) {
+    console.error(decodeURIComponent(message));
+  };
+
+  WebSocket.__addTask = function(task) {
+    if (WebSocket.__flash) {
+      task();
+    } else {
+      WebSocket.__tasks.push(task);
+    }
+  };
+
+  /**
+   * Test if the browser is running flash lite.
+   * @return {boolean} True if flash lite is running, false otherwise.
+   */
+  WebSocket.__isFlashLite = function() {
+    if (!window.navigator || !window.navigator.mimeTypes) {
+      return false;
+    }
+    var mimeType = window.navigator.mimeTypes["application/x-shockwave-flash"];
+    if (!mimeType || !mimeType.enabledPlugin || !mimeType.enabledPlugin.filename) {
+      return false;
+    }
+    return mimeType.enabledPlugin.filename.match(/flashlite/i) ? true : false;
+  };
+
+  if (!window.WEB_SOCKET_DISABLE_AUTO_INITIALIZATION) {
+    if (window.addEventListener) {
+      window.addEventListener("load", function(){
+        WebSocket.__initialize();
+      }, false);
+    } else {
+      window.attachEvent("onload", function(){
+        WebSocket.__initialize();
+      });
+    }
+  }
+
+})();
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io, global) {
+
+  /**
+   * Expose constructor.
+   *
+   * @api public
+   */
+
+  exports.XHR = XHR;
+
+  /**
+   * XHR constructor
+   *
+   * @costructor
+   * @api public
+   */
+
+  function XHR (socket) {
+    if (!socket) return;
+
+    io.Transport.apply(this, arguments);
+    this.sendBuffer = [];
+  };
+
+  /**
+   * Inherits from Transport.
+   */
+
+  io.util.inherit(XHR, io.Transport);
+
+  /**
+   * Establish a connection
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  XHR.prototype.open = function () {
+    this.socket.setBuffer(false);
+    this.onOpen();
+    this.get();
+
+    // we need to make sure the request succeeds since we have no indication
+    // whether the request opened or not until it succeeded.
+    this.setCloseTimeout();
+
+    return this;
+  };
+
+  /**
+   * Check if we need to send data to the Socket.IO server, if we have data in our
+   * buffer we encode it and forward it to the `post` method.
+   *
+   * @api private
+   */
+
+  XHR.prototype.payload = function (payload) {
+    var msgs = [];
+
+    for (var i = 0, l = payload.length; i < l; i++) {
+      msgs.push(io.parser.encodePacket(payload[i]));
+    }
+
+    this.send(io.parser.encodePayload(msgs));
+  };
+
+  /**
+   * Send data to the Socket.IO server.
+   *
+   * @param data The message
+   * @returns {Transport}
+   * @api public
+   */
+
+  XHR.prototype.send = function (data) {
+    this.post(data);
+    return this;
+  };
+
+  /**
+   * Posts a encoded message to the Socket.IO server.
+   *
+   * @param {String} data A encoded message.
+   * @api private
+   */
+
+  function empty () { };
+
+  XHR.prototype.post = function (data) {
+    var self = this;
+    this.socket.setBuffer(true);
+
+    function stateChange () {
+      if (this.readyState == 4) {
+        this.onreadystatechange = empty;
+        self.posting = false;
+
+        if (this.status == 200){
+          self.socket.setBuffer(false);
+        } else {
+          self.onClose();
+        }
+      }
+    }
+
+    function onload () {
+      this.onload = empty;
+      self.socket.setBuffer(false);
+    };
+
+    this.sendXHR = this.request('POST');
+
+    if (global.XDomainRequest && this.sendXHR instanceof XDomainRequest) {
+      this.sendXHR.onload = this.sendXHR.onerror = onload;
+    } else {
+      this.sendXHR.onreadystatechange = stateChange;
+    }
+
+    this.sendXHR.send(data);
+  };
+
+  /**
+   * Disconnects the established `XHR` connection.
+   *
+   * @returns {Transport}
+   * @api public
+   */
+
+  XHR.prototype.close = function () {
+    this.onClose();
+    return this;
+  };
+
+  /**
+   * Generates a configured XHR request
+   *
+   * @param {String} url The url that needs to be requested.
+   * @param {String} method The method the request should use.
+   * @returns {XMLHttpRequest}
+   * @api private
+   */
+
+  XHR.prototype.request = function (method) {
+    var req = io.util.request(this.socket.isXDomain())
+      , query = io.util.query(this.socket.options.query, 't=' + +new Date);
+
+    req.open(method || 'GET', this.prepareUrl() + query, true);
+
+    if (method == 'POST') {
+      try {
+        if (req.setRequestHeader) {
+          req.setRequestHeader('Content-type', 'text/plain;charset=UTF-8');
+        } else {
+          // XDomainRequest
+          req.contentType = 'text/plain';
+        }
+      } catch (e) {}
+    }
+
+    return req;
+  };
+
+  /**
+   * Returns the scheme to use for the transport URLs.
+   *
+   * @api private
+   */
+
+  XHR.prototype.scheme = function () {
+    return this.socket.options.secure ? 'https' : 'http';
+  };
+
+  /**
+   * Check if the XHR transports are supported
+   *
+   * @param {Boolean} xdomain Check if we support cross domain requests.
+   * @returns {Boolean}
+   * @api public
+   */
+
+  XHR.check = function (socket, xdomain) {
+    try {
+      var request = io.util.request(xdomain),
+          usesXDomReq = (global.XDomainRequest && request instanceof XDomainRequest),
+          socketProtocol = (socket && socket.options && socket.options.secure ? 'https:' : 'http:'),
+          isXProtocol = (global.location && socketProtocol != global.location.protocol);
+      if (request && !(usesXDomReq && isXProtocol)) {
+        return true;
+      }
+    } catch(e) {}
+
+    return false;
+  };
+
+  /**
+   * Check if the XHR transport supports cross domain requests.
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  XHR.xdomainCheck = function (socket) {
+    return XHR.check(socket, true);
+  };
+
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+  , this
+);
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports.htmlfile = HTMLFile;
+
+  /**
+   * The HTMLFile transport creates a `forever iframe` based transport
+   * for Internet Explorer. Regular forever iframe implementations will
+   * continuously trigger the browsers buzy indicators. If the forever iframe
+   * is created inside a `htmlfile` these indicators will not be trigged.
+   *
+   * @constructor
+   * @extends {io.Transport.XHR}
+   * @api public
+   */
+
+  function HTMLFile (socket) {
+    io.Transport.XHR.apply(this, arguments);
+  };
+
+  /**
+   * Inherits from XHR transport.
+   */
+
+  io.util.inherit(HTMLFile, io.Transport.XHR);
+
+  /**
+   * Transport name
+   *
+   * @api public
+   */
+
+  HTMLFile.prototype.name = 'htmlfile';
+
+  /**
+   * Creates a new Ac...eX `htmlfile` with a forever loading iframe
+   * that can be used to listen to messages. Inside the generated
+   * `htmlfile` a reference will be made to the HTMLFile transport.
+   *
+   * @api private
+   */
+
+  HTMLFile.prototype.get = function () {
+    this.doc = new window[(['Active'].concat('Object').join('X'))]('htmlfile');
+    this.doc.open();
+    this.doc.write('<html></html>');
+    this.doc.close();
+    this.doc.parentWindow.s = this;
+
+    var iframeC = this.doc.createElement('div');
+    iframeC.className = 'socketio';
+
+    this.doc.body.appendChild(iframeC);
+    this.iframe = this.doc.createElement('iframe');
+
+    iframeC.appendChild(this.iframe);
+
+    var self = this
+      , query = io.util.query(this.socket.options.query, 't='+ +new Date);
+
+    this.iframe.src = this.prepareUrl() + query;
+
+    io.util.on(window, 'unload', function () {
+      self.destroy();
+    });
+  };
+
+  /**
+   * The Socket.IO server will write script tags inside the forever
+   * iframe, this function will be used as callback for the incoming
+   * information.
+   *
+   * @param {String} data The message
+   * @param {document} doc Reference to the context
+   * @api private
+   */
+
+  HTMLFile.prototype._ = function (data, doc) {
+    this.onData(data);
+    try {
+      var script = doc.getElementsByTagName('script')[0];
+      script.parentNode.removeChild(script);
+    } catch (e) { }
+  };
+
+  /**
+   * Destroy the established connection, iframe and `htmlfile`.
+   * And calls the `CollectGarbage` function of Internet Explorer
+   * to release the memory.
+   *
+   * @api private
+   */
+
+  HTMLFile.prototype.destroy = function () {
+    if (this.iframe){
+      try {
+        this.iframe.src = 'about:blank';
+      } catch(e){}
+
+      this.doc = null;
+      this.iframe.parentNode.removeChild(this.iframe);
+      this.iframe = null;
+
+      CollectGarbage();
+    }
+  };
+
+  /**
+   * Disconnects the established connection.
+   *
+   * @returns {Transport} Chaining.
+   * @api public
+   */
+
+  HTMLFile.prototype.close = function () {
+    this.destroy();
+    return io.Transport.XHR.prototype.close.call(this);
+  };
+
+  /**
+   * Checks if the browser supports this transport. The browser
+   * must have an `Ac...eXObject` implementation.
+   *
+   * @return {Boolean}
+   * @api public
+   */
+
+  HTMLFile.check = function (socket) {
+    if (typeof window != "undefined" && (['Active'].concat('Object').join('X')) in window){
+      try {
+        var a = new window[(['Active'].concat('Object').join('X'))]('htmlfile');
+        return a && io.Transport.XHR.check(socket);
+      } catch(e){}
+    }
+    return false;
+  };
+
+  /**
+   * Check if cross domain requests are supported.
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  HTMLFile.xdomainCheck = function () {
+    // we can probably do handling for sub-domains, we should
+    // test that it's cross domain but a subdomain here
+    return false;
+  };
+
+  /**
+   * Add the transport to your public io.transports array.
+   *
+   * @api private
+   */
+
+  io.transports.push('htmlfile');
+
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io, global) {
+
+  /**
+   * Expose constructor.
+   */
+
+  exports['xhr-polling'] = XHRPolling;
+
+  /**
+   * The XHR-polling transport uses long polling XHR requests to create a
+   * "persistent" connection with the server.
+   *
+   * @constructor
+   * @api public
+   */
+
+  function XHRPolling () {
+    io.Transport.XHR.apply(this, arguments);
+  };
+
+  /**
+   * Inherits from XHR transport.
+   */
+
+  io.util.inherit(XHRPolling, io.Transport.XHR);
+
+  /**
+   * Merge the properties from XHR transport
+   */
+
+  io.util.merge(XHRPolling, io.Transport.XHR);
+
+  /**
+   * Transport name
+   *
+   * @api public
+   */
+
+  XHRPolling.prototype.name = 'xhr-polling';
+
+  /**
+   * Indicates whether heartbeats is enabled for this transport
+   *
+   * @api private
+   */
+
+  XHRPolling.prototype.heartbeats = function () {
+    return false;
+  };
+
+  /**
+   * Establish a connection, for iPhone and Android this will be done once the page
+   * is loaded.
+   *
+   * @returns {Transport} Chaining.
+   * @api public
+   */
+
+  XHRPolling.prototype.open = function () {
+    var self = this;
+
+    io.Transport.XHR.prototype.open.call(self);
+    return false;
+  };
+
+  /**
+   * Starts a XHR request to wait for incoming messages.
+   *
+   * @api private
+   */
+
+  function empty () {};
+
+  XHRPolling.prototype.get = function () {
+    if (!this.isOpen) return;
+
+    var self = this;
+
+    function stateChange () {
+      if (this.readyState == 4) {
+        this.onreadystatechange = empty;
+
+        if (this.status == 200) {
+          self.onData(this.responseText);
+          self.get();
+        } else {
+          self.onClose();
+        }
+      }
+    };
+
+    function onload () {
+      this.onload = empty;
+      this.onerror = empty;
+      self.retryCounter = 1;
+      self.onData(this.responseText);
+      self.get();
+    };
+
+    function onerror () {
+      self.retryCounter ++;
+      if(!self.retryCounter || self.retryCounter > 3) {
+        self.onClose();
+      } else {
+        self.get();
+      }
+    };
+
+    this.xhr = this.request();
+
+    if (global.XDomainRequest && this.xhr instanceof XDomainRequest) {
+      this.xhr.onload = onload;
+      this.xhr.onerror = onerror;
+    } else {
+      this.xhr.onreadystatechange = stateChange;
+    }
+
+    this.xhr.send(null);
+  };
+
+  /**
+   * Handle the unclean close behavior.
+   *
+   * @api private
+   */
+
+  XHRPolling.prototype.onClose = function () {
+    io.Transport.XHR.prototype.onClose.call(this);
+
+    if (this.xhr) {
+      this.xhr.onreadystatechange = this.xhr.onload = this.xhr.onerror = empty;
+      try {
+        this.xhr.abort();
+      } catch(e){}
+      this.xhr = null;
+    }
+  };
+
+  /**
+   * Webkit based browsers show a infinit spinner when you start a XHR request
+   * before the browsers onload event is called so we need to defer opening of
+   * the transport until the onload event is called. Wrapping the cb in our
+   * defer method solve this.
+   *
+   * @param {Socket} socket The socket instance that needs a transport
+   * @param {Function} fn The callback
+   * @api private
+   */
+
+  XHRPolling.prototype.ready = function (socket, fn) {
+    var self = this;
+
+    io.util.defer(function () {
+      fn.call(self);
+    });
+  };
+
+  /**
+   * Add the transport to your public io.transports array.
+   *
+   * @api private
+   */
+
+  io.transports.push('xhr-polling');
+
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+  , this
+);
+
+/**
+ * socket.io
+ * Copyright(c) 2011 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+(function (exports, io, global) {
+  /**
+   * There is a way to hide the loading indicator in Firefox. If you create and
+   * remove a iframe it will stop showing the current loading indicator.
+   * Unfortunately we can't feature detect that and UA sniffing is evil.
+   *
+   * @api private
+   */
+
+  var indicator = global.document && "MozAppearance" in
+    global.document.documentElement.style;
+
+  /**
+   * Expose constructor.
+   */
+
+  exports['jsonp-polling'] = JSONPPolling;
+
+  /**
+   * The JSONP transport creates an persistent connection by dynamically
+   * inserting a script tag in the page. This script tag will receive the
+   * information of the Socket.IO server. When new information is received
+   * it creates a new script tag for the new data stream.
+   *
+   * @constructor
+   * @extends {io.Transport.xhr-polling}
+   * @api public
+   */
+
+  function JSONPPolling (socket) {
+    io.Transport['xhr-polling'].apply(this, arguments);
+
+    this.index = io.j.length;
+
+    var self = this;
+
+    io.j.push(function (msg) {
+      self._(msg);
+    });
+  };
+
+  /**
+   * Inherits from XHR polling transport.
+   */
+
+  io.util.inherit(JSONPPolling, io.Transport['xhr-polling']);
+
+  /**
+   * Transport name
+   *
+   * @api public
+   */
+
+  JSONPPolling.prototype.name = 'jsonp-polling';
+
+  /**
+   * Posts a encoded message to the Socket.IO server using an iframe.
+   * The iframe is used because script tags can create POST based requests.
+   * The iframe is positioned outside of the view so the user does not
+   * notice it's existence.
+   *
+   * @param {String} data A encoded message.
+   * @api private
+   */
+
+  JSONPPolling.prototype.post = function (data) {
+    var self = this
+      , query = io.util.query(
+             this.socket.options.query
+          , 't='+ (+new Date) + '&i=' + this.index
+        );
+
+    if (!this.form) {
+      var form = document.createElement('form')
+        , area = document.createElement('textarea')
+        , id = this.iframeId = 'socketio_iframe_' + this.index
+        , iframe;
+
+      form.className = 'socketio';
+      form.style.position = 'absolute';
+      form.style.top = '0px';
+      form.style.left = '0px';
+      form.style.display = 'none';
+      form.target = id;
+      form.method = 'POST';
+      form.setAttribute('accept-charset', 'utf-8');
+      area.name = 'd';
+      form.appendChild(area);
+      document.body.appendChild(form);
+
+      this.form = form;
+      this.area = area;
+    }
+
+    this.form.action = this.prepareUrl() + query;
+
+    function complete () {
+      initIframe();
+      self.socket.setBuffer(false);
+    };
+
+    function initIframe () {
+      if (self.iframe) {
+        self.form.removeChild(self.iframe);
+      }
+
+      try {
+        // ie6 dynamic iframes with target="" support (thanks Chris Lambacher)
+        iframe = document.createElement('<iframe name="'+ self.iframeId +'">');
+      } catch (e) {
+        iframe = document.createElement('iframe');
+        iframe.name = self.iframeId;
+      }
+
+      iframe.id = self.iframeId;
+
+      self.form.appendChild(iframe);
+      self.iframe = iframe;
+    };
+
+    initIframe();
+
+    // we temporarily stringify until we figure out how to prevent
+    // browsers from turning `\n` into `\r\n` in form inputs
+    this.area.value = io.JSON.stringify(data);
+
+    try {
+      this.form.submit();
+    } catch(e) {}
+
+    if (this.iframe.attachEvent) {
+      iframe.onreadystatechange = function () {
+        if (self.iframe.readyState == 'complete') {
+          complete();
+        }
+      };
+    } else {
+      this.iframe.onload = complete;
+    }
+
+    this.socket.setBuffer(true);
+  };
+
+  /**
+   * Creates a new JSONP poll that can be used to listen
+   * for messages from the Socket.IO server.
+   *
+   * @api private
+   */
+
+  JSONPPolling.prototype.get = function () {
+    var self = this
+      , script = document.createElement('script')
+      , query = io.util.query(
+             this.socket.options.query
+          , 't='+ (+new Date) + '&i=' + this.index
+        );
+
+    if (this.script) {
+      this.script.parentNode.removeChild(this.script);
+      this.script = null;
+    }
+
+    script.async = true;
+    script.src = this.prepareUrl() + query;
+    script.onerror = function () {
+      self.onClose();
+    };
+
+    var insertAt = document.getElementsByTagName('script')[0];
+    insertAt.parentNode.insertBefore(script, insertAt);
+    this.script = script;
+
+    if (indicator) {
+      setTimeout(function () {
+        var iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+        document.body.removeChild(iframe);
+      }, 100);
+    }
+  };
+
+  /**
+   * Callback function for the incoming message stream from the Socket.IO server.
+   *
+   * @param {String} data The message
+   * @api private
+   */
+
+  JSONPPolling.prototype._ = function (msg) {
+    this.onData(msg);
+    if (this.isOpen) {
+      this.get();
+    }
+    return this;
+  };
+
+  /**
+   * The indicator hack only works after onload
+   *
+   * @param {Socket} socket The socket instance that needs a transport
+   * @param {Function} fn The callback
+   * @api private
+   */
+
+  JSONPPolling.prototype.ready = function (socket, fn) {
+    var self = this;
+    if (!indicator) return fn.call(this);
+
+    io.util.load(function () {
+      fn.call(self);
+    });
+  };
+
+  /**
+   * Checks if browser supports this transport.
+   *
+   * @return {Boolean}
+   * @api public
+   */
+
+  JSONPPolling.check = function () {
+    return 'document' in global;
+  };
+
+  /**
+   * Check if cross domain requests are supported
+   *
+   * @returns {Boolean}
+   * @api public
+   */
+
+  JSONPPolling.xdomainCheck = function () {
+    return true;
+  };
+
+  /**
+   * Add the transport to your public io.transports array.
+   *
+   * @api private
+   */
+
+  io.transports.push('jsonp-polling');
+
+})(
+    'undefined' != typeof io ? io.Transport : module.exports
+  , 'undefined' != typeof io ? io : module.parent.exports
+  , this
+);
+
+if (typeof define === "function" && define.amd) {
+  define([], function () { return io; });
+}
+})();
+/*
  * Sonic 0.2
  * --
  * https://github.com/padolsey/Sonic
@@ -30856,7 +34728,7 @@ window.mocha = require('mocha');
 
 }());
 
-;//fgnass.github.com/spin.js#v1.3.2
+//fgnass.github.com/spin.js#v1.3.2
 
 /**
  * Copyright (c) 2011-2013 Felix Gnass
@@ -31211,5 +35083,5 @@ window.mocha = require('mocha');
   return Spinner
 
 }));
-;
+
 //# sourceMappingURL=vendor.js.map

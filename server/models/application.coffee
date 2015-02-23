@@ -9,10 +9,12 @@ module.exports = Application = americano.getModel 'Application',
     description: String
     slug: String
     state: String
-    isStoppable: {type: Boolean, default: false}
+    isStoppable: {type: Boolean, default: true}
     date: {type: Date, default: Date.now}
     icon: String
     iconPath: String
+    iconType: String
+    color: {type: String, default: null}
     git: String
     errormsg: String
     branch: String
@@ -36,9 +38,8 @@ Application.destroyAll = (params, callback) ->
 #
 # callback: function(err, needsUpdate)
 Application::checkForUpdate = (callback) ->
-    setFlag = () =>
-        @needsUpdate = true
-        @save (err) =>
+    setFlag = =>
+        @updateAttributes needsUpdate: true, (err) ->
             if err
                 callback err
             else
@@ -48,7 +49,6 @@ Application::checkForUpdate = (callback) ->
     if @needsUpdate
         callback null, false
     else
-
         # Retrieve manifest
         manifest = new Manifest()
         manifest.download @, (err) =>

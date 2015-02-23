@@ -7,13 +7,15 @@ module.exports = class Application extends Backbone.Model
 
     url: ->
         base = "/api/applications/"
-        # return base + @id         if @id #slug
-        return base + "byid/" + @get('id') if @get('id')
+        return "#{base}byid/#{@get('id')}" if @get('id')
         return base
 
+    isIconSvg: ->
+        iconType = @get 'iconType'
+        return iconType? and iconType is 'svg'
 
-    isRunning: () -> @get('state') is 'installed'
-    isBroken: () ->  @get('state') is 'broken'
+    isRunning: -> @get('state') is 'installed'
+    isBroken: ->  @get('state') is 'broken'
 
     # use same events as backbone to enable socket-listener
     prepareCallbacks: (callbacks, presuccess, preerror) ->
@@ -50,8 +52,8 @@ module.exports = class Application extends Backbone.Model
             @prepareCallbacks callbacks
             client.put "/api/applications/#{@id}/update", {}, callbacks
         else
-            client.del "/api/applications/#{@id}/uninstall", 
-                success: => 
+            client.del "/api/applications/#{@id}/uninstall",
+                success: =>
                     @install callbacks
                 error: callbacks.error
 

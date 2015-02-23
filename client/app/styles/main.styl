@@ -1,6 +1,7 @@
 @import 'nib'
 @import '_base'
 @import '_help'
+@import '../lib/styles/_wizard'
 
 *
     outline: none
@@ -72,36 +73,46 @@ body
     height: 48px
     padding: 0
 
-    img
-        width: 32px
-        margin-left: 15px
-        margin-top: 8px
-        opacity: 0.5
-        transition: all 0.3s
-
     span
         margin: 0
 
-    a
-        color: white
-
-    a:hover
-        color: black
-        margin: 0
-        padding: 0
-
-        img
-            opacity: 1
+    img
+        height 28px
+        vertical-align: middle
+        margin 0
 
 
-    #logout-button
-        margin-right: 10px
-        span
-            display: none
+.logo
+    margin 7px 15px
 
-    #logout-button:hover
-        span
-            display: none
+    font-family 'Maven Pro', sans-serif
+    font-weight normal
+    font-size .8em
+
+    color white
+    opacity .5
+    transition opacity .3s
+
+    &:hover
+        color white
+        opacity 1
+
+    span
+        display inline-block !important    // make the beta flag always visible
+        vertical-align super
+
+
+#logout-button
+    margin-right: 15px
+    height: 45px
+    line-height 45px
+
+    span
+        display: none
+
+#logout-button:hover
+    span
+        display: none
 
 /* content */
 
@@ -111,6 +122,11 @@ body
 
 #home-content
     padding: 40px 60px 20px 40px
+
+.wizard section img
+    display inline-block;
+    float left;
+    margin .25em 1em 0 0;
 
 
 /** Notifications */
@@ -124,6 +140,7 @@ body
     padding-right: 5px
     cursor: pointer
     color: white
+    font-family 'Maven Pro', sans-serif
 
     #current-application
         font-weight: normal
@@ -195,37 +212,36 @@ body
             background: #fce9d5
 
 #notifications-toggle
+    display block
     height: 45px
     line-height: 45px
     font-size: 45px
-    width: 60px
+    width: auto
     cursor: pointer
     margin-left: 10px
-    margin-top: 0
-    padding-top: 0
-    padding-left: 5px
-    padding-right: 10px
+    margin: 0
+    padding: 0 10px
     transition: all 0.3s
     position: relative
     transition: all 0.3s
 
-    img
-        padding: 0
-        margin: 0
+    img //position hotfix
+        vertical-align baseline
 
     #notifications-counter
+        position absolute
+        top 3px
+        right 0
+
         height 20px
-        top 5px
-        right 2px
-        line-height 20px
-        padding 0 3px
+        width 20px
+        border-radius 50%
+        line-height 17px
+        font-size 15px
+
         text-align center
-        border none
         background #d9534f
         color #fff
-        position absolute
-        font-size 15px
-        border-radius 10px
         border 2px solid #363a46
 
         &:empty
@@ -267,9 +283,9 @@ body
 #notifications-container
     position: relative
     padding: 0
+    margin-right: 15px
 
     a
-        width: 20px
         color: darkblue
 
     .badge
@@ -371,26 +387,6 @@ body
         font-weight normal
         margin-top 10px
 
-    #colorpicker
-        width 195px
-        height 195px
-        display none
-        position absolute
-        z-index 100000000000
-
-    .colorpicked
-        width 20px
-        height 30px
-        padding 2px
-        color #fff
-        font-size 12px
-        font-weight bold
-        font-family "Helvetica"
-        border 1px solid #000
-        margin 0 15px 0 5px
-        cursor pointer
-
-
 #app-list
     text-align: center
     margin auto
@@ -415,6 +411,7 @@ body
         opacity 0.7
 
     .use-widget
+        display none
         z-index 20
         position absolute
         bottom 10px
@@ -453,28 +450,29 @@ body
             display block
             margin 0px auto 2% auto
             text-align center
-            max-width: 100px
-            max-height: 100px
+            max-width 100px
+            max-height 100px
 
-            &.stopped
-                opacity 0.5
+            &.svg
+                border-radius 200px
+                padding 5px
 
         p
             margin: 0
-            font-family: main
+            font-family: 'Source Sans Pro', sans-serif
             color textcolor
 
         .app-title
-            // line-height: 20%
             height 20%
             max-height 20px
 
             text-align center
-            font-family: styled
-            text-transform: uppercase
-            font-size: 15px
-            color: darkblue
-            text-decoration: none
+            font-family 'Source Sans Pro', sans-serif
+            text-transform uppercase
+            font-size 15px
+            color darkblue
+            text-decoration none
+            margin-top 12px
 
         .state-label
             font-size: 18px
@@ -528,12 +526,15 @@ body
         .bottom-handle
             bottom -6.5px // border + height/2
             left 50%
+            cursor row-resize
         .bottom-right-handle
             bottom -6.5px
             right -6.5px
+            cursor nwse-resize
         .right-handle
             top 50%
             right -6.5px
+            cursor col-resize
 
 
     &:hover
@@ -619,8 +620,8 @@ body
 
     .input
         .btn
-            height: 60px
-            width: 60px
+            height: 55px
+            width: 55px
             margin-left: 10px
 
 
@@ -747,14 +748,20 @@ body
         box-sizing: border-box
         width: 180px
         height: 180px
-        padding: 20px 20px 10px 20px
+        padding: 25px 20px 10px 20px
         margin-right: 10px
 
+        img.svg
+            border-radius 200px
+            padding 15px
+            width 130px
+            height 130px
+
     .img-btn
-        width: 24px
-        opacity: 0.3
-        margin: 10px 5px
-        display: none
+        width 24px
+        opacity 0.3
+        margin 10px 5px
+        display none
 
     .img-btn:hover
         opacity: 1
@@ -778,7 +785,7 @@ body
 // Config application
 .title-app a.subtitle
     display inline-block
-    font-family styled
+    font-family 'Maven Pro', sans-serif
     font-size 15px
 
 #config-application-list
@@ -802,7 +809,7 @@ body
         margin: 0
 
     .smaller
-        font-family: main
+        font-family: 'Source Sans Pro', sans-serif
 
     .md-header
         background: transparent
@@ -816,9 +823,21 @@ body
     .buttons
         display: none
 
+    .img
+        width: 72px
+
 .config-application:hover
     .buttons
         display: inline-block
+
+#config-applications-view
+    .stack-app
+
+        .app
+            font-weight: normal
+
+        .line.buttons
+            margin-top: 20px
 
 // Config device
 
@@ -843,7 +862,7 @@ body
         margin: 0
 
     .smaller
-        font-family: main
+        font-family: 'Source Sans Pro', sans-serif
 
     .md-header
         background: transparent
@@ -872,7 +891,7 @@ body
         width 60px
     .change-layout a
         color black
-        font-family styled
+        font-family 'Maven Pro', sans-serif
         font-weight normal
         &:hover
             color orange
@@ -966,6 +985,15 @@ body
         padding-top: 3px
         position: absolute
 
+.noncozy-warning
+    font-weight: bold
+    font-size: 14px
+    margin-top: 20px
+    padding: 5px 10px
+    color: grey
+    background: lightred
+    border-radius: 5px
+
 .md-body
 
     background: lightgrey
@@ -996,10 +1024,23 @@ body
     opacity: 1
     visibility: visible
 
+#tutorial-view
+    div.question
+        display none
+        &.active
+            display block
+
+        button
+            padding 10px
+            font-size 16px
+
+    #end-screen
+        ul
+            margin 10px 150px
+
 // Responsive
 
 @media (max-width: 850px)
-    #header
 
     #market-view
         span
@@ -1009,19 +1050,17 @@ body
             display: inline
 
 @media (max-width: 800px)
+
     .md-content
         overflow: auto
     .md-modal
         position: fixed
-        top: 45px
-        left: 0
         bottom: 0
         width: 100%
         height: 90%
         z-index: 2000
         visibility: hidden
         backface-visibility: hidden
-        //transform: translateX(0) translateY(0)
         margin: 0
         padding: 0
 
@@ -1084,7 +1123,6 @@ body
 
             img
                 margin: 0
-                width: 100px
 
         h3
             margin-bottom: 10px
@@ -1103,7 +1141,7 @@ body
 
         .cozy-app
             width: 100%
-            height: 150px
+            height: 180px
 
 
     #notifications
@@ -1126,26 +1164,54 @@ body
                 display: block
 
 
-        .change-layout, .disk-space, .memory-free
+        .change-layout, .disk-space, .memory-free, .stack-app
             img
                 width 32px
                 margin 0px
                 margin-right 5px
+
         .sys-infos .line
             display inline-block
             clear none
+
         .sys-infos div
             // clear both
             // height 37px
             margin-top 5px
+
+        .platform .line
+            img
+                width 32px
+                margin 0px
+                margin-right 5px
+
         h4
             margin-bottom 20px
 
+        .stack-app
+            .line
+                display block
+
+
+
+
 @media (max-width: 640px)
 
+    header#header
+        display: none
+
+    div.home-body
+        padding-top: 0
+        height: 100%
+
     #account-view
+        p
+            margin 10px 0
+
         input
-            max-width: 215px
+        select
+            width: 100%
+            font-size: 16px
 
         // .btn
         //     margin-left: 5px
@@ -1197,19 +1263,9 @@ body
 
 @media (max-width: 500px)
 
-    header#header
-        display: none
-
-    div.home-body
-        padding-top: 0
-        height: 100%
-
-    .md-modal
-        top: 0
-
     #home-menu
         .logout-menu-icon
-            display: inline
+            display: block
 
     .customize-icon
     .help-icon
@@ -1220,7 +1276,8 @@ body
             margin-bottom: -5px
 
         .app-title
-            font-size: 0.8em
+            margin-top: 4px
+            font-size: 12px
 
     #market-view
         #your-app
@@ -1232,7 +1289,7 @@ body
                 font-size: 16px
 
         .cozy-app
-            height: 200px
+            height: auto
             margin-top: 10px
 
         .app-text
@@ -1242,12 +1299,13 @@ body
             display: block
             padding: 0
             width: 100%
-            height: 60px
+            height: 120px
             text-align: left
 
             img
-                margin: 0
-                width: 50px
+                margin: 10px 0 0 10px
+                width: 100px
+                height: 100px
 
     #notifications-container
         display: none
@@ -1274,3 +1332,10 @@ body
 
                 span
                     display: none
+
+span.app
+    font-weight: bold
+
+button.btn
+    margin-bottom: 4px
+    margin-right: 4px

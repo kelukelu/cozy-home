@@ -13,11 +13,9 @@ module.exports = class ApplicationsListView extends ViewCollection
             @gridster.disable()
         'mouseleave .ui-resizable-handle': =>
             @gridster.enable() if @state is 'edit'
-        'click #reset-custom': => @colorpicker.reset()
 
-    constructor: (apps, userPreference) ->
+    constructor: (apps) ->
         @apps = apps
-        @userPreference = userPreference
         @state = 'view'
         @isLoading = true
         super collection: apps
@@ -25,9 +23,7 @@ module.exports = class ApplicationsListView extends ViewCollection
     initialize: =>
         @listenTo @collection, 'request', => @isLoading = true
         @listenTo @collection, 'reset', => @isLoading = false
-        @listenTo @userPreference, 'change', (userPreference) =>
-            @colorpicker.setCurrentColors userPreference
-            @colorpicker.injectCss()
+
         super
         # onWindowResize when the user is done resizing
         $(window).on 'resize', _.debounce @onWindowResize, 300
@@ -36,27 +32,10 @@ module.exports = class ApplicationsListView extends ViewCollection
         @appList = @$ "#app-list"
         @closeEditBtn = @$ '#home-edit-close'
 
-        ColorPickerHandler = require '../lib/color_picker_handler'
-        @colorpicker = new ColorPickerHandler
-            targetFields: @$ '.colorpicked'
-            colorPicker: @$ '#colorpicker'
-
         @$("#no-app-message").hide()
         $(".menu-btn a").click (event) =>
             $(".menu-btn").removeClass 'active'
             $(event.target).closest('.menu-btn').addClass 'active'
-
-        @closeEditBtn.find('a#save-custom.btn').click (event) =>
-
-            bgColor = @colorpicker.currentColors.background
-            btnColor = @colorpicker.currentColors.button
-            btnHoverColor = @colorpicker.currentColors.buttonHover
-
-            @userPreference.set
-                backgroundColor: bgColor
-                buttonColor: btnColor
-                buttonHoverColor: btnHoverColor
-            #@userPreference.save()
 
         @initGridster()
         super
@@ -66,12 +45,12 @@ module.exports = class ApplicationsListView extends ViewCollection
             @view.enable() for cid, view of @views
 
     checkIfEmpty: ->
-        displayHelp = @apps.size() is 0 and not @isLoading
-        @$("#no-app-message").toggle displayHelp
-        # and app.mainView.marketView.installedApps is 0
+        noapps = @apps.size() is 0 and not @isLoading
+        @$("#no-app-message").toggle noapps
+        if noapps
+            window.app.routers.main.navigate 'home/install', trigger: true
 
     computeGridDims: () ->
-        # = $('#home-content').width()
         width = $(window).width()
         if width > 640 then width = width - 100
         else width = width - 65
@@ -100,10 +79,8 @@ module.exports = class ApplicationsListView extends ViewCollection
         if @state is 'edit'
             @gridster?.enable()
             @closeEditBtn.slideDown()
-            @colorpicker.enable()
             view.disable() for cid, view of @views
         else
-            @colorpicker.disable()
             @gridster?.disable()
             @closeEditBtn.slideUp()
             view.enable() for cid, view of @views
@@ -152,6 +129,7 @@ module.exports = class ApplicationsListView extends ViewCollection
             styles_for: cols: 16, rows: 16
             widget_margins: [@grid_margin, @grid_margin]
             widget_base_dimensions: [@grid_size, @grid_size]
+
 
     appendView: (view) ->
         pos = view.model.getHomePosition @colsNb

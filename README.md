@@ -45,11 +45,17 @@ To run tests type the following command into the Cozy Home folder:
 
     cake tests
 
-In order to run the tests, you must only have the Data System started.
+In order to run the tests, you must only have the Data System started:
+
+    git clone https://github.com/cozy/cozy-data-system.git
+    cd cozy-data-system/
+    npm install
+    TOKEN=token NODE_ENV=test DB_NAME=home_test npm start
 
 ## Icons
 
 by [iconmonstr](http://iconmonstr.com/)
+Apps icons by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free).
 
 ## License
 
@@ -70,6 +76,6 @@ profiles you.
 You can reach the Cozy Community by:
 
 * Chatting with us on IRC #cozycloud on irc.freenode.net
-* Posting on our [Forum](https://groups.google.com/forum/?fromgroups#!forum/cozy-cloud)
-* Posting issues on the [Github repos](https://github.com/mycozycloud/)
+* Posting on our [Forum](https://forum.cozy.io/)
+* Posting issues on the [Github repos](https://github.com/cozy/)
 * Mentioning us on [Twitter](http://twitter.com/mycozycloud)
