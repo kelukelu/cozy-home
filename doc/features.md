@@ -8,23 +8,31 @@ Describes ability to navigate between apps and components from anywhere inside C
 
 - current app w/ contextual menu
   - close app
+  - options related to current app
 - apps switcher
   - default back to dashboard
-  - sort  favorites apps at top
-  - w/ indicator for running apps
+  - favorite apps on top
+  - indicator for running apps
 - user menu
   - quick access to Settings
   - quick access to Help
   - logout
 - Notifications panel trigger w/ counter
 - quick actions: an app can declares a route that can be triggered from the topbar directly (e.g write a new mail, create an event…). It consists of a simple button in the topbar that deploy a popup w/ the iframed route view
+- Status information (e.g. used memory...)
 - auto-masking feature
 
 ### Shortcuts
+
 - cycle between launched apps
 - back to dashboard
 - open app switcher + arrows navigation
 - quick launch app (w/ autocomplete)
+
+### Apps
+
+- open app in a new tab instead of the current one.
+- Each apps should have its own favicons to make sure it's spotted easily from our users.
 
 
 ## Organisation
@@ -43,7 +51,7 @@ Formerly the Dashboard that display apps and informations.
 
 ### Option 2: Expanded topbar
 
-When accessing the Cozy w/o any app URL (i.e. to the dashboard), the topbar in expanded to the whole viewport to display the 6 more used apps, and the user never come back again to this view: it's just a wrapper for a first access. The rest of the navigation between apps will be only using the app switcher component.
+When accessing the Cozy w/o any app URL (i.e. to the dashboard), the topbar in expanded to the whole viewport to display the 6 more used apps, and the user will never come back to this view: it's just a wrapper for a first access. The rest of the navigation between apps will be only using the app switcher component.
 
 It may also dipslay widgets (see below)
 
@@ -58,11 +66,11 @@ It may also dipslay widgets (see below)
 The way notifications can be displayed across *all* Cozy.
 
 - apps can push notifications in a global bus that's displayed in Home
-- 2 kind of notifications
-  - info: display a tip that disappear after a given timeout
+- 2 kinds of notifications
+  - info: display a tip that disappears after a given timeout
   - alert: like info but remains in the notification panel for a later use
 - notification can embed an action feedback when clicked
-- notification can exposes actions displayed as button (e.g. trigger an update)
+- notification can expose actions displayed as button (e.g. trigger an update)
 - notification in panel display
   - app icon (?)
   - a title
@@ -91,9 +99,10 @@ Status monitor is a management app that let user consults its Cozy usage, displa
 
 ## Market
 
-The Market app is a marketplace and an app management center. It let user install apps from a registry and consult which apps are installed. User can also reinstall / uninstall / consult logs for installed apps.
+The Market app is a marketplace and an app management center. It let user install apps from a registry and consult which apps are installed. User can also reinstall / uninstall / update / consult logs for installed apps.
 
 It may be built on a distributed framework to let third-parties develop their own market place that furbish all functionnalities to lets user manager their apps ecosystem.
+Also the third-parties should be able to upload screenshots of their apps.
 
 
 # Home Workshop
